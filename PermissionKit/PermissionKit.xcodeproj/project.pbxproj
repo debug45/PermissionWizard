@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A5EDD6922528DA67001F44C9 /* PermissionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDD6912528DA67001F44C9 /* PermissionKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6EE2528E220001F44C9 /* Permission.swift */; };
+		A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6F42528E2A4001F44C9 /* Contacts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A5DAF03A2528D771002483A6 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF03E2528D771002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5EDD6912528DA67001F44C9 /* PermissionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionKit.h; sourceTree = "<group>"; };
+		A5EDD6EE2528E220001F44C9 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		A5EDD6F42528E2A4001F44C9 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +35,6 @@
 			isa = PBXGroup;
 			children = (
 				A5DAF03C2528D771002483A6 /* PermissionKit */,
-				A5DAF03B2528D771002483A6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,13 +44,17 @@
 				A5DAF03A2528D771002483A6 /* PermissionKit.framework */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A5DAF03C2528D771002483A6 /* PermissionKit */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDD6EE2528E220001F44C9 /* Permission.swift */,
+				A5EDD6F42528E2A4001F44C9 /* Contacts.swift */,
 				A5EDD6912528DA67001F44C9 /* PermissionKit.h */,
 				A5DAF03E2528D771002483A6 /* Info.plist */,
+				A5DAF03B2528D771002483A6 /* Products */,
 			);
 			path = PermissionKit;
 			sourceTree = "<group>";
@@ -130,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
+				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
