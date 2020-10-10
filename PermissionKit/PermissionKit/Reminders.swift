@@ -1,15 +1,15 @@
 //
-//  Contacts.swift
+//  Reminders.swift
 //  PermissionKit
 //
-//  Created by Sergey Moskvin on 03.10.2020.
+//  Created by Sergey Moskvin on 06.10.2020.
 //
 
-import Contacts
+import EventKit
 
 public extension Permission {
     
-    final class contacts {
+    final class reminders {
         
         public enum Status: String {
             
@@ -26,7 +26,7 @@ public extension Permission {
         // MARK: - Public Functions
         
         public static func checkStatus(completion: (Status) -> Void) {
-            switch CNContactStore.authorizationStatus(for: .contacts) {
+            switch EKEventStore.authorizationStatus(for: .reminder) {
                 case .notDetermined:
                     completion(.notDetermined)
                 case .restricted:
@@ -42,14 +42,14 @@ public extension Permission {
         }
         
         public static func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Bundle.main.object(forInfoDictionaryKey: "NSContactsUsageDescription") != nil else {
-                print("❌ You must add a row with the ”NSContactsUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to contacts. This information will be displayed to a user.")
+            guard Bundle.main.object(forInfoDictionaryKey: "NSRemindersUsageDescription") != nil else {
+                print("❌ You must add a row with the ”NSRemindersUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to reminders. This information will be displayed to a user.")
                 return
             }
             
-            let store = CNContactStore()
+            let store = EKEventStore()
             
-            store.requestAccess(for: .contacts) { _, _ in
+            store.requestAccess(to: .reminder) { _, _ in
                 guard let completion = completion else {
                     return
                 }

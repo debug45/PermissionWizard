@@ -21,13 +21,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yjg-df-aHU">
-                                        <rect key="frame" x="0.0" y="32" width="414" height="30"/>
+                                        <rect key="frame" x="0.0" y="32" width="414" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-Mv-P5P" userLabel="Contacts Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                 <state key="normal" title="Contacts"/>
                                                 <connections>
                                                     <action selector="contactsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zln-Up-b9h"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-Nc-arj" userLabel="Reminders Button">
+                                                <rect key="frame" x="0.0" y="30" width="414" height="30"/>
+                                                <state key="normal" title="Reminders"/>
+                                                <connections>
+                                                    <action selector="remindersButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNc-yk-V6B"/>
                                                 </connections>
                                             </button>
                                         </subviews>

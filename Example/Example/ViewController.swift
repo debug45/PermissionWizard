@@ -12,27 +12,37 @@ final class ViewController: UIViewController {
     
     // MARK: - User Interaction
     
-    @IBAction func contactsButtonDidPress(_ sender: Any) {
-        showMenu(checkStatus: {
-            Permission.contacts.checkStatus { status in
-                print("Contacts: \(status)")
-            }
-        }, requestAccess: {
-            Permission.contacts.requestAccess { status in
-                print("Contacts: \(status)")
-            }
-        })
+    @IBAction func contactsButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.contacts.self, customer: sender)
+    }
+    
+    @IBAction func remindersButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.reminders.self, customer: sender)
     }
     
     // MARK: - Private Functions
     
-    private func showMenu(checkStatus: @escaping () -> Void, requestAccess: @escaping () -> Void) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+    private func showMenu(for permission: Unifiable.Type, customer: UIButton) {
+        guard let title = customer.title(for: .normal) else {
+            return
+        }
         
-        let checkStatusAction = UIAlertAction(title: "Check status", style: .default) { _ in checkStatus() }
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        
+        let checkStatusAction = UIAlertAction(title: "Check status", style: .default) { _ in
+            permission.checkStatus { status in
+                print("\(title): \(status)")
+            }
+        }
+        
         alertController.addAction(checkStatusAction)
         
-        let requestAccessAction = UIAlertAction(title: "Request access", style: .default) { _ in requestAccess() }
+        let requestAccessAction = UIAlertAction(title: "Request access", style: .default) { _ in
+            permission.requestAccess { status in
+                print("\(title): \(status)")
+            }
+        }
+        
         alertController.addAction(requestAccessAction)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
