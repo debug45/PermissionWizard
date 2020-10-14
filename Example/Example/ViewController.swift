@@ -12,6 +12,10 @@ final class ViewController: UIViewController {
     
     // MARK: - User Interaction
     
+    @IBAction func calendarsButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.calendars.self, customer: sender)
+    }
+    
     @IBAction func contactsButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.contacts.self, customer: sender)
     }

@@ -62,6 +62,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Please allow access to your calendars</string>
     <key>NSContactsUsageDescription</key>
     <string>Please allow access to your contacts</string>
     <key>NSRemindersUsageDescription</key>

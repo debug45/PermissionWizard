@@ -10,6 +10,7 @@
 		A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F7D2531F90D00364B82 /* Unifiable.swift */; };
 		A50A8F812531F97C00364B82 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F802531F97C00364B82 /* Contacts.swift */; };
 		A50A8F842531FA5900364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F832531FA5900364B82 /* Reminders.swift */; };
+		A551874825377A75001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551874725377A75001A8208 /* Calendars.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
 		A5DAF0552528D7ED002483A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		A50A8F7D2531F90D00364B82 /* Unifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unifiable.swift; sourceTree = "<group>"; };
 		A50A8F802531F97C00364B82 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		A50A8F832531FA5900364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
+		A551874725377A75001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				A50A8F7D2531F90D00364B82 /* Unifiable.swift */,
+				A551874725377A75001A8208 /* Calendars.swift */,
 				A50A8F802531F97C00364B82 /* Contacts.swift */,
 				A50A8F832531FA5900364B82 /* Reminders.swift */,
 			);
@@ -170,6 +173,7 @@
 				A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */,
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
 				A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */,
+				A551874825377A75001A8208 /* Calendars.swift in Sources */,
 				A50A8F842531FA5900364B82 /* Reminders.swift in Sources */,
 				A5DAF0552528D7ED002483A6 /* SceneDelegate.swift in Sources */,
 				A50A8F812531F97C00364B82 /* Contacts.swift in Sources */,
