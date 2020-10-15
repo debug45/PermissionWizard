@@ -48,9 +48,7 @@ public extension Permission {
                 return
             }
             
-            let store = CNContactStore()
-            
-            store.requestAccess(for: .contacts) { _, _ in
+            CNContactStore().requestAccess(for: .contacts) { _, _ in
                 guard let completion = completion else {
                     return
                 }

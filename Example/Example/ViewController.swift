@@ -28,6 +28,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.reminders.self, customer: sender)
     }
     
+    @IBAction func speechRecognitionButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.speechRecognition.self, customer: sender)
+    }
+    
     // MARK: - Private Functions
     
     private func showMenu(for permission: Unifiable.Type, customer: UIButton) {

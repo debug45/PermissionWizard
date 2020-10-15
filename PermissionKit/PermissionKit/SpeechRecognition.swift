@@ -1,15 +1,15 @@
 //
-//  Reminders.swift
+//  SpeechRecognition.swift
 //  PermissionKit
 //
-//  Created by Sergey Moskvin on 06.10.2020.
+//  Created by Sergey Moskvin on 15.10.2020.
 //
 
-import EventKit
+import Speech
 
 public extension Permission {
     
-    final class reminders: Base {
+    final class speechRecognition: Base {
         
         public enum Status: String {
             
@@ -23,18 +23,18 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSRemindersUsageDescription"
+        public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
         
         // MARK: - Public Functions
         
         public class func checkStatus(completion: (Status) -> Void) {
-            switch EKEventStore.authorizationStatus(for: .reminder) {
+            switch SFSpeechRecognizer.authorizationStatus() {
                 case .notDetermined:
                     completion(.notDetermined)
-                case .restricted:
-                    completion(.restrictedBySystem)
                 case .denied:
                     completion(.denied)
+                case .restricted:
+                    completion(.restrictedBySystem)
                 case .authorized:
                     completion(.granted)
                 
@@ -44,11 +44,11 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: reminders.self) else {
+            guard Utils.checkIsAppConfigured(for: speechRecognition.self) else {
                 return
             }
             
-            EKEventStore().requestAccess(to: .reminder) { _, _ in
+            SFSpeechRecognizer.requestAuthorization() { _ in
                 guard let completion = completion else {
                     return
                 }

@@ -48,9 +48,7 @@ public extension Permission {
                 return
             }
             
-            let store = EKEventStore()
-            
-            store.requestAccess(to: .event) { _, _ in
+            EKEventStore().requestAccess(to: .event) { _, _ in
                 guard let completion = completion else {
                     return
                 }

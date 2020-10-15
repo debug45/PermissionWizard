@@ -44,9 +44,7 @@ public extension Permission {
                 return
             }
             
-            let session = AVAudioSession.sharedInstance()
-            
-            session.requestRecordPermission { _ in
+            AVAudioSession.sharedInstance().requestRecordPermission { _ in
                 guard let completion = completion else {
                     return
                 }

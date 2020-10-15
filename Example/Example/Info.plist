@@ -70,5 +70,7 @@
     <string>Please allow access to your microphone</string>
     <key>NSRemindersUsageDescription</key>
     <string>Please allow access to your reminders</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Please allow access to your speech recognition</string>
 </dict>
 </plist>
