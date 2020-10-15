@@ -10,15 +10,11 @@ import PermissionKit
 extension Permission.calendars: Unifiable {
     
     static func checkStatus(completion: (String) -> Void) {
-        checkStatus { status in
-            completion(status.rawValue)
-        }
+        checkStatus { completion($0.rawValue) }
     }
     
     static func requestAccess(completion: @escaping (String) -> Void) {
-        requestAccess { status in
-            completion(status.rawValue)
-        }
+        requestAccess { completion($0.rawValue) }
     }
     
 }

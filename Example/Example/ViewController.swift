@@ -31,20 +31,20 @@ final class ViewController: UIViewController {
             return
         }
         
+        let notifyAboutResult: (String) -> Void = { status in
+            print("\(title): \(status)")
+        }
+        
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         
         let checkStatusAction = UIAlertAction(title: "Check status", style: .default) { _ in
-            permission.checkStatus { status in
-                print("\(title): \(status)")
-            }
+            permission.checkStatus { notifyAboutResult($0) }
         }
         
         alertController.addAction(checkStatusAction)
         
         let requestAccessAction = UIAlertAction(title: "Request access", style: .default) { _ in
-            permission.requestAccess { status in
-                print("\(title): \(status)")
-            }
+            permission.requestAccess { notifyAboutResult($0) }
         }
         
         alertController.addAction(requestAccessAction)

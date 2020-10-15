@@ -9,7 +9,7 @@ import EventKit
 
 public extension Permission {
     
-    final class reminders {
+    final class reminders: Base {
         
         public enum Status: String {
             
@@ -23,9 +23,11 @@ public extension Permission {
             
         }
         
+        public static let usageDescriptionPlistKey = "NSRemindersUsageDescription"
+        
         // MARK: - Public Functions
         
-        public static func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: (Status) -> Void) {
             switch EKEventStore.authorizationStatus(for: .reminder) {
                 case .notDetermined:
                     completion(.notDetermined)
@@ -41,9 +43,8 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Bundle.main.object(forInfoDictionaryKey: "NSRemindersUsageDescription") != nil else {
-                print("❌ You must add a row with the ”NSRemindersUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to reminders. This information will be displayed to a user.")
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
+            guard Utils.checkIsAppConfigured(for: reminders.self) else {
                 return
             }
             

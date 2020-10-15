@@ -9,7 +9,7 @@ import Contacts
 
 public extension Permission {
     
-    final class contacts {
+    final class contacts: Base {
         
         public enum Status: String {
             
@@ -23,9 +23,11 @@ public extension Permission {
             
         }
         
+        public static let usageDescriptionPlistKey = "NSContactsUsageDescription"
+        
         // MARK: - Public Functions
         
-        public static func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: (Status) -> Void) {
             switch CNContactStore.authorizationStatus(for: .contacts) {
                 case .notDetermined:
                     completion(.notDetermined)
@@ -41,9 +43,8 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Bundle.main.object(forInfoDictionaryKey: "NSContactsUsageDescription") != nil else {
-                print("❌ You must add a row with the ”NSContactsUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to contacts. This information will be displayed to a user.")
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
+            guard Utils.checkIsAppConfigured(for: contacts.self) else {
                 return
             }
             

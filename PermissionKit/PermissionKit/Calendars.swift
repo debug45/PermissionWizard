@@ -9,7 +9,7 @@ import EventKit
 
 public extension Permission {
     
-    final class calendars {
+    final class calendars: Base {
         
         public enum Status: String {
             
@@ -23,9 +23,11 @@ public extension Permission {
             
         }
         
+        public static let usageDescriptionPlistKey = "NSCalendarsUsageDescription"
+        
         // MARK: - Public Functions
         
-        public static func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: (Status) -> Void) {
             switch EKEventStore.authorizationStatus(for: .event) {
                 case .notDetermined:
                     completion(.notDetermined)
@@ -41,9 +43,8 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Bundle.main.object(forInfoDictionaryKey: "NSCalendarsUsageDescription") != nil else {
-                print("❌ You must add a row with the ”NSCalendarsUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to calendars. This information will be displayed to a user.")
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
+            guard Utils.checkIsAppConfigured(for: calendars.self) else {
                 return
             }
             
