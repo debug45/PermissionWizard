@@ -20,6 +20,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.contacts.self, customer: sender)
     }
     
+    @IBAction func microphoneButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.microphone.self, customer: sender)
+    }
+    
     @IBAction func remindersButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.reminders.self, customer: sender)
     }

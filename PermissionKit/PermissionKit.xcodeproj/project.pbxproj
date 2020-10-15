@@ -11,6 +11,7 @@
 		A5518744253779CA001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5518743253779CA001A8208 /* Calendars.swift */; };
 		A5B0765925378F8700E6DF79 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765825378F8700E6DF79 /* Utils.swift */; };
 		A5B0765D2537908500E6DF79 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765C2537908500E6DF79 /* Base.swift */; };
+		A5B519C02538D5E7006870FA /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519BF2538D5E7006870FA /* Microphone.swift */; };
 		A5EDD6922528DA67001F44C9 /* PermissionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDD6912528DA67001F44C9 /* PermissionKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6EE2528E220001F44C9 /* Permission.swift */; };
 		A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6F42528E2A4001F44C9 /* Contacts.swift */; };
@@ -21,6 +22,7 @@
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A5B0765825378F8700E6DF79 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A5B0765C2537908500E6DF79 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		A5B519BF2538D5E7006870FA /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
 		A5DAF03A2528D771002483A6 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF03E2528D771002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5EDD6912528DA67001F44C9 /* PermissionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionKit.h; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				A5B0765C2537908500E6DF79 /* Base.swift */,
 				A5518743253779CA001A8208 /* Calendars.swift */,
 				A5EDD6F42528E2A4001F44C9 /* Contacts.swift */,
+				A5B519BF2538D5E7006870FA /* Microphone.swift */,
 				A50A8F6C252CC58F00364B82 /* Reminders.swift */,
 				A5B0765825378F8700E6DF79 /* Utils.swift */,
 				A5EDD6912528DA67001F44C9 /* PermissionKit.h */,
@@ -154,6 +157,7 @@
 				A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */,
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
+				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,
 				A5518744253779CA001A8208 /* Calendars.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
