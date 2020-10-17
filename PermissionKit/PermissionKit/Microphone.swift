@@ -27,12 +27,12 @@ public extension Permission {
         
         public class func checkStatus(completion: (Status) -> Void) {
             switch AVAudioSession.sharedInstance().recordPermission {
-                case .undetermined:
-                    completion(.notDetermined)
-                case .denied:
-                    completion(.denied)
                 case .granted:
                     completion(.granted)
+                case .denied:
+                    completion(.denied)
+                case .undetermined:
+                    completion(.notDetermined)
                 
                 @unknown default:
                     completion(.unknown)

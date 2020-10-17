@@ -66,6 +66,8 @@
     <string>Please allow access to your calendars</string>
     <key>NSContactsUsageDescription</key>
     <string>Please allow access to your contacts</string>
+    <key>NSHomeKitUsageDescription</key>
+    <string>Please allow access to your home</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Please allow access to your microphone</string>
     <key>NSRemindersUsageDescription</key>

@@ -20,6 +20,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.contacts.self, customer: sender)
     }
     
+    @IBAction func homeButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.home.self, customer: sender)
+    }
+    
     @IBAction func microphoneButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.microphone.self, customer: sender)
     }
@@ -39,8 +43,10 @@ final class ViewController: UIViewController {
             return
         }
         
-        let notifyAboutResult: (String) -> Void = { status in
-            print("\(title): \(status)")
+        let notifyAboutResult: (String?) -> Void = { status in
+            if let status = status {
+                print("\(title): \(status)")
+            }
         }
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)

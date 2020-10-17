@@ -1,16 +1,17 @@
 //
-//  Reminders.swift
+//  Home.swift
 //  Example
 //
-//  Created by Sergey Moskvin on 10.10.2020.
+//  Created by Sergey Moskvin on 17.10.2020.
 //
 
 import PermissionKit
 
-extension Permission.reminders: Unifiable {
+extension Permission.home: Unifiable {
     
     static func checkStatus(completion: (String?) -> Void) {
-        checkStatus { completion($0.rawValue) }
+        print("❌ Check only is not available for a home, use the ”requestAccess“ to check the status")
+        completion(nil)
     }
     
     static func requestAccess(completion: @escaping (String) -> Void) {

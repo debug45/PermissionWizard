@@ -29,14 +29,14 @@ public extension Permission {
         
         public class func checkStatus(completion: (Status) -> Void) {
             switch SFSpeechRecognizer.authorizationStatus() {
-                case .notDetermined:
-                    completion(.notDetermined)
-                case .denied:
-                    completion(.denied)
-                case .restricted:
-                    completion(.restrictedBySystem)
                 case .authorized:
                     completion(.granted)
+                case .denied:
+                    completion(.denied)
+                case .notDetermined:
+                    completion(.notDetermined)
+                case .restricted:
+                    completion(.restrictedBySystem)
                 
                 @unknown default:
                     completion(.unknown)

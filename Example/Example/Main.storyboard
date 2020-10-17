@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yjg-df-aHU">
-                                        <rect key="frame" x="0.0" y="32" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="32" width="414" height="180"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hni-un-XrU" userLabel="Calendars Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -37,22 +37,29 @@
                                                     <action selector="contactsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zln-Up-b9h"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-ev-6PF" userLabel="Microphone Button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-le-062" userLabel="Home Button">
                                                 <rect key="frame" x="0.0" y="60" width="414" height="30"/>
+                                                <state key="normal" title="Home"/>
+                                                <connections>
+                                                    <action selector="homeButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N96-LQ-Ayj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-ev-6PF" userLabel="Microphone Button">
+                                                <rect key="frame" x="0.0" y="90" width="414" height="30"/>
                                                 <state key="normal" title="Microphone"/>
                                                 <connections>
                                                     <action selector="microphoneButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhV-LS-OKk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-Nc-arj" userLabel="Reminders Button">
-                                                <rect key="frame" x="0.0" y="90" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="120" width="414" height="30"/>
                                                 <state key="normal" title="Reminders"/>
                                                 <connections>
                                                     <action selector="remindersButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNc-yk-V6B"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-T4-xwe" userLabel="Speech Recognition Button">
-                                                <rect key="frame" x="0.0" y="120" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="150" width="414" height="30"/>
                                                 <state key="normal" title="Speech Recognition"/>
                                                 <connections>
                                                     <action selector="speechRecognitionButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ae4-KT-g1W"/>

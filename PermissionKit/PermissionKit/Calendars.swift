@@ -29,14 +29,14 @@ public extension Permission {
         
         public class func checkStatus(completion: (Status) -> Void) {
             switch EKEventStore.authorizationStatus(for: .event) {
+                case .authorized:
+                    completion(.granted)
+                case .denied:
+                    completion(.denied)
                 case .notDetermined:
                     completion(.notDetermined)
                 case .restricted:
                     completion(.restrictedBySystem)
-                case .denied:
-                    completion(.denied)
-                case .authorized:
-                    completion(.granted)
                 
                 @unknown default:
                     completion(.unknown)
