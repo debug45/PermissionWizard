@@ -32,6 +32,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.microphone.self, customer: sender)
     }
     
+    @IBAction func musicButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.music.self, customer: sender)
+    }
+    
     @IBAction func remindersButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.reminders.self, customer: sender)
     }
