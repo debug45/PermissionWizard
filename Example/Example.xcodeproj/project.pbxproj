@@ -18,6 +18,7 @@
 		A5B519C42538D6F4006870FA /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519C32538D6F4006870FA /* Microphone.swift */; };
 		A5B519CC2538D955006870FA /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519CB2538D955006870FA /* SpeechRecognition.swift */; };
 		A5B519D9253AEA83006870FA /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D8253AEA83006870FA /* Home.swift */; };
+		A5C49B85253B6602004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B84253B6602004DDC66 /* Photos.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
 		A5DAF0552528D7ED002483A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		A5B519C32538D6F4006870FA /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
 		A5B519CB2538D955006870FA /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
 		A5B519D8253AEA83006870FA /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		A5C49B84253B6602004DDC66 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				A5B519D8253AEA83006870FA /* Home.swift */,
 				A5B519C32538D6F4006870FA /* Microphone.swift */,
 				A533FEEE253B597C003B7648 /* Music.swift */,
+				A5C49B84253B6602004DDC66 /* Photos.swift */,
 				A50A8F832531FA5900364B82 /* Reminders.swift */,
 				A5B519CB2538D955006870FA /* SpeechRecognition.swift */,
 			);
@@ -205,6 +208,7 @@
 				A533FEE3253B2771003B7648 /* Camera.swift in Sources */,
 				A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */,
 				A533FEEF253B597C003B7648 /* Music.swift in Sources */,
+				A5C49B85253B6602004DDC66 /* Photos.swift in Sources */,
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
 				A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */,
 				A551874825377A75001A8208 /* Calendars.swift in Sources */,
@@ -270,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -325,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -344,6 +348,8 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +371,8 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

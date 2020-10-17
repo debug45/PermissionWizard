@@ -72,6 +72,10 @@
     <string>Please allow access to your home</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Please allow access to your microphone</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Please allow access to your photos (for adding only)</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Please allow access to your photos</string>
     <key>NSRemindersUsageDescription</key>
     <string>Please allow access to your reminders</string>
     <key>NSSpeechRecognitionUsageDescription</key>
