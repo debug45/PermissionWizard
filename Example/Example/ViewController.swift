@@ -16,6 +16,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.calendars.self, customer: sender)
     }
     
+    @IBAction func cameraButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.camera.self, customer: sender)
+    }
+    
     @IBAction func contactsButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.contacts.self, customer: sender)
     }
