@@ -62,6 +62,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSAppleMusicUsageDescription</key>
+    <string>Please allow access to your music</string>
     <key>NSCalendarsUsageDescription</key>
     <string>Please allow access to your calendars</string>
     <key>NSCameraUsageDescription</key>
@@ -72,6 +74,8 @@
     <string>Please allow access to your home</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Please allow access to your microphone</string>
+    <key>NSMotionUsageDescription</key>
+    <string>Please allow access to your motion</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Please allow access to your photos (for adding only)</string>
     <key>NSPhotoLibraryUsageDescription</key>

@@ -1,5 +1,5 @@
 //
-//  Music.swift
+//  Motion.swift
 //  Example
 //
 //  Created by Sergey Moskvin on 17.10.2020.
@@ -7,14 +7,17 @@
 
 import PermissionKit
 
-extension Permission.music: Unifiable {
+extension Permission.motion: Unifiable {
     
     static func checkStatus(completion: (String?) -> Void) {
         checkStatus { completion($0.rawValue) }
     }
     
     static func requestAccess(completion: @escaping (String?) -> Void) {
-        requestAccess { completion($0.rawValue) }
+        requestAccess()
+        
+        print("⚠️ The ”requestAccess“ does not return a result for motion, use the ”checkStatus“ if necessary")
+        completion(nil)
     }
     
 }

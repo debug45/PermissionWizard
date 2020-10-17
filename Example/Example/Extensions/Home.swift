@@ -14,7 +14,7 @@ extension Permission.home: Unifiable {
         completion(nil)
     }
     
-    static func requestAccess(completion: @escaping (String) -> Void) {
+    static func requestAccess(completion: @escaping (String?) -> Void) {
         requestAccess { completion($0.rawValue) }
     }
     

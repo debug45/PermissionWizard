@@ -32,6 +32,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.microphone.self, customer: sender)
     }
     
+    @IBAction func motionButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.motion.self, customer: sender)
+    }
+    
     @IBAction func musicButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.music.self, customer: sender)
     }

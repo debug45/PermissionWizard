@@ -13,7 +13,7 @@ extension Permission.camera: Unifiable {
         checkStatus(withMicrophone: false) { completion($0.camera.rawValue) }
     }
     
-    static func requestAccess(completion: @escaping (String) -> Void) {
+    static func requestAccess(completion: @escaping (String?) -> Void) {
         requestAccess(withMicrophone: false) { completion($0.camera.rawValue) }
     }
     

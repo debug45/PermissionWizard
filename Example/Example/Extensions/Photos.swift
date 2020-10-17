@@ -13,7 +13,7 @@ extension Permission.photos: Unifiable {
         checkStatus(forAddingOnly: false) { completion($0.rawValue) }
     }
     
-    static func requestAccess(completion: @escaping (String) -> Void) {
+    static func requestAccess(completion: @escaping (String?) -> Void) {
         requestAccess(forAddingOnly: false) { completion($0.rawValue) }
     }
     

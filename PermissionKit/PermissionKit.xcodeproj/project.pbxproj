@@ -18,6 +18,7 @@
 		A5B519D12538DA5E006870FA /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D02538DA5E006870FA /* Home.swift */; };
 		A5B519D5253AD284006870FA /* Home.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D4253AD284006870FA /* Home.Agent.swift */; };
 		A5C49B81253B631B004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B80253B631B004DDC66 /* Photos.swift */; };
+		A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B8D253B6E2B004DDC66 /* Motion.swift */; };
 		A5EDD6922528DA67001F44C9 /* PermissionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDD6912528DA67001F44C9 /* PermissionKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6EE2528E220001F44C9 /* Permission.swift */; };
 		A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6F42528E2A4001F44C9 /* Contacts.swift */; };
@@ -35,6 +36,7 @@
 		A5B519D02538DA5E006870FA /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A5B519D4253AD284006870FA /* Home.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.Agent.swift; sourceTree = "<group>"; };
 		A5C49B80253B631B004DDC66 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		A5C49B8D253B6E2B004DDC66 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		A5DAF03A2528D771002483A6 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF03E2528D771002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5EDD6912528DA67001F44C9 /* PermissionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionKit.h; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				A5B519D02538DA5E006870FA /* Home.swift */,
 				A5B519D4253AD284006870FA /* Home.Agent.swift */,
 				A5B519BF2538D5E7006870FA /* Microphone.swift */,
+				A5C49B8D253B6E2B004DDC66 /* Motion.swift */,
 				A533FEEA253B573F003B7648 /* Music.swift */,
 				A5C49B80253B631B004DDC66 /* Photos.swift */,
 				A50A8F6C252CC58F00364B82 /* Reminders.swift */,
@@ -179,6 +182,7 @@
 				A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */,
 				A5B519C82538D842006870FA /* SpeechRecognition.swift in Sources */,
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
+				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
 				A5C49B81253B631B004DDC66 /* Photos.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,
