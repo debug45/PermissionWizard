@@ -21,7 +21,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSMicrophoneUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSMicrophoneUsageDescription"
         
         // MARK: - Public Functions
         

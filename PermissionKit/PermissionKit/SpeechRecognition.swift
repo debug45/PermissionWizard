@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSSpeechRecognitionUsageDescription"
         
         // MARK: - Public Functions
         

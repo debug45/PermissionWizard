@@ -7,6 +7,6 @@
 
 protocol Base {
     
-    static var usageDescriptionPlistKey: String { get }
+    static var usageDescriptionPlistKey: String? { get }
     
 }

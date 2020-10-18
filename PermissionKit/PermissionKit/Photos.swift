@@ -25,7 +25,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSPhotoLibraryUsageDescription"
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
         
         // MARK: - Public Functions

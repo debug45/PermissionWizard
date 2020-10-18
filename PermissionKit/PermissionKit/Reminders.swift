@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSRemindersUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSRemindersUsageDescription"
         
         // MARK: - Public Functions
         

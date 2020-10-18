@@ -9,7 +9,7 @@ import PermissionKit
 
 extension Permission.camera: Unifiable {
     
-    static func checkStatus(completion: (String?) -> Void) {
+    static func checkStatus(completion: @escaping (String?) -> Void) {
         checkStatus(withMicrophone: false) { completion($0.camera.rawValue) }
     }
     

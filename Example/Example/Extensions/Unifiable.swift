@@ -7,7 +7,7 @@
 
 protocol Unifiable {
     
-    static func checkStatus(completion: (String?) -> Void)
+    static func checkStatus(completion: @escaping (String?) -> Void)
     
     static func requestAccess(completion: @escaping (String?) -> Void)
     

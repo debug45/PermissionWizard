@@ -9,7 +9,7 @@ import PermissionKit
 
 extension Permission.speechRecognition: Unifiable {
     
-    static func checkStatus(completion: (String?) -> Void) {
+    static func checkStatus(completion: @escaping (String?) -> Void) {
         checkStatus { completion($0.rawValue) }
     }
     

@@ -9,7 +9,7 @@ import PermissionKit
 
 extension Permission.photos: Unifiable {
     
-    static func checkStatus(completion: (String?) -> Void) {
+    static func checkStatus(completion: @escaping (String?) -> Void) {
         checkStatus(forAddingOnly: false) { completion($0.rawValue) }
     }
     

@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSAppleMusicUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSAppleMusicUsageDescription"
         
         // MARK: - Public Functions
         

@@ -20,7 +20,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSHomeKitUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSHomeKitUsageDescription"
         
         // MARK: - Public Functions
         

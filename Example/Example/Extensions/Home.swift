@@ -9,7 +9,7 @@ import PermissionKit
 
 extension Permission.home: Unifiable {
     
-    static func checkStatus(completion: (String?) -> Void) {
+    static func checkStatus(completion: @escaping (String?) -> Void) {
         print("❌ Check only is not available for a home, use the ”requestAccess“ to check the status")
         completion(nil)
     }

@@ -1,20 +1,20 @@
 //
-//  Reminders.swift
+//  Notifications.swift
 //  Example
 //
-//  Created by Sergey Moskvin on 10.10.2020.
+//  Created by Sergey Moskvin on 18.10.2020.
 //
 
 import PermissionKit
 
-extension Permission.reminders: Unifiable {
+extension Permission.notifications: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {
         checkStatus { completion($0.rawValue) }
     }
     
     static func requestAccess(completion: @escaping (String?) -> Void) {
-        requestAccess { completion($0.rawValue) }
+        requestAccess(options: [.alert, .badge, .sound]) { completion($0.rawValue) }
     }
     
 }

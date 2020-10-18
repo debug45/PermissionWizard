@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey = "NSMotionUsageDescription"
+        public static let usageDescriptionPlistKey: String? = "NSMotionUsageDescription"
         
         // MARK: - Public Functions
         

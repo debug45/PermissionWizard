@@ -13,6 +13,7 @@
 		A5518744253779CA001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5518743253779CA001A8208 /* Calendars.swift */; };
 		A5B0765925378F8700E6DF79 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765825378F8700E6DF79 /* Utils.swift */; };
 		A5B0765D2537908500E6DF79 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765C2537908500E6DF79 /* Base.swift */; };
+		A5B1D843253C1C4600760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D842253C1C4600760382 /* Notifications.swift */; };
 		A5B519C02538D5E7006870FA /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519BF2538D5E7006870FA /* Microphone.swift */; };
 		A5B519C82538D842006870FA /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519C72538D842006870FA /* SpeechRecognition.swift */; };
 		A5B519D12538DA5E006870FA /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D02538DA5E006870FA /* Home.swift */; };
@@ -31,6 +32,7 @@
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A5B0765825378F8700E6DF79 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A5B0765C2537908500E6DF79 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		A5B1D842253C1C4600760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		A5B519BF2538D5E7006870FA /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
 		A5B519C72538D842006870FA /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
 		A5B519D02538DA5E006870FA /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				A5B519BF2538D5E7006870FA /* Microphone.swift */,
 				A5C49B8D253B6E2B004DDC66 /* Motion.swift */,
 				A533FEEA253B573F003B7648 /* Music.swift */,
+				A5B1D842253C1C4600760382 /* Notifications.swift */,
 				A5C49B80253B631B004DDC66 /* Photos.swift */,
 				A50A8F6C252CC58F00364B82 /* Reminders.swift */,
 				A5B519C72538D842006870FA /* SpeechRecognition.swift */,
@@ -184,6 +187,7 @@
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
 				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
 				A5C49B81253B631B004DDC66 /* Photos.swift in Sources */,
+				A5B1D843253C1C4600760382 /* Notifications.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,
 				A5518744253779CA001A8208 /* Calendars.swift in Sources */,
