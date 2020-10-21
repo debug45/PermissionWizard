@@ -18,8 +18,36 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Please allow access to your music</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Please allow access to your calendars</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow access to your camera</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Please allow access to your contacts</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>Please allow access to your health data (for writing only)</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Please allow access to your health data (for reading only)</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string>Please allow access to your home</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow access to your microphone</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Please allow access to your motion data</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to your photos (for adding only)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access to your photos</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Please allow access to your reminders</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Please allow access to your speech recognition</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -62,27 +90,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSAppleMusicUsageDescription</key>
-    <string>Please allow access to your music</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>Please allow access to your calendars</string>
-    <key>NSCameraUsageDescription</key>
-    <string>Please allow access to your camera</string>
-    <key>NSContactsUsageDescription</key>
-    <string>Please allow access to your contacts</string>
-    <key>NSHomeKitUsageDescription</key>
-    <string>Please allow access to your home</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Please allow access to your microphone</string>
-    <key>NSMotionUsageDescription</key>
-    <string>Please allow access to your motion</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Please allow access to your photos (for adding only)</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Please allow access to your photos</string>
-    <key>NSRemindersUsageDescription</key>
-    <string>Please allow access to your reminders</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Please allow access to your speech recognition</string>
 </dict>
 </plist>

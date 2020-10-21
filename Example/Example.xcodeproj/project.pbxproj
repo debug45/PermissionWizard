@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A501862B253F76ED00D9DC77 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501862A253F76ED00D9DC77 /* Health.swift */; };
 		A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F7D2531F90D00364B82 /* Unifiable.swift */; };
 		A50A8F812531F97C00364B82 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F802531F97C00364B82 /* Contacts.swift */; };
 		A50A8F842531FA5900364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F832531FA5900364B82 /* Reminders.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A501862A253F76ED00D9DC77 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		A50A8F7D2531F90D00364B82 /* Unifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unifiable.swift; sourceTree = "<group>"; };
 		A50A8F802531F97C00364B82 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		A50A8F832531FA5900364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				A551874725377A75001A8208 /* Calendars.swift */,
 				A533FEE2253B2771003B7648 /* Camera.swift */,
 				A50A8F802531F97C00364B82 /* Contacts.swift */,
+				A501862A253F76ED00D9DC77 /* Health.swift */,
 				A5B519D8253AEA83006870FA /* Home.swift */,
 				A5B519C32538D6F4006870FA /* Microphone.swift */,
 				A5C49B91253B6F03004DDC66 /* Motion.swift */,
@@ -217,6 +220,7 @@
 				A5C49B85253B6602004DDC66 /* Photos.swift in Sources */,
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
 				A5B1D847253C211C00760382 /* Notifications.swift in Sources */,
+				A501862B253F76ED00D9DC77 /* Health.swift in Sources */,
 				A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */,
 				A551874825377A75001A8208 /* Calendars.swift in Sources */,
 				A50A8F842531FA5900364B82 /* Reminders.swift in Sources */,
@@ -353,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -376,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

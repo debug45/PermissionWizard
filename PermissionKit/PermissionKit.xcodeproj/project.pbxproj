@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5018627253CCE4B00D9DC77 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5018626253CCE4B00D9DC77 /* Health.swift */; };
 		A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F6C252CC58F00364B82 /* Reminders.swift */; };
 		A533FEDF253B25A7003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEDE253B25A7003B7648 /* Camera.swift */; };
 		A533FEEB253B573F003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEA253B573F003B7648 /* Music.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5018626253CCE4B00D9DC77 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		A50A8F6C252CC58F00364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		A533FEDE253B25A7003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				A5518743253779CA001A8208 /* Calendars.swift */,
 				A533FEDE253B25A7003B7648 /* Camera.swift */,
 				A5EDD6F42528E2A4001F44C9 /* Contacts.swift */,
+				A5018626253CCE4B00D9DC77 /* Health.swift */,
 				A5B519D02538DA5E006870FA /* Home.swift */,
 				A5B519D4253AD284006870FA /* Home.Agent.swift */,
 				A5B519BF2538D5E7006870FA /* Microphone.swift */,
@@ -184,6 +187,7 @@
 				A5B0765925378F8700E6DF79 /* Utils.swift in Sources */,
 				A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */,
 				A5B519C82538D842006870FA /* SpeechRecognition.swift in Sources */,
+				A5018627253CCE4B00D9DC77 /* Health.swift in Sources */,
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
 				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
 				A5C49B81253B631B004DDC66 /* Photos.swift in Sources */,

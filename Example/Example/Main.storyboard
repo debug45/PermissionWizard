@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yjg-df-aHU">
-                                        <rect key="frame" x="0.0" y="32" width="414" height="330"/>
+                                        <rect key="frame" x="0.0" y="32" width="414" height="360"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hni-un-XrU" userLabel="Calendars Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -43,57 +43,64 @@
                                                     <action selector="contactsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zln-Up-b9h"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-le-062" userLabel="Home Button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmL-DC-5Ip" userLabel="Health Button">
                                                 <rect key="frame" x="0.0" y="90" width="414" height="30"/>
+                                                <state key="normal" title="Health"/>
+                                                <connections>
+                                                    <action selector="healthButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a3j-ig-QL4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-le-062" userLabel="Home Button">
+                                                <rect key="frame" x="0.0" y="120" width="414" height="30"/>
                                                 <state key="normal" title="Home"/>
                                                 <connections>
                                                     <action selector="homeButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N96-LQ-Ayj"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-ev-6PF" userLabel="Microphone Button">
-                                                <rect key="frame" x="0.0" y="120" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="150" width="414" height="30"/>
                                                 <state key="normal" title="Microphone"/>
                                                 <connections>
                                                     <action selector="microphoneButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhV-LS-OKk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ9-Zj-z7d" userLabel="Motion Button">
-                                                <rect key="frame" x="0.0" y="150" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="180" width="414" height="30"/>
                                                 <state key="normal" title="Motion"/>
                                                 <connections>
                                                     <action selector="motionButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gsa-4z-szA"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-mf-Qa8" userLabel="Music Button">
-                                                <rect key="frame" x="0.0" y="180" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="210" width="414" height="30"/>
                                                 <state key="normal" title="Music"/>
                                                 <connections>
                                                     <action selector="musicButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IcP-FT-BMR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZG-JT-TpB" userLabel="Notifications Button">
-                                                <rect key="frame" x="0.0" y="210" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="240" width="414" height="30"/>
                                                 <state key="normal" title="Notifications"/>
                                                 <connections>
                                                     <action selector="notificationsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bcz-NK-sZm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzp-m0-rBR" userLabel="Photos Button">
-                                                <rect key="frame" x="0.0" y="240" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="270" width="414" height="30"/>
                                                 <state key="normal" title="Photos"/>
                                                 <connections>
                                                     <action selector="photosButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uer-ig-Ybp"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-Nc-arj" userLabel="Reminders Button">
-                                                <rect key="frame" x="0.0" y="270" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="300" width="414" height="30"/>
                                                 <state key="normal" title="Reminders"/>
                                                 <connections>
                                                     <action selector="remindersButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNc-yk-V6B"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-T4-xwe" userLabel="Speech Recognition Button">
-                                                <rect key="frame" x="0.0" y="300" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="330" width="414" height="30"/>
                                                 <state key="normal" title="Speech Recognition"/>
                                                 <connections>
                                                     <action selector="speechRecognitionButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ae4-KT-g1W"/>

@@ -9,12 +9,16 @@ import PermissionKit
 
 extension Permission.photos: Unifiable {
     
+    private static let forAddingOnly = false
+    
+    // MARK: - Unifiable
+    
     static func checkStatus(completion: @escaping (String?) -> Void) {
-        checkStatus(forAddingOnly: false) { completion($0.rawValue) }
+        checkStatus(forAddingOnly: forAddingOnly) { completion($0.rawValue) }
     }
     
     static func requestAccess(completion: @escaping (String?) -> Void) {
-        requestAccess(forAddingOnly: false) { completion($0.rawValue) }
+        requestAccess(forAddingOnly: forAddingOnly) { completion($0.rawValue) }
     }
     
 }

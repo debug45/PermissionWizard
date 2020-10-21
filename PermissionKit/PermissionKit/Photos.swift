@@ -51,9 +51,9 @@ public extension Permission {
         }
         
         public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
-            let plistKey = forAddingOnly ? addingOnlyUsageDescriptionPlistKey : usageDescriptionPlistKey
+            let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : usageDescriptionPlistKey].compactMap { $0 }
             
-            guard Utils.checkIsAppConfigured(for: photos.self, usageDescriptionPlistKey: plistKey) else {
+            guard Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys) else {
                 return
             }
             
