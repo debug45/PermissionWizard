@@ -38,7 +38,7 @@ extension Permission.home {
             
             let status = manager.authorizationStatus
             
-            if manager.authorizationStatus.contains(.determined) {
+            if status.contains(.determined) {
                 serviceInstance?.handleDeterminedAndDestruct(status)
             }
         }
@@ -46,6 +46,10 @@ extension Permission.home {
         // MARK: - Home Manager Delegate
         
         func homeManager(_ manager: HMHomeManager, didUpdate status: HMHomeManagerAuthorizationStatus) {
+            guard status.contains(.determined) else {
+                return
+            }
+            
             handleDeterminedAndDestruct(status)
         }
         

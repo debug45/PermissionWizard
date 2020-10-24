@@ -36,6 +36,10 @@
     <string>Please allow access to your health data (for reading only)</string>
 	<key>NSHomeKitUsageDescription</key>
 	<string>Please allow access to your home</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Please allow access to your location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Please allow access to your location (when in use only)</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Please allow access to your microphone</string>
 	<key>NSMotionUsageDescription</key>

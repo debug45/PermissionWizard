@@ -12,6 +12,8 @@
 		A533FEDF253B25A7003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEDE253B25A7003B7648 /* Camera.swift */; };
 		A533FEEB253B573F003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEA253B573F003B7648 /* Music.swift */; };
 		A5518744253779CA001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5518743253779CA001A8208 /* Calendars.swift */; };
+		A553E455254464B700589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E454254464B700589764 /* Location.swift */; };
+		A553E45925446B1000589764 /* Location.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E45825446B1000589764 /* Location.Agent.swift */; };
 		A5B0765925378F8700E6DF79 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765825378F8700E6DF79 /* Utils.swift */; };
 		A5B0765D2537908500E6DF79 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765C2537908500E6DF79 /* Base.swift */; };
 		A5B1D843253C1C4600760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D842253C1C4600760382 /* Notifications.swift */; };
@@ -32,6 +34,8 @@
 		A533FEDE253B25A7003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
+		A553E454254464B700589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A553E45825446B1000589764 /* Location.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.Agent.swift; sourceTree = "<group>"; };
 		A5B0765825378F8700E6DF79 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A5B0765C2537908500E6DF79 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		A5B1D842253C1C4600760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				A5018626253CCE4B00D9DC77 /* Health.swift */,
 				A5B519D02538DA5E006870FA /* Home.swift */,
 				A5B519D4253AD284006870FA /* Home.Agent.swift */,
+				A553E454254464B700589764 /* Location.swift */,
+				A553E45825446B1000589764 /* Location.Agent.swift */,
 				A5B519BF2538D5E7006870FA /* Microphone.swift */,
 				A5C49B8D253B6E2B004DDC66 /* Motion.swift */,
 				A533FEEA253B573F003B7648 /* Music.swift */,
@@ -185,8 +191,10 @@
 				A533FEEB253B573F003B7648 /* Music.swift in Sources */,
 				A5B0765D2537908500E6DF79 /* Base.swift in Sources */,
 				A5B0765925378F8700E6DF79 /* Utils.swift in Sources */,
+				A553E455254464B700589764 /* Location.swift in Sources */,
 				A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */,
 				A5B519C82538D842006870FA /* SpeechRecognition.swift in Sources */,
+				A553E45925446B1000589764 /* Location.Agent.swift in Sources */,
 				A5018627253CCE4B00D9DC77 /* Health.swift in Sources */,
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
 				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
