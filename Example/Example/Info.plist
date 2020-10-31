@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Please allow access to your music</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Please allow access to your Bluetooth</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Please allow access to your calendars</string>
 	<key>NSCameraUsageDescription</key>

@@ -11,9 +11,11 @@
 		A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F6C252CC58F00364B82 /* Reminders.swift */; };
 		A533FEDF253B25A7003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEDE253B25A7003B7648 /* Camera.swift */; };
 		A533FEEB253B573F003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEA253B573F003B7648 /* Music.swift */; };
+		A54481DB254D49BC0031A427 /* Bluetooth.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */; };
 		A5518744253779CA001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5518743253779CA001A8208 /* Calendars.swift */; };
 		A553E455254464B700589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E454254464B700589764 /* Location.swift */; };
 		A553E45925446B1000589764 /* Location.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E45825446B1000589764 /* Location.Agent.swift */; };
+		A568C5002545574F00A8B7E3 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */; };
 		A5B0765925378F8700E6DF79 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765825378F8700E6DF79 /* Utils.swift */; };
 		A5B0765D2537908500E6DF79 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765C2537908500E6DF79 /* Base.swift */; };
 		A5B1D843253C1C4600760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D842253C1C4600760382 /* Notifications.swift */; };
@@ -33,9 +35,11 @@
 		A50A8F6C252CC58F00364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		A533FEDE253B25A7003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.Agent.swift; sourceTree = "<group>"; };
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A553E454254464B700589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A553E45825446B1000589764 /* Location.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.Agent.swift; sourceTree = "<group>"; };
+		A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		A5B0765825378F8700E6DF79 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A5B0765C2537908500E6DF79 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		A5B1D842253C1C4600760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 			children = (
 				A5EDD6EE2528E220001F44C9 /* Permission.swift */,
 				A5B0765C2537908500E6DF79 /* Base.swift */,
+				A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */,
+				A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */,
 				A5518743253779CA001A8208 /* Calendars.swift */,
 				A533FEDE253B25A7003B7648 /* Camera.swift */,
 				A5EDD6F42528E2A4001F44C9 /* Contacts.swift */,
@@ -190,9 +196,11 @@
 				A5B519D5253AD284006870FA /* Home.Agent.swift in Sources */,
 				A533FEEB253B573F003B7648 /* Music.swift in Sources */,
 				A5B0765D2537908500E6DF79 /* Base.swift in Sources */,
+				A54481DB254D49BC0031A427 /* Bluetooth.Agent.swift in Sources */,
 				A5B0765925378F8700E6DF79 /* Utils.swift in Sources */,
 				A553E455254464B700589764 /* Location.swift in Sources */,
 				A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */,
+				A568C5002545574F00A8B7E3 /* Bluetooth.swift in Sources */,
 				A5B519C82538D842006870FA /* SpeechRecognition.swift in Sources */,
 				A553E45925446B1000589764 /* Location.Agent.swift in Sources */,
 				A5018627253CCE4B00D9DC77 /* Health.swift in Sources */,
