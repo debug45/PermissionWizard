@@ -16,6 +16,7 @@
 		A533FEE8253B28E2003B7648 /* PermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A533FEEF253B597C003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEE253B597C003B7648 /* Music.swift */; };
 		A53C04AC254D4D80007F1438 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04AB254D4D80007F1438 /* Bluetooth.swift */; };
+		A53C04AE254D5078007F1438 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53C04AD254D5078007F1438 /* HealthKit.framework */; };
 		A551874825377A75001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551874725377A75001A8208 /* Calendars.swift */; };
 		A553E45D254475BB00589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E45C254475BB00589764 /* Location.swift */; };
 		A5B1D847253C211C00760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D846253C211C00760382 /* Notifications.swift */; };
@@ -54,6 +55,7 @@
 		A533FEE2253B2771003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEE253B597C003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A53C04AB254D4D80007F1438 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		A53C04AD254D5078007F1438 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		A551874725377A75001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A553E45C254475BB00589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A5B1D846253C211C00760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A533FEE7253B28E2003B7648 /* PermissionKit.framework in Frameworks */,
+				A53C04AE254D5078007F1438 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +147,7 @@
 		A5DAF06A2528D832002483A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A53C04AD254D5078007F1438 /* HealthKit.framework */,
 				A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */,
 			);
 			name = Frameworks;
