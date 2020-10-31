@@ -27,7 +27,7 @@ public extension Permission {
         
         public typealias CombinedStatus = (value: NarrowStatus, isReducing: Bool)
         
-        public static let usageDescriptionPlistKey: String? = "NSLocationAlwaysAndWhenInUseUsageDescription"
+        public static let alwaysUsageDescriptionPlistKey = "NSLocationAlwaysAndWhenInUseUsageDescription"
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
         // MARK: - Public Functions
@@ -60,7 +60,7 @@ public extension Permission {
         }
         
         public class func requestAccess(whenInUseOnly: Bool, completion: ((CombinedStatus) -> Void)? = nil) {
-            let plistKeys = [whenInUseOnly ? whenInUseOnlyUsageDescriptionPlistKey : usageDescriptionPlistKey].compactMap { $0 }
+            let plistKeys = [whenInUseOnly ? whenInUseOnlyUsageDescriptionPlistKey : alwaysUsageDescriptionPlistKey].compactMap { $0 }
             
             guard Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys) else {
                 return

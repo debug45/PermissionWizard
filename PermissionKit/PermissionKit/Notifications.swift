@@ -25,8 +25,6 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = nil
-        
         // MARK: - Public Functions
         
         public class func checkStatus(completion: @escaping (Status) -> Void) {

@@ -24,32 +24,38 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Please allow access to your music</string>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>Please allow access to your Bluetooth</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Please allow access to your Bluetooth</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_example._tcp</string>
+	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Please allow access to your calendars</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow access to your camera</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Please allow access to your contacts</string>
-    <key>NSHealthShareUsageDescription</key>
-    <string>Please allow access to your health data (for writing only)</string>
-    <key>NSHealthUpdateUsageDescription</key>
-    <string>Please allow access to your health data (for reading only)</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Please allow access to your health data (writing only)</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Please allow access to your health data (reading only)</string>
 	<key>NSHomeKitUsageDescription</key>
 	<string>Please allow access to your home</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Please allow access to your location</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Please allow access to your location (when in use only)</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Please allow access to your local network</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please allow access to your location (always)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please allow access to your location (when in use only)</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Please allow access to your microphone</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Please allow access to your motion data</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to your photos (for adding only)</string>
+	<string>Please allow access to your photos (adding only)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please allow access to your photos</string>
+	<string>Please allow access to your photos (full access)</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Please allow access to your reminders</string>
 	<key>NSSpeechRecognitionUsageDescription</key>

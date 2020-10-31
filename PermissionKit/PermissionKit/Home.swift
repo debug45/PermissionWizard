@@ -20,7 +20,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSHomeKitUsageDescription"
+        public class override var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
         
         // MARK: - Public Functions
         

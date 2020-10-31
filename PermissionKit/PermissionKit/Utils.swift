@@ -29,10 +29,25 @@ final class Utils {
                 continue
             }
             
-            let permissionName = String(describing: permission)
-            notifyAboutInvalidAppConfiguration(missingPlistKey: plistKey, permissionName: permissionName)
-            
+            notifyAboutInvalidAppConfiguration(missingPlistKey: plistKey, permissionName: permission.contextName)
             result = false
+        }
+        
+        return result
+    }
+    
+    static func checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: String) -> Bool {
+        let arrayKey = "NSBonjourServices"
+        
+        var result = false
+        
+        if let array = Bundle.main.object(forInfoDictionaryKey: arrayKey) as? [String] {
+            result = array.contains(servicePlistKey)
+        }
+        
+        if !result {
+            let clarification = "to a nested array with the key ”\(arrayKey)“"
+            notifyAboutInvalidAppConfiguration(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
         }
         
         return result

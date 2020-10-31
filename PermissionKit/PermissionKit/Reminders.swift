@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSRemindersUsageDescription"
+        public class override var usageDescriptionPlistKey: String? { "NSRemindersUsageDescription" }
         
         // MARK: - Public Functions
         

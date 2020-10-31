@@ -21,7 +21,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSMicrophoneUsageDescription"
+        public class override var usageDescriptionPlistKey: String? { "NSMicrophoneUsageDescription" }
         
         // MARK: - Public Functions
         

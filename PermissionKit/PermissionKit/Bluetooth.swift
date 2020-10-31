@@ -23,7 +23,8 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSBluetoothAlwaysUsageDescription"
+        public class override var contextName: String { return "Bluetooth" }
+        public class override var usageDescriptionPlistKey: String? { "NSBluetoothAlwaysUsageDescription" }
         
         // MARK: - Public Functions
         

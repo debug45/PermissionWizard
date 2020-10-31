@@ -25,7 +25,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSPhotoLibraryUsageDescription"
+        public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
         
         // MARK: - Public Functions
@@ -51,7 +51,7 @@ public extension Permission {
         }
         
         public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
-            let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : usageDescriptionPlistKey].compactMap { $0 }
+            let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : fullAccessUsageDescriptionPlistKey].compactMap { $0 }
             
             guard Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys) else {
                 return

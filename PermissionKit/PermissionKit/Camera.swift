@@ -25,7 +25,7 @@ public extension Permission {
         
         public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
         
-        public static let usageDescriptionPlistKey: String? = "NSCameraUsageDescription"
+        public class override var usageDescriptionPlistKey: String? { "NSCameraUsageDescription" }
         
         // MARK: - Public Functions
         

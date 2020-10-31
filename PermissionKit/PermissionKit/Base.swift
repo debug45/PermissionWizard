@@ -5,8 +5,9 @@
 //  Created by Sergey Moskvin on 14.10.2020.
 //
 
-protocol Base {
+public class Base {
     
-    static var usageDescriptionPlistKey: String? { get }
+    public class var contextName: String { .init(describing: self) }
+    public class var usageDescriptionPlistKey: String? { nil }
     
 }

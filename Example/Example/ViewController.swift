@@ -36,6 +36,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.home.self, customer: sender)
     }
     
+    @IBAction func localNetworkButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.localNetwork.self, customer: sender)
+    }
+    
     @IBAction func locationButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.location.self, customer: sender)
     }

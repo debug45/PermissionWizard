@@ -21,7 +21,7 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSHealthUpdateUsageDescription"
+        public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
         
         // MARK: - Public Functions
@@ -41,10 +41,10 @@ public extension Permission {
         }
         
         public class func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) {
-            var plistKeys = !writingTypes.isEmpty ? [writingUsageDescriptionPlistKey] : []
+            var plistKeys = !readingTypes.isEmpty ? [readingUsageDescriptionPlistKey] : []
             
-            if !readingTypes.isEmpty, let plistKey = usageDescriptionPlistKey {
-                plistKeys.append(plistKey)
+            if !writingTypes.isEmpty {
+                plistKeys.append(writingUsageDescriptionPlistKey)
             }
             
             guard Utils.checkIsAppConfigured(for: health.self, usageDescriptionsPlistKeys: plistKeys) else {

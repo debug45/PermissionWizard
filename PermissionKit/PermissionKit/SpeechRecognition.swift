@@ -23,7 +23,8 @@ public extension Permission {
             
         }
         
-        public static let usageDescriptionPlistKey: String? = "NSSpeechRecognitionUsageDescription"
+        public class override var contextName: String { return "speech recognition" }
+        public class override var usageDescriptionPlistKey: String? { "NSSpeechRecognitionUsageDescription" }
         
         // MARK: - Public Functions
         
