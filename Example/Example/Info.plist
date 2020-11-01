@@ -36,6 +36,8 @@
 	<string>Please allow access to your camera</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Please allow access to your contacts</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Please allow access to your Face ID</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Please allow access to your health data (writing only)</string>
 	<key>NSHealthUpdateUsageDescription</key>

@@ -28,6 +28,10 @@ final class ViewController: UIViewController {
         showMenu(for: Permission.contacts.self, customer: sender)
     }
     
+    @IBAction func faceIDButtonDidPress(_ sender: UIButton) {
+        showMenu(for: Permission.faceID.self, customer: sender)
+    }
+    
     @IBAction func healthButtonDidPress(_ sender: UIButton) {
         showMenu(for: Permission.health.self, customer: sender)
     }

@@ -12,6 +12,7 @@
 		A533FEDF253B25A7003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEDE253B25A7003B7648 /* Camera.swift */; };
 		A533FEEB253B573F003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEA253B573F003B7648 /* Music.swift */; };
 		A53C04C1254D5C35007F1438 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04C0254D5C35007F1438 /* LocalNetwork.swift */; };
+		A53C04D9254DBDBA007F1438 /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04D8254DBDBA007F1438 /* FaceID.swift */; };
 		A54481DB254D49BC0031A427 /* Bluetooth.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */; };
 		A5518744253779CA001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5518743253779CA001A8208 /* Calendars.swift */; };
 		A553E455254464B700589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E454254464B700589764 /* Location.swift */; };
@@ -37,6 +38,7 @@
 		A533FEDE253B25A7003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A53C04C0254D5C35007F1438 /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
+		A53C04D8254DBDBA007F1438 /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
 		A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.Agent.swift; sourceTree = "<group>"; };
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A553E454254464B700589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				A5518743253779CA001A8208 /* Calendars.swift */,
 				A533FEDE253B25A7003B7648 /* Camera.swift */,
 				A5EDD6F42528E2A4001F44C9 /* Contacts.swift */,
+				A53C04D8254DBDBA007F1438 /* FaceID.swift */,
 				A5018626253CCE4B00D9DC77 /* Health.swift */,
 				A5B519D02538DA5E006870FA /* Home.swift */,
 				A5B519D4253AD284006870FA /* Home.Agent.swift */,
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53C04D9254DBDBA007F1438 /* FaceID.swift in Sources */,
 				A5B519D12538DA5E006870FA /* Home.swift in Sources */,
 				A533FEDF253B25A7003B7648 /* Camera.swift in Sources */,
 				A5B519D5253AD284006870FA /* Home.Agent.swift in Sources */,
