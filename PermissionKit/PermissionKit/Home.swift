@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 15.10.2020.
 //
 
+#if !targetEnvironment(macCatalyst)
+
 import HomeKit
 
 @available(iOS 13, *)
@@ -37,3 +39,5 @@ public extension Permission {
     }
     
 }
+
+#endif

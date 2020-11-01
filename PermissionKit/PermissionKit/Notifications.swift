@@ -39,8 +39,11 @@ public extension Permission {
                         completion(.notDetermined)
                     case .provisional:
                         completion(.provisionalOnly)
+                    
+#if !targetEnvironment(macCatalyst)
                     case .ephemeral:
                         completion(.ephemeralOnly)
+#endif
                     
                     @unknown default:
                         completion(.unknown)

@@ -16,7 +16,6 @@
 		A533FEE8253B28E2003B7648 /* PermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A533FEEF253B597C003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEE253B597C003B7648 /* Music.swift */; };
 		A53C04AC254D4D80007F1438 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04AB254D4D80007F1438 /* Bluetooth.swift */; };
-		A53C04AE254D5078007F1438 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53C04AD254D5078007F1438 /* HealthKit.framework */; };
 		A53C04C5254D6BE8007F1438 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04C4254D6BE8007F1438 /* LocalNetwork.swift */; };
 		A53C04DD254EA9B1007F1438 /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04DC254EA9B1007F1438 /* FaceID.swift */; };
 		A551874825377A75001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551874725377A75001A8208 /* Calendars.swift */; };
@@ -28,7 +27,6 @@
 		A5C49B85253B6602004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B84253B6602004DDC66 /* Photos.swift */; };
 		A5C49B92253B6F03004DDC66 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B91253B6F03004DDC66 /* Motion.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
-		A5DAF0552528D7ED002483A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ViewController.swift */; };
 		A5DAF05C2528D7EE002483A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DAF05B2528D7EE002483A6 /* Assets.xcassets */; };
 		A5EDD6C52528DF52001F44C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDD6C32528DF51001F44C9 /* Main.storyboard */; };
@@ -70,7 +68,6 @@
 		A5C49B91253B6F03004DDC66 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0562528D7ED002483A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A5DAF05B2528D7EE002483A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DAF0602528D7EE002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A533FEE7253B28E2003B7648 /* PermissionKit.framework in Frameworks */,
-				A53C04AE254D5078007F1438 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				A5DAF0522528D7ED002483A6 /* AppDelegate.swift */,
-				A5DAF0542528D7ED002483A6 /* SceneDelegate.swift */,
 				A5DAF0562528D7ED002483A6 /* ViewController.swift */,
 				A5EDD6C32528DF51001F44C9 /* Main.storyboard */,
 				A50A8F7C2531F8C100364B82 /* Extensions */,
@@ -248,7 +243,6 @@
 				A5B519CC2538D955006870FA /* SpeechRecognition.swift in Sources */,
 				A53C04DD254EA9B1007F1438 /* FaceID.swift in Sources */,
 				A5C49B92253B6F03004DDC66 /* Motion.swift in Sources */,
-				A5DAF0552528D7ED002483A6 /* SceneDelegate.swift in Sources */,
 				A50A8F812531F97C00364B82 /* Contacts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +374,7 @@
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
@@ -403,6 +398,7 @@
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;

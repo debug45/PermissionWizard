@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 20.10.2020.
 //
 
+#if !targetEnvironment(macCatalyst)
+
 import HealthKit
 import PermissionKit
 
@@ -29,3 +31,5 @@ extension Permission.health: Unifiable {
     }
     
 }
+
+#endif

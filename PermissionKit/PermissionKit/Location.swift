@@ -59,9 +59,11 @@ public extension Permission {
             
             var isReducing = false
             
+#if !targetEnvironment(macCatalyst)
             if #available(iOS 14, *) {
                 isReducing = manager.accuracyAuthorization != .fullAccuracy
             }
+#endif
             
             let combined = CombinedStatus(value: narrow, isReducing: isReducing)
             completion(combined)
@@ -85,6 +87,8 @@ public extension Permission {
             Agent.takeControl(manager, callback: completion)
         }
         
+#if !targetEnvironment(macCatalyst)
+        
         @available(iOS 14, *)
         public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) {
             guard Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey) else {
@@ -97,6 +101,8 @@ public extension Permission {
                 completion?(manager.accuracyAuthorization == .fullAccuracy)
             }
         }
+        
+#endif
         
     }
     

@@ -36,7 +36,15 @@ final class ViewController: UIViewController {
         
         bluetoothButton.isHidden = systemVersion.compare("13.1", options: .numeric) == .orderedAscending
         faceIDButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
+        
+#if !targetEnvironment(macCatalyst)
+        healthButton.isHidden = false
         homeButton.isHidden = systemVersion.compare("13", options: .numeric) == .orderedAscending
+#else
+        healthButton.isHidden = true
+        homeButton.isHidden = true
+#endif
+        
         localNetworkButton.isHidden = systemVersion.compare("14", options: .numeric) == .orderedAscending
         motionButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
         musicButton.isHidden = systemVersion.compare("9.3", options: .numeric) == .orderedAscending
@@ -64,12 +72,16 @@ final class ViewController: UIViewController {
                 if #available(iOS 11, *) {
                     permission = Permission.faceID.self
                 }
+            
+#if !targetEnvironment(macCatalyst)
             case healthButton:
                 permission = Permission.health.self
             case homeButton:
                 if #available(iOS 13, *) {
                     permission = Permission.home.self
                 }
+#endif
+            
             case localNetworkButton:
                 if #available(iOS 14, *) {
                     permission = Permission.localNetwork.self
