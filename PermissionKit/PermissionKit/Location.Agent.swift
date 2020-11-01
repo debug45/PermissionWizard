@@ -51,6 +51,11 @@ extension Permission.location {
             handleDeterminedAndDestruct()
         }
         
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            // Redirection for iOS 13 and older
+            locationManagerDidChangeAuthorization(manager)
+        }
+        
         // MARK: - Private Functions
         
         private func handleDeterminedAndDestruct() {

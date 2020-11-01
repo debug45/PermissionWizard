@@ -47,7 +47,9 @@
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Please allow access to your local network</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Please allow access to your location (always)</string>
+	<string>Please allow access to your location (always, for iOS 11 and newer)</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please allow access to your location (always, for iOS 10)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow access to your location (when in use only)</string>
 	<key>NSMicrophoneUsageDescription</key>

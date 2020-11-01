@@ -7,7 +7,6 @@
 
 import PermissionKit
 
-@available(iOS 9.3, *)
 extension Permission.music: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

@@ -83,9 +83,7 @@ final class ViewController: UIViewController {
                     permission = Permission.motion.self
                 }
             case musicButton:
-                if #available(iOS 9.3, *) {
-                    permission = Permission.music.self
-                }
+                permission = Permission.music.self
             case notificationsButton:
                 if #available(iOS 10, *) {
                     permission = Permission.notifications.self
@@ -121,7 +119,7 @@ final class ViewController: UIViewController {
             }
         }
         
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
         let checkStatusAction = UIAlertAction(title: "Check status", style: .default) { _ in
             permission.checkStatus { notifyAboutResult($0) }
