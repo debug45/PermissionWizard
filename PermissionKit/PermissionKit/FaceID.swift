@@ -7,6 +7,7 @@
 
 import LocalAuthentication
 
+@available(iOS 11, *)
 public extension Permission {
     
     final class faceID: Base {

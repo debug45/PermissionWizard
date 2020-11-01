@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 13, *)
 extension Permission.home: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

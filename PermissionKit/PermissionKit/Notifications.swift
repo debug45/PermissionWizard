@@ -7,6 +7,7 @@
 
 import UserNotifications
 
+@available(iOS 10, *)
 public extension Permission {
     
     final class notifications: Base {

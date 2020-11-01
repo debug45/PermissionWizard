@@ -7,6 +7,7 @@
 
 import MediaPlayer
 
+@available(iOS 9.3, *)
 public extension Permission {
     
     final class music: Base {

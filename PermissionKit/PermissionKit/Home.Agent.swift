@@ -7,6 +7,7 @@
 
 import HomeKit
 
+@available(iOS 13, *)
 extension Permission.home {
     
     final class Agent: NSObject, HMHomeManagerDelegate {

@@ -10,70 +10,102 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    @IBOutlet private weak var bluetoothButton: UIButton!
+    @IBOutlet private weak var calendarsButton: UIButton!
+    @IBOutlet private weak var cameraButton: UIButton!
+    @IBOutlet private weak var contactsButton: UIButton!
+    @IBOutlet private weak var faceIDButton: UIButton!
+    @IBOutlet private weak var healthButton: UIButton!
+    @IBOutlet private weak var homeButton: UIButton!
+    @IBOutlet private weak var localNetworkButton: UIButton!
+    @IBOutlet private weak var locationButton: UIButton!
+    @IBOutlet private weak var microphoneButton: UIButton!
+    @IBOutlet private weak var motionButton: UIButton!
+    @IBOutlet private weak var musicButton: UIButton!
+    @IBOutlet private weak var notificationsButton: UIButton!
+    @IBOutlet private weak var photosButton: UIButton!
+    @IBOutlet private weak var remindersButton: UIButton!
+    @IBOutlet private weak var speechRecognitionButton: UIButton!
+    
+    // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let systemVersion = UIDevice.current.systemVersion
+        
+        bluetoothButton.isHidden = systemVersion.compare("13.1", options: .numeric) == .orderedAscending
+        faceIDButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
+        homeButton.isHidden = systemVersion.compare("13", options: .numeric) == .orderedAscending
+        localNetworkButton.isHidden = systemVersion.compare("14", options: .numeric) == .orderedAscending
+        motionButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
+        musicButton.isHidden = systemVersion.compare("9.3", options: .numeric) == .orderedAscending
+        notificationsButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
+        speechRecognitionButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
+    }
+    
     // MARK: - User Interaction
     
-    @IBAction func bluetoothButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.bluetooth.self, customer: sender)
-    }
-    
-    @IBAction func calendarsButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.calendars.self, customer: sender)
-    }
-    
-    @IBAction func cameraButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.camera.self, customer: sender)
-    }
-    
-    @IBAction func contactsButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.contacts.self, customer: sender)
-    }
-    
-    @IBAction func faceIDButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.faceID.self, customer: sender)
-    }
-    
-    @IBAction func healthButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.health.self, customer: sender)
-    }
-    
-    @IBAction func homeButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.home.self, customer: sender)
-    }
-    
-    @IBAction func localNetworkButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.localNetwork.self, customer: sender)
-    }
-    
-    @IBAction func locationButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.location.self, customer: sender)
-    }
-    
-    @IBAction func microphoneButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.microphone.self, customer: sender)
-    }
-    
-    @IBAction func motionButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.motion.self, customer: sender)
-    }
-    
-    @IBAction func musicButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.music.self, customer: sender)
-    }
-    
-    @IBAction func notificationsButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.notifications.self, customer: sender)
-    }
-    
-    @IBAction func photosButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.photos.self, customer: sender)
-    }
-    
-    @IBAction func remindersButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.reminders.self, customer: sender)
-    }
-    
-    @IBAction func speechRecognitionButtonDidPress(_ sender: UIButton) {
-        showMenu(for: Permission.speechRecognition.self, customer: sender)
+    @IBAction func buttonDidPress(_ sender: UIButton) {
+        var permission: Unifiable.Type?
+        
+        switch sender {
+            case bluetoothButton:
+                if #available(iOS 13.1, *) {
+                    permission = Permission.bluetooth.self
+                }
+            case calendarsButton:
+                permission = Permission.calendars.self
+            case cameraButton:
+                permission = Permission.camera.self
+            case contactsButton:
+                permission = Permission.contacts.self
+            case faceIDButton:
+                if #available(iOS 11, *) {
+                    permission = Permission.faceID.self
+                }
+            case healthButton:
+                permission = Permission.health.self
+            case homeButton:
+                if #available(iOS 13, *) {
+                    permission = Permission.home.self
+                }
+            case localNetworkButton:
+                if #available(iOS 14, *) {
+                    permission = Permission.localNetwork.self
+                }
+            case locationButton:
+                permission = Permission.location.self
+            case microphoneButton:
+                permission = Permission.microphone.self
+            case motionButton:
+                if #available(iOS 11, *) {
+                    permission = Permission.motion.self
+                }
+            case musicButton:
+                if #available(iOS 9.3, *) {
+                    permission = Permission.music.self
+                }
+            case notificationsButton:
+                if #available(iOS 10, *) {
+                    permission = Permission.notifications.self
+                }
+            case photosButton:
+                permission = Permission.photos.self
+            case remindersButton:
+                permission = Permission.reminders.self
+            case speechRecognitionButton:
+                if #available(iOS 10, *) {
+                    permission = Permission.speechRecognition.self
+                }
+            
+            default:
+                break
+        }
+        
+        if let permission = permission {
+            showMenu(for: permission, customer: sender)
+        }
     }
     
     // MARK: - Private Functions

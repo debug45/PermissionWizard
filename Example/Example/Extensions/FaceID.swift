@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 11, *)
 extension Permission.faceID: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

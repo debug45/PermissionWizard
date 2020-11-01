@@ -7,6 +7,7 @@
 
 import HomeKit
 
+@available(iOS 13, *)
 public extension Permission {
     
     final class home: Base {

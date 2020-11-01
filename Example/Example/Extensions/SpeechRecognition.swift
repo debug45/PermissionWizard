@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 10, *)
 extension Permission.speechRecognition: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

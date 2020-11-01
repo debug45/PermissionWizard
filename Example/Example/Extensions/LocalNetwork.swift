@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 14, *)
 extension Permission.localNetwork: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

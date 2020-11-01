@@ -35,27 +35,31 @@ public extension Permission {
         public class func checkStatus(completion: (CombinedStatus) -> Void) {
             let manager = CLLocationManager()
             
-            let value: NarrowStatus
+            let narrow: NarrowStatus
             
-            switch manager.authorizationStatus {
+            switch CLLocationManager.authorizationStatus() {
                 case .authorizedAlways:
-                    value = .granted
+                    narrow = .granted
                 case .denied:
-                    value = .denied
+                    narrow = .denied
                 case .authorizedWhenInUse:
-                    value = .whenInUseOnly
+                    narrow = .whenInUseOnly
                 case .notDetermined:
-                    value = .notDetermined
+                    narrow = .notDetermined
                 case .restricted:
-                    value = .restrictedBySystem
+                    narrow = .restrictedBySystem
                 
                 @unknown default:
-                    value = .unknown
+                    narrow = .unknown
             }
             
-            let isReducing = manager.accuracyAuthorization != .fullAccuracy
+            var isReducing = false
             
-            let combined = CombinedStatus(value: value, isReducing: isReducing)
+            if #available(iOS 14, *) {
+                isReducing = manager.accuracyAuthorization != .fullAccuracy
+            }
+            
+            let combined = CombinedStatus(value: narrow, isReducing: isReducing)
             completion(combined)
         }
         
@@ -77,6 +81,7 @@ public extension Permission {
             Agent.takeControl(manager, callback: completion)
         }
         
+        @available(iOS 14, *)
         public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) {
             guard Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey) else {
                 return

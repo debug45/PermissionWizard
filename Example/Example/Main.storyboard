@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,114 +26,66 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oQ-aY-wxf" userLabel="Bluetooth Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                 <state key="normal" title="Bluetooth"/>
-                                                <connections>
-                                                    <action selector="bluetoothButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nas-FF-IVO"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hni-un-XrU" userLabel="Calendars Button">
                                                 <rect key="frame" x="0.0" y="30" width="414" height="30"/>
                                                 <state key="normal" title="Calendars"/>
-                                                <connections>
-                                                    <action selector="calendarsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Mv-BO-dsB"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOH-H0-Tke" userLabel="Camera Button">
                                                 <rect key="frame" x="0.0" y="60" width="414" height="30"/>
                                                 <state key="normal" title="Camera"/>
-                                                <connections>
-                                                    <action selector="cameraButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWL-Lg-A99"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-Mv-P5P" userLabel="Contacts Button">
                                                 <rect key="frame" x="0.0" y="90" width="414" height="30"/>
                                                 <state key="normal" title="Contacts"/>
-                                                <connections>
-                                                    <action selector="contactsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zln-Up-b9h"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dk8-nw-vDX" userLabel="Face ID Button">
                                                 <rect key="frame" x="0.0" y="120" width="414" height="30"/>
                                                 <state key="normal" title="Face ID"/>
-                                                <connections>
-                                                    <action selector="faceIDButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JEn-i1-dqI"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmL-DC-5Ip" userLabel="Health Button">
                                                 <rect key="frame" x="0.0" y="150" width="414" height="30"/>
                                                 <state key="normal" title="Health"/>
-                                                <connections>
-                                                    <action selector="healthButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a3j-ig-QL4"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-le-062" userLabel="Home Button">
                                                 <rect key="frame" x="0.0" y="180" width="414" height="30"/>
                                                 <state key="normal" title="Home"/>
-                                                <connections>
-                                                    <action selector="homeButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N96-LQ-Ayj"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMg-am-Pq9" userLabel="Local Network Button">
                                                 <rect key="frame" x="0.0" y="210" width="414" height="30"/>
                                                 <state key="normal" title="Local Network"/>
-                                                <connections>
-                                                    <action selector="localNetworkButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="34V-WQ-qp1"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z79-6Z-KKA" userLabel="Location Button">
                                                 <rect key="frame" x="0.0" y="240" width="414" height="30"/>
                                                 <state key="normal" title="Location"/>
-                                                <connections>
-                                                    <action selector="locationButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bFW-TP-Fce"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-ev-6PF" userLabel="Microphone Button">
                                                 <rect key="frame" x="0.0" y="270" width="414" height="30"/>
                                                 <state key="normal" title="Microphone"/>
-                                                <connections>
-                                                    <action selector="microphoneButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhV-LS-OKk"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ9-Zj-z7d" userLabel="Motion Button">
                                                 <rect key="frame" x="0.0" y="300" width="414" height="30"/>
                                                 <state key="normal" title="Motion"/>
-                                                <connections>
-                                                    <action selector="motionButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gsa-4z-szA"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-mf-Qa8" userLabel="Music Button">
                                                 <rect key="frame" x="0.0" y="330" width="414" height="30"/>
                                                 <state key="normal" title="Music"/>
-                                                <connections>
-                                                    <action selector="musicButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IcP-FT-BMR"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZG-JT-TpB" userLabel="Notifications Button">
                                                 <rect key="frame" x="0.0" y="360" width="414" height="30"/>
                                                 <state key="normal" title="Notifications"/>
-                                                <connections>
-                                                    <action selector="notificationsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bcz-NK-sZm"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzp-m0-rBR" userLabel="Photos Button">
                                                 <rect key="frame" x="0.0" y="390" width="414" height="30"/>
                                                 <state key="normal" title="Photos"/>
-                                                <connections>
-                                                    <action selector="photosButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uer-ig-Ybp"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-Nc-arj" userLabel="Reminders Button">
                                                 <rect key="frame" x="0.0" y="420" width="414" height="30"/>
                                                 <state key="normal" title="Reminders"/>
-                                                <connections>
-                                                    <action selector="remindersButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNc-yk-V6B"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-T4-xwe" userLabel="Speech Recognition Button">
                                                 <rect key="frame" x="0.0" y="450" width="414" height="30"/>
                                                 <state key="normal" title="Speech Recognition"/>
-                                                <connections>
-                                                    <action selector="speechRecognitionButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ae4-KT-g1W"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -155,6 +108,24 @@
                             <constraint firstItem="BIR-31-QGl" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="Wzw-8g-2cW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bluetoothButton" destination="7oQ-aY-wxf" id="3JO-uu-vMT"/>
+                        <outlet property="calendarsButton" destination="hni-un-XrU" id="JuK-4t-stw"/>
+                        <outlet property="cameraButton" destination="mOH-H0-Tke" id="Nj0-dB-7IX"/>
+                        <outlet property="contactsButton" destination="rfk-Mv-P5P" id="Pd0-di-cLI"/>
+                        <outlet property="faceIDButton" destination="dk8-nw-vDX" id="LqH-3k-3zN"/>
+                        <outlet property="healthButton" destination="qmL-DC-5Ip" id="P8I-Z6-fOO"/>
+                        <outlet property="homeButton" destination="0S5-le-062" id="DhG-gP-mr6"/>
+                        <outlet property="localNetworkButton" destination="dMg-am-Pq9" id="XCP-vR-jVR"/>
+                        <outlet property="locationButton" destination="Z79-6Z-KKA" id="fsB-i0-3eU"/>
+                        <outlet property="microphoneButton" destination="4gx-ev-6PF" id="PX3-jV-oaK"/>
+                        <outlet property="motionButton" destination="wQ9-Zj-z7d" id="YsG-EA-JTD"/>
+                        <outlet property="musicButton" destination="3oP-mf-Qa8" id="jBb-6C-AHp"/>
+                        <outlet property="notificationsButton" destination="aZG-JT-TpB" id="0n4-Or-VJS"/>
+                        <outlet property="photosButton" destination="gzp-m0-rBR" id="jjK-SH-s17"/>
+                        <outlet property="remindersButton" destination="hHF-Nc-arj" id="UMm-1e-eMp"/>
+                        <outlet property="speechRecognitionButton" destination="7xK-T4-xwe" id="2MZ-iM-f1L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

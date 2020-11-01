@@ -36,7 +36,7 @@ extension Permission.location {
                 serviceInstance?.callbacks.append(callback)
             }
             
-            if manager.authorizationStatus != .notDetermined {
+            if CLLocationManager.authorizationStatus() != .notDetermined {
                 serviceInstance?.handleDeterminedAndDestruct()
             }
         }
@@ -44,7 +44,7 @@ extension Permission.location {
         // MARK: - Location Manager Delegate
         
         func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-            guard manager.authorizationStatus != .notDetermined else {
+            guard CLLocationManager.authorizationStatus() != .notDetermined else {
                 return
             }
             

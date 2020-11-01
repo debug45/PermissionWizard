@@ -14,11 +14,23 @@ extension Permission.photos: Unifiable {
     // MARK: - Unifiable
     
     static func checkStatus(completion: @escaping (String?) -> Void) {
-        checkStatus(forAddingOnly: forAddingOnly) { completion($0.rawValue) }
+        let handler: (Permission.photos.Status) -> Void = { completion($0.rawValue) }
+        
+        if #available(iOS 14, *) {
+            checkStatus(forAddingOnly: forAddingOnly, completion: handler)
+        } else {
+            checkStatus(completion: handler)
+        }
     }
     
     static func requestAccess(completion: @escaping (String?) -> Void) {
-        requestAccess(forAddingOnly: forAddingOnly) { completion($0.rawValue) }
+        let handler: (Permission.photos.Status) -> Void = { completion($0.rawValue) }
+        
+        if #available(iOS 14, *) {
+            requestAccess(forAddingOnly: forAddingOnly, completion: handler)
+        } else {
+            requestAccess(completion: handler)
+        }
     }
     
 }

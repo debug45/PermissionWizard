@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 11, *)
 extension Permission.motion: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

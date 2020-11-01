@@ -7,6 +7,7 @@
 
 import PermissionKit
 
+@available(iOS 13.1, *)
 extension Permission.bluetooth: Unifiable {
     
     static func checkStatus(completion: @escaping (String?) -> Void) {

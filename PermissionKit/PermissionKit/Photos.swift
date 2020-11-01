@@ -30,10 +30,39 @@ public extension Permission {
         
         // MARK: - Public Functions
         
+        @available(iOS 14, *)
         public class func checkStatus(forAddingOnly: Bool, completion: (Status) -> Void) {
-            let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
+            _checkStatus(forAddingOnly: forAddingOnly, completion: completion)
+        }
+        
+        @available(iOS, deprecated: 14)
+        public class func checkStatus(completion: (Status) -> Void) {
+            _checkStatus(forAddingOnly: false, completion: completion)
+        }
+        
+        @available(iOS 14, *)
+        public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
+            _requestAccess(forAddingOnly: forAddingOnly, completion: completion)
+        }
+        
+        @available(iOS, deprecated: 14)
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
+            _requestAccess(forAddingOnly: false, completion: completion)
+        }
+        
+        // MARK: - Private Functions
+        
+        private static func _checkStatus(forAddingOnly: Bool, completion: (Status) -> Void) {
+            let value: PHAuthorizationStatus
             
-            switch PHPhotoLibrary.authorizationStatus(for: accessLevel) {
+            if #available(iOS 14, *) {
+                let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
+                value = PHPhotoLibrary.authorizationStatus(for: accessLevel)
+            } else {
+                value = PHPhotoLibrary.authorizationStatus()
+            }
+            
+            switch value {
                 case .authorized:
                     completion(.granted)
                 case .denied:
@@ -50,21 +79,26 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
+        private static func _requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
             let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : fullAccessUsageDescriptionPlistKey].compactMap { $0 }
             
             guard Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys) else {
                 return
             }
             
-            let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
-            
-            PHPhotoLibrary.requestAuthorization(for: accessLevel) { _ in
+            let handler: (PHAuthorizationStatus) -> Void = { _ in
                 guard let completion = completion else {
                     return
                 }
                 
-                self.checkStatus(forAddingOnly: forAddingOnly) { completion($0) }
+                self._checkStatus(forAddingOnly: forAddingOnly) { completion($0) }
+            }
+            
+            if #available(iOS 14, *) {
+                let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
+                PHPhotoLibrary.requestAuthorization(for: accessLevel, handler: handler)
+            } else {
+                PHPhotoLibrary.requestAuthorization(handler)
             }
         }
         
