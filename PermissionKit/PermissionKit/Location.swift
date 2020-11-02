@@ -36,7 +36,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: (CombinedStatus) -> Void) {
+        public class func checkStatus(completion: @escaping (CombinedStatus) -> Void) {
             let manager = CLLocationManager()
             
             let narrow: NarrowStatus
@@ -57,15 +57,15 @@ public extension Permission {
                     narrow = .unknown
             }
             
-            var isReducing = false
+            var combined = CombinedStatus(value: narrow, isReducing: false)
             
 #if !targetEnvironment(macCatalyst)
             if #available(iOS 14, *) {
-                isReducing = manager.accuracyAuthorization != .fullAccuracy
+                combined.isReducing = manager.accuracyAuthorization != .fullAccuracy
             }
 #endif
             
-            let combined = CombinedStatus(value: narrow, isReducing: isReducing)
+            let completion = Utils.linkToPreferredQueue(completion)
             completion(combined)
         }
         
@@ -98,7 +98,12 @@ public extension Permission {
             let manager = CLLocationManager()
             
             manager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: purposePlistKey) { _ in
-                completion?(manager.accuracyAuthorization == .fullAccuracy)
+                guard let unwrapped = completion else {
+                    return
+                }
+                
+                let completion = Utils.linkToPreferredQueue(unwrapped)
+                completion(manager.accuracyAuthorization == .fullAccuracy)
             }
         }
         

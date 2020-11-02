@@ -33,7 +33,8 @@ extension Permission.bluetooth {
                 serviceInstance = .init(manager)
             }
             
-            if let callback = callback {
+            if let unwrapped = callback {
+                let callback = Utils.linkToPreferredQueue(unwrapped)
                 serviceInstance?.callbacks.append(callback)
             }
             
@@ -56,7 +57,7 @@ extension Permission.bluetooth {
         
         private func handleDeterminedAndDestruct() {
             Permission.bluetooth.checkStatus { status in
-                callbacks.forEach { $0(status) }
+                self.callbacks.forEach { $0(status) }
             }
             
             Self.serviceInstance = nil

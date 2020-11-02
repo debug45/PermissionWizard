@@ -7,4 +7,6 @@
 
 public class Permission {
     
+    public static var preferredQueue: DispatchQueue? = .main
+    
 }

@@ -32,7 +32,8 @@ extension Permission.location {
                 serviceInstance = .init(manager)
             }
             
-            if let callback = callback {
+            if let unwrapped = callback {
+                let callback = Utils.linkToPreferredQueue(unwrapped)
                 serviceInstance?.callbacks.append(callback)
             }
             
@@ -60,7 +61,7 @@ extension Permission.location {
         
         private func handleDeterminedAndDestruct() {
             Permission.location.checkStatus { status in
-                callbacks.forEach { $0(status) }
+                self.callbacks.forEach { $0(status) }
             }
             
             Self.serviceInstance = nil

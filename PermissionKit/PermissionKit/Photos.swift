@@ -31,12 +31,12 @@ public extension Permission {
         // MARK: - Public Functions
         
         @available(iOS 14, *)
-        public class func checkStatus(forAddingOnly: Bool, completion: (Status) -> Void) {
+        public class func checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             _checkStatus(forAddingOnly: forAddingOnly, completion: completion)
         }
         
         @available(iOS, deprecated: 14)
-        public class func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             _checkStatus(forAddingOnly: false, completion: completion)
         }
         
@@ -52,7 +52,7 @@ public extension Permission {
         
         // MARK: - Private Functions
         
-        private static func _checkStatus(forAddingOnly: Bool, completion: (Status) -> Void) {
+        private static func _checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             let value: PHAuthorizationStatus
             
 #if !targetEnvironment(macCatalyst)
@@ -65,6 +65,8 @@ public extension Permission {
 #else
             value = PHPhotoLibrary.authorizationStatus()
 #endif
+            
+            let completion = Utils.linkToPreferredQueue(completion)
             
             switch value {
                 case .authorized:

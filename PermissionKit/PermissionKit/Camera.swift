@@ -29,7 +29,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(withMicrophone: Bool, completion: (CombinedStatus) -> Void) {
+        public class func checkStatus(withMicrophone: Bool, completion: @escaping (CombinedStatus) -> Void) {
             let narrow: NarrowStatus
             
             switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -54,6 +54,7 @@ public extension Permission {
                     completion(combined)
                 }
             } else {
+                let completion = Utils.linkToPreferredQueue(completion)
                 completion(combined)
             }
         }

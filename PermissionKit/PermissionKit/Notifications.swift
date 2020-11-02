@@ -30,6 +30,8 @@ public extension Permission {
         
         public class func checkStatus(completion: @escaping (Status) -> Void) {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
+                let completion = Utils.linkToPreferredQueue(completion)
+                
                 switch settings.authorizationStatus {
                     case .authorized:
                         completion(.granted)

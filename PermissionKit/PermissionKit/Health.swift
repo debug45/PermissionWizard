@@ -28,7 +28,9 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatusForWriting(of dataType: HKObjectType, completion: (WritingStatus) -> Void) {
+        public class func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (WritingStatus) -> Void) {
+            let completion = Utils.linkToPreferredQueue(completion)
+            
             switch HKHealthStore().authorizationStatus(for: dataType) {
                 case .sharingAuthorized:
                     completion(.granted)
@@ -54,7 +56,12 @@ public extension Permission {
             }
             
             HKHealthStore().requestAuthorization(toShare: writingTypes, read: readingTypes) { _, _ in
-                completion?()
+                guard let unwrapped = completion else {
+                    return
+                }
+                
+                let completion = Utils.linkToPreferredQueue(unwrapped)
+                completion()
             }
         }
         

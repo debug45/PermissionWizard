@@ -9,6 +9,30 @@ final class Utils {
     
     // MARK: - Internal Functions
     
+    static func linkToPreferredQueue<T>(_ block: @escaping (T) -> Void) -> (T) -> Void {
+        guard let preferredQueue = Permission.preferredQueue else {
+            return block
+        }
+        
+        return { parameter in
+            preferredQueue.async {
+                block(parameter)
+            }
+        }
+    }
+    
+    static func linkToPreferredQueue(_ block: @escaping () -> Void) -> () -> Void {
+        guard let preferredQueue = Permission.preferredQueue else {
+            return block
+        }
+        
+        return {
+            preferredQueue.async {
+                block()
+            }
+        }
+    }
+    
     static func checkIsAppConfigured(for permission: Base.Type, usageDescriptionsPlistKeys: [String]? = nil) -> Bool {
         var plistKeys = usageDescriptionsPlistKeys
         

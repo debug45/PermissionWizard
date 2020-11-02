@@ -28,11 +28,13 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             let context = LAContext()
             
             var error: NSError?
             let isReady = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+            
+            let completion = Utils.linkToPreferredQueue(completion)
             
             guard context.biometryType == .faceID else {
                 completion(.notSupportedByDevice)

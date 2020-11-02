@@ -29,7 +29,9 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
+            let completion = Utils.linkToPreferredQueue(completion)
+            
             switch CBCentralManager.authorization {
                 case .allowedAlways:
                     completion(.granted)

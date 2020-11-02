@@ -35,7 +35,8 @@ extension Permission.home {
                 serviceInstance = .init(manager)
             }
             
-            if let callback = callback {
+            if let unwrapped = callback {
+                let callback = Utils.linkToPreferredQueue(unwrapped)
                 serviceInstance?.callbacks.append(callback)
             }
             
