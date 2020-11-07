@@ -24,6 +24,9 @@ public extension Permission {
             
         }
         
+        public class override var titleName: String { "Face ID" }
+        public class override var contextName: String { titleName }
+        
         public class override var usageDescriptionPlistKey: String? { "NSFaceIDUsageDescription" }
         
         // MARK: - Public Functions

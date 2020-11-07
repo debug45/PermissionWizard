@@ -12,54 +12,26 @@ import HomeKit
 @available(iOS 13, *)
 extension Permission.home {
     
-    final class Agent: NSObject, HMHomeManagerDelegate {
-        
-        private static var serviceInstance: Agent?
-        
-        private var manager: HMHomeManager?
-        private var callbacks: [(Status) -> Void] = []
+    final class Agent: Base.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
         
         // MARK: - Life Cycle
         
-        convenience init(_ manager: HMHomeManager) {
-            self.init()
-            
+        override init(_ manager: HMHomeManager, callback: @escaping (Permission.home.Status) -> Void) {
+            super.init(manager, callback: callback)
             manager.delegate = self
-            self.manager = manager
         }
         
-        // MARK: - Internal Functions
+        // MARK: - Overriding Properties
         
-        static func takeControl(_ manager: HMHomeManager, callback: ((Status) -> Void)?) {
-            if serviceInstance == nil {
-                serviceInstance = .init(manager)
-            }
-            
-            if let unwrapped = callback {
-                let callback = Utils.linkToPreferredQueue(unwrapped)
-                serviceInstance?.callbacks.append(callback)
-            }
-            
+        override var hasDeterminedStatus: Bool {
+            return manager.authorizationStatus.contains(.determined)
+        }
+        
+        // MARK: - Overriding Functions
+        
+        override func handleDeterminedStatus() {
             let status = manager.authorizationStatus
             
-            if status.contains(.determined) {
-                serviceInstance?.handleDeterminedAndDestruct(status)
-            }
-        }
-        
-        // MARK: - Home Manager Delegate
-        
-        func homeManager(_ manager: HMHomeManager, didUpdate status: HMHomeManagerAuthorizationStatus) {
-            guard status.contains(.determined) else {
-                return
-            }
-            
-            handleDeterminedAndDestruct(status)
-        }
-        
-        // MARK: - Private Functions
-        
-        private func handleDeterminedAndDestruct(_ status: HMHomeManagerAuthorizationStatus) {
             let converted: Status
             
             if status.contains(.authorized) {
@@ -72,9 +44,17 @@ extension Permission.home {
                 converted = .denied
             }
             
-            callbacks.forEach { $0(converted) }
+            invokeCallbacks(with: converted)
+        }
+        
+        // MARK: - Home Manager Delegate
+        
+        func homeManager(_ manager: HMHomeManager, didUpdate status: HMHomeManagerAuthorizationStatus) {
+            guard hasDeterminedStatus else {
+                return
+            }
             
-            Self.serviceInstance = nil
+            handleDeterminedStatus()
         }
         
     }

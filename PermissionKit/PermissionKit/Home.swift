@@ -25,6 +25,8 @@ public extension Permission {
         
         public class override var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
         
+        private static var existingAgent: Agent?
+        
         // MARK: - Public Functions
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) {
@@ -32,8 +34,16 @@ public extension Permission {
                 return
             }
             
-            let manager = HMHomeManager()
-            Agent.takeControl(manager, callback: completion)
+            if let existingAgent = existingAgent, let completion = completion {
+                existingAgent.addCallback(completion)
+            } else {
+                let manager = HMHomeManager()
+                
+                existingAgent = Agent(manager) { status in
+                    completion?(status)
+                    self.existingAgent = nil
+                }
+            }
         }
         
     }

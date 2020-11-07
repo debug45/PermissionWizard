@@ -24,8 +24,11 @@ public extension Permission {
             
         }
         
-        public class override var contextName: String { return "Bluetooth" }
+        public class override var contextName: String { titleName }
+        
         public class override var usageDescriptionPlistKey: String? { "NSBluetoothAlwaysUsageDescription" }
+        
+        private static var existingAgent: Agent?
         
         // MARK: - Public Functions
         
@@ -52,8 +55,16 @@ public extension Permission {
                 return
             }
             
-            let manager = CBCentralManager(delegate: nil, queue: nil, options: nil)
-            Agent.takeControl(manager, callback: completion)
+            if let existingAgent = existingAgent, let completion = completion {
+                existingAgent.addCallback(completion)
+            } else {
+                let manager = CBCentralManager()
+                
+                existingAgent = Agent(manager) { status in
+                    completion?(status)
+                    self.existingAgent = nil
+                }
+            }
         }
         
     }

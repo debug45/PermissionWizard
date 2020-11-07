@@ -27,6 +27,7 @@
 		A5B519D5253AD284006870FA /* Home.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D4253AD284006870FA /* Home.Agent.swift */; };
 		A5C49B81253B631B004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B80253B631B004DDC66 /* Photos.swift */; };
 		A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B8D253B6E2B004DDC66 /* Motion.swift */; };
+		A5C4FFDE2554629D0002B376 /* Base.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4FFDD2554629D0002B376 /* Base.Agent.swift */; };
 		A5EDD6922528DA67001F44C9 /* PermissionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDD6912528DA67001F44C9 /* PermissionKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6EE2528E220001F44C9 /* Permission.swift */; };
 		A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6F42528E2A4001F44C9 /* Contacts.swift */; };
@@ -53,6 +54,7 @@
 		A5B519D4253AD284006870FA /* Home.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.Agent.swift; sourceTree = "<group>"; };
 		A5C49B80253B631B004DDC66 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		A5C49B8D253B6E2B004DDC66 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		A5C4FFDD2554629D0002B376 /* Base.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.Agent.swift; sourceTree = "<group>"; };
 		A5DAF03A2528D771002483A6 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF03E2528D771002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5EDD6912528DA67001F44C9 /* PermissionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionKit.h; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				A5EDD6EE2528E220001F44C9 /* Permission.swift */,
 				A5B0765C2537908500E6DF79 /* Base.swift */,
+				A5C4FFDD2554629D0002B376 /* Base.Agent.swift */,
 				A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */,
 				A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */,
 				A5518743253779CA001A8208 /* Calendars.swift */,
@@ -216,6 +219,7 @@
 				A5EDD6F52528E2A4001F44C9 /* Contacts.swift in Sources */,
 				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
 				A5C49B81253B631B004DDC66 /* Photos.swift in Sources */,
+				A5C4FFDE2554629D0002B376 /* Base.Agent.swift in Sources */,
 				A5B1D843253C1C4600760382 /* Notifications.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,

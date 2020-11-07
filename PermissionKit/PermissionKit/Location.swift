@@ -34,6 +34,8 @@ public extension Permission {
         
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
+        private static var existingAgent: Agent?
+        
         // MARK: - Public Functions
         
         public class func checkStatus(completion: @escaping (CombinedStatus) -> Void) {
@@ -76,15 +78,22 @@ public extension Permission {
                 return
             }
             
-            let manager = CLLocationManager()
-            
-            if whenInUseOnly {
-                manager.requestWhenInUseAuthorization()
+            if let existingAgent = existingAgent, let completion = completion {
+                existingAgent.addCallback(completion)
             } else {
-                manager.requestAlwaysAuthorization()
+                let manager = CLLocationManager()
+                
+                if whenInUseOnly {
+                    manager.requestWhenInUseAuthorization()
+                } else {
+                    manager.requestAlwaysAuthorization()
+                }
+                
+                existingAgent = Agent(manager) { status in
+                    completion?(status)
+                    self.existingAgent = nil
+                }
             }
-            
-            Agent.takeControl(manager, callback: completion)
         }
         
 #if !targetEnvironment(macCatalyst)

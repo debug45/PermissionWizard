@@ -10,57 +10,37 @@ import CoreBluetooth
 @available(iOS 13.1, *)
 extension Permission.bluetooth {
     
-    final class Agent: NSObject, CBCentralManagerDelegate {
-        
-        private static var serviceInstance: Agent?
-        
-        private var manager: CBCentralManager?
-        private var callbacks: [(Status) -> Void] = []
+    final class Agent: Base.Agent<CBCentralManager, Status>, CBCentralManagerDelegate {
         
         // MARK: - Life Cycle
         
-        convenience init(_ manager: CBCentralManager) {
-            self.init()
-            
+        override init(_ manager: CBCentralManager, callback: @escaping (Status) -> Void) {
+            super.init(manager, callback: callback)
             manager.delegate = self
-            self.manager = manager
         }
         
-        // MARK: - Internal Functions
+        // MARK: - Overriding Properties
         
-        static func takeControl(_ manager: CBCentralManager, callback: ((Status) -> Void)?) {
-            if serviceInstance == nil {
-                serviceInstance = .init(manager)
-            }
-            
-            if let unwrapped = callback {
-                let callback = Utils.linkToPreferredQueue(unwrapped)
-                serviceInstance?.callbacks.append(callback)
-            }
-            
-            if CBCentralManager.authorization != .notDetermined {
-                serviceInstance?.handleDeterminedAndDestruct()
+        override var hasDeterminedStatus: Bool {
+            return CBCentralManager.authorization != .notDetermined
+        }
+        
+        // MARK: - Overriding Functions
+        
+        override func handleDeterminedStatus() {
+            Permission.bluetooth.checkStatus { status in
+                self.invokeCallbacks(with: status)
             }
         }
         
         // MARK: - Central Manager Delegate
         
         func centralManagerDidUpdateState(_ central: CBCentralManager) {
-            guard CBCentralManager.authorization != .notDetermined else {
+            guard hasDeterminedStatus else {
                 return
             }
             
-            handleDeterminedAndDestruct()
-        }
-        
-        // MARK: - Private Functions
-        
-        private func handleDeterminedAndDestruct() {
-            Permission.bluetooth.checkStatus { status in
-                self.callbacks.forEach { $0(status) }
-            }
-            
-            Self.serviceInstance = nil
+            handleDeterminedStatus()
         }
         
     }

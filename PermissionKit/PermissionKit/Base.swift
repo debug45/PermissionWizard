@@ -7,7 +7,13 @@
 
 public class Base {
     
+    public class var titleName: String {
+        let value = String(describing: self)
+        return value.prefix(1).uppercased() + value.dropFirst()
+    }
+    
     public class var contextName: String { .init(describing: self) }
+    
     public class var usageDescriptionPlistKey: String? { nil }
     
 }

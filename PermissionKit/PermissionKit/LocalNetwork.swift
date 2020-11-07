@@ -12,7 +12,9 @@ public extension Permission {
     
     final class localNetwork: Base {
         
-        public class override var contextName: String { return "local network" }
+        public class override var titleName: String { "Local Network" }
+        public class override var contextName: String { titleName.lowercased() }
+        
         public class override var usageDescriptionPlistKey: String? { "NSLocalNetworkUsageDescription" }
         
         // MARK: - Public Functions
