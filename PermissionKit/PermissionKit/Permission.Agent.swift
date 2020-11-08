@@ -1,11 +1,11 @@
 //
-//  Base.Agent.swift
+//  Permission.Agent.swift
 //  PermissionKit
 //
 //  Created by Sergey Moskvin on 05.11.2020.
 //
 
-extension Base {
+extension Permission {
     
     class Agent<Manager, Status>: NSObject {
         

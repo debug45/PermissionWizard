@@ -10,7 +10,7 @@ import Speech
 @available(iOS 10, *)
 public extension Permission {
     
-    final class speechRecognition: Base {
+    final class speechRecognition: Permission {
         
         public enum Status: String {
             
@@ -24,10 +24,10 @@ public extension Permission {
             
         }
         
-        public class override var titleName: String { "Speech Recognition" }
-        public class override var contextName: String { titleName.lowercased() }
+        public override class var titleName: String { "Speech Recognition" }
+        public override class var contextName: String { titleName.lowercased() }
         
-        public class override var usageDescriptionPlistKey: String? { "NSSpeechRecognitionUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSSpeechRecognitionUsageDescription" }
         
         // MARK: - Public Functions
         

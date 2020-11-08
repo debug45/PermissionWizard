@@ -9,7 +9,7 @@ import Contacts
 
 public extension Permission {
     
-    final class contacts: Base {
+    final class contacts: Permission {
         
         public enum Status: String {
             
@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSContactsUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSContactsUsageDescription" }
         
         // MARK: - Public Functions
         

@@ -9,7 +9,7 @@ import EventKit
 
 public extension Permission {
     
-    final class reminders: Base {
+    final class reminders: Permission {
         
         public enum Status: String {
             
@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSRemindersUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSRemindersUsageDescription" }
         
         // MARK: - Public Functions
         

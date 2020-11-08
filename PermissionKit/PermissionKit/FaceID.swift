@@ -10,7 +10,7 @@ import LocalAuthentication
 @available(iOS 11, *)
 public extension Permission {
     
-    final class faceID: Base {
+    final class faceID: Permission {
         
         public enum Status: String {
             
@@ -24,10 +24,10 @@ public extension Permission {
             
         }
         
-        public class override var titleName: String { "Face ID" }
-        public class override var contextName: String { titleName }
+        public override class var titleName: String { "Face ID" }
+        public override class var contextName: String { titleName }
         
-        public class override var usageDescriptionPlistKey: String? { "NSFaceIDUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSFaceIDUsageDescription" }
         
         // MARK: - Public Functions
         

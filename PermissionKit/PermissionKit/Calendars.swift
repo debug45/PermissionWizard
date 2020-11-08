@@ -9,7 +9,7 @@ import EventKit
 
 public extension Permission {
     
-    final class calendars: Base {
+    final class calendars: Permission {
         
         public enum Status: String {
             
@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSCalendarsUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSCalendarsUsageDescription" }
         
         // MARK: - Public Functions
         

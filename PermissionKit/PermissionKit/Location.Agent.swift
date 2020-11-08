@@ -9,7 +9,7 @@ import CoreLocation
 
 extension Permission.location {
     
-    final class Agent: Base.Agent<CLLocationManager, CombinedStatus>, CLLocationManagerDelegate {
+    final class Agent: Permission.Agent<CLLocationManager, CombinedStatus>, CLLocationManagerDelegate {
         
         // MARK: - Life Cycle
         
@@ -27,7 +27,9 @@ extension Permission.location {
         // MARK: - Overriding Functions
         
         override func handleDeterminedStatus() {
-            Permission.location.checkStatus { status in
+            super.handleDeterminedStatus()
+            
+            checkStatus { status in
                 self.invokeCallbacks(with: status)
             }
         }

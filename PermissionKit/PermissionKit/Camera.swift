@@ -9,7 +9,7 @@ import AVKit
 
 public extension Permission {
     
-    final class camera: Base {
+    final class camera: Permission {
         
         public enum NarrowStatus: String {
             
@@ -25,7 +25,7 @@ public extension Permission {
         
         public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
         
-        public class override var usageDescriptionPlistKey: String? { "NSCameraUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSCameraUsageDescription" }
         
         // MARK: - Public Functions
         
@@ -60,7 +60,7 @@ public extension Permission {
         }
         
         public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) {
-            var checklist: [Base.Type] = [camera.self]
+            var checklist: [Permission.Type] = [camera.self]
             
             if withMicrophone {
                 checklist.append(microphone.self)

@@ -12,7 +12,7 @@ import HomeKit
 @available(iOS 13, *)
 public extension Permission {
     
-    final class home: Base {
+    final class home: Permission {
         
         public enum Status: String {
             
@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
         
         private static var existingAgent: Agent?
         

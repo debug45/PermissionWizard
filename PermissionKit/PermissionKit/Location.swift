@@ -9,7 +9,7 @@ import CoreLocation
 
 public extension Permission {
     
-    final class location: Base {
+    final class location: Permission {
         
         public enum NarrowStatus: String {
             

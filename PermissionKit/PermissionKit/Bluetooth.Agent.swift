@@ -10,7 +10,7 @@ import CoreBluetooth
 @available(iOS 13.1, *)
 extension Permission.bluetooth {
     
-    final class Agent: Base.Agent<CBCentralManager, Status>, CBCentralManagerDelegate {
+    final class Agent: Permission.Agent<CBCentralManager, Status>, CBCentralManagerDelegate {
         
         // MARK: - Life Cycle
         
@@ -28,7 +28,9 @@ extension Permission.bluetooth {
         // MARK: - Overriding Functions
         
         override func handleDeterminedStatus() {
-            Permission.bluetooth.checkStatus { status in
+            super.handleDeterminedStatus()
+            
+            checkStatus { status in
                 self.invokeCallbacks(with: status)
             }
         }

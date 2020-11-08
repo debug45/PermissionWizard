@@ -10,7 +10,7 @@ import CoreMotion
 @available(iOS 11, *)
 public extension Permission {
     
-    final class motion: Base {
+    final class motion: Permission {
         
         public enum Status: String {
             
@@ -24,7 +24,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSMotionUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSMotionUsageDescription" }
         
         // MARK: - Public Functions
         

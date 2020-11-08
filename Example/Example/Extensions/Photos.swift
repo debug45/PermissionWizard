@@ -14,7 +14,7 @@ extension Permission.photos: Unifiable {
     // MARK: - Unifiable
     
     static func checkStatus(completion: @escaping (String?) -> Void) {
-        let handler: (Permission.photos.Status) -> Void = { completion($0.rawValue) }
+        let handler: (Status) -> Void = { completion($0.rawValue) }
         
         if #available(iOS 14, *) {
             checkStatus(forAddingOnly: forAddingOnly, completion: handler)
@@ -24,7 +24,7 @@ extension Permission.photos: Unifiable {
     }
     
     static func requestAccess(completion: @escaping (String?) -> Void) {
-        let handler: (Permission.photos.Status) -> Void = { completion($0.rawValue) }
+        let handler: (Status) -> Void = { completion($0.rawValue) }
         
         if #available(iOS 14, *) {
             requestAccess(forAddingOnly: forAddingOnly, completion: handler)

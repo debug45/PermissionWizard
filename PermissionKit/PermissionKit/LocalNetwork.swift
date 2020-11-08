@@ -10,12 +10,12 @@ import Network
 @available(iOS 14, *)
 public extension Permission {
     
-    final class localNetwork: Base {
+    final class localNetwork: Permission {
         
-        public class override var titleName: String { "Local Network" }
-        public class override var contextName: String { titleName.lowercased() }
+        public override class var titleName: String { "Local Network" }
+        public override class var contextName: String { titleName.lowercased() }
         
-        public class override var usageDescriptionPlistKey: String? { "NSLocalNetworkUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSLocalNetworkUsageDescription" }
         
         // MARK: - Public Functions
         

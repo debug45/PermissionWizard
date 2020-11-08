@@ -12,11 +12,11 @@ import HomeKit
 @available(iOS 13, *)
 extension Permission.home {
     
-    final class Agent: Base.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
+    final class Agent: Permission.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
         
         // MARK: - Life Cycle
         
-        override init(_ manager: HMHomeManager, callback: @escaping (Permission.home.Status) -> Void) {
+        override init(_ manager: HMHomeManager, callback: @escaping (Status) -> Void) {
             super.init(manager, callback: callback)
             manager.delegate = self
         }
@@ -30,8 +30,9 @@ extension Permission.home {
         // MARK: - Overriding Functions
         
         override func handleDeterminedStatus() {
-            let status = manager.authorizationStatus
+            super.handleDeterminedStatus()
             
+            let status = manager.authorizationStatus
             let converted: Status
             
             if status.contains(.authorized) {

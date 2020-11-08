@@ -9,7 +9,7 @@ import AVKit
 
 public extension Permission {
     
-    final class microphone: Base {
+    final class microphone: Permission {
         
         public enum Status: String {
             
@@ -21,7 +21,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSMicrophoneUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSMicrophoneUsageDescription" }
         
         // MARK: - Public Functions
         

@@ -9,7 +9,7 @@ import MediaPlayer
 
 public extension Permission {
     
-    final class music: Base {
+    final class music: Permission {
         
         public enum Status: String {
             
@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public class override var usageDescriptionPlistKey: String? { "NSAppleMusicUsageDescription" }
+        public override class var usageDescriptionPlistKey: String? { "NSAppleMusicUsageDescription" }
         
         // MARK: - Public Functions
         

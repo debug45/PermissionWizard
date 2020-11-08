@@ -33,7 +33,7 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Base.Type, usageDescriptionsPlistKeys: [String]? = nil) -> Bool {
+    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]? = nil) -> Bool {
         var plistKeys = usageDescriptionsPlistKeys
         
         if plistKeys == nil {
