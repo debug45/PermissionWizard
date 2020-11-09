@@ -54,15 +54,19 @@ class Panel<T: Permission>: UIStackView {
         addArrangedSubview(titleLabel)
         
         if withIncreasedOffset, #available(iOS 11, *) {
-            increaseOffset(after: titleLabel)
+            addSeparatingOffset()
         }
         
         return switchView
     }
     
     @available(iOS 11, *)
-    func increaseOffset(after targetView: UIView) {
-        setCustomSpacing(32, after: targetView)
+    func addSeparatingOffset() {
+        guard let lastView = arrangedSubviews.last else {
+            return
+        }
+        
+        setCustomSpacing(32, after: lastView)
     }
     
     func notify(_ message: String) {

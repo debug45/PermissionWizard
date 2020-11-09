@@ -11,6 +11,10 @@ import UserNotifications
 
 final class NotificationsPanel: Panel<Permission.notifications> {
     
+    private var dependentSwitches: [UISwitch] = []
+    
+    // MARK: - Overriding Functions
+    
     override func configure() {
         super.configure()
         
@@ -27,7 +31,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         } else {
 #if !targetEnvironment(macCatalyst)
             if #available(iOS 11, *) {
-                increaseOffset(after: carPlaySwitch)
+                addSeparatingOffset()
             }
 #endif
         }
@@ -41,36 +45,41 @@ final class NotificationsPanel: Panel<Permission.notifications> {
             criticalAlertsSwitch = addSwitch(title: "Critical Alerts", withIncreasedOffset: false)
             provisionallySwitch = addSwitch(title: "Provisionally")
             
+            let selector = #selector(provisionallySwitchDidChange)
+            provisionallySwitch?.addTarget(self, action: selector, for: .valueChanged)
+            
             providingInAppSettingsSwitch = addSwitch(title: "Providing in-app settings")
         }
+        
+        dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }
         
         addDefaultButtons(checkStatusAction: {
             self.permission.checkStatus { self.notify($0.rawValue) }
         }, requestAccessAction: {
             var options: UNAuthorizationOptions = []
             
-            if alertsSwitch.isOn {
+            if alertsSwitch.isOn && alertsSwitch.isEnabled {
                 options.insert(.alert)
             }
             
-            if badgeSwitch.isOn {
+            if badgeSwitch.isOn && badgeSwitch.isEnabled {
                 options.insert(.badge)
             }
             
-            if soundSwitch.isOn {
+            if soundSwitch.isOn && soundSwitch.isEnabled {
                 options.insert(.sound)
             }
             
-            if carPlaySwitch.isOn {
+            if carPlaySwitch.isOn && carPlaySwitch.isEnabled {
                 options.insert(.carPlay)
             }
             
-            if siriAnnouncementsSwitch?.isOn == true, #available(iOS 13, *) {
+            if siriAnnouncementsSwitch?.isOn == true && siriAnnouncementsSwitch?.isEnabled == true, #available(iOS 13, *) {
                 options.insert(.announcement)
             }
             
             if #available(iOS 12, *) {
-                if criticalAlertsSwitch?.isOn == true {
+                if criticalAlertsSwitch?.isOn == true && criticalAlertsSwitch?.isEnabled == true {
                     options.insert(.criticalAlert)
                 }
                 
@@ -85,6 +94,12 @@ final class NotificationsPanel: Panel<Permission.notifications> {
             
             self.permission.requestAccess(options: options) { self.notify($0.rawValue) }
         })
+    }
+    
+    // MARK: - Private Functions
+    
+    @objc private func provisionallySwitchDidChange(_ switchView: UISwitch) {
+        dependentSwitches.forEach { $0.isEnabled = !switchView.isOn }
     }
     
 }

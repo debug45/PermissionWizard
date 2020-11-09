@@ -14,16 +14,24 @@ final class LocationPanel: Panel<Permission.location> {
     override func configure() {
         super.configure()
         
-        let whenInUseOnlySwitch = addSwitch(title: "When in Use Only")
-        
-        addDefaultButtons(checkStatusAction: {
+        addButton(title: "Check Status") {
             self.permission.checkStatus { self.notify(about: $0) }
-        }, requestAccessAction: {
+        }
+        
+        if #available(iOS 11, *) {
+            addSeparatingOffset()
+        }
+        
+        let whenInUseOnlySwitch = addSwitch(title: "When in Use Only", withIncreasedOffset: false)
+        
+        addButton(title: "Request Access") {
             self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
-        })
+        }
         
 #if !targetEnvironment(macCatalyst)
         if #available(iOS 14, *) {
+            addSeparatingOffset()
+            
             addButton(title: "Request Temporary Precise Access") {
                 self.permission.requestTemporaryPreciseAccess(purposePlistKey: "Default") { self.notify("[temporaryPrecise: \($0)]") }
             }
@@ -34,7 +42,7 @@ final class LocationPanel: Panel<Permission.location> {
     // MARK: - Private Functions
     
     private func notify(about status: Permission.location.CombinedStatus) {
-        let message = "[value: \(status.value.rawValue), isReducing: \(status.isReducing)]"
+        let message = "[status: \(status.value.rawValue), isReducing: \(status.isReducing)]"
         notify(message)
     }
     
