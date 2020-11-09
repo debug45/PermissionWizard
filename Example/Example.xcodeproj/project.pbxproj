@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A501862B253F76ED00D9DC77 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501862A253F76ED00D9DC77 /* Health.swift */; };
-		A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F7D2531F90D00364B82 /* Unifiable.swift */; };
-		A50A8F812531F97C00364B82 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F802531F97C00364B82 /* Contacts.swift */; };
-		A50A8F842531FA5900364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F832531FA5900364B82 /* Reminders.swift */; };
-		A533FEE3253B2771003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEE2253B2771003B7648 /* Camera.swift */; };
 		A533FEE7253B28E2003B7648 /* PermissionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; };
 		A533FEE8253B28E2003B7648 /* PermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A533FEEF253B597C003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEE253B597C003B7648 /* Music.swift */; };
-		A53C04AC254D4D80007F1438 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04AB254D4D80007F1438 /* Bluetooth.swift */; };
-		A53C04C5254D6BE8007F1438 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04C4254D6BE8007F1438 /* LocalNetwork.swift */; };
-		A53C04DD254EA9B1007F1438 /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04DC254EA9B1007F1438 /* FaceID.swift */; };
-		A551874825377A75001A8208 /* Calendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551874725377A75001A8208 /* Calendars.swift */; };
-		A553E45D254475BB00589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E45C254475BB00589764 /* Location.swift */; };
-		A5B1D847253C211C00760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D846253C211C00760382 /* Notifications.swift */; };
-		A5B519C42538D6F4006870FA /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519C32538D6F4006870FA /* Microphone.swift */; };
-		A5B519CC2538D955006870FA /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519CB2538D955006870FA /* SpeechRecognition.swift */; };
-		A5B519D9253AEA83006870FA /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D8253AEA83006870FA /* Home.swift */; };
-		A5C49B85253B6602004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B84253B6602004DDC66 /* Photos.swift */; };
-		A5C49B92253B6F03004DDC66 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B91253B6F03004DDC66 /* Motion.swift */; };
+		A59228A12559189A00DA9780 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A02559189A00DA9780 /* DetailViewController.swift */; };
+		A59228A32559347900DA9780 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A22559347900DA9780 /* Panel.swift */; };
+		A59228A62559418E00DA9780 /* SpeechRecognitionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A52559418E00DA9780 /* SpeechRecognitionPanel.swift */; };
+		A59228A82559439100DA9780 /* BluetoothPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A72559439100DA9780 /* BluetoothPanel.swift */; };
+		A59228AA2559440100DA9780 /* CalendarsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A92559440100DA9780 /* CalendarsPanel.swift */; };
+		A59228AC2559443A00DA9780 /* CameraPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228AB2559443A00DA9780 /* CameraPanel.swift */; };
+		A59228AE2559443C00DA9780 /* ContactsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228AD2559443C00DA9780 /* ContactsPanel.swift */; };
+		A59228B02559443D00DA9780 /* FaceIDPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228AF2559443D00DA9780 /* FaceIDPanel.swift */; };
+		A59228B22559443F00DA9780 /* HealthPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228B12559443F00DA9780 /* HealthPanel.swift */; };
+		A59228B42559444000DA9780 /* HomePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228B32559444000DA9780 /* HomePanel.swift */; };
+		A59228B62559444100DA9780 /* LocalNetworkPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228B52559444100DA9780 /* LocalNetworkPanel.swift */; };
+		A59228B82559445100DA9780 /* LocationPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228B72559445100DA9780 /* LocationPanel.swift */; };
+		A59228BA2559445200DA9780 /* MicrophonePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228B92559445200DA9780 /* MicrophonePanel.swift */; };
+		A59228BC2559445300DA9780 /* MotionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228BB2559445300DA9780 /* MotionPanel.swift */; };
+		A59228BE2559445500DA9780 /* MusicPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228BD2559445500DA9780 /* MusicPanel.swift */; };
+		A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228BF2559445600DA9780 /* NotificationsPanel.swift */; };
+		A59228C22559445800DA9780 /* PhotosPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C12559445800DA9780 /* PhotosPanel.swift */; };
+		A59228C42559445A00DA9780 /* RemindersPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C32559445A00DA9780 /* RemindersPanel.swift */; };
+		A59228CA2559581100DA9780 /* PKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C92559581100DA9780 /* PKButton.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
-		A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ViewController.swift */; };
+		A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ListViewController.swift */; };
 		A5DAF05C2528D7EE002483A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DAF05B2528D7EE002483A6 /* Assets.xcassets */; };
 		A5EDD6C52528DF52001F44C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDD6C32528DF51001F44C9 /* Main.storyboard */; };
 		A5EDD6C62528DF52001F44C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */; };
@@ -48,27 +50,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A501862A253F76ED00D9DC77 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
-		A50A8F7D2531F90D00364B82 /* Unifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unifiable.swift; sourceTree = "<group>"; };
-		A50A8F802531F97C00364B82 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
-		A50A8F832531FA5900364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
-		A533FEE2253B2771003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		A533FEEE253B597C003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
-		A53C04AB254D4D80007F1438 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		A53C04AD254D5078007F1438 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		A53C04C4254D6BE8007F1438 /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
-		A53C04DC254EA9B1007F1438 /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
-		A551874725377A75001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
-		A553E45C254475BB00589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		A5B1D846253C211C00760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		A5B519C32538D6F4006870FA /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
-		A5B519CB2538D955006870FA /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
-		A5B519D8253AEA83006870FA /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		A5C49B84253B6602004DDC66 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
-		A5C49B91253B6F03004DDC66 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		A59228A02559189A00DA9780 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A59228A22559347900DA9780 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		A59228A52559418E00DA9780 /* SpeechRecognitionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionPanel.swift; sourceTree = "<group>"; };
+		A59228A72559439100DA9780 /* BluetoothPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPanel.swift; sourceTree = "<group>"; };
+		A59228A92559440100DA9780 /* CalendarsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsPanel.swift; sourceTree = "<group>"; };
+		A59228AB2559443A00DA9780 /* CameraPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPanel.swift; sourceTree = "<group>"; };
+		A59228AD2559443C00DA9780 /* ContactsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPanel.swift; sourceTree = "<group>"; };
+		A59228AF2559443D00DA9780 /* FaceIDPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDPanel.swift; sourceTree = "<group>"; };
+		A59228B12559443F00DA9780 /* HealthPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPanel.swift; sourceTree = "<group>"; };
+		A59228B32559444000DA9780 /* HomePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePanel.swift; sourceTree = "<group>"; };
+		A59228B52559444100DA9780 /* LocalNetworkPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPanel.swift; sourceTree = "<group>"; };
+		A59228B72559445100DA9780 /* LocationPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPanel.swift; sourceTree = "<group>"; };
+		A59228B92559445200DA9780 /* MicrophonePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePanel.swift; sourceTree = "<group>"; };
+		A59228BB2559445300DA9780 /* MotionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPanel.swift; sourceTree = "<group>"; };
+		A59228BD2559445500DA9780 /* MusicPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPanel.swift; sourceTree = "<group>"; };
+		A59228BF2559445600DA9780 /* NotificationsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPanel.swift; sourceTree = "<group>"; };
+		A59228C12559445800DA9780 /* PhotosPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPanel.swift; sourceTree = "<group>"; };
+		A59228C32559445A00DA9780 /* RemindersPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersPanel.swift; sourceTree = "<group>"; };
+		A59228C92559581100DA9780 /* PKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKButton.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5DAF0562528D7ED002483A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5DAF0562528D7ED002483A6 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A5DAF05B2528D7EE002483A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DAF0602528D7EE002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,28 +93,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A50A8F7C2531F8C100364B82 /* Extensions */ = {
+		A59228A42559411C00DA9780 /* Panels */ = {
 			isa = PBXGroup;
 			children = (
-				A50A8F7D2531F90D00364B82 /* Unifiable.swift */,
-				A53C04AB254D4D80007F1438 /* Bluetooth.swift */,
-				A551874725377A75001A8208 /* Calendars.swift */,
-				A533FEE2253B2771003B7648 /* Camera.swift */,
-				A50A8F802531F97C00364B82 /* Contacts.swift */,
-				A53C04DC254EA9B1007F1438 /* FaceID.swift */,
-				A501862A253F76ED00D9DC77 /* Health.swift */,
-				A5B519D8253AEA83006870FA /* Home.swift */,
-				A53C04C4254D6BE8007F1438 /* LocalNetwork.swift */,
-				A553E45C254475BB00589764 /* Location.swift */,
-				A5B519C32538D6F4006870FA /* Microphone.swift */,
-				A5C49B91253B6F03004DDC66 /* Motion.swift */,
-				A533FEEE253B597C003B7648 /* Music.swift */,
-				A5B1D846253C211C00760382 /* Notifications.swift */,
-				A5C49B84253B6602004DDC66 /* Photos.swift */,
-				A50A8F832531FA5900364B82 /* Reminders.swift */,
-				A5B519CB2538D955006870FA /* SpeechRecognition.swift */,
+				A59228A22559347900DA9780 /* Panel.swift */,
+				A59228A72559439100DA9780 /* BluetoothPanel.swift */,
+				A59228A92559440100DA9780 /* CalendarsPanel.swift */,
+				A59228AB2559443A00DA9780 /* CameraPanel.swift */,
+				A59228AD2559443C00DA9780 /* ContactsPanel.swift */,
+				A59228AF2559443D00DA9780 /* FaceIDPanel.swift */,
+				A59228B12559443F00DA9780 /* HealthPanel.swift */,
+				A59228B32559444000DA9780 /* HomePanel.swift */,
+				A59228B52559444100DA9780 /* LocalNetworkPanel.swift */,
+				A59228B72559445100DA9780 /* LocationPanel.swift */,
+				A59228B92559445200DA9780 /* MicrophonePanel.swift */,
+				A59228BB2559445300DA9780 /* MotionPanel.swift */,
+				A59228BD2559445500DA9780 /* MusicPanel.swift */,
+				A59228BF2559445600DA9780 /* NotificationsPanel.swift */,
+				A59228C12559445800DA9780 /* PhotosPanel.swift */,
+				A59228C32559445A00DA9780 /* RemindersPanel.swift */,
+				A59228A52559418E00DA9780 /* SpeechRecognitionPanel.swift */,
 			);
-			path = Extensions;
+			path = Panels;
+			sourceTree = "<group>";
+		};
+		A59228C8255957FF00DA9780 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				A59228C92559581100DA9780 /* PKButton.swift */,
+			);
+			path = Framework;
 			sourceTree = "<group>";
 		};
 		A5DAF0462528D7ED002483A6 = {
@@ -134,9 +146,11 @@
 			isa = PBXGroup;
 			children = (
 				A5DAF0522528D7ED002483A6 /* AppDelegate.swift */,
-				A5DAF0562528D7ED002483A6 /* ViewController.swift */,
+				A5DAF0562528D7ED002483A6 /* ListViewController.swift */,
+				A59228A02559189A00DA9780 /* DetailViewController.swift */,
+				A59228A42559411C00DA9780 /* Panels */,
+				A59228C8255957FF00DA9780 /* Framework */,
 				A5EDD6C32528DF51001F44C9 /* Main.storyboard */,
-				A50A8F7C2531F8C100364B82 /* Extensions */,
 				A5DAF05B2528D7EE002483A6 /* Assets.xcassets */,
 				A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */,
 				A5EDD6B52528DDD8001F44C9 /* Example.entitlements */,
@@ -225,25 +239,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5B519C42538D6F4006870FA /* Microphone.swift in Sources */,
-				A533FEE3253B2771003B7648 /* Camera.swift in Sources */,
-				A5DAF0572528D7ED002483A6 /* ViewController.swift in Sources */,
-				A533FEEF253B597C003B7648 /* Music.swift in Sources */,
-				A5C49B85253B6602004DDC66 /* Photos.swift in Sources */,
+				A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */,
+				A59228B42559444000DA9780 /* HomePanel.swift in Sources */,
+				A59228BA2559445200DA9780 /* MicrophonePanel.swift in Sources */,
+				A59228AC2559443A00DA9780 /* CameraPanel.swift in Sources */,
+				A59228AE2559443C00DA9780 /* ContactsPanel.swift in Sources */,
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
-				A5B1D847253C211C00760382 /* Notifications.swift in Sources */,
-				A53C04AC254D4D80007F1438 /* Bluetooth.swift in Sources */,
-				A53C04C5254D6BE8007F1438 /* LocalNetwork.swift in Sources */,
-				A553E45D254475BB00589764 /* Location.swift in Sources */,
-				A501862B253F76ED00D9DC77 /* Health.swift in Sources */,
-				A50A8F7E2531F90D00364B82 /* Unifiable.swift in Sources */,
-				A551874825377A75001A8208 /* Calendars.swift in Sources */,
-				A50A8F842531FA5900364B82 /* Reminders.swift in Sources */,
-				A5B519D9253AEA83006870FA /* Home.swift in Sources */,
-				A5B519CC2538D955006870FA /* SpeechRecognition.swift in Sources */,
-				A53C04DD254EA9B1007F1438 /* FaceID.swift in Sources */,
-				A5C49B92253B6F03004DDC66 /* Motion.swift in Sources */,
-				A50A8F812531F97C00364B82 /* Contacts.swift in Sources */,
+				A59228A62559418E00DA9780 /* SpeechRecognitionPanel.swift in Sources */,
+				A59228B02559443D00DA9780 /* FaceIDPanel.swift in Sources */,
+				A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */,
+				A59228A32559347900DA9780 /* Panel.swift in Sources */,
+				A59228BC2559445300DA9780 /* MotionPanel.swift in Sources */,
+				A59228CA2559581100DA9780 /* PKButton.swift in Sources */,
+				A59228A82559439100DA9780 /* BluetoothPanel.swift in Sources */,
+				A59228C42559445A00DA9780 /* RemindersPanel.swift in Sources */,
+				A59228B62559444100DA9780 /* LocalNetworkPanel.swift in Sources */,
+				A59228C22559445800DA9780 /* PhotosPanel.swift in Sources */,
+				A59228B22559443F00DA9780 /* HealthPanel.swift in Sources */,
+				A59228B82559445100DA9780 /* LocationPanel.swift in Sources */,
+				A59228BE2559445500DA9780 /* MusicPanel.swift in Sources */,
+				A59228AA2559440100DA9780 /* CalendarsPanel.swift in Sources */,
+				A59228A12559189A00DA9780 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

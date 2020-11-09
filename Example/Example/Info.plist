@@ -50,6 +50,11 @@
 	<string>Please allow access to your location (always, for iOS 11 and newer)</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Please allow access to your location (always, for iOS 10)</string>
+    <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+    <dict>
+        <key>Default</key>
+        <string>Please allow temporary precise access to your location</string>
+    </dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow access to your location (when in use only)</string>
 	<key>NSMicrophoneUsageDescription</key>

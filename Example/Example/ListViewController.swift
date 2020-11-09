@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ListViewController.swift
 //  PermissionKit.Example
 //
 //  Created by Sergey Moskvin on 03.10.2020.
@@ -8,7 +8,7 @@
 import PermissionKit
 import UIKit
 
-final class ViewController: UIViewController {
+final class ListViewController: UIViewController {
     
     @IBOutlet private weak var bluetoothButton: UIButton!
     @IBOutlet private weak var calendarsButton: UIButton!
@@ -31,31 +31,13 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let systemVersion = UIDevice.current.systemVersion
-        
-        bluetoothButton.isHidden = systemVersion.compare("13.1", options: .numeric) == .orderedAscending
-        faceIDButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
-        
-#if !targetEnvironment(macCatalyst)
-        healthButton.isHidden = false
-        homeButton.isHidden = systemVersion.compare("13", options: .numeric) == .orderedAscending
-#else
-        healthButton.isHidden = true
-        homeButton.isHidden = true
-#endif
-        
-        localNetworkButton.isHidden = systemVersion.compare("14", options: .numeric) == .orderedAscending
-        motionButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
-        musicButton.isHidden = systemVersion.compare("9.3", options: .numeric) == .orderedAscending
-        notificationsButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
-        speechRecognitionButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
+        configure()
     }
     
     // MARK: - User Interaction
     
     @IBAction func buttonDidPress(_ sender: UIButton) {
-        var permission: Unifiable.Type?
+        var permission: Permission.Type?
         
         switch sender {
             case bluetoothButton:
@@ -97,58 +79,45 @@ final class ViewController: UIViewController {
             case musicButton:
                 permission = Permission.music.self
             case notificationsButton:
-                if #available(iOS 10, *) {
-                    permission = Permission.notifications.self
-                }
+                permission = Permission.notifications.self
             case photosButton:
                 permission = Permission.photos.self
             case remindersButton:
                 permission = Permission.reminders.self
             case speechRecognitionButton:
-                if #available(iOS 10, *) {
-                    permission = Permission.speechRecognition.self
-                }
+                permission = Permission.speechRecognition.self
             
             default:
                 break
         }
         
-        if let permission = permission {
-            showMenu(for: permission, customer: sender)
+        if let permission = permission, let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Selection") as? DetailViewController {
+            detailViewController.permission = permission
+            navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
     
     // MARK: - Private Functions
     
-    private func showMenu(for permission: Unifiable.Type, customer: UIButton) {
-        guard let title = customer.title(for: .normal) else {
-            return
-        }
+    private func configure() {
+        let systemVersion = UIDevice.current.systemVersion
         
-        let notifyAboutResult: (String?) -> Void = { status in
-            if let status = status {
-                print("\(title): \(status)")
-            }
-        }
+        bluetoothButton.isHidden = systemVersion.compare("13.1", options: .numeric) == .orderedAscending
+        faceIDButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
         
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+#if !targetEnvironment(macCatalyst)
+        healthButton.isHidden = false
+        homeButton.isHidden = systemVersion.compare("13", options: .numeric) == .orderedAscending
+#else
+        healthButton.isHidden = true
+        homeButton.isHidden = true
+#endif
         
-        let checkStatusAction = UIAlertAction(title: "Check status", style: .default) { _ in
-            permission.checkStatus { notifyAboutResult($0) }
-        }
-        
-        alertController.addAction(checkStatusAction)
-        
-        let requestAccessAction = UIAlertAction(title: "Request access", style: .default) { _ in
-            permission.requestAccess { notifyAboutResult($0) }
-        }
-        
-        alertController.addAction(requestAccessAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
+        localNetworkButton.isHidden = systemVersion.compare("14", options: .numeric) == .orderedAscending
+        motionButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
+        musicButton.isHidden = systemVersion.compare("9.3", options: .numeric) == .orderedAscending
+        notificationsButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
+        speechRecognitionButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
     }
     
 }

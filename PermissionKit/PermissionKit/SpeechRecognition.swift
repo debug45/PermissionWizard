@@ -7,7 +7,6 @@
 
 import Speech
 
-@available(iOS 10, *)
 public extension Permission {
     
     final class speechRecognition: Permission {
