@@ -29,10 +29,7 @@ extension Permission.bluetooth {
         
         override func handleDeterminedStatus() {
             super.handleDeterminedStatus()
-            
-            checkStatus { status in
-                self.invokeCallbacks(with: status)
-            }
+            checkStatus { self.invokeCallbacks(with: $0) }
         }
         
         // MARK: - Central Manager Delegate

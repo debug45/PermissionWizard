@@ -151,8 +151,8 @@
 				A59228A42559411C00DA9780 /* Panels */,
 				A59228C8255957FF00DA9780 /* Framework */,
 				A5EDD6C32528DF51001F44C9 /* Main.storyboard */,
-				A5DAF05B2528D7EE002483A6 /* Assets.xcassets */,
 				A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */,
+				A5DAF05B2528D7EE002483A6 /* Assets.xcassets */,
 				A5EDD6B52528DDD8001F44C9 /* Example.entitlements */,
 				A5DAF0602528D7EE002483A6 /* Info.plist */,
 			);

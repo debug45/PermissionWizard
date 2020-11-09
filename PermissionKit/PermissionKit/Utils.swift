@@ -37,11 +37,11 @@ final class Utils {
         var plistKeys = usageDescriptionsPlistKeys
         
         if plistKeys == nil {
-            if let plistKey = permission.usageDescriptionPlistKey {
-                plistKeys = [plistKey]
-            } else {
+            guard let plistKey = permission.usageDescriptionPlistKey else {
                 return true
             }
+            
+            plistKeys = [plistKey]
         }
         
         var result = true

@@ -57,32 +57,36 @@ final class DetailViewController: UIViewController {
                 panel = SpeechRecognitionPanel()
             
             default:
-                if #available(iOS 11, *) {
-                    switch permission {
-                        case is Permission.faceID.Type:
-                            panel = FaceIDPanel()
-                        case is Permission.motion.Type:
-                            panel = MotionPanel()
+                guard #available(iOS 11, *) else {
+                    break
+                }
+                
+                switch permission {
+                    case is Permission.faceID.Type:
+                        panel = FaceIDPanel()
+                    case is Permission.motion.Type:
+                        panel = MotionPanel()
+                    
+                    default:
+                        guard #available(iOS 13, *) else {
+                            break
+                        }
                         
-                        default:
-                            if #available(iOS 13, *) {
 #if !targetEnvironment(macCatalyst)
-                                if permission is Permission.home.Type {
-                                    panel = HomePanel()
-                                }
+                        if permission is Permission.home.Type {
+                            panel = HomePanel()
+                        }
 #endif
-                                
-                                if panel == nil, #available(iOS 13.1, *) {
-                                    if permission is Permission.bluetooth.Type {
-                                        panel = BluetoothPanel()
-                                    } else {
-                                        if #available(iOS 14, *), permission is Permission.localNetwork.Type {
-                                            panel = LocalNetworkPanel()
-                                        }
-                                    }
+                        
+                        if panel == nil, #available(iOS 13.1, *) {
+                            if permission is Permission.bluetooth.Type {
+                                panel = BluetoothPanel()
+                            } else {
+                                if #available(iOS 14, *), permission is Permission.localNetwork.Type {
+                                    panel = LocalNetworkPanel()
                                 }
                             }
-                    }
+                        }
                 }
         }
         
