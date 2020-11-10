@@ -5,6 +5,7 @@
 //  Created by Sergey Moskvin on 15.10.2020.
 //
 
+#if HOME || !CUSTOM_SETTINGS
 #if !targetEnvironment(macCatalyst)
 
 import HomeKit
@@ -50,4 +51,5 @@ public extension Permission {
     
 }
 
+#endif
 #endif

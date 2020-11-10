@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 15.10.2020.
 //
 
+#if MICROPHONE || !CUSTOM_SETTINGS
+
 import AVKit
 
 public extension Permission {
@@ -58,3 +60,5 @@ public extension Permission {
     }
     
 }
+
+#endif

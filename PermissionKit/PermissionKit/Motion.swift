@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 17.10.2020.
 //
 
+#if MOTION || !CUSTOM_SETTINGS
+
 import CoreMotion
 
 @available(iOS 11, *)
@@ -60,3 +62,5 @@ public extension Permission {
     }
     
 }
+
+#endif

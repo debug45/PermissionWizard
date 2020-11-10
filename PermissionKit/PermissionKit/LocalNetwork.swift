@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 31.10.2020.
 //
 
+#if LOCAL_NETWORK || !CUSTOM_SETTINGS
+
 import Network
 
 @available(iOS 14, *)
@@ -36,3 +38,5 @@ public extension Permission {
     }
     
 }
+
+#endif

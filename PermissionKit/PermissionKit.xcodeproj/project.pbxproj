@@ -39,6 +39,7 @@
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A53C04C0254D5C35007F1438 /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
 		A53C04D8254DBDBA007F1438 /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
+		A53DFF50255AAB8200995A85 /* Settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Settings.xcconfig; sourceTree = "<group>"; };
 		A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.Agent.swift; sourceTree = "<group>"; };
 		A5518743253779CA001A8208 /* Calendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendars.swift; sourceTree = "<group>"; };
 		A553E454254464B700589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 				A5B519C72538D842006870FA /* SpeechRecognition.swift */,
 				A5B0765825378F8700E6DF79 /* Utils.swift */,
 				A5EDD6912528DA67001F44C9 /* PermissionKit.h */,
+				A53DFF50255AAB8200995A85 /* Settings.xcconfig */,
 				A5DAF03E2528D771002483A6 /* Info.plist */,
 				A5DAF03B2528D771002483A6 /* Products */,
 			);
@@ -228,6 +230,7 @@
 /* Begin XCBuildConfiguration section */
 		A5DAF0402528D771002483A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A53DFF50255AAB8200995A85 /* Settings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -292,6 +295,7 @@
 		};
 		A5DAF0412528D771002483A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A53DFF50255AAB8200995A85 /* Settings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -350,6 +354,7 @@
 		};
 		A5DAF0432528D771002483A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A53DFF50255AAB8200995A85 /* Settings.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -377,6 +382,7 @@
 		};
 		A5DAF0442528D771002483A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A53DFF50255AAB8200995A85 /* Settings.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

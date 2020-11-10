@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 24.10.2020.
 //
 
+#if LOCATION || !CUSTOM_SETTINGS
+
 import CoreLocation
 
 extension Permission.location {
@@ -49,3 +51,5 @@ extension Permission.location {
     }
     
 }
+
+#endif

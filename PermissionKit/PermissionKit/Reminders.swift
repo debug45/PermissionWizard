@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 06.10.2020.
 //
 
+#if REMINDERS || !CUSTOM_SETTINGS
+
 import EventKit
 
 public extension Permission {
@@ -62,3 +64,5 @@ public extension Permission {
     }
     
 }
+
+#endif

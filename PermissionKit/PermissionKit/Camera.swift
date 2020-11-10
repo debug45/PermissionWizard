@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 17.10.2020.
 //
 
+#if CAMERA || !CUSTOM_SETTINGS
+
 import AVKit
 
 public extension Permission {
@@ -93,3 +95,5 @@ public extension Permission {
     }
     
 }
+
+#endif

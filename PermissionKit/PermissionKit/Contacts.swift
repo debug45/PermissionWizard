@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 03.10.2020.
 //
 
+#if CONTACTS || !CUSTOM_SETTINGS
+
 import Contacts
 
 public extension Permission {
@@ -62,3 +64,5 @@ public extension Permission {
     }
     
 }
+
+#endif

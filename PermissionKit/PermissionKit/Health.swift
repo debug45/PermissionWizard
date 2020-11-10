@@ -5,6 +5,7 @@
 //  Created by Sergey Moskvin on 18.10.2020.
 //
 
+#if HEALTH || !CUSTOM_SETTINGS
 #if !targetEnvironment(macCatalyst)
 
 import HealthKit
@@ -69,4 +70,5 @@ public extension Permission {
     
 }
 
+#endif
 #endif

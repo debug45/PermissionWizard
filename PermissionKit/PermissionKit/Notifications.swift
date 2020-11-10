@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 18.10.2020.
 //
 
+#if NOTIFICATIONS || !CUSTOM_SETTINGS
+
 import UserNotifications
 
 public extension Permission {
@@ -69,3 +71,5 @@ public extension Permission {
     }
     
 }
+
+#endif

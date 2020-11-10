@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 17.10.2020.
 //
 
+#if PHOTOS || !CUSTOM_SETTINGS
+
 import Photos
 
 public extension Permission {
@@ -119,3 +121,5 @@ public extension Permission {
     }
     
 }
+
+#endif

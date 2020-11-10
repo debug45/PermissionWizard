@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 31.10.2020.
 //
 
+#if FACE_ID || !CUSTOM_SETTINGS
+
 import LocalAuthentication
 
 @available(iOS 11, *)
@@ -74,3 +76,5 @@ public extension Permission {
     }
     
 }
+
+#endif

@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 17.10.2020.
 //
 
+#if MUSIC || !CUSTOM_SETTINGS
+
 import MediaPlayer
 
 public extension Permission {
@@ -62,3 +64,5 @@ public extension Permission {
     }
     
 }
+
+#endif

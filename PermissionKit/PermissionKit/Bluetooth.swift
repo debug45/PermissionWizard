@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 25.10.2020.
 //
 
+#if BLUETOOTH || !CUSTOM_SETTINGS
+
 import CoreBluetooth
 
 @available(iOS 13.1, *)
@@ -70,3 +72,5 @@ public extension Permission {
     }
     
 }
+
+#endif
