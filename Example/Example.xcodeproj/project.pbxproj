@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A533FEE7253B28E2003B7648 /* PermissionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; };
-		A533FEE8253B28E2003B7648 /* PermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A533FEE7253B28E2003B7648 /* PermissionWizard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */; };
+		A533FEE8253B28E2003B7648 /* PermissionWizard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A59228A12559189A00DA9780 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A02559189A00DA9780 /* DetailViewController.swift */; };
 		A59228A32559347900DA9780 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A22559347900DA9780 /* Panel.swift */; };
 		A59228A62559418E00DA9780 /* SpeechRecognitionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A52559418E00DA9780 /* SpeechRecognitionPanel.swift */; };
@@ -27,7 +27,7 @@
 		A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228BF2559445600DA9780 /* NotificationsPanel.swift */; };
 		A59228C22559445800DA9780 /* PhotosPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C12559445800DA9780 /* PhotosPanel.swift */; };
 		A59228C42559445A00DA9780 /* RemindersPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C32559445A00DA9780 /* RemindersPanel.swift */; };
-		A59228CA2559581100DA9780 /* PKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C92559581100DA9780 /* PKButton.swift */; };
+		A59228CA2559581100DA9780 /* PWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C92559581100DA9780 /* PWButton.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ListViewController.swift */; };
 		A5DAF05C2528D7EE002483A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DAF05B2528D7EE002483A6 /* Assets.xcassets */; };
@@ -42,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A533FEE8253B28E2003B7648 /* PermissionKit.framework in Embed Frameworks */,
+				A533FEE8253B28E2003B7648 /* PermissionWizard.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,13 +69,13 @@
 		A59228BF2559445600DA9780 /* NotificationsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPanel.swift; sourceTree = "<group>"; };
 		A59228C12559445800DA9780 /* PhotosPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPanel.swift; sourceTree = "<group>"; };
 		A59228C32559445A00DA9780 /* RemindersPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersPanel.swift; sourceTree = "<group>"; };
-		A59228C92559581100DA9780 /* PKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKButton.swift; sourceTree = "<group>"; };
+		A59228C92559581100DA9780 /* PWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWButton.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0562528D7ED002483A6 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A5DAF05B2528D7EE002483A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DAF0602528D7EE002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PermissionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PermissionWizard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EDD6B52528DDD8001F44C9 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		A5EDD6C32528DF51001F44C9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A533FEE7253B28E2003B7648 /* PermissionKit.framework in Frameworks */,
+				A533FEE7253B28E2003B7648 /* PermissionWizard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +120,7 @@
 		A59228C8255957FF00DA9780 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				A59228C92559581100DA9780 /* PKButton.swift */,
+				A59228C92559581100DA9780 /* PWButton.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A53C04AD254D5078007F1438 /* HealthKit.framework */,
-				A5EDD6B12528DB8B001F44C9 /* PermissionKit.framework */,
+				A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					A5DAF04E2528D7ED002483A6 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -250,7 +250,7 @@
 				A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */,
 				A59228A32559347900DA9780 /* Panel.swift in Sources */,
 				A59228BC2559445300DA9780 /* MotionPanel.swift in Sources */,
-				A59228CA2559581100DA9780 /* PKButton.swift in Sources */,
+				A59228CA2559581100DA9780 /* PWButton.swift in Sources */,
 				A59228A82559439100DA9780 /* BluetoothPanel.swift in Sources */,
 				A59228C42559445A00DA9780 /* RemindersPanel.swift in Sources */,
 				A59228B62559444100DA9780 /* LocalNetworkPanel.swift in Sources */,
@@ -398,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionKit.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionWizard.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -422,7 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionKit.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionWizard.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;

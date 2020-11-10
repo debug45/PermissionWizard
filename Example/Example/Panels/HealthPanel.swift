@@ -1,6 +1,6 @@
 //
 //  HealthPanel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
@@ -8,7 +8,7 @@
 #if !targetEnvironment(macCatalyst)
 
 import HealthKit
-import PermissionKit
+import PermissionWizard
 
 final class HealthPanel: Panel<Permission.health> {
     

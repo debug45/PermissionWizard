@@ -1,11 +1,11 @@
 //
 //  LocalNetworkPanel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
-import PermissionKit
+import PermissionWizard
 
 @available(iOS 14, *)
 final class LocalNetworkPanel: Panel<Permission.localNetwork> {

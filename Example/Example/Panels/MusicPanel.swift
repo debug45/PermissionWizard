@@ -1,11 +1,11 @@
 //
 //  MusicPanel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
-import PermissionKit
+import PermissionWizard
 
 final class MusicPanel: Panel<Permission.music> {
     

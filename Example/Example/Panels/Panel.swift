@@ -1,11 +1,11 @@
 //
 //  Panel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
-import PermissionKit
+import PermissionWizard
 import UIKit
 
 class Panel<T: Permission>: UIStackView {
@@ -39,7 +39,7 @@ class Panel<T: Permission>: UIStackView {
     }
     
     func addButton(title: String, action: @escaping () -> Void) {
-        let button = PKButton(title: title, primaryAction: action)
+        let button = PWButton(title: title, primaryAction: action)
         addArrangedSubview(button)
     }
     

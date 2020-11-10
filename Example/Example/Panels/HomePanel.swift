@@ -1,13 +1,13 @@
 //
 //  HomePanel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
 #if !targetEnvironment(macCatalyst)
 
-import PermissionKit
+import PermissionWizard
 
 @available(iOS 13, *)
 final class HomePanel: Panel<Permission.home> {

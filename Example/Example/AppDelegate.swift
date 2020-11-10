@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 03.10.2020.
 //

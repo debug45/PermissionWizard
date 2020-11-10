@@ -1,11 +1,11 @@
 //
 //  BluetoothPanel.swift
-//  PermissionKit.Example
+//  Permission Wizard
 //
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
-import PermissionKit
+import PermissionWizard
 
 @available(iOS 13.1, *)
 final class BluetoothPanel: Panel<Permission.bluetooth> {
