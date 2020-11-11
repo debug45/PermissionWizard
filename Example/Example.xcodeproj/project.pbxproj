@@ -128,7 +128,16 @@
 		A5DAF0462528D7ED002483A6 = {
 			isa = PBXGroup;
 			children = (
-				A5DAF0512528D7ED002483A6 /* Example */,
+				A5DAF0522528D7ED002483A6 /* AppDelegate.swift */,
+				A5DAF0562528D7ED002483A6 /* ListViewController.swift */,
+				A59228A02559189A00DA9780 /* DetailViewController.swift */,
+				A59228A42559411C00DA9780 /* Panels */,
+				A59228C8255957FF00DA9780 /* Framework */,
+				A5EDD6C32528DF51001F44C9 /* Main.storyboard */,
+				A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */,
+				A5DAF05B2528D7EE002483A6 /* Assets.xcassets */,
+				A5EDD6B52528DDD8001F44C9 /* Example.entitlements */,
+				A5DAF0602528D7EE002483A6 /* Info.plist */,
 				A5DAF0502528D7ED002483A6 /* Products */,
 				A5DAF06A2528D832002483A6 /* Frameworks */,
 			);
@@ -140,23 +149,6 @@
 				A5DAF04F2528D7ED002483A6 /* Example.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A5DAF0512528D7ED002483A6 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				A5DAF0522528D7ED002483A6 /* AppDelegate.swift */,
-				A5DAF0562528D7ED002483A6 /* ListViewController.swift */,
-				A59228A02559189A00DA9780 /* DetailViewController.swift */,
-				A59228A42559411C00DA9780 /* Panels */,
-				A59228C8255957FF00DA9780 /* Framework */,
-				A5EDD6C32528DF51001F44C9 /* Main.storyboard */,
-				A5EDD6C42528DF52001F44C9 /* LaunchScreen.storyboard */,
-				A5DAF05B2528D7EE002483A6 /* Assets.xcassets */,
-				A5EDD6B52528DDD8001F44C9 /* Example.entitlements */,
-				A5DAF0602528D7EE002483A6 /* Info.plist */,
-			);
-			path = Example;
 			sourceTree = "<group>";
 		};
 		A5DAF06A2528D832002483A6 /* Frameworks */ = {
@@ -387,11 +379,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
-				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -411,11 +403,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
-				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
