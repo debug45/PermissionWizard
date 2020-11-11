@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 03.10.2020.
 //
 
+import UIKit
+
 public class Permission {
     
     // MARK: - Global Settings
@@ -12,6 +14,15 @@ public class Permission {
     public static var preferredQueue: DispatchQueue? = .main
     
     // MARK: - Base Properties
+    
+#if ICONS || !CUSTOM_SETTINGS
+    public class var icon: UIImage? {
+        let bundle = Bundle(for: self)
+        return UIImage(named: titleName, in: bundle, compatibleWith: nil)
+    }
+    
+    public class var shouldBorderIcon: Bool { false }
+#endif
     
     public class var titleName: String {
         return String(describing: self).capitalized

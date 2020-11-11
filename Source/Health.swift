@@ -24,6 +24,10 @@ public extension Permission {
             
         }
         
+#if ICONS || !CUSTOM_SETTINGS
+        public override class var shouldBorderIcon: Bool { true }
+#endif
+        
         public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
         

@@ -24,7 +24,10 @@ final class DetailViewController: UIViewController {
     // MARK: - Private Functions
     
     private func configure() {
-        title = permission?.titleName
+        let header = PWHeader()
+        header.permission = permission
+        
+        navigationItem.titleView = header
         
         var panel: UIStackView?
         

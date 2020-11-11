@@ -24,6 +24,10 @@ public extension Permission {
             
         }
         
+#if ICONS || !CUSTOM_SETTINGS
+        public override class var shouldBorderIcon: Bool { true }
+#endif
+        
         public override class var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
         
         private static var existingAgent: Agent?

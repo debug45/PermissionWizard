@@ -30,7 +30,7 @@ class Panel<T: Permission>: UIStackView {
         axis = .vertical
         
         alignment = .center
-        spacing = 4
+        spacing = 12
     }
     
     func addDefaultButtons(checkStatusAction: @escaping () -> Void, requestAccessAction: @escaping () -> Void) {
@@ -39,7 +39,11 @@ class Panel<T: Permission>: UIStackView {
     }
     
     func addButton(title: String, action: @escaping () -> Void) {
-        let button = PWButton(title: title, primaryAction: action)
+        let button = PWButton()
+        
+        button.title = title
+        button.action = action
+        
         addArrangedSubview(button)
     }
     
@@ -66,7 +70,7 @@ class Panel<T: Permission>: UIStackView {
             return
         }
         
-        setCustomSpacing(32, after: lastView)
+        setCustomSpacing(36, after: lastView)
     }
     
     func notify(_ message: String) {

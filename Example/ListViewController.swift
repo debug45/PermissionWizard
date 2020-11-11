@@ -10,22 +10,7 @@ import UIKit
 
 final class ListViewController: UIViewController {
     
-    @IBOutlet private weak var bluetoothButton: UIButton!
-    @IBOutlet private weak var calendarsButton: UIButton!
-    @IBOutlet private weak var cameraButton: UIButton!
-    @IBOutlet private weak var contactsButton: UIButton!
-    @IBOutlet private weak var faceIDButton: UIButton!
-    @IBOutlet private weak var healthButton: UIButton!
-    @IBOutlet private weak var homeButton: UIButton!
-    @IBOutlet private weak var localNetworkButton: UIButton!
-    @IBOutlet private weak var locationButton: UIButton!
-    @IBOutlet private weak var microphoneButton: UIButton!
-    @IBOutlet private weak var motionButton: UIButton!
-    @IBOutlet private weak var musicButton: UIButton!
-    @IBOutlet private weak var notificationsButton: UIButton!
-    @IBOutlet private weak var photosButton: UIButton!
-    @IBOutlet private weak var remindersButton: UIButton!
-    @IBOutlet private weak var speechRecognitionButton: UIButton!
+    @IBOutlet private weak var buttonsContainer: UIStackView!
     
     // MARK: - Life Cycle
     
@@ -34,90 +19,64 @@ final class ListViewController: UIViewController {
         configure()
     }
     
-    // MARK: - User Interaction
-    
-    @IBAction func buttonDidPress(_ sender: UIButton) {
-        var permission: Permission.Type?
-        
-        switch sender {
-            case bluetoothButton:
-                if #available(iOS 13.1, *) {
-                    permission = Permission.bluetooth.self
-                }
-            case calendarsButton:
-                permission = Permission.calendars.self
-            case cameraButton:
-                permission = Permission.camera.self
-            case contactsButton:
-                permission = Permission.contacts.self
-            case faceIDButton:
-                if #available(iOS 11, *) {
-                    permission = Permission.faceID.self
-                }
-            
-#if !targetEnvironment(macCatalyst)
-            case healthButton:
-                permission = Permission.health.self
-            case homeButton:
-                if #available(iOS 13, *) {
-                    permission = Permission.home.self
-                }
-#endif
-            
-            case localNetworkButton:
-                if #available(iOS 14, *) {
-                    permission = Permission.localNetwork.self
-                }
-            case locationButton:
-                permission = Permission.location.self
-            case microphoneButton:
-                permission = Permission.microphone.self
-            case motionButton:
-                if #available(iOS 11, *) {
-                    permission = Permission.motion.self
-                }
-            case musicButton:
-                permission = Permission.music.self
-            case notificationsButton:
-                permission = Permission.notifications.self
-            case photosButton:
-                permission = Permission.photos.self
-            case remindersButton:
-                permission = Permission.reminders.self
-            case speechRecognitionButton:
-                permission = Permission.speechRecognition.self
-            
-            default:
-                break
-        }
-        
-        if let permission = permission, let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Selection") as? DetailViewController {
-            detailViewController.permission = permission
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
-    }
-    
     // MARK: - Private Functions
     
     private func configure() {
-        let systemVersion = UIDevice.current.systemVersion
+        if #available(iOS 13.1, *) {
+            addButton(for: Permission.bluetooth.self)
+        }
         
-        bluetoothButton.isHidden = systemVersion.compare("13.1", options: .numeric) == .orderedAscending
-        faceIDButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
+        addButton(for: Permission.calendars.self)
+        addButton(for: Permission.camera.self)
+        addButton(for: Permission.contacts.self)
+        
+        if #available(iOS 11, *) {
+            addButton(for: Permission.faceID.self)
+        }
         
 #if !targetEnvironment(macCatalyst)
-        healthButton.isHidden = false
-        homeButton.isHidden = systemVersion.compare("13", options: .numeric) == .orderedAscending
-#else
-        healthButton.isHidden = true
-        homeButton.isHidden = true
+        addButton(for: Permission.health.self)
+        
+        if #available(iOS 13, *) {
+            addButton(for: Permission.home.self)
+        }
 #endif
         
-        localNetworkButton.isHidden = systemVersion.compare("14", options: .numeric) == .orderedAscending
-        motionButton.isHidden = systemVersion.compare("11", options: .numeric) == .orderedAscending
-        musicButton.isHidden = systemVersion.compare("9.3", options: .numeric) == .orderedAscending
-        notificationsButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
-        speechRecognitionButton.isHidden = systemVersion.compare("10", options: .numeric) == .orderedAscending
+        if #available(iOS 14, *) {
+            addButton(for: Permission.localNetwork.self)
+        }
+        
+        addButton(for: Permission.location.self)
+        addButton(for: Permission.microphone.self)
+        
+        if #available(iOS 11, *) {
+            addButton(for: Permission.motion.self)
+        }
+        
+        addButton(for: Permission.music.self)
+        addButton(for: Permission.notifications.self)
+        addButton(for: Permission.photos.self)
+        addButton(for: Permission.reminders.self)
+        addButton(for: Permission.speechRecognition.self)
+    }
+    
+    private func addButton(for permission: Permission.Type) {
+        let header = PWHeader()
+        header.permission = permission
+        
+        let button = PWButton()
+        button.contentView = header
+        
+        button.action = {
+            guard let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "Selection") as? DetailViewController else {
+                return
+            }
+            
+            detailViewController.permission = permission
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+        
+        buttonsContainer.addArrangedSubview(button)
     }
     
 }

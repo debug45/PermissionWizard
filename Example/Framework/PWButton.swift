@@ -7,18 +7,11 @@
 
 import UIKit
 
-final class PWButton: UIButton {
+final class PWButton: UIControl {
     
-    private var primaryAction: () -> Void = { }
+    private let titleLabel = UILabel()
     
     // MARK: - Life Cycle
-    
-    convenience init(title: String, primaryAction: @escaping () -> Void) {
-        self.init(type: .system)
-        
-        setTitle(title, for: .normal)
-        self.primaryAction = primaryAction
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,15 +23,74 @@ final class PWButton: UIButton {
         configure()
     }
     
+    // MARK: - Properties
+    
+    var title: String? {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
+    var contentView: UIView? {
+        willSet {
+            contentView?.removeFromSuperview()
+        }
+        
+        didSet {
+            guard let contentView = contentView else {
+                return
+            }
+            
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(contentView)
+            
+            NSLayoutConstraint.activate([
+                contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                
+                contentView.topAnchor.constraint(equalTo: topAnchor),
+                contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        }
+    }
+    
+    var action: () -> Void = { }
+    
+    // MARK: - Overriding
+    
+    override var isHighlighted: Bool {
+        didSet {
+            let duration: TimeInterval = isHighlighted ? 0 : 0.25
+            
+            UIView.animate(withDuration: duration, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
+                self.titleLabel.alpha = self.isHighlighted ? 0.5 : 1
+                self.contentView?.alpha = self.titleLabel.alpha
+            }, completion: nil)
+        }
+    }
+    
     // MARK: - Private Functions
     
     private func configure() {
-        let selector = #selector(primaryActionDidTrigger)
-        addTarget(self, action: selector, for: .primaryActionTriggered)
+        titleLabel.textColor = tintColor
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleLabel)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        let selector = #selector(didTouchUpInside)
+        addTarget(self, action: selector, for: .touchUpInside)
     }
     
-    @objc private func primaryActionDidTrigger() {
-        primaryAction()
+    @objc private func didTouchUpInside() {
+        action()
     }
     
 }

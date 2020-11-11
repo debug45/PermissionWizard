@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   spec.name = 'PermissionWizard'
   spec.version = '1.0.0'
   
-  spec.summary = '🔮 A perfect tool for system permissions management'
+  spec.summary = '🔮 An ultimate tool for system permissions management'
   
   spec.author = { 'Sergey Moskvin' => 'debug45@mail.ru' }
   spec.license = { :type => 'MIT', :file => 'LICENSE.md' }
@@ -16,6 +16,12 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'Core' do |core|
     core.source_files = 'Source/**/*.swift'
+  end
+  
+  spec.subspec 'Icons' do |icons|
+    icons.dependency 'PermissionWizard/Core'
+    icons.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'ICONS CUSTOM_SETTINGS' }
+    icons.resource = 'Source/Assets.xcassets/**/*'
   end
   
   spec.subspec 'Bluetooth' do |bluetooth|
@@ -98,6 +104,6 @@ Pod::Spec.new do |spec|
     speech_recognition.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'SPEECH_RECOGNITION CUSTOM_SETTINGS' }
   end
   
-  spec.default_subspec = 'Core', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'SpeechRecognition'
+  spec.default_subspec = 'Core', 'Icons', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'SpeechRecognition'
   
 end

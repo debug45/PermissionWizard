@@ -28,6 +28,7 @@
 		A59228C22559445800DA9780 /* PhotosPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C12559445800DA9780 /* PhotosPanel.swift */; };
 		A59228C42559445A00DA9780 /* RemindersPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C32559445A00DA9780 /* RemindersPanel.swift */; };
 		A59228CA2559581100DA9780 /* PWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C92559581100DA9780 /* PWButton.swift */; };
+		A5CB5854255C5FEC00B2AC1A /* PWHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ListViewController.swift */; };
 		A5DAF05C2528D7EE002483A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DAF05B2528D7EE002483A6 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		A59228C12559445800DA9780 /* PhotosPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPanel.swift; sourceTree = "<group>"; };
 		A59228C32559445A00DA9780 /* RemindersPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersPanel.swift; sourceTree = "<group>"; };
 		A59228C92559581100DA9780 /* PWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWButton.swift; sourceTree = "<group>"; };
+		A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWHeader.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0562528D7ED002483A6 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		A59228C8255957FF00DA9780 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */,
 				A59228C92559581100DA9780 /* PWButton.swift */,
 			);
 			path = Framework;
@@ -238,6 +241,7 @@
 				A59228AE2559443C00DA9780 /* ContactsPanel.swift in Sources */,
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
 				A59228A62559418E00DA9780 /* SpeechRecognitionPanel.swift in Sources */,
+				A5CB5854255C5FEC00B2AC1A /* PWHeader.swift in Sources */,
 				A59228B02559443D00DA9780 /* FaceIDPanel.swift in Sources */,
 				A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */,
 				A59228A32559347900DA9780 /* Panel.swift in Sources */,
@@ -378,7 +382,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CODE_SIGN_ENTITLEMENTS = Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -402,7 +405,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CODE_SIGN_ENTITLEMENTS = Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
