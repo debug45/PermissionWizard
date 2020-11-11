@@ -17,7 +17,13 @@ public class Permission {
     
 #if ICONS || !CUSTOM_SETTINGS
     public class var icon: UIImage? {
-        let bundle = Bundle(for: self)
+        var bundle = Bundle(for: self)
+        
+        guard let url = bundle.url(forResource: "Icons", withExtension: "bundle") else {
+            return nil
+        }
+        
+        bundle = Bundle(url: url) ?? bundle
         return UIImage(named: titleName, in: bundle, compatibleWith: nil)
     }
     

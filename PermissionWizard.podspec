@@ -21,7 +21,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'Icons' do |icons|
     icons.dependency 'PermissionWizard/Core'
     icons.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'ICONS CUSTOM_SETTINGS' }
-    icons.resource = 'Source/Assets.xcassets/**/*'
+    icons.resource_bundle = { 'Icons' => 'Source/Assets.xcassets' }
   end
   
   spec.subspec 'Bluetooth' do |bluetooth|
