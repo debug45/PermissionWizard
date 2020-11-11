@@ -1,1 +1,5 @@
+// Support of the example project
 #include? "../PermissionWizard.xcconfig"
+
+// Carthage support
+#include? "../../../../PermissionWizard.xcconfig"
