@@ -27,7 +27,7 @@ public extension Permission {
             
         }
         
-        public typealias CombinedStatus = (value: NarrowStatus, isReducing: Bool)
+        public typealias CombinedStatus = (value: NarrowStatus, isAccuracyReducing: Bool)
         
         public static let alwaysUsageDescriptionPlistKeys = [
             "NSLocationAlwaysAndWhenInUseUsageDescription", // Required for iOS 11 and newer
@@ -61,11 +61,11 @@ public extension Permission {
                     narrow = .unknown
             }
             
-            var combined = CombinedStatus(value: narrow, isReducing: false)
+            var combined = CombinedStatus(value: narrow, isAccuracyReducing: false)
             
 #if !targetEnvironment(macCatalyst)
             if #available(iOS 14, *) {
-                combined.isReducing = manager.accuracyAuthorization != .fullAccuracy
+                combined.isAccuracyReducing = manager.accuracyAuthorization != .fullAccuracy
             }
 #endif
             

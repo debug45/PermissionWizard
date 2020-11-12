@@ -55,7 +55,7 @@ final class PWHeader: UIView {
     // MARK: - Private Functions
     
     private func configure() {
-        iconView.layer.cornerRadius = 6
+        iconView.layer.cornerRadius = 7
         iconView.clipsToBounds = true
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
