@@ -47,9 +47,15 @@ class Panel<T: Permission>: UIStackView {
         addArrangedSubview(button)
     }
     
-    func addSwitch(title: String, withIncreasedOffset: Bool = true) -> UISwitch {
+    func addSwitch(title: String, isOn: Bool = false, withIncreasedOffset: Bool = true) -> UISwitch {
         let switchView = UISwitch()
+        switchView.isOn = isOn
+        
         addArrangedSubview(switchView)
+        
+        if #available(iOS 11, *) {
+            setCustomSpacing(8, after: switchView)
+        }
         
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)

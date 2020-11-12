@@ -13,19 +13,22 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CTw-qR-VVP" userLabel="Activity Indicator">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbZ-Re-7At" userLabel="Logo Label">
+                                <rect key="frame" x="176.5" y="414.5" width="61" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CTw-qR-VVP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="JI5-Gu-e8K"/>
-                            <constraint firstItem="CTw-qR-VVP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="z92-TA-oTq"/>
+                            <constraint firstItem="jbZ-Re-7At" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Mih-0E-Ywu"/>
+                            <constraint firstItem="jbZ-Re-7At" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wtC-PX-OUM"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -24,6 +24,10 @@ final class LocationPanel: Panel<Permission.location> {
         
         let whenInUseOnlySwitch = addSwitch(title: "When in Use Only", withIncreasedOffset: false)
         
+        if #available(iOS 11, *), let lastView = arrangedSubviews.last {
+            setCustomSpacing(16, after: lastView)
+        }
+        
         addButton(title: "Request Access") {
             self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
         }

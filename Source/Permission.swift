@@ -19,11 +19,14 @@ public class Permission {
     public class var icon: UIImage? {
         var bundle = Bundle(for: self)
         
+#if !EXAMPLE
         guard let url = bundle.url(forResource: "Icons", withExtension: "bundle") else {
             return nil
         }
         
         bundle = Bundle(url: url) ?? bundle
+#endif
+        
         return UIImage(named: titleName, in: bundle, compatibleWith: nil)
     }
     

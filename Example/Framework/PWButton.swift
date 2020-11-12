@@ -34,9 +34,7 @@ final class PWButton: UIControl {
     var contentView: UIView? {
         willSet {
             contentView?.removeFromSuperview()
-        }
-        
-        didSet {
+        } didSet {
             guard let contentView = contentView else {
                 return
             }

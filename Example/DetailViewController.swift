@@ -101,7 +101,7 @@ final class DetailViewController: UIViewController {
                 panel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
                 panel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
                 
-                panel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
+                panel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 32),
                 panel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -32),
                 
                 panel.widthAnchor.constraint(equalTo: scrollView.widthAnchor)

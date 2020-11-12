@@ -18,9 +18,9 @@ final class NotificationsPanel: Panel<Permission.notifications> {
     override func configure() {
         super.configure()
         
-        let alertsSwitch = addSwitch(title: "Alerts", withIncreasedOffset: false)
-        let badgeSwitch = addSwitch(title: "Badge", withIncreasedOffset: false)
-        let soundSwitch = addSwitch(title: "Sound")
+        let alertsSwitch = addSwitch(title: "Alerts", isOn: true, withIncreasedOffset: false)
+        let badgeSwitch = addSwitch(title: "Badge", isOn: true, withIncreasedOffset: false)
+        let soundSwitch = addSwitch(title: "Sound", isOn: true)
         
         let carPlaySwitch = addSwitch(title: "CarPlay", withIncreasedOffset: false)
         

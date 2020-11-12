@@ -37,18 +37,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XQh-kr-tpn" userLabel="Buttons Container">
-                                        <rect key="frame" x="0.0" y="16" width="390" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="24" width="390" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" placeholder="YES" id="wLy-C8-wCY"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="XQh-kr-tpn" firstAttribute="bottom" secondItem="jbo-qt-uAs" secondAttribute="bottom" constant="-32" id="OHr-eb-qgu"/>
+                                    <constraint firstItem="XQh-kr-tpn" firstAttribute="bottom" secondItem="jbo-qt-uAs" secondAttribute="bottom" constant="-24" id="OHr-eb-qgu"/>
                                     <constraint firstItem="XQh-kr-tpn" firstAttribute="leading" secondItem="jbo-qt-uAs" secondAttribute="leading" id="SK8-ac-7PD"/>
                                     <constraint firstItem="XQh-kr-tpn" firstAttribute="trailing" secondItem="jbo-qt-uAs" secondAttribute="trailing" id="Wgi-Ee-dOU"/>
                                     <constraint firstItem="XQh-kr-tpn" firstAttribute="width" secondItem="jbo-qt-uAs" secondAttribute="width" id="Zkp-pv-p6q"/>
-                                    <constraint firstItem="XQh-kr-tpn" firstAttribute="top" secondItem="jbo-qt-uAs" secondAttribute="top" constant="16" id="i3N-0d-5S5"/>
+                                    <constraint firstItem="XQh-kr-tpn" firstAttribute="top" secondItem="jbo-qt-uAs" secondAttribute="top" constant="24" id="i3N-0d-5S5"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

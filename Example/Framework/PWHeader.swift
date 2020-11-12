@@ -44,6 +44,14 @@ final class PWHeader: UIView {
         }
     }
     
+    var titleColor: UIColor {
+        get {
+            return titleLabel.textColor
+        } set {
+            titleLabel.textColor = newValue
+        }
+    }
+    
     // MARK: - Private Functions
     
     private func configure() {
@@ -52,8 +60,6 @@ final class PWHeader: UIView {
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(iconView)
-        
-        titleLabel.textColor = tintColor
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)

@@ -62,7 +62,9 @@ final class ListViewController: UIViewController {
     
     private func addButton(for permission: Permission.Type) {
         let header = PWHeader()
+        
         header.permission = permission
+        header.titleColor = view.tintColor
         
         let button = PWButton()
         button.contentView = header
