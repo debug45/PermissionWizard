@@ -25,39 +25,27 @@ public extension Permission {
             
         }
         
+#if MICROPHONE || !CUSTOM_SETTINGS
         public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
+#endif
         
         public override class var usageDescriptionPlistKey: String? { "NSCameraUsageDescription" }
         
         // MARK: - Public Functions
         
+#if MICROPHONE || !CUSTOM_SETTINGS
         public class func checkStatus(withMicrophone: Bool, completion: @escaping (CombinedStatus) -> Void) {
-            let narrow: NarrowStatus
-            
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
-                case .authorized:
-                    narrow = .granted
-                case .denied:
-                    narrow = .denied
-                case .notDetermined:
-                    narrow = .notDetermined
-                case .restricted:
-                    narrow = .restrictedBySystem
+            checkNarrowStatus { narrow in
+                var combined = CombinedStatus(camera: narrow, microphone: nil)
                 
-                @unknown default:
-                    narrow = .unknown
-            }
-            
-            var combined = CombinedStatus(camera: narrow, microphone: nil)
-            
-            if withMicrophone {
-                microphone.checkStatus { status in
-                    combined.microphone = status
+                if withMicrophone {
+                    microphone.checkStatus { status in
+                        combined.microphone = status
+                        completion(combined)
+                    }
+                } else {
                     completion(combined)
                 }
-            } else {
-                let completion = Utils.linkToPreferredQueue(completion)
-                completion(combined)
             }
         }
         
@@ -72,22 +60,65 @@ public extension Permission {
                 return
             }
             
-            AVCaptureDevice.requestAccess(for: .video) { _ in
+            requestNarrowAccess { narrow in
                 guard completion != nil || withMicrophone else {
                     return
                 }
                 
-                checkStatus(withMicrophone: false) { combined in
-                    if withMicrophone {
-                        microphone.requestAccess { status in
-                            var combined = combined
-                            combined.microphone = status
-                            
-                            completion?(combined)
-                        }
-                    } else {
+                var combined: CombinedStatus = (camera: narrow, microphone: nil)
+                
+                if withMicrophone {
+                    microphone.requestAccess { status in
+                        combined.microphone = status
                         completion?(combined)
                     }
+                } else {
+                    completion?(combined)
+                }
+            }
+        }
+#else
+        public class func checkStatus(completion: @escaping (NarrowStatus) -> Void) {
+            checkNarrowStatus(completion: completion)
+        }
+        
+        public class func requestAccess(completion: ((NarrowStatus) -> Void)? = nil) {
+            guard Utils.checkIsAppConfigured(for: camera.self) else {
+                return
+            }
+            
+            requestNarrowAccess(completion: completion)
+        }
+#endif
+        
+        // MARK: - Private Functions
+        
+        private static func checkNarrowStatus(completion: @escaping (NarrowStatus) -> Void) {
+            let completion = Utils.linkToPreferredQueue(completion)
+            
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    completion(.granted)
+                case .denied:
+                    completion(.denied)
+                case .notDetermined:
+                    completion(.notDetermined)
+                case .restricted:
+                    completion(.restrictedBySystem)
+                
+                @unknown default:
+                    completion(.unknown)
+            }
+        }
+        
+        private static func requestNarrowAccess(completion: ((NarrowStatus) -> Void)? = nil) {
+            AVCaptureDevice.requestAccess(for: .video) { _ in
+                guard let completion = completion else {
+                    return
+                }
+                
+                checkNarrowStatus { narrow in
+                    completion(narrow)
                 }
             }
         }
