@@ -31,22 +31,7 @@ It is an ultimate tool for system permissions management. You no longer have to 
 
 ## Supported Types
 
-<img src="Documentation/Bluetooth@3x.png" width="29" height="29" title="Bluetooth"/>
-<img src="Documentation/Calendars@3x.png" width="29" height="29" title="Calendars"/>
-<img src="Documentation/Camera@3x.png" width="29" height="29" title="Camera"/>
-<img src="Documentation/Contacts@3x.png" width="29" height="29" title="Contacts"/>
-<img src="Documentation/FaceID@3x.png" width="29" height="29" title="Face ID"/>
-<img src="Documentation/Health@3x.png" width="29" height="29" title="Health"/>
-<img src="Documentation/Home@3x.png" width="29" height="29" title="Home"/>
-<img src="Documentation/LocalNetwork@3x.png" width="29" height="29" title="Local Network"/>
-<img src="Documentation/Location@3x.png" width="29" height="29" title="Location"/>
-<img src="Documentation/Microphone@3x.png" width="29" height="29" title="Microphone"/>
-<img src="Documentation/Motion@3x.png" width="29" height="29" title="Motion"/>
-<img src="Documentation/Music@3x.png" width="29" height="29" title="Music"/>
-<img src="Documentation/Notifications@3x.png" width="29" height="29" title="Notifications"/>
-<img src="Documentation/Photos@3x.png" width="29" height="29" title="Photos"/>
-<img src="Documentation/Reminders@3x.png" width="29" height="29" title="Reminders"/>
-<img src="Documentation/SpeechRecognition@3x.png" width="29" height="29" title="Speech Recognition"/>
+<img src="Documentation/Bluetooth@3x.png" width="29" height="29" title="Bluetooth"/> <img src="Documentation/Calendars@3x.png" width="29" height="29" title="Calendars"/> <img src="Documentation/Camera@3x.png" width="29" height="29" title="Camera"/> <img src="Documentation/Contacts@3x.png" width="29" height="29" title="Contacts"/> <img src="Documentation/FaceID@3x.png" width="29" height="29" title="Face ID"/> <img src="Documentation/Health@3x.png" width="29" height="29" title="Health"/> <img src="Documentation/Home@3x.png" width="29" height="29" title="Home"/> <img src="Documentation/LocalNetwork@3x.png" width="29" height="29" title="Local Network"/> <img src="Documentation/Location@3x.png" width="29" height="29" title="Location"/> <img src="Documentation/Microphone@3x.png" width="29" height="29" title="Microphone"/> <img src="Documentation/Motion@3x.png" width="29" height="29" title="Motion"/> <img src="Documentation/Music@3x.png" width="29" height="29" title="Music"/> <img src="Documentation/Notifications@3x.png" width="29" height="29" title="Notifications"/> <img src="Documentation/Photos@3x.png" width="29" height="29" title="Photos"/> <img src="Documentation/Reminders@3x.png" width="29" height="29" title="Reminders"/> <img src="Documentation/SpeechRecognition@3x.png" width="29" height="29" title="Speech Recognition"/>
 
 ## Requirements
 
@@ -140,7 +125,7 @@ Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { 
 }
 ```
 
-Unfortunately the ability to work with certain permission types is limited by the system API. For example you can check the current status of a local network permission by requesting it only.
+Unfortunately the ability to work with certain permission types is limited by system API. For example you can check the current status of a local network permission by requesting it only.
 
 ### Info.plist
 
@@ -153,7 +138,7 @@ Permission.health.readingUsageDescriptionPlistKey // NSHealthUpdateUsageDescript
 Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescription
 ```
 
-If you request access to a permission using plain system API but forget to edit your `Info.plist` the app will crash. However with **PermissionWizard** the crash will not occur — you will just see an informative warning in the debugger log.
+If you request access to some permission using plain system API but forget to edit your `Info.plist` the app will crash. However with **PermissionWizard** the crash will not occur — you will just see an informative warning in the debugger log.
 
 ### Thread Management
 
@@ -175,7 +160,7 @@ titleLabel.text = permission.titleName // Local Network
 descriptionLabel.text = "Please allow access to your \(permission.contextName)" // local network
 ```
 
-Please do not forget that icons are available only if the `Icons` component is installed (CocoaPods) or enabled (Carthage).
+Please do not forget that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
 
 **PermissionWizard** provides icons without rounding and borders. If you want to get the design like in iOS system preferences use the following code:
 
@@ -188,6 +173,13 @@ if permission.shouldBorderIcon, #available(iOS 11, *) {
     imageView.layer.borderColor = UIColor(white: 0.898, alpha: 1).cgColor // #E5E5E5
 }
 ```
+
+## Known issues
+
+- Bluetooth permission always returns `.granted` on a simulator
+- Local Network permission does not work on a simulator
+- Microphone permission always returns `.granted` on a simulator with iOS 10 or 11
+- Music permission does not work on a simulator with iOS 12
 
 ## Library Roadmap
 
