@@ -6,11 +6,10 @@
 //
 
 #if HOME || !CUSTOM_SETTINGS
-#if !targetEnvironment(macCatalyst)
 
 import HomeKit
 
-@available(iOS 13, *)
+@available(iOS 13, macCatalyst 14, *)
 public extension Permission {
     
     final class home: Permission {
@@ -55,5 +54,4 @@ public extension Permission {
     
 }
 
-#endif
 #endif

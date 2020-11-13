@@ -5,11 +5,9 @@
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
-#if !targetEnvironment(macCatalyst)
-
 import PermissionWizard
 
-@available(iOS 13, *)
+@available(iOS 13, macCatalyst 14, *)
 final class HomePanel: Panel<Permission.home> {
     
     override func configure() {
@@ -21,5 +19,3 @@ final class HomePanel: Panel<Permission.home> {
     }
     
 }
-
-#endif

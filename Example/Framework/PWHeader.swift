@@ -35,7 +35,7 @@ final class PWHeader: UIView {
             
             iconView.image = permission.icon
             
-            if permission.shouldBorderIcon, #available(iOS 11, *) {
+            if #available(iOS 11, *), permission.shouldBorderIcon {
                 iconView.layer.borderWidth = 1 / (window?.screen.scale ?? 1)
                 iconView.layer.borderColor = UIColor(named: "Border Color")?.cgColor
             }

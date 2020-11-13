@@ -32,7 +32,6 @@ final class LocationPanel: Panel<Permission.location> {
             self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
         }
         
-#if !targetEnvironment(macCatalyst)
         if #available(iOS 14, *) {
             addSeparatingOffset()
             
@@ -40,7 +39,6 @@ final class LocationPanel: Panel<Permission.location> {
                 self.permission.requestTemporaryPreciseAccess(purposePlistKey: "Default") { self.notify("[temporaryPrecise: \($0)]") }
             }
         }
-#endif
     }
     
     // MARK: - Private Functions

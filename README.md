@@ -1,13 +1,13 @@
 # 🔮 PermissionWizard
 
-[![CocoaPods](https://img.shields.io/badge/CocoaPods-supported-success)](https://cocoapods.org/pods/PermissionWizard/)
+[![CocoaPods](https://img.shields.io/badge/CocoaPods-supported-success)](https://cocoapods.org/pods/PermissionWizard)
 ![Carthage](https://img.shields.io/badge/Carthage-supported-success)
 
 It is an ultimate tool for system permissions management. You no longer have to understand system API of each new permission or search it on the Stack Overflow. 😄
 
 ## Advantages
 
-📱 Supports newest features of **iOS 14**
+📱 Supports newest features of **iOS 14** and **macOS 11 Big Sur**
 <br/>
 🖥 Works great with **Mac Catalyst**
 
@@ -36,11 +36,12 @@ It is an ultimate tool for system permissions management. You no longer have to 
 ## Requirements
 
 - iOS 10 / macOS 10.15 Catalina
+- Xcode 12.2
 - Swift 5
 
 ## Installation
 
-### [CocoaPods](https://cocoapods.org/)
+### [CocoaPods](https://cocoapods.org)
 
 To integrate **PermissionWizard** into your Xcode project add it to your `Podfile`:
 
@@ -74,7 +75,7 @@ pod 'PermissionWizard/SpeechRecognition'
 
 If you install separate components you should do not specify `pod 'PermissionWizard'` anymore.
 
-### [Carthage](https://github.com/Carthage/Carthage/)
+### [Carthage](https://github.com/Carthage/Carthage)
 
 To integrate **PermissionWizard** into your Xcode project add it to your `Cartfile`:
 
@@ -150,14 +151,14 @@ Permission.preferredQueue = .main // Default setting
 
 ### UI Assets
 
-If your UI needs permission icons or string names you can easily get it using **PermissionWizard**:
+If your UI needs permission type icons or string names you can easily get it using **PermissionWizard**:
 
 ```swift
-let permission = Permission.localNetwork.self
+let permission = Permission.speechRecognition.self
 imageView.image = permission.icon
 
-titleLabel.text = permission.titleName // Local Network
-descriptionLabel.text = "Please allow access to your \(permission.contextName)" // local network
+titleLabel.text = permission.titleName // Speech Recognition
+descriptionLabel.text = "Please allow access to your \(permission.contextName)" // speech recognition
 ```
 
 Please do not forget that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
@@ -168,18 +169,18 @@ Please do not forget that icons are available only if the `Icons` component of *
 imageView.layer.cornerRadius = 7
 imageView.clipToBounds = true
 
-if permission.shouldBorderIcon, #available(iOS 11, *) {
+if #available(iOS 11, *), permission.shouldBorderIcon {
     imageView.layer.borderWidth = 1 / (window?.screen.scale ?? 1)
     imageView.layer.borderColor = UIColor(white: 0.898, alpha: 1).cgColor // #E5E5E5
 }
 ```
 
-## Known issues
+## Known Issues
 
-- Bluetooth permission always returns `.granted` on a simulator
-- Local Network permission does not work on a simulator
-- Microphone permission always returns `.granted` on a simulator with iOS 10 or 11
-- Music permission does not work on a simulator with iOS 12
+- Bluetooth permission always returns `.granted` on simulators
+- Local Network permission does not work on simulators
+- Microphone permission always returns `.granted` on simulators with iOS 10 or 11
+- Music permission does not work on simulators with iOS 12
 
 ## Library Roadmap
 
@@ -188,7 +189,7 @@ if permission.shouldBorderIcon, #available(iOS 11, *) {
 
 ## Conclusion
 
-You can contact me on [Telegram](https://t.me/debug45/) and [LinkedIn](https://linkedin.com/in/debug45/). If you find an issue please [tell](https://github.com/debug45/PermissionWizard/issues/new/) about it.
+You can contact me on [Telegram](https://t.me/debug45) and [LinkedIn](https://linkedin.com/in/debug45). If you find an issue please [tell](https://github.com/debug45/PermissionWizard/issues/new) about it.
 
 Library is released under the MIT license. The icons of permission types belong to Apple, their use is regulated by the company rules.
 

@@ -71,17 +71,7 @@ final class DetailViewController: UIViewController {
                         panel = MotionPanel()
                     
                     default:
-                        guard #available(iOS 13, *) else {
-                            break
-                        }
-                        
-#if !targetEnvironment(macCatalyst)
-                        if permission is Permission.home.Type {
-                            panel = HomePanel()
-                        }
-#endif
-                        
-                        if panel == nil, #available(iOS 13.1, *) {
+                        if #available(iOS 13.1, *) {
                             if permission is Permission.bluetooth.Type {
                                 panel = BluetoothPanel()
                             } else {
@@ -89,6 +79,10 @@ final class DetailViewController: UIViewController {
                                     panel = LocalNetworkPanel()
                                 }
                             }
+                        }
+                        
+                        if #available(iOS 13, macCatalyst 14, *), permission is Permission.home.Type {
+                            panel = HomePanel()
                         }
                 }
         }

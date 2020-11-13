@@ -36,11 +36,11 @@ final class ListViewController: UIViewController {
         
 #if !targetEnvironment(macCatalyst)
         addButton(for: Permission.health.self)
+#endif
         
-        if #available(iOS 13, *) {
+        if #available(iOS 13, macCatalyst 14, *) {
             addButton(for: Permission.home.self)
         }
-#endif
         
         if #available(iOS 14, *) {
             addButton(for: Permission.localNetwork.self)

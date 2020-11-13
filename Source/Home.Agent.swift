@@ -6,11 +6,10 @@
 //
 
 #if HOME || !CUSTOM_SETTINGS
-#if !targetEnvironment(macCatalyst)
 
 import HomeKit
 
-@available(iOS 13, *)
+@available(iOS 13, macCatalyst 14, *)
 extension Permission.home {
     
     final class Agent: Permission.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
@@ -63,5 +62,4 @@ extension Permission.home {
     
 }
 
-#endif
 #endif

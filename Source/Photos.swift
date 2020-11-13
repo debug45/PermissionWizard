@@ -61,16 +61,12 @@ public extension Permission {
         private static func _checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             let value: PHAuthorizationStatus
             
-#if !targetEnvironment(macCatalyst)
             if #available(iOS 14, *) {
                 let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
                 value = PHPhotoLibrary.authorizationStatus(for: accessLevel)
             } else {
                 value = PHPhotoLibrary.authorizationStatus()
             }
-#else
-            value = PHPhotoLibrary.authorizationStatus()
-#endif
             
             let completion = Utils.linkToPreferredQueue(completion)
             
@@ -81,12 +77,8 @@ public extension Permission {
                     completion(.denied)
                 case .notDetermined:
                     completion(.notDetermined)
-                
-#if !targetEnvironment(macCatalyst)
                 case .limited:
                     completion(.limitedByUser)
-#endif
-                
                 case .restricted:
                     completion(.restrictedBySystem)
                 
@@ -110,16 +102,12 @@ public extension Permission {
                 self._checkStatus(forAddingOnly: forAddingOnly) { completion($0) }
             }
             
-#if !targetEnvironment(macCatalyst)
             if #available(iOS 14, *) {
                 let accessLevel: PHAccessLevel = forAddingOnly ? .addOnly : .readWrite
                 PHPhotoLibrary.requestAuthorization(for: accessLevel, handler: handler)
             } else {
                 PHPhotoLibrary.requestAuthorization(handler)
             }
-#else
-            PHPhotoLibrary.requestAuthorization(handler)
-#endif
         }
         
     }

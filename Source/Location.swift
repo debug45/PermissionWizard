@@ -63,11 +63,9 @@ public extension Permission {
             
             var combined = CombinedStatus(value: narrow, isAccuracyReducing: false)
             
-#if !targetEnvironment(macCatalyst)
-            if #available(iOS 14, *) {
+            if #available(iOS 14, *), narrow != .notDetermined {
                 combined.isAccuracyReducing = manager.accuracyAuthorization != .fullAccuracy
             }
-#endif
             
             let completion = Utils.linkToPreferredQueue(completion)
             completion(combined)
@@ -98,8 +96,6 @@ public extension Permission {
             }
         }
         
-#if !targetEnvironment(macCatalyst)
-        
         @available(iOS 14, *)
         public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) {
             guard Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey) else {
@@ -117,8 +113,6 @@ public extension Permission {
                 completion(manager.accuracyAuthorization == .fullAccuracy)
             }
         }
-        
-#endif
         
     }
     

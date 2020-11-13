@@ -63,7 +63,7 @@ class Panel<T: Permission>: UIStackView {
         
         addArrangedSubview(titleLabel)
         
-        if withIncreasedOffset, #available(iOS 11, *) {
+        if #available(iOS 11, *), withIncreasedOffset {
             addSeparatingOffset()
         }
         

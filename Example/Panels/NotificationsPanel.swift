@@ -33,6 +33,8 @@ final class NotificationsPanel: Panel<Permission.notifications> {
             if #available(iOS 11, *) {
                 addSeparatingOffset()
             }
+#else
+            addSeparatingOffset()
 #endif
         }
         
@@ -74,7 +76,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 options.insert(.carPlay)
             }
             
-            if siriAnnouncementsSwitch?.isOn == true && siriAnnouncementsSwitch?.isEnabled == true, #available(iOS 13, *) {
+            if #available(iOS 13, *), siriAnnouncementsSwitch?.isOn == true && siriAnnouncementsSwitch?.isEnabled == true {
                 options.insert(.announcement)
             }
             
