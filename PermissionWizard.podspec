@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   
   spec.name = 'PermissionWizard'
-  spec.version = '1.0.0'
+  spec.version = '1.0'
   
   spec.summary = '🔮 An ultimate tool for system permissions management'
   

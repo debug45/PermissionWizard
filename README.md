@@ -3,11 +3,11 @@
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-supported-success)](https://cocoapods.org/pods/PermissionWizard)
 ![Carthage](https://img.shields.io/badge/Carthage-supported-success)
 
-It is an ultimate tool for system permissions management. You no longer have to understand system API of each new permission or search it on the Stack Overflow. 😄
+It is an ultimate tool for system permissions management. No longer you have to understand system API of each new permission type or search it on the Stack Overflow. 😄
 
 ## Advantages
 
-📱 Supports newest features of **iOS 14** and **macOS 11 Big Sur**
+📱 Supports the newest features of **iOS 14** and **macOS 11 Big Sur**
 <br/>
 🖥 Works great with **Mac Catalyst**
 
@@ -15,17 +15,17 @@ It is an ultimate tool for system permissions management. You no longer have to 
 <br/>
 🛡 Provides crash free by **validating your plist** keys
 <br/>
-📬 Use **completion blocks** even where it is not provided by system API
+📬 Use **completion blocks** even where it is not provided by default system API
 <br/>
-🛣 Forget about **thread management** by using only convenient dispatch queue (optional)
+🛣 Forget about **thread management** by using any preferred dispatch queue only (optional)
 
 🚀 Completely written in **Swift**
 <br/>
-🍭 Unifies your code, **regardless of permission types** you are working with
+🍭 Unifies your code **regardless of permission types** you are working with
 <br/>
 🖼 Includes **native icons** and **string constants** for your UI (optional)
 <br/>
-🍕 Modular, add to your project **only what you need**
+🍕 Modular, add to your project **what you need only**
 <br/>
 🪁 Does not contain anything redundant
 
@@ -43,18 +43,18 @@ It is an ultimate tool for system permissions management. You no longer have to 
 
 ### [CocoaPods](https://cocoapods.org)
 
-To integrate **PermissionWizard** into your Xcode project add it to your `Podfile`:
+To integrate **PermissionWizard** into your Xcode project, add it to your `Podfile`:
 
 ```ruby
 pod 'PermissionWizard'
 ```
 
-By default the library is installed fully.
+By default, the library will be installed fully.
 
-Due to Apple’s policy regarding system permissions your app may be rejected due to mention of API that it does not actually use. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
 
 ```ruby
-pod 'PermissionWizard/Icons' # Native permission type icons
+pod 'PermissionWizard/Icons' # Permission type icons
 pod 'PermissionWizard/Bluetooth'
 pod 'PermissionWizard/Calendars'
 pod 'PermissionWizard/Camera'
@@ -73,28 +73,28 @@ pod 'PermissionWizard/Reminders'
 pod 'PermissionWizard/SpeechRecognition'
 ```
 
-If you install separate components you should do not specify `pod 'PermissionWizard'` anymore.
+Do not specify `pod 'PermissionWizard'` if you install separate components.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
-To integrate **PermissionWizard** into your Xcode project add it to your `Cartfile`:
+To integrate **PermissionWizard** into your Xcode project, add it to your `Cartfile`:
 
 ```ogdl
 github "debug45/PermissionWizard"
 ```
 
-By default when you build your project the library is compiled fully.
+By default, the library is compiled fully when you build the project.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that it does not actually use. It is recommended to enable only components that you use. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to enable only components that you need. In this case you will not have any troubles. ⚠️
 
-To enable only components that you need create the `PermissionWizard.xcconfig` file in the root directory of your project and put there appropriate settings using the following template:
+To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
 ```
 ENABLED_FEATURES = ICONS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SPEECH_RECOGNITION
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(ENABLED_FEATURES) CUSTOM_SETTINGS
 ```
 
-Please edit the first line of the template removing unnecessary component names.
+Customize the first line of the template removing unnecessary component names.
 
 ## How to Use
 
@@ -118,7 +118,7 @@ Permission.camera.checkStatus(withMicrophone: true) { status in
 }
 ```
 
-Some permission types support additional features. For example if on iOS 14 a user allows access to his location with reduced accuracy only you can request temporary access to full accuracy:
+Some permission types support additional features. For example, if an iOS 14 user allows access to his location with reduced accuracy only, you can request temporary access to full accuracy:
 
 ```swift
 Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
@@ -126,11 +126,11 @@ Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { 
 }
 ```
 
-Unfortunately the ability to work with certain permission types is limited by system API. For example you can check the current status of a local network permission by requesting it only.
+Unfortunately, the ability to work with certain permission types is limited by default system API. For example, you can check the current status of a local network permission by requesting it only.
 
 ### Info.plist
 
-Please keep in mind that to work with each permission Apple requires you to add corresponding string to your `Info.plist` that describes purpose for which you are requesting access. **PermissionWizard** can help you to find the name of a necessary key:
+For each permission type you are using, Apple requires to add the corresponding string to your `Info.plist` that describes a purpose of your access requests. **PermissionWizard** can help you to find the name of a necessary plist key:
 
 ```swift
 Permission.faceID.usageDescriptionPlistKey // NSFaceIDUsageDescription
@@ -139,11 +139,11 @@ Permission.health.readingUsageDescriptionPlistKey // NSHealthUpdateUsageDescript
 Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescription
 ```
 
-If you request access to some permission using plain system API but forget to edit your `Info.plist` the app will crash. However with **PermissionWizard** the crash will not occur — you will just see an informative warning in the debugger log.
+If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — you will just see an informative warning in the debugger log.
 
 ### Thread Management
 
-In some cases the plain system permissions API may return results in a different dispatch queues than the one you requested from. Instead of risking a crash and using `DispatchQueue.main.async` you can ask **PermissionWizard** to always invoke completion blocks in a convenient queue:
+In some cases default system API may return a result in a different dispatch queue. Instead of risking a crash and using `DispatchQueue.main.async`, you can ask **PermissionWizard** to always invoke completion blocks in a preferred queue:
 
 ```swift
 Permission.preferredQueue = .main // Default setting
@@ -151,7 +151,7 @@ Permission.preferredQueue = .main // Default setting
 
 ### UI Assets
 
-If your UI needs permission type icons or string names you can easily get it using **PermissionWizard**:
+If your UI needs permission type icons or string names, you can easily get it using **PermissionWizard**:
 
 ```swift
 let permission = Permission.speechRecognition.self
@@ -161,9 +161,9 @@ titleLabel.text = permission.titleName // Speech Recognition
 descriptionLabel.text = "Please allow access to your \(permission.contextName)" // speech recognition
 ```
 
-Please do not forget that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
+Keep in mind that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
 
-**PermissionWizard** provides icons without rounding and borders. If you want to get the design like in iOS system preferences use the following code:
+**PermissionWizard** provides icons without rounding and borders. If you want to get the design like in iOS system preferences, use the following code:
 
 ```swift
 imageView.layer.cornerRadius = 7
@@ -182,15 +182,15 @@ if #available(iOS 11, *), permission.shouldBorderIcon {
 - Microphone permission always returns `.granted` on simulators with iOS 10 or 11
 - Music permission does not work on simulators with iOS 12
 
-## Library Roadmap
+## Roadmap
 
 - NFC permission support
 - Swift Package Manager compatibility
 
 ## Conclusion
 
-You can contact me on [Telegram](https://t.me/debug45) and [LinkedIn](https://linkedin.com/in/debug45). If you find an issue please [tell](https://github.com/debug45/PermissionWizard/issues/new) about it.
+You can contact me on [Telegram](https://t.me/debug45) and [LinkedIn](https://linkedin.com/in/debug45). If you find an issue, please [tell](https://github.com/debug45/PermissionWizard/issues/new) about it.
 
-Library is released under the MIT license. The icons of permission types belong to Apple, their use is regulated by the company rules.
+Library is released under the MIT license. The permission type icons belong to Apple, their use is regulated by the company rules.
 
 If **PermissionWizard** is useful for you please star this repository. Thank you! 👍
