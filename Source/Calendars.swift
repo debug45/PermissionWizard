@@ -51,10 +51,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: calendars.self) else {
-                return
-            }
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: calendars.self)
             
             EKEventStore().requestAccess(to: .event) { _, _ in
                 guard let completion = completion else {

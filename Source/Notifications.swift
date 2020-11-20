@@ -51,10 +51,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: notifications.self) else {
-                return
-            }
+        public class func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: notifications.self)
             
             UNUserNotificationCenter.current().requestAuthorization(options: options) { _, _ in
                 guard let completion = completion else {

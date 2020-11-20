@@ -47,13 +47,13 @@ public extension Permission {
         }
         
         @available(iOS 14, *)
-        public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
-            _requestAccess(forAddingOnly: forAddingOnly, completion: completion)
+        public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
+            try _requestAccess(forAddingOnly: forAddingOnly, completion: completion)
         }
         
         @available(iOS, deprecated: 14)
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            _requestAccess(forAddingOnly: false, completion: completion)
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try _requestAccess(forAddingOnly: false, completion: completion)
         }
         
         // MARK: - Private Functions
@@ -87,12 +87,9 @@ public extension Permission {
             }
         }
         
-        private static func _requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) {
+        private static func _requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
             let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : fullAccessUsageDescriptionPlistKey].compactMap { $0 }
-            
-            guard Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys) else {
-                return
-            }
+            try Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys)
             
             let handler: (PHAuthorizationStatus) -> Void = { _ in
                 guard let completion = completion else {

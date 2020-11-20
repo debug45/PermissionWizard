@@ -49,15 +49,11 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) {
-            var checklist: [Permission.Type] = [camera.self]
+        public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: camera.self)
             
             if withMicrophone {
-                checklist.append(microphone.self)
-            }
-            
-            guard checklist.allSatisfy({ Utils.checkIsAppConfigured(for: $0) }) else {
-                return
+                try Utils.checkIsAppConfigured(for: microphone.self)
             }
             
             requestNarrowAccess { narrow in
@@ -68,7 +64,7 @@ public extension Permission {
                 var combined: CombinedStatus = (camera: narrow, microphone: nil)
                 
                 if withMicrophone {
-                    microphone.requestAccess { status in
+                    microphone.requestAccessForced { status in
                         combined.microphone = status
                         completion?(combined)
                     }

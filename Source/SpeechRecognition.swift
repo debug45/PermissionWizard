@@ -50,10 +50,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: speechRecognition.self) else {
-                return
-            }
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: speechRecognition.self)
             
             SFSpeechRecognizer.requestAuthorization() { _ in
                 guard let completion = completion else {

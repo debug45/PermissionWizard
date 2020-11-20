@@ -71,12 +71,9 @@ public extension Permission {
             completion(combined)
         }
         
-        public class func requestAccess(whenInUseOnly: Bool, completion: ((CombinedStatus) -> Void)? = nil) {
+        public class func requestAccess(whenInUseOnly: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
             let plistKeys = whenInUseOnly ? [whenInUseOnlyUsageDescriptionPlistKey] : alwaysUsageDescriptionPlistKeys
-            
-            guard Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys) else {
-                return
-            }
+            try Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys)
             
             if let existingAgent = existingAgent, let completion = completion {
                 existingAgent.addCallback(completion)
@@ -97,10 +94,8 @@ public extension Permission {
         }
         
         @available(iOS 14, *)
-        public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) {
-            guard Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey) else {
-                return
-            }
+        public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey)
             
             let manager = CLLocationManager()
             

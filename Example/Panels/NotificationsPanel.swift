@@ -94,7 +94,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 }
             }
             
-            self.permission.requestAccess(options: options) { self.notify($0.rawValue) }
+            try! self.permission.requestAccess(options: options) { self.notify($0.rawValue) }
         })
     }
     

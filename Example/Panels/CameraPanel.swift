@@ -19,7 +19,7 @@ final class CameraPanel: Panel<Permission.camera> {
         addDefaultButtons(checkStatusAction: {
             self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
         }, requestAccessAction: {
-            self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            try! self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
         })
     }
     

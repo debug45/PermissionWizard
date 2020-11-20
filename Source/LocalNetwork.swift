@@ -21,10 +21,8 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func requestAccess(servicePlistKey: String) {
-            guard Utils.checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: servicePlistKey) else {
-                return
-            }
+        public class func requestAccess(servicePlistKey: String) throws {
+            try Utils.checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: servicePlistKey)
             
             let serviceDescriptor = NWBrowser.Descriptor.bonjour(type: servicePlistKey, domain: nil)
             let parameters = NWParameters()

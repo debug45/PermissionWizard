@@ -47,10 +47,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: contacts.self) else {
-                return
-            }
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: contacts.self)
             
             CNContactStore().requestAccess(for: .contacts) { _, _ in
                 guard let completion = completion else {

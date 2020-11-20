@@ -52,10 +52,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: bluetooth.self) else {
-                return
-            }
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: bluetooth.self)
             
             if let existingAgent = existingAgent, let completion = completion {
                 existingAgent.addCallback(completion)

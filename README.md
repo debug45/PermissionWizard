@@ -184,8 +184,11 @@ if #available(iOS 11, *), permission.shouldBorderIcon {
 
 ## Roadmap
 
-- NFC permission support
-- Swift Package Manager compatibility
+- Add support of NFC
+- Extend support of macOS (specific permission types, native icons)
+- Make the library compatible with Swift Package Manager
+- Localize string assets to all system languages
+- Document the library API
 
 ## Conclusion
 

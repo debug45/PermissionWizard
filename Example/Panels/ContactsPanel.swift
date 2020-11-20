@@ -15,7 +15,7 @@ final class ContactsPanel: Panel<Permission.contacts> {
         addDefaultButtons(checkStatusAction: {
             self.permission.checkStatus { self.notify($0.rawValue) }
         }, requestAccessAction: {
-            self.permission.requestAccess { self.notify($0.rawValue) }
+            try! self.permission.requestAccess { self.notify($0.rawValue) }
         })
     }
     

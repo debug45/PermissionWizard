@@ -43,11 +43,14 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: microphone.self) else {
-                return
-            }
-            
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: microphone.self)
+            requestAccessForced(completion: completion)
+        }
+        
+        // MARK: - Internal Functions
+        
+        static func requestAccessForced(completion: ((Status) -> Void)? = nil) {
             AVAudioSession.sharedInstance().requestRecordPermission { _ in
                 guard let completion = completion else {
                     return

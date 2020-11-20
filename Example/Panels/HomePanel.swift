@@ -14,7 +14,7 @@ final class HomePanel: Panel<Permission.home> {
         super.configure()
         
         addButton(title: "Request Access") {
-            self.permission.requestAccess { self.notify($0.rawValue) }
+            try! self.permission.requestAccess { self.notify($0.rawValue) }
         }
     }
     

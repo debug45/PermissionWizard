@@ -29,14 +29,14 @@ final class LocationPanel: Panel<Permission.location> {
         }
         
         addButton(title: "Request Access") {
-            self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
+            try! self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
         }
         
         if #available(iOS 14, *) {
             addSeparatingOffset()
             
             addButton(title: "Request Temporary Precise Access") {
-                self.permission.requestTemporaryPreciseAccess(purposePlistKey: "Default") { self.notify("[temporaryPrecise: \($0)]") }
+                try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: "Default") { self.notify("[temporaryPrecise: \($0)]") }
             }
         }
     }

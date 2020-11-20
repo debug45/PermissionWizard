@@ -48,10 +48,8 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess() {
-            guard Utils.checkIsAppConfigured(for: motion.self) else {
-                return
-            }
+        public class func requestAccess() throws {
+            try Utils.checkIsAppConfigured(for: motion.self)
             
             let manager = CMMotionActivityManager()
             

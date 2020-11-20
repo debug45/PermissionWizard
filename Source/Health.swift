@@ -49,16 +49,14 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) {
+        public class func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) throws {
             var plistKeys = !readingTypes.isEmpty ? [readingUsageDescriptionPlistKey] : []
             
             if !writingTypes.isEmpty {
                 plistKeys.append(writingUsageDescriptionPlistKey)
             }
             
-            guard Utils.checkIsAppConfigured(for: health.self, usageDescriptionsPlistKeys: plistKeys) else {
-                return
-            }
+            try Utils.checkIsAppConfigured(for: health.self, usageDescriptionsPlistKeys: plistKeys)
             
             HKHealthStore().requestAuthorization(toShare: writingTypes, read: readingTypes) { _, _ in
                 guard let unwrapped = completion else {

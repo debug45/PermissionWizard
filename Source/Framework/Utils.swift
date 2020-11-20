@@ -33,72 +33,55 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]? = nil) -> Bool {
+    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]? = nil) throws {
         var plistKeys = usageDescriptionsPlistKeys
         
         if plistKeys == nil {
             guard let plistKey = permission.usageDescriptionPlistKey else {
-                return true
+                throw PWError(.libraryFailure)
             }
             
             plistKeys = [plistKey]
         }
         
-        var result = true
-        
         for plistKey in (plistKeys ?? []) {
             let value = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String
             
-            guard value?.isEmpty != false else {
-                continue
+            if value?.isEmpty != false {
+                throw createInvalidAppConfigurationError(missingPlistKey: plistKey, permissionName: permission.contextName)
             }
-            
-            notifyAboutInvalidAppConfiguration(missingPlistKey: plistKey, permissionName: permission.contextName)
-            result = false
         }
-        
-        return result
     }
     
-    static func checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: String) -> Bool {
+    static func checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: String) throws {
         let arrayKey = "NSBonjourServices"
         
-        var result = false
-        
-        if let array = Bundle.main.object(forInfoDictionaryKey: arrayKey) as? [String] {
-            result = array.contains(servicePlistKey)
+        if let array = Bundle.main.object(forInfoDictionaryKey: arrayKey) as? [String], array.contains(servicePlistKey) {
+            return
         }
         
-        if !result {
-            let clarification = "to a nested array with the key ”\(arrayKey)“"
-            notifyAboutInvalidAppConfiguration(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
-        }
-        
-        return result
+        let clarification = "to a nested array with the key ”\(arrayKey)“"
+        throw createInvalidAppConfigurationError(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
     }
     
-    static func checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: String) -> Bool {
+    static func checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: String) throws {
         let dictionaryKey = "NSLocationTemporaryUsageDescriptionDictionary"
         
-        var result = false
-        
-        if let dictionary = Bundle.main.object(forInfoDictionaryKey: dictionaryKey) as? [String: String] {
-            result = dictionary[purposePlistKey]?.isEmpty == false
+        if let dictionary = Bundle.main.object(forInfoDictionaryKey: dictionaryKey) as? [String: String], dictionary[purposePlistKey]?.isEmpty == false {
+            return
         }
         
-        if !result {
-            let clarification = "to a nested dictionary with the key ”\(dictionaryKey)“"
-            notifyAboutInvalidAppConfiguration(missingPlistKey: purposePlistKey, permissionName: "temporary precise location", clarification: clarification)
-        }
-        
-        return result
+        let clarification = "to a nested dictionary with the key ”\(dictionaryKey)“"
+        throw createInvalidAppConfigurationError(missingPlistKey: purposePlistKey, permissionName: "temporary precise location", clarification: clarification)
     }
     
     // MARK: - Private Functions
     
-    private static func notifyAboutInvalidAppConfiguration(missingPlistKey: String, permissionName: String, clarification: String? = nil) {
+    private static func createInvalidAppConfigurationError(missingPlistKey: String, permissionName: String, clarification: String? = nil) -> PWError {
         let clarification = clarification?.isEmpty == false ? " (\(clarification!))" : ""
-        print("❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user.")
+        
+        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
+        return PWError(.missingPlistKey, message: message)
     }
     
 }
