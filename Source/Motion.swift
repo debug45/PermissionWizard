@@ -26,7 +26,7 @@ public extension Permission {
             
         }
         
-        public override class var usageDescriptionPlistKey: String? { "NSMotionUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSMotionUsageDescription"
         
         // MARK: - Public Functions
         
@@ -49,7 +49,7 @@ public extension Permission {
         }
         
         public class func requestAccess() throws {
-            try Utils.checkIsAppConfigured(for: motion.self)
+            try Utils.checkIsAppConfigured(for: motion.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             let manager = CMMotionActivityManager()
             

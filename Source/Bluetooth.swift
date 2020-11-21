@@ -28,7 +28,7 @@ public extension Permission {
         
         public override class var contextName: String { titleName }
         
-        public override class var usageDescriptionPlistKey: String? { "NSBluetoothAlwaysUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSBluetoothAlwaysUsageDescription"
         
         private static var existingAgent: Agent?
         
@@ -53,7 +53,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: bluetooth.self)
+            try Utils.checkIsAppConfigured(for: bluetooth.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if let existingAgent = existingAgent, let completion = completion {
                 existingAgent.addCallback(completion)

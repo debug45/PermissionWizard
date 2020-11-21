@@ -29,7 +29,7 @@ public extension Permission {
         public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
 #endif
         
-        public override class var usageDescriptionPlistKey: String? { "NSCameraUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSCameraUsageDescription"
         
         // MARK: - Public Functions
         
@@ -50,10 +50,10 @@ public extension Permission {
         }
         
         public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: camera.self)
+            try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if withMicrophone {
-                try Utils.checkIsAppConfigured(for: microphone.self)
+                try Utils.checkIsAppConfigured(for: microphone.self, usageDescriptionPlistKey: microphone.usageDescriptionPlistKey)
             }
             
             requestNarrowAccess { narrow in

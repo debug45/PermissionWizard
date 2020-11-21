@@ -33,13 +33,7 @@ final class PWHeader: UIView {
                 return
             }
             
-            iconView.image = permission.icon
-            
-            if #available(iOS 11, *), permission.shouldBorderIcon {
-                iconView.layer.borderWidth = 1 / (window?.screen.scale ?? 1)
-                iconView.layer.borderColor = UIColor(named: "Border Color")?.cgColor
-            }
-            
+            iconView.image = permission.getIcon()
             titleLabel.text = permission.titleName
         }
     }
@@ -55,9 +49,6 @@ final class PWHeader: UIView {
     // MARK: - Private Functions
     
     private func configure() {
-        iconView.layer.cornerRadius = 7
-        iconView.clipsToBounds = true
-        
         iconView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(iconView)
         

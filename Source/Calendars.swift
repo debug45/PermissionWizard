@@ -29,7 +29,7 @@ public extension Permission {
         public override class var shouldBorderIcon: Bool { true }
 #endif
         
-        public override class var usageDescriptionPlistKey: String? { "NSCalendarsUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSCalendarsUsageDescription"
         
         // MARK: - Public Functions
         
@@ -52,7 +52,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: calendars.self)
+            try Utils.checkIsAppConfigured(for: calendars.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             EKEventStore().requestAccess(to: .event) { _, _ in
                 guard let completion = completion else {

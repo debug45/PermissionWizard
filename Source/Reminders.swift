@@ -29,7 +29,7 @@ public extension Permission {
         public override class var shouldBorderIcon: Bool { true }
 #endif
         
-        public override class var usageDescriptionPlistKey: String? { "NSRemindersUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSRemindersUsageDescription"
         
         // MARK: - Public Functions
         
@@ -52,7 +52,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: reminders.self)
+            try Utils.checkIsAppConfigured(for: reminders.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             EKEventStore().requestAccess(to: .reminder) { _, _ in
                 guard let completion = completion else {

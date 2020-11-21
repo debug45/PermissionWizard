@@ -155,25 +155,13 @@ If your UI needs permission type icons or string names, you can easily get it us
 
 ```swift
 let permission = Permission.speechRecognition.self
-imageView.image = permission.icon
+imageView.image = permission.getIcon(squircle: true)
 
 titleLabel.text = permission.titleName // Speech Recognition
 descriptionLabel.text = "Please allow access to your \(permission.contextName)" // speech recognition
 ```
 
 Keep in mind that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
-
-**PermissionWizard** provides icons without rounding and borders. If you want to get the design like in iOS system preferences, use the following code:
-
-```swift
-imageView.layer.cornerRadius = 7
-imageView.clipToBounds = true
-
-if #available(iOS 11, *), permission.shouldBorderIcon {
-    imageView.layer.borderWidth = 1 / (window?.screen.scale ?? 1)
-    imageView.layer.borderColor = UIColor(white: 0.898, alpha: 1).cgColor // #E5E5E5
-}
-```
 
 ## Known Issues
 

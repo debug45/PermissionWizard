@@ -29,7 +29,7 @@ public extension Permission {
         public override class var titleName: String { "Face ID" }
         public override class var contextName: String { titleName }
         
-        public override class var usageDescriptionPlistKey: String? { "NSFaceIDUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSFaceIDUsageDescription"
         
         // MARK: - Public Functions
         
@@ -60,7 +60,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: faceID.self)
+            try Utils.checkIsAppConfigured(for: faceID.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { _, _ in
                 guard let completion = completion else {

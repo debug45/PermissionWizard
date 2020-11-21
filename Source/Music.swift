@@ -25,7 +25,7 @@ public extension Permission {
             
         }
         
-        public override class var usageDescriptionPlistKey: String? { "NSAppleMusicUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSAppleMusicUsageDescription"
         
         // MARK: - Public Functions
         
@@ -48,7 +48,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: music.self)
+            try Utils.checkIsAppConfigured(for: music.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             MPMediaLibrary.requestAuthorization { _ in
                 guard let completion = completion else {

@@ -28,7 +28,7 @@ public extension Permission {
         public override class var titleName: String { "Speech Recognition" }
         public override class var contextName: String { titleName.lowercased() }
         
-        public override class var usageDescriptionPlistKey: String? { "NSSpeechRecognitionUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
         
         // MARK: - Public Functions
         
@@ -51,7 +51,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: speechRecognition.self)
+            try Utils.checkIsAppConfigured(for: speechRecognition.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             SFSpeechRecognizer.requestAuthorization() { _ in
                 guard let completion = completion else {

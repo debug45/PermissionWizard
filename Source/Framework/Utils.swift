@@ -33,18 +33,8 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]? = nil) throws {
-        var plistKeys = usageDescriptionsPlistKeys
-        
-        if plistKeys == nil {
-            guard let plistKey = permission.usageDescriptionPlistKey else {
-                throw PWError(.libraryFailure)
-            }
-            
-            plistKeys = [plistKey]
-        }
-        
-        for plistKey in (plistKeys ?? []) {
+    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]) throws {
+        for plistKey in usageDescriptionsPlistKeys {
             let value = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String
             
             if value?.isEmpty != false {
@@ -53,7 +43,18 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: String) throws {
+    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionPlistKey: String? = nil) throws {
+        guard let plistKey = usageDescriptionPlistKey else {
+            return
+        }
+        
+        try checkIsAppConfigured(for: permission, usageDescriptionsPlistKeys: [plistKey])
+    }
+    
+    @available(iOS 14, *)
+    static func checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: String, servicePlistKey: String) throws {
+        try checkIsAppConfigured(for: Permission.localNetwork.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
+        
         let arrayKey = "NSBonjourServices"
         
         if let array = Bundle.main.object(forInfoDictionaryKey: arrayKey) as? [String], array.contains(servicePlistKey) {
@@ -64,6 +65,7 @@ final class Utils {
         throw createInvalidAppConfigurationError(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
     }
     
+    @available(iOS 14, *)
     static func checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: String) throws {
         let dictionaryKey = "NSLocationTemporaryUsageDescriptionDictionary"
         

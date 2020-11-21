@@ -23,7 +23,7 @@ public extension Permission {
             
         }
         
-        public override class var usageDescriptionPlistKey: String? { "NSMicrophoneUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSMicrophoneUsageDescription"
         
         // MARK: - Public Functions
         
@@ -44,7 +44,7 @@ public extension Permission {
         }
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: microphone.self)
+            try Utils.checkIsAppConfigured(for: microphone.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestAccessForced(completion: completion)
         }
         

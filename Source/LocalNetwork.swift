@@ -17,12 +17,12 @@ public extension Permission {
         public override class var titleName: String { "Local Network" }
         public override class var contextName: String { titleName.lowercased() }
         
-        public override class var usageDescriptionPlistKey: String? { "NSLocalNetworkUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSLocalNetworkUsageDescription"
         
         // MARK: - Public Functions
         
         public class func requestAccess(servicePlistKey: String) throws {
-            try Utils.checkIsAppConfiguredForLocalNetworkAccess(servicePlistKey: servicePlistKey)
+            try Utils.checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: usageDescriptionPlistKey, servicePlistKey: servicePlistKey)
             
             let serviceDescriptor = NWBrowser.Descriptor.bonjour(type: servicePlistKey, domain: nil)
             let parameters = NWParameters()

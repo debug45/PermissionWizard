@@ -27,14 +27,14 @@ public extension Permission {
         public override class var shouldBorderIcon: Bool { true }
 #endif
         
-        public override class var usageDescriptionPlistKey: String? { "NSHomeKitUsageDescription" }
+        public static let usageDescriptionPlistKey = "NSHomeKitUsageDescription"
         
         private static var existingAgent: Agent?
         
         // MARK: - Public Functions
         
         public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfigured(for: home.self)
+            try Utils.checkIsAppConfigured(for: home.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if let existingAgent = existingAgent, let completion = completion {
                 existingAgent.addCallback(completion)

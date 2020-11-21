@@ -88,8 +88,8 @@ public extension Permission {
         }
         
         private static func _requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
-            let plistKeys = [forAddingOnly ? addingOnlyUsageDescriptionPlistKey : fullAccessUsageDescriptionPlistKey].compactMap { $0 }
-            try Utils.checkIsAppConfigured(for: photos.self, usageDescriptionsPlistKeys: plistKeys)
+            let plistKey = forAddingOnly ? addingOnlyUsageDescriptionPlistKey : fullAccessUsageDescriptionPlistKey
+            try Utils.checkIsAppConfigured(for: photos.self, usageDescriptionPlistKey: plistKey)
             
             let handler: (PHAuthorizationStatus) -> Void = { _ in
                 guard let completion = completion else {
