@@ -12,7 +12,7 @@ final class DetailViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    var permission: Permission.Type?
+    var permission: Permission.Base.Type?
     
     // MARK: - Life Cycle
     
@@ -25,7 +25,11 @@ final class DetailViewController: UIViewController {
     
     private func configure() {
         let header = PWHeader()
-        header.permission = permission
+        header.title = permission?.titleName
+        
+        if let screen = UIApplication.shared.keyWindow?.screen {
+            header.icon = permission?.getIcon(for: screen)
+        }
         
         navigationItem.titleView = header
         

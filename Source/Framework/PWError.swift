@@ -9,6 +9,8 @@ public class PWError: NSError {
     
     public let type: SupportedType
     
+    private let userInfoMessageKey = "message"
+    
     // MARK: - Life Cycle
     
     init(_ type: SupportedType, message: String? = nil) {
@@ -18,7 +20,7 @@ public class PWError: NSError {
         var userInfo: [String: Any] = [:]
         
         if let message = message {
-            userInfo["message"] = message
+            userInfo[userInfoMessageKey] = message
         }
         
         super.init(domain: domain, code: type.rawValue, userInfo: userInfo)

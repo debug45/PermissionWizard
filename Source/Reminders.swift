@@ -11,7 +11,7 @@ import EventKit
 
 public extension Permission {
     
-    final class reminders: Permission {
+    final class reminders: Base {
         
         public enum Status: String {
             

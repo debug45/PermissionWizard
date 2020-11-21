@@ -12,7 +12,7 @@ import HomeKit
 @available(iOS 13, macCatalyst 14, *)
 public extension Permission {
     
-    final class home: Permission {
+    final class home: Base {
         
         public enum Status: String {
             

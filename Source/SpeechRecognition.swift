@@ -11,7 +11,7 @@ import Speech
 
 public extension Permission {
     
-    final class speechRecognition: Permission {
+    final class speechRecognition: Base {
         
         public enum Status: String {
             

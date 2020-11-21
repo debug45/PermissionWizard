@@ -12,7 +12,7 @@ import HealthKit
 
 public extension Permission {
     
-    final class health: Permission {
+    final class health: Base {
         
         public enum WritingStatus: String {
             

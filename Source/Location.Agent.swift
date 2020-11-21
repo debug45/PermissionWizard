@@ -11,7 +11,7 @@ import CoreLocation
 
 extension Permission.location {
     
-    final class Agent: Permission.Agent<CLLocationManager, CombinedStatus>, CLLocationManagerDelegate {
+    final class Agent: Permission.Base.Agent<CLLocationManager, CombinedStatus>, CLLocationManagerDelegate {
         
         // MARK: - Life Cycle
         

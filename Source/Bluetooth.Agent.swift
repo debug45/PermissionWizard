@@ -12,7 +12,7 @@ import CoreBluetooth
 @available(iOS 13.1, *)
 extension Permission.bluetooth {
     
-    final class Agent: Permission.Agent<CBCentralManager, Status>, CBCentralManagerDelegate {
+    final class Agent: Permission.Base.Agent<CBCentralManager, Status>, CBCentralManagerDelegate {
         
         // MARK: - Life Cycle
         

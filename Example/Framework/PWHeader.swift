@@ -27,14 +27,19 @@ final class PWHeader: UIView {
     
     // MARK: - Properties
     
-    var permission: Permission.Type? {
-        didSet {
-            guard let permission = permission else {
-                return
-            }
-            
-            iconView.image = permission.getIcon()
-            titleLabel.text = permission.titleName
+    var icon: UIImage? {
+        get {
+            return iconView.image
+        } set {
+            iconView.image = newValue
+        }
+    }
+    
+    var title: String? {
+        get {
+            return titleLabel.text
+        } set {
+            titleLabel.text = newValue
         }
     }
     

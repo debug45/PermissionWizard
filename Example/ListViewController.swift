@@ -22,6 +22,15 @@ final class ListViewController: UIViewController {
     // MARK: - Private Functions
     
     private func configure() {
+        let header = PWHeader()
+        header.title = navigationItem.title
+        
+        if let screen = UIApplication.shared.keyWindow?.screen {
+            header.icon = Permission.getPrivacyIcon(for: screen)
+        }
+        
+        navigationItem.titleView = header
+        
         if #available(iOS 13.1, *) {
             addButton(for: Permission.bluetooth.self)
         }
@@ -60,10 +69,14 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.speechRecognition.self)
     }
     
-    private func addButton(for permission: Permission.Type) {
+    private func addButton(for permission: Permission.Base.Type) {
         let header = PWHeader()
         
-        header.permission = permission
+        if let screen = UIApplication.shared.keyWindow?.screen {
+            header.icon = permission.getIcon(for: screen)
+        }
+        
+        header.title = permission.titleName
         header.titleColor = view.tintColor
         
         let button = PWButton()

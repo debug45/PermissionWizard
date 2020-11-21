@@ -11,7 +11,7 @@ import Contacts
 
 public extension Permission {
     
-    final class contacts: Permission {
+    final class contacts: Base {
         
         public enum Status: String {
             

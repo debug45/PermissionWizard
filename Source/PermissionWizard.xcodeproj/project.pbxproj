@@ -11,6 +11,7 @@
 		A50A8F6D252CC58F00364B82 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A8F6C252CC58F00364B82 /* Reminders.swift */; };
 		A511BA7925682F4400DF1657 /* PWError.SupportedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511BA7825682F4400DF1657 /* PWError.SupportedType.swift */; };
 		A511BA802568308200DF1657 /* PWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511BA7F2568308200DF1657 /* PWError.swift */; };
+		A511BAAC256947B400DF1657 /* Permission.Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511BAAB256947B400DF1657 /* Permission.Base.swift */; };
 		A533FEDF253B25A7003B7648 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEDE253B25A7003B7648 /* Camera.swift */; };
 		A533FEEB253B573F003B7648 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533FEEA253B573F003B7648 /* Music.swift */; };
 		A53C04C1254D5C35007F1438 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C04C0254D5C35007F1438 /* LocalNetwork.swift */; };
@@ -28,7 +29,7 @@
 		A5B519D5253AD284006870FA /* Home.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519D4253AD284006870FA /* Home.Agent.swift */; };
 		A5C49B81253B631B004DDC66 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B80253B631B004DDC66 /* Photos.swift */; };
 		A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C49B8D253B6E2B004DDC66 /* Motion.swift */; };
-		A5C4FFDE2554629D0002B376 /* Permission.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4FFDD2554629D0002B376 /* Permission.Agent.swift */; };
+		A5C4FFDE2554629D0002B376 /* Permission.Base.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4FFDD2554629D0002B376 /* Permission.Base.Agent.swift */; };
 		A5CB584B255C1D0400B2AC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5CB584A255C1D0400B2AC1A /* Assets.xcassets */; };
 		A5EDD6922528DA67001F44C9 /* PermissionWizard.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDD6912528DA67001F44C9 /* PermissionWizard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDD6EE2528E220001F44C9 /* Permission.swift */; };
@@ -40,6 +41,7 @@
 		A50A8F6C252CC58F00364B82 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		A511BA7825682F4400DF1657 /* PWError.SupportedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWError.SupportedType.swift; sourceTree = "<group>"; };
 		A511BA7F2568308200DF1657 /* PWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWError.swift; sourceTree = "<group>"; };
+		A511BAAB256947B400DF1657 /* Permission.Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.Base.swift; sourceTree = "<group>"; };
 		A533FEDE253B25A7003B7648 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A533FEEA253B573F003B7648 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A53C04C0254D5C35007F1438 /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		A5B519D4253AD284006870FA /* Home.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.Agent.swift; sourceTree = "<group>"; };
 		A5C49B80253B631B004DDC66 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		A5C49B8D253B6E2B004DDC66 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
-		A5C4FFDD2554629D0002B376 /* Permission.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.Agent.swift; sourceTree = "<group>"; };
+		A5C4FFDD2554629D0002B376 /* Permission.Base.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.Base.Agent.swift; sourceTree = "<group>"; };
 		A5CB584A255C1D0400B2AC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DAF03A2528D771002483A6 /* PermissionWizard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PermissionWizard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF03E2528D771002483A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				A5EDD6EE2528E220001F44C9 /* Permission.swift */,
-				A5C4FFDD2554629D0002B376 /* Permission.Agent.swift */,
+				A511BAAB256947B400DF1657 /* Permission.Base.swift */,
+				A5C4FFDD2554629D0002B376 /* Permission.Base.Agent.swift */,
 				A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */,
 				A54481DA254D49BC0031A427 /* Bluetooth.Agent.swift */,
 				A5518743253779CA001A8208 /* Calendars.swift */,
@@ -228,8 +231,9 @@
 				A5C49B8E253B6E2B004DDC66 /* Motion.swift in Sources */,
 				A511BA802568308200DF1657 /* PWError.swift in Sources */,
 				A5C49B81253B631B004DDC66 /* Photos.swift in Sources */,
-				A5C4FFDE2554629D0002B376 /* Permission.Agent.swift in Sources */,
+				A5C4FFDE2554629D0002B376 /* Permission.Base.Agent.swift in Sources */,
 				A5B1D843253C1C4600760382 /* Notifications.swift in Sources */,
+				A511BAAC256947B400DF1657 /* Permission.Base.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,
 				A5518744253779CA001A8208 /* Calendars.swift in Sources */,

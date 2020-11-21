@@ -5,7 +5,15 @@
 //  Created by Sergey Moskvin on 14.10.2020.
 //
 
+import UIKit
+
 final class Utils {
+    
+    private static let iconsComponentName = "Icons"
+    private static let squircleIconCornerRadius: CGFloat = 7
+    
+    private static let iconBorderWidth: CGFloat = 1
+    private static let iconBorderColor = UIColor.black.withAlphaComponent(0.1)
     
     // MARK: - Internal Functions
     
@@ -33,7 +41,7 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionsPlistKeys: [String]) throws {
+    static func checkIsAppConfigured(for permission: Permission.Base.Type, usageDescriptionsPlistKeys: [String]) throws {
         for plistKey in usageDescriptionsPlistKeys {
             let value = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String
             
@@ -43,7 +51,7 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Type, usageDescriptionPlistKey: String? = nil) throws {
+    static func checkIsAppConfigured(for permission: Permission.Base.Type, usageDescriptionPlistKey: String? = nil) throws {
         guard let plistKey = usageDescriptionPlistKey else {
             return
         }
@@ -76,6 +84,50 @@ final class Utils {
         let clarification = "to a nested dictionary with the key ”\(dictionaryKey)“"
         throw createInvalidAppConfigurationError(missingPlistKey: purposePlistKey, permissionName: "temporary precise location", clarification: clarification)
     }
+    
+#if ICONS || !CUSTOM_SETTINGS
+    static func getEmbeddedIcon(name: String, makeSquircle: Bool, shouldBorder: Bool, for screen: UIScreen) -> UIImage? {
+        var bundle = Bundle(for: self)
+        
+#if !EXAMPLE
+        guard let url = bundle.url(forResource: iconsComponentName, withExtension: "bundle") else {
+            return nil
+        }
+        
+        bundle = Bundle(url: url) ?? bundle
+#endif
+        
+        guard var icon = UIImage(named: name, in: bundle, compatibleWith: nil) else {
+            return nil
+        }
+        
+        let frame = CGRect(origin: .zero, size: icon.size)
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, screen.scale)
+        
+        if makeSquircle {
+            let path = UIBezierPath(roundedRect: frame, cornerRadius: squircleIconCornerRadius)
+            path.addClip()
+        }
+        
+        icon.draw(in: frame)
+        
+        if #available(iOS 11, *), shouldBorder {
+            let borderWidth = iconBorderWidth / screen.scale
+            let frame = frame.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
+            
+            let path = UIBezierPath(roundedRect: frame, cornerRadius: makeSquircle ? squircleIconCornerRadius : 0)
+            path.lineWidth = borderWidth
+            
+            iconBorderColor.setStroke()
+            path.stroke()
+        }
+        
+        icon = UIGraphicsGetImageFromCurrentImageContext() ?? icon
+        UIGraphicsEndImageContext()
+        
+        return icon
+    }
+#endif
     
     // MARK: - Private Functions
     

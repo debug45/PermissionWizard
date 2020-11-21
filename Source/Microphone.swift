@@ -11,7 +11,7 @@ import AVKit
 
 public extension Permission {
     
-    final class microphone: Permission {
+    final class microphone: Base {
         
         public enum Status: String {
             

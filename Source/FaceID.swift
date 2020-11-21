@@ -12,7 +12,7 @@ import LocalAuthentication
 @available(iOS 11, *)
 public extension Permission {
     
-    final class faceID: Permission {
+    final class faceID: Base {
         
         public enum Status: String {
             

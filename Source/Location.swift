@@ -11,7 +11,7 @@ import CoreLocation
 
 public extension Permission {
     
-    final class location: Permission {
+    final class location: Base {
         
         public enum NarrowStatus: String {
             

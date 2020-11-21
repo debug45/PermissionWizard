@@ -12,7 +12,7 @@ import CoreMotion
 @available(iOS 11, *)
 public extension Permission {
     
-    final class motion: Permission {
+    final class motion: Base {
         
         public enum Status: String {
             

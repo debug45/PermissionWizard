@@ -11,7 +11,7 @@ import UserNotifications
 
 public extension Permission {
     
-    final class notifications: Permission {
+    final class notifications: Base {
         
         public enum Status: String {
             

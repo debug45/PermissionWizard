@@ -11,7 +11,7 @@ import AVKit
 
 public extension Permission {
     
-    final class camera: Permission {
+    final class camera: Base {
         
         public enum NarrowStatus: String {
             

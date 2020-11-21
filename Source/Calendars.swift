@@ -11,7 +11,7 @@ import EventKit
 
 public extension Permission {
     
-    final class calendars: Permission {
+    final class calendars: Base {
         
         public enum Status: String {
             

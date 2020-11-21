@@ -11,7 +11,7 @@ import MediaPlayer
 
 public extension Permission {
     
-    final class music: Permission {
+    final class music: Base {
         
         public enum Status: String {
             

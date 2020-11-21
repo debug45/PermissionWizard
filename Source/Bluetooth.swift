@@ -12,7 +12,7 @@ import CoreBluetooth
 @available(iOS 13.1, *)
 public extension Permission {
     
-    final class bluetooth: Permission {
+    final class bluetooth: Base {
         
         public enum Status: String {
             

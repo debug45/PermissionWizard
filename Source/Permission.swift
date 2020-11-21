@@ -9,10 +9,7 @@ import UIKit
 
 public class Permission {
     
-    private static let iconCornerRadius: CGFloat = 7
-    
-    private static let iconBorderWidth: CGFloat = 1
-    private static let iconBorderColor = UIColor.black.withAlphaComponent(0.1)
+    private static let privacyIconName = "Privacy"
     
     // MARK: - Global Settings
     
@@ -26,79 +23,19 @@ public class Permission {
     */
     public static var preferredQueue: DispatchQueue? = .main
     
-    // MARK: - Base Properties
-    
-    /**
-     Returns a string that can be used in your UI as the permission type title name
-
-     # Examples
-     `Bluetooth, Face ID, Microphone, Speech Recognition`
-    */
-    public class var titleName: String {
-        return String(describing: self).capitalized
-    }
-    
-    /**
-     Returns a string that can be used in your UI as the permission type context name
-
-     # Examples
-     `Bluetooth, Face ID, microphone, speech recognition`
-    */
-    public class var contextName: String { .init(describing: self) }
-    
-    class var shouldBorderIcon: Bool { false }
-    
     // MARK: - Public Functions
     
 #if ICONS || !CUSTOM_SETTINGS
     /**
-     Returns an image representing the permission type for your UI
+     Returns an image representing privacy for your UI
 
-     All provided icons are native, the same as displayed in the system preferences
+     The icon is native, the same as displayed in the system preferences
 
      - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
      - Parameter screen: A screen where the image will be displayed. It used to ensure proper scaling.
     */
-    public class func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
-        var bundle = Bundle(for: self)
-        
-#if !EXAMPLE
-        guard let url = bundle.url(forResource: "Icons", withExtension: "bundle") else {
-            return nil
-        }
-        
-        bundle = Bundle(url: url) ?? bundle
-#endif
-        
-        guard var icon = UIImage(named: titleName, in: bundle, compatibleWith: nil) else {
-            return nil
-        }
-        
-        if squircle {
-            var frame = CGRect(origin: .zero, size: icon.size)
-            UIGraphicsBeginImageContextWithOptions(frame.size, false, screen.scale)
-            
-            var path = UIBezierPath(roundedRect: frame, cornerRadius: iconCornerRadius)
-            path.addClip()
-            
-            icon.draw(in: frame)
-            
-            if #available(iOS 11, *), shouldBorderIcon {
-                let borderWidth = iconBorderWidth / screen.scale
-                frame = frame.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
-                
-                path = UIBezierPath(roundedRect: frame, cornerRadius: iconCornerRadius)
-                path.lineWidth = borderWidth
-                
-                iconBorderColor.setStroke()
-                path.stroke()
-            }
-            
-            icon = UIGraphicsGetImageFromCurrentImageContext() ?? icon
-            UIGraphicsEndImageContext()
-        }
-        
-        return icon
+    public class func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
+        return Utils.getEmbeddedIcon(name: privacyIconName, makeSquircle: squircle, shouldBorder: false, for: screen)
     }
 #endif
     

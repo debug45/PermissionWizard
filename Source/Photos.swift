@@ -11,7 +11,7 @@ import Photos
 
 public extension Permission {
     
-    final class photos: Permission {
+    final class photos: Base {
         
         public enum Status: String {
             
