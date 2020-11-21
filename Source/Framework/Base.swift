@@ -1,5 +1,5 @@
 //
-//  Permission.Base.swift
+//  Base.swift
 //  PermissionWizard
 //
 //  Created by Sergey Moskvin on 21.11.2020.

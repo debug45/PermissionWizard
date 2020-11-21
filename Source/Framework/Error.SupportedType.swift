@@ -1,11 +1,11 @@
 //
-//  PWError.SupportedType.swift
+//  Error.SupportedType.swift
 //  PermissionWizard
 //
 //  Created by Sergey Moskvin on 20.11.2020.
 //
 
-extension PWError {
+extension Permission.Error {
     
     public enum SupportedType: Int {
         

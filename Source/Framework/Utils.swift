@@ -131,11 +131,11 @@ final class Utils {
     
     // MARK: - Private Functions
     
-    private static func createInvalidAppConfigurationError(missingPlistKey: String, permissionName: String, clarification: String? = nil) -> PWError {
+    private static func createInvalidAppConfigurationError(missingPlistKey: String, permissionName: String, clarification: String? = nil) -> Permission.Error {
         let clarification = clarification?.isEmpty == false ? " (\(clarification!))" : ""
         
         let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
-        return PWError(.missingPlistKey, message: message)
+        return Permission.Error(.missingPlistKey, message: message)
     }
     
 }
