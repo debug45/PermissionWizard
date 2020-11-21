@@ -107,21 +107,31 @@ Permission.contacts.checkStatus { status in
     status // .notDetermined
 }
 
-Permission.location.requestAccess(whenInUseOnly: true) { status in
-    status.value // .whenInUseOnly
-    status.isAccuracyReducing // false
-}
-
-Permission.camera.checkStatus(withMicrophone: true) { status in
-    status.camera // .granted
-    status.microphone // .denied
+do {
+    try Permission.location.requestAccess(whenInUseOnly: true) { status in
+        status.value // .whenInUseOnly
+        status.isAccuracyReducing // false
+    }
+    
+    Permission.camera.checkStatus(withMicrophone: true) { status in
+        status.camera // .granted
+        status.microphone // .denied
+    }
+} catch let error {
+    error.userInfo["message"] // You must add a row with the ”NSLocationWhenInUseUsageDescription“ key to your app‘s plist file and specify the reason why you are requesting access to location. This information will be displayed to a user.
+    
+    guard let error = error as? PWError else {
+        return
+    }
+    
+    error.type // .missingPlistKey
 }
 ```
 
 Some permission types support additional features. For example, if an iOS 14 user allows access to his location with reduced accuracy only, you can request temporary access to full accuracy:
 
 ```swift
-Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
+try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
     result // true
 }
 ```
@@ -139,7 +149,7 @@ Permission.health.readingUsageDescriptionPlistKey // NSHealthUpdateUsageDescript
 Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescription
 ```
 
-If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — you will just see an informative warning in the debugger log.
+If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — you just use `try?`.
 
 ### Thread Management
 
