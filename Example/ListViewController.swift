@@ -23,7 +23,7 @@ final class ListViewController: UIViewController {
     
     private func configure() {
         let header = PWHeader()
-        header.title = navigationItem.title
+        header.title = Permission.getPrivacyLocalizedName()
         
         if let screen = UIApplication.shared.keyWindow?.screen {
             header.icon = Permission.getPrivacyIcon(for: screen)
@@ -76,7 +76,7 @@ final class ListViewController: UIViewController {
             header.icon = permission.getIcon(for: screen)
         }
         
-        header.title = permission.titleName
+        header.title = permission.getLocalizedName()
         header.titleColor = view.tintColor
         
         let button = PWButton()

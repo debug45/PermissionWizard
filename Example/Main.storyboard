@@ -61,7 +61,7 @@
                             <constraint firstItem="jbo-qt-uAs" firstAttribute="top" secondItem="KWd-yq-i47" secondAttribute="top" id="nfI-fh-a1G"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Supported Types" id="X29-mq-RrE" userLabel="Navigation Item"/>
+                    <navigationItem key="navigationItem" id="X29-mq-RrE" userLabel="Navigation Item"/>
                     <connections>
                         <outlet property="buttonsContainer" destination="XQh-kr-tpn" id="xIq-aU-1ma"/>
                     </connections>

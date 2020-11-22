@@ -25,8 +25,7 @@ public extension Permission {
             
         }
         
-        public override class var titleName: String { "Speech Recognition" }
-        public override class var contextName: String { titleName.lowercased() }
+        public override class var contextName: String { "speech recognition" }
         
         public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
         

@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Súkromie";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Kalendáre";
+"Camera" = "Kamera";
+"Contacts" = "Kontakty";
+"FaceID" = "Face ID";
+"Health" = "Zdravie";
+"Home" = "HomeKit";
+"LocalNetwork" = "Lokálna sieť";
+"Location" = "Lokalizačné služby";
+"Microphone" = "Mikrofón";
+"Motion" = "Pohyb a kondícia";
+"Music" = "Médiá a Apple Music";
+"Notifications" = "Hlásenia";
+"Photos" = "Fotky";
+"Reminders" = "Pripomienky";
+"SpeechRecognition" = "Rozpoznávanie reči";

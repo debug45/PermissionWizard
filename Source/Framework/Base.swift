@@ -11,33 +11,15 @@ extension Permission {
     
     public class Base {
         
-        // MARK: - Public Properties
+        // MARK: - Properties
         
-        /**
-         Returns a string that can be used in your UI as the permission type title name
-
-         # Examples
-         `Bluetooth, Face ID, Microphone, Speech Recognition`
-        */
-        public class var titleName: String {
-            return String(describing: self).capitalized
-        }
-        
-        /**
-         Returns a string that can be used in your UI as the permission type context name
-
-         # Examples
-         `Bluetooth, Face ID, microphone, speech recognition`
-        */
-        public class var contextName: String { .init(describing: self) }
-        
-        // MARK: - Internal Properties
+        class var contextName: String { .init(describing: self) }
         
         class var shouldBorderIcon: Bool { false }
         
         // MARK: - Public Functions
         
-    #if ICONS || !CUSTOM_SETTINGS
+#if ICONS || !CUSTOM_SETTINGS
         /**
          Returns an image representing the permission type for your UI
 
@@ -47,9 +29,25 @@ extension Permission {
          - Parameter screen: A screen where the image will be displayed. It used to ensure proper scaling.
         */
         public class func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
-            return Utils.getEmbeddedIcon(name: titleName, makeSquircle: squircle, shouldBorder: shouldBorderIcon, for: screen)
+            let name = String(describing: self)
+            return Utils.getEmbeddedIcon(name: name, makeSquircle: squircle, shouldBorder: shouldBorderIcon, for: screen)
         }
-    #endif
+#endif
+        
+        /**
+         Returns a localized string representing the permission type for your UI
+
+         All provided strings are native, the same as displayed in the system preferences
+
+         # Examples
+         `Camera, Face ID, Local Network`
+
+         - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system preference.
+        */
+        public class func getLocalizedName(specificLocalization: String? = nil) -> String? {
+            let key = String(describing: self)
+            return Utils.getEmbeddedString(key: key, specificLocalization: specificLocalization)
+        }
         
     }
     

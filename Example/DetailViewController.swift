@@ -25,7 +25,7 @@ final class DetailViewController: UIViewController {
     
     private func configure() {
         let header = PWHeader()
-        header.title = permission?.titleName
+        header.title = permission?.getLocalizedName()
         
         if let screen = UIApplication.shared.keyWindow?.screen {
             header.icon = permission?.getIcon(for: screen)

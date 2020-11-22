@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Privacidade";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Calendários";
+"Camera" = "Câmera";
+"Contacts" = "Contatos";
+"FaceID" = "Face ID";
+"Health" = "Saúde";
+"Home" = "HomeKit";
+"LocalNetwork" = "Rede Local";
+"Location" = "Serviços de Localização";
+"Microphone" = "Microfone";
+"Motion" = "Movimento e Preparo Físico";
+"Music" = "Mídia e Apple Music";
+"Notifications" = "Notificações";
+"Photos" = "Fotos";
+"Reminders" = "Lembretes";
+"SpeechRecognition" = "Reconhecimento de Fala";

@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Quyền riêng tư";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Lịch";
+"Camera" = "Camera";
+"Contacts" = "Danh bạ";
+"FaceID" = "Face ID";
+"Health" = "Sức khỏe";
+"Home" = "HomeKit";
+"LocalNetwork" = "Mạng cục bộ";
+"Location" = "Dịch vụ định vị";
+"Microphone" = "Micrô";
+"Motion" = "Di chuyển & thể chất";
+"Music" = "Phương tiện & Apple Music";
+"Notifications" = "Thông báo";
+"Photos" = "Ảnh";
+"Reminders" = "Lời nhắc";
+"SpeechRecognition" = "Nhận dạng lời nói";

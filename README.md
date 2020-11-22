@@ -161,17 +161,16 @@ Permission.preferredQueue = .main // Default setting
 
 ### UI Assets
 
-If your UI needs permission type icons or string names, you can easily get it using **PermissionWizard**:
+If your UI needs permission type icons or localized names, you can easily get it using **PermissionWizard**:
 
 ```swift
 let permission = Permission.speechRecognition.self
-imageView.image = permission.getIcon(squircle: true)
 
-titleLabel.text = permission.titleName // Speech Recognition
-descriptionLabel.text = "Please allow access to your \(permission.contextName)" // speech recognition
+imageView.image = permission.getIcon(squircle: true)
+label.text = permission.getLocalizedName() // Speech Recognition
 ```
 
-Keep in mind that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage).
+Keep in mind that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
 
 ## Known Issues
 
@@ -185,7 +184,6 @@ Keep in mind that icons are available only if the `Icons` component of **Permiss
 - Add support of NFC
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
-- Localize string assets to all system languages
 - Document the library API
 
 ## Conclusion

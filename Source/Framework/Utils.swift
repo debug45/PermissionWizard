@@ -97,6 +97,8 @@ final class Utils {
         bundle = Bundle(url: url) ?? bundle
 #endif
         
+        let name = uppercaseFirstLetter(name)
+        
         guard var icon = UIImage(named: name, in: bundle, compatibleWith: nil) else {
             return nil
         }
@@ -129,6 +131,21 @@ final class Utils {
     }
 #endif
     
+    static func getEmbeddedString(key: String, specificLocalization: String? = nil) -> String? {
+        var bundle = Bundle(for: self)
+        
+        if let specificLocalization = specificLocalization {
+            guard let path = bundle.path(forResource: specificLocalization, ofType: "lproj") else {
+                return nil
+            }
+            
+            bundle = Bundle(path: path) ?? bundle
+        }
+        
+        let key = uppercaseFirstLetter(key)
+        return bundle.localizedString(forKey: key, value: nil, table: nil)
+    }
+    
     // MARK: - Private Functions
     
     private static func createInvalidAppConfigurationError(missingPlistKey: String, permissionName: String, clarification: String? = nil) -> Permission.Error {
@@ -136,6 +153,10 @@ final class Utils {
         
         let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
         return Permission.Error(.missingPlistKey, message: message)
+    }
+    
+    private static func uppercaseFirstLetter(_ value: String) -> String {
+        return value.prefix(1).uppercased() + value.dropFirst()
     }
     
 }

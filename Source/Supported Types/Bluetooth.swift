@@ -26,7 +26,7 @@ public extension Permission {
             
         }
         
-        public override class var contextName: String { titleName }
+        public override class var contextName: String { "Bluetooth" }
         
         public static let usageDescriptionPlistKey = "NSBluetoothAlwaysUsageDescription"
         

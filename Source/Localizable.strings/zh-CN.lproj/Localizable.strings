@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "隐私";
+
+"Bluetooth" = "蓝牙";
+"Calendars" = "日历";
+"Camera" = "相机";
+"Contacts" = "通讯录";
+"FaceID" = "面容ID";
+"Health" = "健康";
+"Home" = "HomeKit";
+"LocalNetwork" = "本地网络";
+"Location" = "定位服务";
+"Microphone" = "麦克风";
+"Motion" = "运动与健身";
+"Music" = "媒体与Apple Music";
+"Notifications" = "通知";
+"Photos" = "照片";
+"Reminders" = "提醒事项";
+"SpeechRecognition" = "语音识别";

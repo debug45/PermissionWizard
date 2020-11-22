@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Απόρρητο";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Ημερολόγια";
+"Camera" = "Κάμερα";
+"Contacts" = "Επαφές";
+"FaceID" = "Face ID";
+"Health" = "Υγεία";
+"Home" = "HomeKit";
+"LocalNetwork" = "Τοπικό δίκτυο";
+"Location" = "Υπηρεσίες τοποθεσίας";
+"Microphone" = "Μικρόφωνο";
+"Motion" = "Κίνηση και άθληση";
+"Music" = "Πολυμέσα και Apple Music";
+"Notifications" = "Γνωστοποιήσεις";
+"Photos" = "Φωτογραφίες";
+"Reminders" = "Υπομνήσεις";
+"SpeechRecognition" = "Αναγνώριση ομιλίας";

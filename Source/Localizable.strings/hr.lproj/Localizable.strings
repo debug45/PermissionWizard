@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Privatnost";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Kalendari";
+"Camera" = "Kamera";
+"Contacts" = "Kontakti";
+"FaceID" = "Face ID";
+"Health" = "Zdravlje";
+"Home" = "HomeKit";
+"LocalNetwork" = "Lokalna mreža";
+"Location" = "Lokacijske usluge";
+"Microphone" = "Mikrofon";
+"Motion" = "Kretanje i kondicija";
+"Music" = "Mediji i Apple Music";
+"Notifications" = "Obavijesti";
+"Photos" = "Fotografije";
+"Reminders" = "Podsjetnici";
+"SpeechRecognition" = "Prepoznavanje govora";

@@ -1,0 +1,25 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergey Moskvin on 21.11.2020.
+*/
+
+"Privacy" = "Privasi";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Kalender";
+"Camera" = "Kamera";
+"Contacts" = "Kontak";
+"FaceID" = "Face ID";
+"Health" = "Kesehatan";
+"Home" = "HomeKit";
+"LocalNetwork" = "Jaringan Lokal";
+"Location" = "Layanan Lokasi";
+"Microphone" = "Mikrofon";
+"Motion" = "Gerakan & Kebugaran";
+"Music" = "Media & Apple Music";
+"Notifications" = "Pemberitahuan";
+"Photos" = "Foto";
+"Reminders" = "Pengingat";
+"SpeechRecognition" = "Pengenalan Ucapan";
