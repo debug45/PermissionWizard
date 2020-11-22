@@ -23,7 +23,7 @@ final class ListViewController: UIViewController {
     
     private func configure() {
         let header = PWHeader()
-        header.title = Permission.getPrivacyLocalizedName()
+        header.title = Permission.getPrivacyLocalizedTitle()
         
         if let screen = UIApplication.shared.keyWindow?.screen {
             header.icon = Permission.getPrivacyIcon(for: screen)

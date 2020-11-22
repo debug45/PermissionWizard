@@ -9,7 +9,9 @@ import UIKit
 
 public class Permission {
     
+#if ASSETS || !CUSTOM_SETTINGS
     private static let privacyAssetKey = "Privacy"
+#endif
     
     // MARK: - Global Settings
     
@@ -25,7 +27,7 @@ public class Permission {
     
     // MARK: - Public Functions
     
-#if ICONS || !CUSTOM_SETTINGS
+#if ASSETS || !CUSTOM_SETTINGS
     /**
      Returns an image representing privacy for your UI
 
@@ -37,7 +39,6 @@ public class Permission {
     public class func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
         return Utils.getEmbeddedIcon(name: privacyAssetKey, makeSquircle: squircle, shouldBorder: false, for: screen)
     }
-#endif
     
     /**
      Returns a localized string representing privacy for your UI
@@ -46,8 +47,9 @@ public class Permission {
 
      - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system preference.
     */
-    public class func getPrivacyLocalizedName(specificLocalization: String? = nil) -> String? {
+    public class func getPrivacyLocalizedTitle(specificLocalization: String? = nil) -> String? {
         return Utils.getEmbeddedString(key: privacyAssetKey, specificLocalization: specificLocalization)
     }
+#endif
     
 }

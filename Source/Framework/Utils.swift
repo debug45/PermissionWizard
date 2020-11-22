@@ -9,11 +9,15 @@ import UIKit
 
 final class Utils {
     
-    private static let iconsComponentName = "Icons"
+#if ASSETS || !CUSTOM_SETTINGS
+    private static let iconsBundleName = "Icons"
+    private static let localizationsBundleName = "Localizations"
+
     private static let squircleIconCornerRadius: CGFloat = 7
     
     private static let iconBorderWidth: CGFloat = 1
     private static let iconBorderColor = UIColor.black.withAlphaComponent(0.1)
+#endif
     
     // MARK: - Internal Functions
     
@@ -59,6 +63,7 @@ final class Utils {
         try checkIsAppConfigured(for: permission, usageDescriptionsPlistKeys: [plistKey])
     }
     
+#if LOCAL_NETWORK || !CUSTOM_SETTINGS
     @available(iOS 14, *)
     static func checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: String, servicePlistKey: String) throws {
         try checkIsAppConfigured(for: Permission.localNetwork.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
@@ -72,7 +77,9 @@ final class Utils {
         let clarification = "to a nested array with the key ”\(arrayKey)“"
         throw createInvalidAppConfigurationError(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
     }
+#endif
     
+#if LOCATION || !CUSTOM_SETTINGS
     @available(iOS 14, *)
     static func checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: String) throws {
         let dictionaryKey = "NSLocationTemporaryUsageDescriptionDictionary"
@@ -84,13 +91,14 @@ final class Utils {
         let clarification = "to a nested dictionary with the key ”\(dictionaryKey)“"
         throw createInvalidAppConfigurationError(missingPlistKey: purposePlistKey, permissionName: "temporary precise location", clarification: clarification)
     }
+#endif
     
-#if ICONS || !CUSTOM_SETTINGS
+#if ASSETS || !CUSTOM_SETTINGS
     static func getEmbeddedIcon(name: String, makeSquircle: Bool, shouldBorder: Bool, for screen: UIScreen) -> UIImage? {
         var bundle = Bundle(for: self)
         
 #if !EXAMPLE
-        guard let url = bundle.url(forResource: iconsComponentName, withExtension: "bundle") else {
+        guard let url = bundle.url(forResource: iconsBundleName, withExtension: "bundle") else {
             return nil
         }
         
@@ -129,10 +137,17 @@ final class Utils {
         
         return icon
     }
-#endif
     
     static func getEmbeddedString(key: String, specificLocalization: String? = nil) -> String? {
         var bundle = Bundle(for: self)
+        
+#if !EXAMPLE
+        guard let url = bundle.url(forResource: localizationsBundleName, withExtension: "bundle") else {
+            return nil
+        }
+        
+        bundle = Bundle(url: url) ?? bundle
+#endif
         
         if let specificLocalization = specificLocalization {
             guard let path = bundle.path(forResource: specificLocalization, ofType: "lproj") else {
@@ -145,6 +160,7 @@ final class Utils {
         let key = uppercaseFirstLetter(key)
         return bundle.localizedString(forKey: key, value: nil, table: nil)
     }
+#endif
     
     // MARK: - Private Functions
     
@@ -155,8 +171,10 @@ final class Utils {
         return Permission.Error(.missingPlistKey, message: message)
     }
     
+#if ASSETS || !CUSTOM_SETTINGS
     private static func uppercaseFirstLetter(_ value: String) -> String {
         return value.prefix(1).uppercased() + value.dropFirst()
     }
+#endif
     
 }

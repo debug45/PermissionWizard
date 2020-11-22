@@ -25,7 +25,7 @@ public extension Permission {
             
         }
         
-#if ICONS || !CUSTOM_SETTINGS
+#if ASSETS || !CUSTOM_SETTINGS
         public override class var shouldBorderIcon: Bool { true }
 #endif
         

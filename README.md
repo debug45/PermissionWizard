@@ -23,7 +23,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 <br/>
 🍭 Unifies your code **regardless of permission types** you are working with
 <br/>
-🖼 Includes **native icons** and **string constants** for your UI (optional)
+🖼 Includes **native icons** and **localized strings** for your UI (optional)
 <br/>
 🍕 Modular, add to your project **what you need only**
 <br/>
@@ -54,7 +54,7 @@ By default, the library will be installed fully.
 Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
 
 ```ruby
-pod 'PermissionWizard/Icons' # Permission type icons
+pod 'PermissionWizard/Assets' # Icons and localized strings
 pod 'PermissionWizard/Bluetooth'
 pod 'PermissionWizard/Calendars'
 pod 'PermissionWizard/Camera'
@@ -90,7 +90,7 @@ Due to Apple’s policy regarding system permissions, your app may be rejected d
 To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
 ```
-ENABLED_FEATURES = ICONS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SPEECH_RECOGNITION
+ENABLED_FEATURES = ASSETS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SPEECH_RECOGNITION
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(ENABLED_FEATURES) CUSTOM_SETTINGS
 ```
 
@@ -170,7 +170,7 @@ imageView.image = permission.getIcon(squircle: true)
 label.text = permission.getLocalizedName() // Speech Recognition
 ```
 
-Keep in mind that icons are available only if the `Icons` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
+Keep in mind that icons and localized strings are available only if the `Assets` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
 
 ## Known Issues
 
@@ -190,6 +190,6 @@ Keep in mind that icons are available only if the `Icons` component of **Permiss
 
 You can contact me on [Telegram](https://t.me/debug45) and [LinkedIn](https://linkedin.com/in/debug45). If you find an issue, please [tell](https://github.com/debug45/PermissionWizard/issues/new) about it.
 
-Library is released under the MIT license. The permission type icons belong to Apple, their use is regulated by the company rules.
+Library is released under the MIT license. The permission type icons and localized names belong to Apple, their use is regulated by the company rules.
 
 If **PermissionWizard** is useful for you please star this repository. Thank you! 👍

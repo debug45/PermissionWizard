@@ -19,7 +19,7 @@ extension Permission {
         
         // MARK: - Public Functions
         
-#if ICONS || !CUSTOM_SETTINGS
+#if ASSETS || !CUSTOM_SETTINGS
         /**
          Returns an image representing the permission type for your UI
 
@@ -32,7 +32,6 @@ extension Permission {
             let name = String(describing: self)
             return Utils.getEmbeddedIcon(name: name, makeSquircle: squircle, shouldBorder: shouldBorderIcon, for: screen)
         }
-#endif
         
         /**
          Returns a localized string representing the permission type for your UI
@@ -48,6 +47,7 @@ extension Permission {
             let key = String(describing: self)
             return Utils.getEmbeddedString(key: key, specificLocalization: specificLocalization)
         }
+#endif
         
     }
     
