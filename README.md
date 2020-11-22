@@ -184,7 +184,6 @@ Keep in mind that icons and localized strings are available only if the `Assets`
 - Add support of NFC
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
-- Document the library API
 
 ## Conclusion
 

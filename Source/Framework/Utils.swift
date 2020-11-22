@@ -168,7 +168,9 @@ final class Utils {
         let clarification = clarification?.isEmpty == false ? " (\(clarification!))" : ""
         
         let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
-        return Permission.Error(.missingPlistKey, message: message)
+        let type = Permission.Error.SupportedType.missingPlistKey(details: message)
+        
+        return Permission.Error(type, message: message)
     }
     
 #if ASSETS || !CUSTOM_SETTINGS

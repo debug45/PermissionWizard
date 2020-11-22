@@ -9,6 +9,7 @@ extension Permission {
     
     public class Error: NSError {
         
+        /// A flag that represents a reason of the occured error
         public let type: SupportedType
         
         private let userInfoMessageKey = "message"
@@ -25,10 +26,10 @@ extension Permission {
                 userInfo[userInfoMessageKey] = message
             }
             
-            super.init(domain: domain, code: type.rawValue, userInfo: userInfo)
+            super.init(domain: domain, code: type.code, userInfo: userInfo)
         }
         
-        public required init?(coder: NSCoder) {
+        required init?(coder: NSCoder) {
             return nil
         }
         

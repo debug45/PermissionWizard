@@ -23,10 +23,10 @@ extension Permission {
         /**
          Returns an image representing the permission type for your UI
 
-         All provided icons are native, the same as displayed in the system preferences
+         The icon is native, the same as displayed in the system preferences
 
          - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
-         - Parameter screen: A screen where the image will be displayed. It used to ensure proper scaling.
+         - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
         */
         public class func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
             let name = String(describing: self)
@@ -36,12 +36,9 @@ extension Permission {
         /**
          Returns a localized string representing the permission type for your UI
 
-         All provided strings are native, the same as displayed in the system preferences
+         The string is native, the same as displayed in the system preferences
 
-         # Examples
-         `Camera, Face ID, Local Network`
-
-         - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system preference.
+         - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system localization.
         */
         public class func getLocalizedName(specificLocalization: String? = nil) -> String? {
             let key = String(describing: self)

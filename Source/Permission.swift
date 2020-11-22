@@ -34,7 +34,7 @@ public class Permission {
      The icon is native, the same as displayed in the system preferences
 
      - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
-     - Parameter screen: A screen where the image will be displayed. It used to ensure proper scaling.
+     - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
     */
     public class func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
         return Utils.getEmbeddedIcon(name: privacyAssetKey, makeSquircle: squircle, shouldBorder: false, for: screen)
@@ -43,9 +43,9 @@ public class Permission {
     /**
      Returns a localized string representing privacy for your UI
 
-     All provided strings are native, the same as displayed in the system preferences
+     The string is native, the same as displayed in the system preferences
 
-     - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system preference.
+     - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system localization.
     */
     public class func getPrivacyLocalizedTitle(specificLocalization: String? = nil) -> String? {
         return Utils.getEmbeddedString(key: privacyAssetKey, specificLocalization: specificLocalization)

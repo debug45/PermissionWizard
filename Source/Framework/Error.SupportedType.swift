@@ -7,10 +7,24 @@
 
 extension Permission.Error {
     
-    public enum SupportedType: Int {
+    public enum SupportedType {
         
+        /// Unknown error inside PermissionWizard, please report it
         case libraryFailure
-        case missingPlistKey
+        /// Your ”Info.plist“ is configured incorrectly
+        case missingPlistKey(details: String)
+        
+        // MARK: - Properties
+        
+        var code: Int {
+            switch self {
+                case .libraryFailure:
+                    return 0
+                
+                case .missingPlistKey(_):
+                    return 1
+            }
+        }
         
     }
     
