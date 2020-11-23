@@ -13,21 +13,9 @@ public extension Permission {
     
     final class speechRecognition: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
-        public override class var contextName: String { "speech recognition" }
-        
         public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
+        
+        override class var contextName: String { "speech recognition" }
         
         // MARK: - Public Functions
         

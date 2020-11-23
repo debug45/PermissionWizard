@@ -27,12 +27,12 @@ public extension Permission {
             
         }
         
-#if ASSETS || !CUSTOM_SETTINGS
-        public override class var shouldBorderIcon: Bool { true }
-#endif
-        
         public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
+        
+#if ASSETS || !CUSTOM_SETTINGS
+        override class var shouldBorderIcon: Bool { true }
+#endif
         
         // MARK: - Public Functions
         

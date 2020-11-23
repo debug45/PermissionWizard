@@ -14,9 +14,9 @@ public extension Permission {
     
     final class localNetwork: Base {
         
-        public override class var contextName: String { "local network" }
-        
         public static let usageDescriptionPlistKey = "NSLocalNetworkUsageDescription"
+        
+        override class var contextName: String { "local network" }
         
         // MARK: - Public Functions
         

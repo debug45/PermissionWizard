@@ -13,18 +13,6 @@ public extension Permission {
     
     final class music: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
         public static let usageDescriptionPlistKey = "NSAppleMusicUsageDescription"
         
         // MARK: - Public Functions

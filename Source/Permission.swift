@@ -45,7 +45,7 @@ public class Permission {
 
      The string is native, the same as displayed in the system preferences
 
-     - Parameter specificLocalization: A code of the desired localization according to ISO 639 (for example, ”ru“ or ”pt-BR“). By default, the current system localization.
+     - Parameter specificLocalization: A code of the desired localization according to ISO 639. For example, ”ru“ or ”pt-BR“. By default, the current system localization.
     */
     public class func getPrivacyLocalizedTitle(specificLocalization: String? = nil) -> String? {
         return Utils.getEmbeddedString(key: privacyAssetKey, specificLocalization: specificLocalization)

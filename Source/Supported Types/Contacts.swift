@@ -13,18 +13,6 @@ public extension Permission {
     
     final class contacts: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
         public static let usageDescriptionPlistKey = "NSContactsUsageDescription"
         
         // MARK: - Public Functions

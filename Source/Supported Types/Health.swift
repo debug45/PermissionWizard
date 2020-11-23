@@ -24,12 +24,12 @@ public extension Permission {
             
         }
         
-#if ASSETS || !CUSTOM_SETTINGS
-        public override class var shouldBorderIcon: Bool { true }
-#endif
-        
         public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
+        
+#if ASSETS || !CUSTOM_SETTINGS
+        override class var shouldBorderIcon: Bool { true }
+#endif
         
         // MARK: - Public Functions
         

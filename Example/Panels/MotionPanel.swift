@@ -17,7 +17,7 @@ final class MotionPanel: Panel<Permission.motion> {
             self.permission.checkStatus { self.notify($0.rawValue) }
         }, requestAccessAction: {
             try! self.permission.requestAccess()
-            self.notify("⚠️ The ”requestAccess“ does not support returning of a result, use the ”checkStatus“ if necessary")
+            self.notifyAboutRequestInferiority(tellAnotherWay: true)
         })
     }
     

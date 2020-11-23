@@ -50,7 +50,7 @@ final class Utils {
             let value = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String
             
             if value?.isEmpty != false {
-                throw createInvalidAppConfigurationError(missingPlistKey: plistKey, permissionName: permission.contextName)
+                throw createInvalidAppConfigurationError(permissionName: permission.contextName, missingPlistKey: plistKey)
             }
         }
     }
@@ -66,7 +66,8 @@ final class Utils {
 #if LOCAL_NETWORK || !CUSTOM_SETTINGS
     @available(iOS 14, *)
     static func checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: String, servicePlistKey: String) throws {
-        try checkIsAppConfigured(for: Permission.localNetwork.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
+        let permission = Permission.localNetwork.self
+        try checkIsAppConfigured(for: permission, usageDescriptionPlistKey: usageDescriptionPlistKey)
         
         let arrayKey = "NSBonjourServices"
         
@@ -74,8 +75,8 @@ final class Utils {
             return
         }
         
-        let clarification = "to a nested array with the key ”\(arrayKey)“"
-        throw createInvalidAppConfigurationError(missingPlistKey: servicePlistKey, permissionName: "local network", clarification: clarification)
+        let keyParent = (type: "array", ownKey: arrayKey)
+        throw createInvalidAppConfigurationError(permissionName: permission.contextName, missingPlistKey: servicePlistKey, keyParent: keyParent)
     }
 #endif
     
@@ -88,8 +89,8 @@ final class Utils {
             return
         }
         
-        let clarification = "to a nested dictionary with the key ”\(dictionaryKey)“"
-        throw createInvalidAppConfigurationError(missingPlistKey: purposePlistKey, permissionName: "temporary precise location", clarification: clarification)
+        let keyParent = (type: "dictionary", ownKey: dictionaryKey)
+        throw createInvalidAppConfigurationError(permissionName: "temporary precise location", missingPlistKey: purposePlistKey, keyParent: keyParent)
     }
 #endif
     
@@ -164,8 +165,12 @@ final class Utils {
     
     // MARK: - Private Functions
     
-    private static func createInvalidAppConfigurationError(missingPlistKey: String, permissionName: String, clarification: String? = nil) -> Permission.Error {
-        let clarification = clarification?.isEmpty == false ? " (\(clarification!))" : ""
+    private static func createInvalidAppConfigurationError(permissionName: String, missingPlistKey: String, keyParent: (type: String, ownKey: String)? = nil) -> Permission.Error {
+        var clarification = ""
+        
+        if let keyParent = keyParent {
+            clarification = " (to a nested \(keyParent.type) with the key ”\(keyParent.ownKey)“)"
+        }
         
         let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
         let type = Permission.Error.SupportedType.missingPlistKey(details: message)

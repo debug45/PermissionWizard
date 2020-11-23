@@ -14,18 +14,6 @@ public extension Permission {
     
     final class motion: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
         public static let usageDescriptionPlistKey = "NSMotionUsageDescription"
         
         // MARK: - Public Functions

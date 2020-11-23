@@ -15,7 +15,7 @@ final class LocalNetworkPanel: Panel<Permission.localNetwork> {
         
         addButton(title: "Request Access") {
             try! self.permission.requestAccess(servicePlistKey: "_example._tcp")
-            self.notify("⚠️ The ”requestAccess“ does not support returning of a result")
+            self.notifyAboutRequestInferiority(tellAnotherWay: false)
         }
     }
     

@@ -79,6 +79,16 @@ class Panel<T: Permission.Base>: UIStackView {
         setCustomSpacing(36, after: lastView)
     }
     
+    func notifyAboutRequestInferiority(tellAnotherWay: Bool) {
+        var message = "⚠️ The ”requestAccess“ does not support returning of a result"
+        
+        if tellAnotherWay {
+            message += ", use the ”checkStatus“ if necessary"
+        }
+        
+        notify(message)
+    }
+    
     func notify(_ message: String) {
         let sender = String(describing: permission)
         print("\(sender): \(message)")

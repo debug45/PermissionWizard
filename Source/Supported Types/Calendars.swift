@@ -13,23 +13,11 @@ public extension Permission {
     
     final class calendars: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
+        public static let usageDescriptionPlistKey = "NSCalendarsUsageDescription"
         
 #if ASSETS || !CUSTOM_SETTINGS
-        public override class var shouldBorderIcon: Bool { true }
+        override class var shouldBorderIcon: Bool { true }
 #endif
-        
-        public static let usageDescriptionPlistKey = "NSCalendarsUsageDescription"
         
         // MARK: - Public Functions
         

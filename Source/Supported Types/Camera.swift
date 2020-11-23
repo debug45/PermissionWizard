@@ -13,17 +13,7 @@ public extension Permission {
     
     final class camera: Base {
         
-        public enum NarrowStatus: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
+        public typealias NarrowStatus = Status
         
 #if MICROPHONE || !CUSTOM_SETTINGS
         public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
