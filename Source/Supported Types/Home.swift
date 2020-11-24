@@ -14,22 +14,23 @@ public extension Permission {
     
     final class home: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case restrictedBySystem
-            
-        }
+        private static var existingAgent: Agent?
         
-        public static let usageDescriptionPlistKey = "NSHomeKitUsageDescription"
+        // MARK: - Overriding Properties
+        
+        public override class var usageDescriptionPlistKey: String { "NSHomeKitUsageDescription" }
         
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        private static var existingAgent: Agent?
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

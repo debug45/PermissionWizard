@@ -13,13 +13,15 @@ public extension Permission {
     
     final class speechRecognition: Base {
         
-        public static let usageDescriptionPlistKey = "NSSpeechRecognitionUsageDescription"
+        // MARK: - Overriding Properties
+        
+        public override class var usageDescriptionPlistKey: String { "NSSpeechRecognitionUsageDescription" }
         
         override class var contextName: String { "speech recognition" }
         
-        // MARK: - Public Functions
+        // MARK: - Overriding Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public override class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch SFSpeechRecognizer.authorizationStatus() {
@@ -37,7 +39,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: speechRecognition.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             SFSpeechRecognizer.requestAuthorization() { _ in

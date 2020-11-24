@@ -13,17 +13,17 @@ public extension Permission {
     
     final class microphone: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case unknown
-            
-        }
+        // MARK: - Overriding Properties
         
-        public static let usageDescriptionPlistKey = "NSMicrophoneUsageDescription"
+        public override class var usageDescriptionPlistKey: String { "NSMicrophoneUsageDescription" }
+        
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

@@ -13,19 +13,18 @@ public extension Permission {
     
     final class notifications: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            
-            case provisionalOnly
-            case ephemeralOnly
-            
-            case unknown
-            
-        }
+        // MARK: - Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
+        
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

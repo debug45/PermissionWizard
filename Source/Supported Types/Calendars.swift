@@ -13,15 +13,17 @@ public extension Permission {
     
     final class calendars: Base {
         
-        public static let usageDescriptionPlistKey = "NSCalendarsUsageDescription"
+        // MARK: - Overriding Properties
+        
+        public override class var usageDescriptionPlistKey: String { "NSCalendarsUsageDescription" }
         
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Public Functions
+        // MARK: - Overriding Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public override class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch EKEventStore.authorizationStatus(for: .event) {
@@ -39,7 +41,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: calendars.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             EKEventStore().requestAccess(to: .event) { _, _ in

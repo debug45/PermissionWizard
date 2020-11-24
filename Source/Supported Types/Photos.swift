@@ -13,26 +13,25 @@ public extension Permission {
     
     final class photos: Base {
         
-        public enum Status: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            
-            case limitedByUser
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
         public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
+        
+        // MARK: - Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
         
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
+        
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

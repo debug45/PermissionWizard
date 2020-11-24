@@ -13,11 +13,13 @@ public extension Permission {
     
     final class music: Base {
         
-        public static let usageDescriptionPlistKey = "NSAppleMusicUsageDescription"
+        // MARK: - Overriding Properties
         
-        // MARK: - Public Functions
+        public override class var usageDescriptionPlistKey: String { "NSAppleMusicUsageDescription" }
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        // MARK: - Overriding Functions
+        
+        public override class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch MPMediaLibrary.authorizationStatus() {
@@ -35,7 +37,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: music.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             MPMediaLibrary.requestAuthorization { _ in

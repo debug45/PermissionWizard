@@ -14,22 +14,25 @@ public extension Permission {
     
     final class health: Base {
         
-        public enum WritingStatus: String {
-            
-            case granted
-            case denied
-            
-            case notDetermined
-            case unknown
-            
-        }
-        
         public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
+        
+        // MARK: - Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
         
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
+        
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

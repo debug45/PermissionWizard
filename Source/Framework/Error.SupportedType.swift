@@ -16,7 +16,8 @@ extension Permission.Error {
         
         // MARK: - Properties
         
-        var code: Int {
+        /// A value that represents PermissionWizard internal code of the error
+        public var code: Int {
             switch self {
                 case .libraryFailure:
                     return 0

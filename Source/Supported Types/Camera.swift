@@ -13,17 +13,16 @@ public extension Permission {
     
     final class camera: Base {
         
-        public typealias NarrowStatus = Status
+        // MARK: - Overriding Properties
+        
+        public override class var usageDescriptionPlistKey: String { "NSCameraUsageDescription" }
+        
+        // MARK: - Overriding Functions
         
 #if MICROPHONE || !CUSTOM_SETTINGS
-        public typealias CombinedStatus = (camera: NarrowStatus, microphone: microphone.Status?)
-#endif
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
         
-        public static let usageDescriptionPlistKey = "NSCameraUsageDescription"
-        
-        // MARK: - Public Functions
-        
-#if MICROPHONE || !CUSTOM_SETTINGS
         public class func checkStatus(withMicrophone: Bool, completion: @escaping (CombinedStatus) -> Void) {
             checkNarrowStatus { narrow in
                 var combined = CombinedStatus(camera: narrow, microphone: nil)
@@ -38,6 +37,9 @@ public extension Permission {
                 }
             }
         }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
         
         public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
@@ -64,11 +66,11 @@ public extension Permission {
             }
         }
 #else
-        public class func checkStatus(completion: @escaping (NarrowStatus) -> Void) {
+        public override class func checkStatus(completion: @escaping (NarrowStatus) -> Void) {
             checkNarrowStatus(completion: completion)
         }
         
-        public class func requestAccess(completion: ((NarrowStatus) -> Void)? = nil) {
+        public override class func requestAccess(completion: ((NarrowStatus) -> Void)? = nil) {
             guard Utils.checkIsAppConfigured(for: camera.self) else {
                 return
             }

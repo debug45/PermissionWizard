@@ -13,22 +13,6 @@ public extension Permission {
     
     final class location: Base {
         
-        public enum NarrowStatus: String {
-            
-            case granted
-            case denied
-            
-            case whenInUseOnly
-            
-            case notDetermined
-            case restrictedBySystem
-            
-            case unknown
-            
-        }
-        
-        public typealias CombinedStatus = (value: NarrowStatus, isAccuracyReducing: Bool)
-        
         public static let alwaysUsageDescriptionPlistKeys = [
             "NSLocationAlwaysAndWhenInUseUsageDescription", // Required for iOS 11 and newer
             "NSLocationAlwaysUsageDescription" // Only for iOS 10
@@ -37,6 +21,19 @@ public extension Permission {
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
         private static var existingAgent: Agent?
+        
+        // MARK: - Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
+        
+        // MARK: - Overriding Functions
+        
+        @available(*, unavailable)
+        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

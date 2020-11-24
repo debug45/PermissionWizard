@@ -14,11 +14,13 @@ public extension Permission {
     
     final class motion: Base {
         
-        public static let usageDescriptionPlistKey = "NSMotionUsageDescription"
+        // MARK: - Overriding Properties
         
-        // MARK: - Public Functions
+        public override class var usageDescriptionPlistKey: String { "NSMotionUsageDescription" }
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        // MARK: - Overriding Functions
+        
+        public override class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch CMSensorRecorder.authorizationStatus() {
@@ -35,6 +37,11 @@ public extension Permission {
                     completion(.unknown)
             }
         }
+        
+        @available(*, unavailable)
+        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
+        
+        // MARK: - Public Functions
         
         public class func requestAccess() throws {
             try Utils.checkIsAppConfigured(for: motion.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
