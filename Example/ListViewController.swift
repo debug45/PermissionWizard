@@ -69,7 +69,7 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.speechRecognition.self)
     }
     
-    private func addButton(for permission: Permission.Base.Type) {
+    private func addButton(for permission: Permission.SupportedType.Type) {
         let header = PWHeader()
         
         if let screen = UIApplication.shared.keyWindow?.screen {

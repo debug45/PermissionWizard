@@ -12,7 +12,7 @@ final class Utils {
 #if ASSETS || !CUSTOM_SETTINGS
     private static let iconsBundleName = "Icons"
     private static let localizationsBundleName = "Localizations"
-
+    
     private static let squircleIconCornerRadius: CGFloat = 7
     
     private static let iconBorderWidth: CGFloat = 1
@@ -45,7 +45,7 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Base.Type, usageDescriptionsPlistKeys: [String]) throws {
+    static func checkIsAppConfigured(for permission: Permission.SupportedType.Type, usageDescriptionsPlistKeys: [String]) throws {
         for plistKey in usageDescriptionsPlistKeys {
             let value = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String
             
@@ -55,7 +55,7 @@ final class Utils {
         }
     }
     
-    static func checkIsAppConfigured(for permission: Permission.Base.Type, usageDescriptionPlistKey: String? = nil) throws {
+    static func checkIsAppConfigured(for permission: Permission.SupportedType.Type, usageDescriptionPlistKey: String? = nil) throws {
         guard let plistKey = usageDescriptionPlistKey else {
             return
         }

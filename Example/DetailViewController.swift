@@ -12,7 +12,7 @@ final class DetailViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    var permission: Permission.Base.Type?
+    var permission: Permission.SupportedType.Type?
     
     // MARK: - Life Cycle
     

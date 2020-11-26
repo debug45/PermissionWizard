@@ -12,7 +12,9 @@ import HomeKit
 @available(iOS 13, macCatalyst 14, *)
 public extension Permission {
     
-    final class home: Base {
+    final class home: SupportedType, Requestable {
+        
+        public typealias Status = Permission.Status.Home
         
         private static var existingAgent: Agent?
         
@@ -23,14 +25,6 @@ public extension Permission {
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

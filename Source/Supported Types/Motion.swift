@@ -12,15 +12,17 @@ import CoreMotion
 @available(iOS 11, *)
 public extension Permission {
     
-    final class motion: Base {
+    final class motion: SupportedType, Checkable {
+        
+        public typealias Status = Permission.Status.Common
         
         // MARK: - Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSMotionUsageDescription" }
         
-        // MARK: - Overriding Functions
+        // MARK: - Public Functions
         
-        public override class func checkStatus(completion: @escaping (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch CMSensorRecorder.authorizationStatus() {
@@ -37,11 +39,6 @@ public extension Permission {
                     completion(.unknown)
             }
         }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
-        
-        // MARK: - Public Functions
         
         public class func requestAccess() throws {
             try Utils.checkIsAppConfigured(for: motion.self, usageDescriptionPlistKey: usageDescriptionPlistKey)

@@ -12,7 +12,9 @@ import CoreBluetooth
 @available(iOS 13.1, *)
 public extension Permission {
     
-    final class bluetooth: Base {
+    final class bluetooth: SupportedType, Checkable, Requestable {
+        
+        public typealias Status = Permission.Status.Common
         
         private static var existingAgent: Agent?
         
@@ -22,9 +24,9 @@ public extension Permission {
         
         override class var contextName: String { "Bluetooth" }
         
-        // MARK: - Overriding Functions
+        // MARK: - Public Functions
         
-        public override class func checkStatus(completion: @escaping (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch CBCentralManager.authorization {
@@ -42,7 +44,7 @@ public extension Permission {
             }
         }
         
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: bluetooth.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if let existingAgent = existingAgent, let completion = completion {

@@ -43,7 +43,7 @@ final class LocationPanel: Panel<Permission.location> {
     
     // MARK: - Private Functions
     
-    private func notify(about status: Permission.location.CombinedStatus) {
+    private func notify(about status: Permission.location.Status) {
         let message = "[status: \(status.value.rawValue), isAccuracyReducing: \(status.isAccuracyReducing)]"
         notify(message)
     }

@@ -11,7 +11,9 @@ import CoreLocation
 
 public extension Permission {
     
-    final class location: Base {
+    final class location: SupportedType, Checkable {
+        
+        public typealias Status = Permission.Status.LocationCombined
         
         public static let alwaysUsageDescriptionPlistKeys = [
             "NSLocationAlwaysAndWhenInUseUsageDescription", // Required for iOS 11 and newer
@@ -27,20 +29,12 @@ public extension Permission {
         @available(*, unavailable)
         public override class var usageDescriptionPlistKey: String { .init() }
         
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
-        
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (CombinedStatus) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             let manager = CLLocationManager()
             
-            let narrow: NarrowStatus
+            let narrow: Permission.Status.LocationNarrow
             
             switch CLLocationManager.authorizationStatus() {
                 case .authorizedAlways:
@@ -58,7 +52,7 @@ public extension Permission {
                     narrow = .unknown
             }
             
-            var combined = CombinedStatus(value: narrow, isAccuracyReducing: false)
+            var combined = Status(value: narrow, isAccuracyReducing: false)
             
             if #available(iOS 14, *), narrow != .notDetermined {
                 combined.isAccuracyReducing = manager.accuracyAuthorization != .fullAccuracy
@@ -68,7 +62,7 @@ public extension Permission {
             completion(combined)
         }
         
-        public class func requestAccess(whenInUseOnly: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
+        public class func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
             let plistKeys = whenInUseOnly ? [whenInUseOnlyUsageDescriptionPlistKey] : alwaysUsageDescriptionPlistKeys
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys)
             

@@ -12,7 +12,9 @@ import HealthKit
 
 public extension Permission {
     
-    final class health: Base {
+    final class health: SupportedType {
+        
+        public typealias Status = Permission.Status.HealthWriting
         
         public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
@@ -26,17 +28,9 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
-        
         // MARK: - Public Functions
         
-        public class func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (WritingStatus) -> Void) {
+        public class func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch HKHealthStore().authorizationStatus(for: dataType) {

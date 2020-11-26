@@ -1,5 +1,5 @@
 //
-//  Base.swift
+//  SupportedType.swift
 //  PermissionWizard
 //
 //  Created by Sergey Moskvin on 21.11.2020.
@@ -9,7 +9,7 @@ import UIKit
 
 extension Permission {
     
-    public class Base {
+    public class SupportedType {
         
         // MARK: - Properties
         
@@ -25,25 +25,6 @@ extension Permission {
         class var shouldBorderIcon: Bool { false }
         
         // MARK: - Public Functions
-        
-        /**
-         Asks the system for the current status of the permission type
-
-         - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
-        */
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
-            completion(.unknown)
-        }
-        
-        /**
-         Asks a user for access the permission type
-
-         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
-        */
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
-            throw Error(.libraryFailure)
-        }
         
 #if ASSETS || !CUSTOM_SETTINGS
         /**

@@ -7,9 +7,9 @@
 
 #if PHOTOS || !CUSTOM_SETTINGS
 
-extension Permission.photos {
+extension Permission.Status {
     
-    public enum Status: String {
+    public enum Photos: String {
         
         case granted
         case denied

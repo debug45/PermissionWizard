@@ -11,7 +11,9 @@ import Photos
 
 public extension Permission {
     
-    final class photos: Base {
+    final class photos: SupportedType, Checkable, Requestable {
+        
+        public typealias Status = Permission.Status.Photos
         
         public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
@@ -24,14 +26,6 @@ public extension Permission {
 #if ASSETS || !CUSTOM_SETTINGS
         override class var shouldBorderIcon: Bool { true }
 #endif
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

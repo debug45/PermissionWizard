@@ -9,23 +9,30 @@
 
 import AVKit
 
+#if !MICROPHONE && CUSTOM_SETTINGS
+    extension Permission.camera: Checkable, Requestable { }
+#endif
+
 public extension Permission {
     
-    final class camera: Base {
+    final class camera: SupportedType {
+        
+#if MICROPHONE || !CUSTOM_SETTINGS
+        public typealias Status = Permission.Status.CameraCombined
+#else
+        public typealias Status = Permission.Status.Camera
+#endif
         
         // MARK: - Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSCameraUsageDescription" }
         
-        // MARK: - Overriding Functions
+        // MARK: - Public Functions
         
 #if MICROPHONE || !CUSTOM_SETTINGS
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
-        
-        public class func checkStatus(withMicrophone: Bool, completion: @escaping (CombinedStatus) -> Void) {
+        public class func checkStatus(withMicrophone: Bool, completion: @escaping (Status) -> Void) {
             checkNarrowStatus { narrow in
-                var combined = CombinedStatus(camera: narrow, microphone: nil)
+                var combined = Status(camera: narrow, microphone: nil)
                 
                 if withMicrophone {
                     microphone.checkStatus { status in
@@ -38,10 +45,7 @@ public extension Permission {
             }
         }
         
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
-        
-        public class func requestAccess(withMicrophone: Bool, completion: ((CombinedStatus) -> Void)? = nil) throws {
+        public class func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if withMicrophone {
@@ -53,7 +57,7 @@ public extension Permission {
                     return
                 }
                 
-                var combined: CombinedStatus = (camera: narrow, microphone: nil)
+                var combined: Status = (camera: narrow, microphone: nil)
                 
                 if withMicrophone {
                     microphone.requestAccessForced { status in
@@ -66,22 +70,19 @@ public extension Permission {
             }
         }
 #else
-        public override class func checkStatus(completion: @escaping (NarrowStatus) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             checkNarrowStatus(completion: completion)
         }
         
-        public override class func requestAccess(completion: ((NarrowStatus) -> Void)? = nil) {
-            guard Utils.checkIsAppConfigured(for: camera.self) else {
-                return
-            }
-            
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestNarrowAccess(completion: completion)
         }
 #endif
         
         // MARK: - Private Functions
         
-        private static func checkNarrowStatus(completion: @escaping (NarrowStatus) -> Void) {
+        private static func checkNarrowStatus(completion: @escaping (Permission.Status.Common) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -99,7 +100,7 @@ public extension Permission {
             }
         }
         
-        private static func requestNarrowAccess(completion: ((NarrowStatus) -> Void)? = nil) {
+        private static func requestNarrowAccess(completion: ((Permission.Status.Common) -> Void)? = nil) {
             AVCaptureDevice.requestAccess(for: .video) { _ in
                 guard let completion = completion else {
                     return

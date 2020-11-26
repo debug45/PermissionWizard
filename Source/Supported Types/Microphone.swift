@@ -11,19 +11,13 @@ import AVKit
 
 public extension Permission {
     
-    final class microphone: Base {
+    final class microphone: SupportedType, Checkable, Requestable {
+        
+        public typealias Status = Permission.Status.Microphone
         
         // MARK: - Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSMicrophoneUsageDescription" }
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

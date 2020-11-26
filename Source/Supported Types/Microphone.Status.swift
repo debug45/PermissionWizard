@@ -7,9 +7,9 @@
 
 #if MICROPHONE || !CUSTOM_SETTINGS
 
-extension Permission.microphone {
+extension Permission.Status {
     
-    public enum Status: String {
+    public enum Microphone: String {
         
         case granted
         case denied

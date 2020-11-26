@@ -8,9 +8,9 @@
 #if FACE_ID || !CUSTOM_SETTINGS
 
 @available(iOS 11, *)
-extension Permission.faceID {
+extension Permission.Status {
     
-    public enum Status: String {
+    public enum FaceID: String {
         
         case grantedOrNotDetermined
         case denied

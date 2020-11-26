@@ -11,20 +11,14 @@ import UserNotifications
 
 public extension Permission {
     
-    final class notifications: Base {
+    final class notifications: SupportedType, Checkable {
+        
+        public typealias Status = Permission.Status.Notifications
         
         // MARK: - Overriding Properties
         
         @available(*, unavailable)
         public override class var usageDescriptionPlistKey: String { .init() }
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

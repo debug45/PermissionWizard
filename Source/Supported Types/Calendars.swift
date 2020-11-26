@@ -11,7 +11,9 @@ import EventKit
 
 public extension Permission {
     
-    final class calendars: Base {
+    final class calendars: SupportedType, Checkable, Requestable {
+        
+        public typealias Status = Permission.Status.Common
         
         // MARK: - Overriding Properties
         
@@ -21,9 +23,9 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Overriding Functions
+        // MARK: - Public Functions
         
-        public override class func checkStatus(completion: @escaping (Status) -> Void) {
+        public class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch EKEventStore.authorizationStatus(for: .event) {
@@ -41,7 +43,7 @@ public extension Permission {
             }
         }
         
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: calendars.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             EKEventStore().requestAccess(to: .event) { _, _ in

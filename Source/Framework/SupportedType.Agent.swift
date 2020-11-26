@@ -1,11 +1,11 @@
 //
-//  Base.Agent.swift
+//  SupportedType.Agent.swift
 //  PermissionWizard
 //
 //  Created by Sergey Moskvin on 05.11.2020.
 //
 
-extension Permission.Base {
+extension Permission.SupportedType {
     
     class Agent<Manager, Status>: NSObject {
         

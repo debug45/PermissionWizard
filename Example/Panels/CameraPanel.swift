@@ -25,7 +25,7 @@ final class CameraPanel: Panel<Permission.camera> {
     
     // MARK: - Private Functions
     
-    private func notify(about status: Permission.camera.CombinedStatus) {
+    private func notify(about status: Permission.camera.Status) {
         var message = status.camera.rawValue
         
         if let microphone = status.microphone {

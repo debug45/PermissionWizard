@@ -12,21 +12,13 @@ import Network
 @available(iOS 14, *)
 public extension Permission {
     
-    final class localNetwork: Base {
+    final class localNetwork: SupportedType {
         
         // MARK: - Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSLocalNetworkUsageDescription" }
         
         override class var contextName: String { "local network" }
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

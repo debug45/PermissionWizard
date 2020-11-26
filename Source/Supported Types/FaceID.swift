@@ -12,21 +12,15 @@ import LocalAuthentication
 @available(iOS 11, *)
 public extension Permission {
     
-    final class faceID: Base {
+    final class faceID: SupportedType, Checkable, Requestable {
+        
+        public typealias Status = Permission.Status.FaceID
         
         // MARK: - Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSFaceIDUsageDescription" }
         
         override class var contextName: String { "Face ID" }
-        
-        // MARK: - Overriding Functions
-        
-        @available(*, unavailable)
-        public override class func checkStatus(completion: @escaping (Base.Status) -> Void) { }
-        
-        @available(*, unavailable)
-        public override class func requestAccess(completion: ((Base.Status) -> Void)? = nil) throws { }
         
         // MARK: - Public Functions
         

@@ -1,13 +1,13 @@
 //
-//  Base.Status.swift
+//  Status.Common.swift
 //  PermissionWizard
 //
 //  Created by Sergey Moskvin on 22.11.2020.
 //
 
-public extension Permission.Base {
+public extension Permission.Status {
     
-    enum Status: String {
+    enum Common: String {
         
         /// A user grants access
         case granted

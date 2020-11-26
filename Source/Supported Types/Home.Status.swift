@@ -8,9 +8,9 @@
 #if HOME || !CUSTOM_SETTINGS
 
 @available(iOS 13, macCatalyst 14, *)
-extension Permission.home {
+extension Permission.Status {
     
-    public enum Status: String {
+    public enum Home: String {
         
         case granted
         case denied

@@ -12,7 +12,7 @@ import HomeKit
 @available(iOS 13, macCatalyst 14, *)
 extension Permission.home {
     
-    final class Agent: Permission.Base.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
+    final class Agent: Permission.SupportedType.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
         
         // MARK: - Life Cycle
         

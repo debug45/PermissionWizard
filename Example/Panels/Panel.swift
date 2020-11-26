@@ -8,7 +8,7 @@
 import PermissionWizard
 import UIKit
 
-class Panel<T: Permission.Base>: UIStackView {
+class Panel<T: Permission.SupportedType>: UIStackView {
     
     let permission = T.self
     

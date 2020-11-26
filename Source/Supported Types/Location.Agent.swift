@@ -11,11 +11,11 @@ import CoreLocation
 
 extension Permission.location {
     
-    final class Agent: Permission.Base.Agent<CLLocationManager, CombinedStatus>, CLLocationManagerDelegate {
+    final class Agent: Permission.SupportedType.Agent<CLLocationManager, Status>, CLLocationManagerDelegate {
         
         // MARK: - Life Cycle
         
-        override init(_ manager: CLLocationManager, callback: @escaping (CombinedStatus) -> Void) {
+        override init(_ manager: CLLocationManager, callback: @escaping (Status) -> Void) {
             super.init(manager, callback: callback)
             manager.delegate = self
         }

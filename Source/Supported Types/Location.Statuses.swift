@@ -7,9 +7,9 @@
 
 #if LOCATION || !CUSTOM_SETTINGS
 
-extension Permission.location {
+extension Permission.Status {
     
-    public enum NarrowStatus: String {
+    public enum LocationNarrow: String {
         
         case granted
         case denied
@@ -23,7 +23,7 @@ extension Permission.location {
         
     }
     
-    public typealias CombinedStatus = (value: NarrowStatus, isAccuracyReducing: Bool)
+    public typealias LocationCombined = (value: LocationNarrow, isAccuracyReducing: Bool)
     
 }
 
