@@ -18,7 +18,7 @@ public extension Permission {
     final class camera: SupportedType {
         
 #if MICROPHONE || !CUSTOM_SETTINGS
-        public typealias Status = Permission.Status.CameraCombined
+        public typealias Status = Permission.Status.Camera.Combined
 #else
         public typealias Status = Permission.Status.Camera
 #endif
@@ -30,7 +30,7 @@ public extension Permission {
         // MARK: - Public Functions
         
 #if MICROPHONE || !CUSTOM_SETTINGS
-        public class func checkStatus(withMicrophone: Bool, completion: @escaping (Status) -> Void) {
+        public static func checkStatus(withMicrophone: Bool, completion: @escaping (Status) -> Void) {
             checkNarrowStatus { narrow in
                 var combined = Status(camera: narrow, microphone: nil)
                 
@@ -45,7 +45,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if withMicrophone {
@@ -70,11 +70,11 @@ public extension Permission {
             }
         }
 #else
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             checkNarrowStatus(completion: completion)
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestNarrowAccess(completion: completion)
         }

@@ -7,9 +7,9 @@
 
 #if (HEALTH || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
-extension Permission.Status {
+public extension Permission.Status {
     
-    public enum HealthWriting: String {
+    enum HealthWriting: String {
         
         case granted
         case denied

@@ -26,7 +26,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch CBCentralManager.authorization {
@@ -44,7 +44,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: bluetooth.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if let existingAgent = existingAgent, let completion = completion {

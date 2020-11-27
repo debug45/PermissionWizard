@@ -13,7 +13,7 @@ public extension Permission {
     
     final class location: SupportedType, Checkable {
         
-        public typealias Status = Permission.Status.LocationCombined
+        public typealias Status = Permission.Status.Location.Combined
         
         public static let alwaysUsageDescriptionPlistKeys = [
             "NSLocationAlwaysAndWhenInUseUsageDescription", // Required for iOS 11 and newer
@@ -31,10 +31,10 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             let manager = CLLocationManager()
             
-            let narrow: Permission.Status.LocationNarrow
+            let narrow: Permission.Status.Location.Narrow
             
             switch CLLocationManager.authorizationStatus() {
                 case .authorizedAlways:
@@ -62,7 +62,7 @@ public extension Permission {
             completion(combined)
         }
         
-        public class func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
             let plistKeys = whenInUseOnly ? [whenInUseOnlyUsageDescriptionPlistKey] : alwaysUsageDescriptionPlistKeys
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys)
             
@@ -85,7 +85,7 @@ public extension Permission {
         }
         
         @available(iOS 14, *)
-        public class func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
+        public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
             try Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey)
             
             let manager = CLLocationManager()

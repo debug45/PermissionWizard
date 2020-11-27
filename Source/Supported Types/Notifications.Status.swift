@@ -7,9 +7,9 @@
 
 #if NOTIFICATIONS || !CUSTOM_SETTINGS
 
-extension Permission.Status {
+public extension Permission.Status {
     
-    public enum Notifications: String {
+    enum Notifications: String {
         
         case granted
         case denied

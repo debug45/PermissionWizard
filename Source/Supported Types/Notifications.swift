@@ -22,7 +22,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
                 let completion = Utils.linkToPreferredQueue(completion)
                 
@@ -44,7 +44,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: notifications.self)
             
             UNUserNotificationCenter.current().requestAuthorization(options: options) { _, _ in

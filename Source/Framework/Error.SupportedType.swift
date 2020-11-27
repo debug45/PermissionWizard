@@ -5,9 +5,9 @@
 //  Created by Sergey Moskvin on 20.11.2020.
 //
 
-extension Permission.Error {
+public extension Permission.Error {
     
-    public enum SupportedType {
+    enum SupportedType {
         
         /// Unknown error inside PermissionWizard, please report it
         case libraryFailure

@@ -28,7 +28,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: home.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             if let existingAgent = existingAgent, let completion = completion {

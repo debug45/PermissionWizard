@@ -5,9 +5,9 @@
 //  Created by Sergey Moskvin on 20.11.2020.
 //
 
-extension Permission {
+public extension Permission {
     
-    public class Error: NSError {
+    class Error: NSError {
         
         /// A flag that represents a reason of the occured error
         public let type: SupportedType

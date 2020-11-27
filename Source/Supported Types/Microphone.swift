@@ -21,7 +21,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch AVAudioSession.sharedInstance().recordPermission {
@@ -37,7 +37,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: microphone.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestAccessForced(completion: completion)
         }

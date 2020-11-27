@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class Permission {
+public struct Permission {
     
 #if ASSETS || !CUSTOM_SETTINGS
     private static let privacyAssetKey = "Privacy"
@@ -36,7 +36,7 @@ public class Permission {
      - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
      - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
     */
-    public class func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
+    public static func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
         return Utils.getEmbeddedIcon(name: privacyAssetKey, makeSquircle: squircle, shouldBorder: false, for: screen)
     }
     
@@ -47,7 +47,7 @@ public class Permission {
 
      - Parameter specificLocalization: A code of the desired localization according to ISO 639. For example, ”ru“ or ”pt-BR“. By default, the current system localization.
     */
-    public class func getPrivacyLocalizedTitle(specificLocalization: String? = nil) -> String? {
+    public static func getPrivacyLocalizedTitle(specificLocalization: String? = nil) -> String? {
         return Utils.getEmbeddedString(key: privacyAssetKey, specificLocalization: specificLocalization)
     }
 #endif

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class Utils {
+struct Utils {
     
 #if ASSETS || !CUSTOM_SETTINGS
     private static let iconsBundleName = "Icons"
@@ -96,7 +96,7 @@ final class Utils {
     
 #if ASSETS || !CUSTOM_SETTINGS
     static func getEmbeddedIcon(name: String, makeSquircle: Bool, shouldBorder: Bool, for screen: UIScreen) -> UIImage? {
-        var bundle = Bundle(for: self)
+        var bundle = Bundle(for: Permission.SupportedType.self)
         
 #if !EXAMPLE
         guard let url = bundle.url(forResource: iconsBundleName, withExtension: "bundle") else {
@@ -140,7 +140,7 @@ final class Utils {
     }
     
     static func getEmbeddedString(key: String, specificLocalization: String? = nil) -> String? {
-        var bundle = Bundle(for: self)
+        var bundle = Bundle(for: Permission.SupportedType.self)
         
 #if !EXAMPLE
         guard let url = bundle.url(forResource: localizationsBundleName, withExtension: "bundle") else {

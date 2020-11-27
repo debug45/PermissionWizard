@@ -29,7 +29,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void) {
+        public static func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
             switch HKHealthStore().authorizationStatus(for: dataType) {
@@ -45,7 +45,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) throws {
+        public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) throws {
             var plistKeys = !readingTypes.isEmpty ? [readingUsageDescriptionPlistKey] : []
             
             if !writingTypes.isEmpty {

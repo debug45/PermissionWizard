@@ -24,7 +24,7 @@ public extension Permission {
         
         // MARK: - Public Functions
         
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             let context = LAContext()
             
             var error: NSError?
@@ -50,7 +50,7 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: faceID.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { _, _ in

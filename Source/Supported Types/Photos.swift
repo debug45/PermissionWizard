@@ -30,22 +30,22 @@ public extension Permission {
         // MARK: - Public Functions
         
         @available(iOS 14, *)
-        public class func checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
+        public static func checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             _checkStatus(forAddingOnly: forAddingOnly, completion: completion)
         }
         
         @available(iOS, deprecated: 14)
-        public class func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void) {
             _checkStatus(forAddingOnly: false, completion: completion)
         }
         
         @available(iOS 14, *)
-        public class func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
             try _requestAccess(forAddingOnly: forAddingOnly, completion: completion)
         }
         
         @available(iOS, deprecated: 14)
-        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try _requestAccess(forAddingOnly: false, completion: completion)
         }
         

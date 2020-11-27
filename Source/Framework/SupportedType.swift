@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension Permission {
+public extension Permission {
     
-    public class SupportedType {
+    class SupportedType {
         
         // MARK: - Properties
         
@@ -35,7 +35,7 @@ extension Permission {
          - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
          - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
         */
-        public class func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
+        public static func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
             let name = String(describing: self)
             return Utils.getEmbeddedIcon(name: name, makeSquircle: squircle, shouldBorder: shouldBorderIcon, for: screen)
         }
@@ -47,7 +47,7 @@ extension Permission {
 
          - Parameter specificLocalization: A code of the desired localization according to ISO 639. For example, ”ru“ or ”pt-BR“. By default, the current system localization.
         */
-        public class func getLocalizedName(specificLocalization: String? = nil) -> String? {
+        public static func getLocalizedName(specificLocalization: String? = nil) -> String? {
             let key = String(describing: self)
             return Utils.getEmbeddedString(key: key, specificLocalization: specificLocalization)
         }

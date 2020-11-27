@@ -7,23 +7,27 @@
 
 #if LOCATION || !CUSTOM_SETTINGS
 
-extension Permission.Status {
+public extension Permission.Status {
     
-    public enum LocationNarrow: String {
+    struct Location {
         
-        case granted
-        case denied
+        public enum Narrow: String {
+            
+            case granted
+            case denied
+            
+            case whenInUseOnly
+            
+            case notDetermined
+            case restrictedBySystem
+            
+            case unknown
+            
+        }
         
-        case whenInUseOnly
-        
-        case notDetermined
-        case restrictedBySystem
-        
-        case unknown
+        public typealias Combined = (value: Narrow, isAccuracyReducing: Bool)
         
     }
-    
-    public typealias LocationCombined = (value: LocationNarrow, isAccuracyReducing: Bool)
     
 }
 
