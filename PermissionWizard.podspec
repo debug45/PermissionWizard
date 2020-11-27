@@ -118,12 +118,18 @@ Pod::Spec.new do |spec|
     reminders.source_files = 'Source/Supported Types/Reminders*.swift'
   end
   
+  spec.subspec 'Siri' do |siri|
+    siri.dependency 'PermissionWizard/Core'
+    siri.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'SIRI CUSTOM_SETTINGS' }
+    siri.source_files = 'Source/Supported Types/Siri*.swift'
+  end
+  
   spec.subspec 'SpeechRecognition' do |speech_recognition|
     speech_recognition.dependency 'PermissionWizard/Core'
     speech_recognition.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'SPEECH_RECOGNITION CUSTOM_SETTINGS' }
     speech_recognition.source_files = 'Source/Supported Types/SpeechRecognition*.swift'
   end
   
-  spec.default_subspec = 'Assets', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'SpeechRecognition'
+  spec.default_subspec = 'Assets', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'Siri', 'SpeechRecognition'
   
 end

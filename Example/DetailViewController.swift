@@ -27,7 +27,7 @@ final class DetailViewController: UIViewController {
         let header = PWHeader()
         header.title = permission?.getLocalizedName()
         
-        if let screen = UIApplication.shared.keyWindow?.screen {
+        if let screen = UIApplication.shared.windows.last?.screen {
             header.icon = permission?.getIcon(for: screen)
         }
         
@@ -60,6 +60,12 @@ final class DetailViewController: UIViewController {
                 panel = PhotosPanel()
             case is Permission.reminders.Type:
                 panel = RemindersPanel()
+            
+#if !targetEnvironment(macCatalyst)
+            case is Permission.siri.Type:
+                panel = SiriPanel()
+#endif
+            
             case is Permission.speechRecognition.Type:
                 panel = SpeechRecognitionPanel()
             
@@ -69,19 +75,23 @@ final class DetailViewController: UIViewController {
                 }
                 
                 switch permission {
+#if !targetEnvironment(macCatalyst)
                     case is Permission.faceID.Type:
                         panel = FaceIDPanel()
                     case is Permission.motion.Type:
                         panel = MotionPanel()
+#endif
                     
                     default:
                         if #available(iOS 13.1, *) {
                             if permission is Permission.bluetooth.Type {
                                 panel = BluetoothPanel()
                             } else {
+#if !targetEnvironment(macCatalyst)
                                 if #available(iOS 14, *), permission is Permission.localNetwork.Type {
                                     panel = LocalNetworkPanel()
                                 }
+#endif
                             }
                         }
                         

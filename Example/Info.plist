@@ -67,6 +67,8 @@
 	<string>Please allow access to your photos (full access)</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Please allow access to your reminders</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Please allow access to your Siri</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Please allow access to your speech recognition</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

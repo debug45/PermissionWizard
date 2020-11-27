@@ -1,16 +1,15 @@
 //
-//  FaceIDPanel.swift
+//  SiriPanel.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 09.11.2020.
+//  Created by Sergey Moskvin on 27.11.2020.
 //
 
 #if !targetEnvironment(macCatalyst)
 
 import PermissionWizard
 
-@available(iOS 11, *)
-final class FaceIDPanel: Panel<Permission.faceID> {
+final class SiriPanel: Panel<Permission.siri> {
     
     override func configure() {
         super.configure()

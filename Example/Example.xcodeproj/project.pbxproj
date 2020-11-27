@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50DFD9C2570FB6200CF066E /* SiriPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DFD9B2570FB6200CF066E /* SiriPanel.swift */; };
 		A533FEE7253B28E2003B7648 /* PermissionWizard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */; };
 		A533FEE8253B28E2003B7648 /* PermissionWizard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5EDD6B12528DB8B001F44C9 /* PermissionWizard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A59228A12559189A00DA9780 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228A02559189A00DA9780 /* DetailViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A50DFD9B2570FB6200CF066E /* SiriPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriPanel.swift; sourceTree = "<group>"; };
 		A53C04AD254D5078007F1438 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		A59228A02559189A00DA9780 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A59228A22559347900DA9780 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A59228BF2559445600DA9780 /* NotificationsPanel.swift */,
 				A59228C12559445800DA9780 /* PhotosPanel.swift */,
 				A59228C32559445A00DA9780 /* RemindersPanel.swift */,
+				A50DFD9B2570FB6200CF066E /* SiriPanel.swift */,
 				A59228A52559418E00DA9780 /* SpeechRecognitionPanel.swift */,
 			);
 			path = Panels;
@@ -199,8 +202,8 @@
 				};
 			};
 			buildConfigurationList = A5DAF04A2528D7ED002483A6 /* Build configuration list for PBXProject "Example" */;
-			developmentRegion = en;
 			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -242,6 +245,7 @@
 				A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */,
 				A59228A62559418E00DA9780 /* SpeechRecognitionPanel.swift in Sources */,
 				A5CB5854255C5FEC00B2AC1A /* PWHeader.swift in Sources */,
+				A50DFD9C2570FB6200CF066E /* SiriPanel.swift in Sources */,
 				A59228B02559443D00DA9780 /* FaceIDPanel.swift in Sources */,
 				A59228C02559445600DA9780 /* NotificationsPanel.swift in Sources */,
 				A59228A32559347900DA9780 /* Panel.swift in Sources */,

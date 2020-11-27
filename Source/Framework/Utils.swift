@@ -63,7 +63,7 @@ final class Utils {
         try checkIsAppConfigured(for: permission, usageDescriptionsPlistKeys: [plistKey])
     }
     
-#if LOCAL_NETWORK || !CUSTOM_SETTINGS
+#if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
     @available(iOS 14, *)
     static func checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: String, servicePlistKey: String) throws {
         let permission = Permission.localNetwork.self

@@ -5,8 +5,7 @@
 //  Created by Sergey Moskvin on 24.11.2020.
 //
 
-#if HEALTH || !CUSTOM_SETTINGS
-#if !targetEnvironment(macCatalyst)
+#if (HEALTH || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
 extension Permission.Status {
     
@@ -22,5 +21,4 @@ extension Permission.Status {
     
 }
 
-#endif
 #endif

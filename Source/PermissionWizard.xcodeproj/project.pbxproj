@@ -33,6 +33,7 @@
 		A5A782A9256D76F20036D303 /* Photos.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A782A8256D76F20036D303 /* Photos.Status.swift */; };
 		A5A782E3256FC6350036D303 /* Status.Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A782E2256FC6350036D303 /* Status.Common.swift */; };
 		A5A782E8256FEFE70036D303 /* SupportedType.Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A782E7256FEFE70036D303 /* SupportedType.Templates.swift */; };
+		A5A782EE25701CAD0036D303 /* Siri.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A782ED25701CAD0036D303 /* Siri.swift */; };
 		A5B0765925378F8700E6DF79 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0765825378F8700E6DF79 /* Utils.swift */; };
 		A5B1D843253C1C4600760382 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B1D842253C1C4600760382 /* Notifications.swift */; };
 		A5B519C02538D5E7006870FA /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B519BF2538D5E7006870FA /* Microphone.swift */; };
@@ -114,6 +115,7 @@
 		A5A782A8256D76F20036D303 /* Photos.Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.Status.swift; sourceTree = "<group>"; };
 		A5A782E2256FC6350036D303 /* Status.Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.Common.swift; sourceTree = "<group>"; };
 		A5A782E7256FEFE70036D303 /* SupportedType.Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedType.Templates.swift; sourceTree = "<group>"; };
+		A5A782ED25701CAD0036D303 /* Siri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Siri.swift; sourceTree = "<group>"; };
 		A5B0765825378F8700E6DF79 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A5B1D842253C1C4600760382 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		A5B519BF2538D5E7006870FA /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				A5C49B80253B631B004DDC66 /* Photos.swift */,
 				A5A782A8256D76F20036D303 /* Photos.Status.swift */,
 				A50A8F6C252CC58F00364B82 /* Reminders.swift */,
+				A5A782ED25701CAD0036D303 /* Siri.swift */,
 				A5B519C72538D842006870FA /* SpeechRecognition.swift */,
 			);
 			path = "Supported Types";
@@ -352,6 +355,7 @@
 				A5A782E8256FEFE70036D303 /* SupportedType.Templates.swift in Sources */,
 				A553E45925446B1000589764 /* Location.Agent.swift in Sources */,
 				A5018627253CCE4B00D9DC77 /* Health.swift in Sources */,
+				A5A782EE25701CAD0036D303 /* Siri.swift in Sources */,
 				A5A7828D256D756B0036D303 /* Camera.Statuses.swift in Sources */,
 				A5A78291256D75CA0036D303 /* FaceID.Status.swift in Sources */,
 				A57B592E256AB7A90019D5B4 /* Status.swift in Sources */,

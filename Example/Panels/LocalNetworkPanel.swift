@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
+#if !targetEnvironment(macCatalyst)
+
 import PermissionWizard
 
 @available(iOS 14, *)
@@ -20,3 +22,5 @@ final class LocalNetworkPanel: Panel<Permission.localNetwork> {
     }
     
 }
+
+#endif

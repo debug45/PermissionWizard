@@ -31,7 +31,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Supported Types
 
-<img src="Documentation/Bluetooth@3x.png" width="29" height="29" title="Bluetooth"/> <img src="Documentation/Calendars@3x.png" width="29" height="29" title="Calendars"/> <img src="Documentation/Camera@3x.png" width="29" height="29" title="Camera"/> <img src="Documentation/Contacts@3x.png" width="29" height="29" title="Contacts"/> <img src="Documentation/FaceID@3x.png" width="29" height="29" title="Face ID"/> <img src="Documentation/Health@3x.png" width="29" height="29" title="Health"/> <img src="Documentation/Home@3x.png" width="29" height="29" title="Home"/> <img src="Documentation/LocalNetwork@3x.png" width="29" height="29" title="Local Network"/> <img src="Documentation/Location@3x.png" width="29" height="29" title="Location"/> <img src="Documentation/Microphone@3x.png" width="29" height="29" title="Microphone"/> <img src="Documentation/Motion@3x.png" width="29" height="29" title="Motion"/> <img src="Documentation/Music@3x.png" width="29" height="29" title="Music"/> <img src="Documentation/Notifications@3x.png" width="29" height="29" title="Notifications"/> <img src="Documentation/Photos@3x.png" width="29" height="29" title="Photos"/> <img src="Documentation/Reminders@3x.png" width="29" height="29" title="Reminders"/> <img src="Documentation/SpeechRecognition@3x.png" width="29" height="29" title="Speech Recognition"/>
+<img src="Documentation/Bluetooth@3x.png" width="29" height="29" title="Bluetooth"/> <img src="Documentation/Calendars@3x.png" width="29" height="29" title="Calendars"/> <img src="Documentation/Camera@3x.png" width="29" height="29" title="Camera"/> <img src="Documentation/Contacts@3x.png" width="29" height="29" title="Contacts"/> <img src="Documentation/FaceID@3x.png" width="29" height="29" title="Face ID"/> <img src="Documentation/Health@3x.png" width="29" height="29" title="Health"/> <img src="Documentation/Home@3x.png" width="29" height="29" title="Home"/> <img src="Documentation/LocalNetwork@3x.png" width="29" height="29" title="Local Network"/> <img src="Documentation/Location@3x.png" width="29" height="29" title="Location"/> <img src="Documentation/Microphone@3x.png" width="29" height="29" title="Microphone"/> <img src="Documentation/Motion@3x.png" width="29" height="29" title="Motion"/> <img src="Documentation/Music@3x.png" width="29" height="29" title="Music"/> <img src="Documentation/Notifications@3x.png" width="29" height="29" title="Notifications"/> <img src="Documentation/Photos@3x.png" width="29" height="29" title="Photos"/> <img src="Documentation/Reminders@3x.png" width="29" height="29" title="Reminders"/> <img src="Documentation/Siri@3x.png" width="29" height="29" title="Siri"/> <img src="Documentation/SpeechRecognition@3x.png" width="29" height="29" title="Speech Recognition"/>
 
 ## Requirements
 
@@ -70,6 +70,7 @@ pod 'PermissionWizard/Music'
 pod 'PermissionWizard/Notifications'
 pod 'PermissionWizard/Photos'
 pod 'PermissionWizard/Reminders'
+pod 'PermissionWizard/Siri'
 pod 'PermissionWizard/SpeechRecognition'
 ```
 
@@ -90,7 +91,7 @@ Due to Apple’s policy regarding system permissions, your app may be rejected d
 To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
 ```
-ENABLED_FEATURES = ASSETS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SPEECH_RECOGNITION
+ENABLED_FEATURES = ASSETS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SIRI SPEECH_RECOGNITION
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(ENABLED_FEATURES) CUSTOM_SETTINGS
 ```
 
@@ -181,7 +182,6 @@ Keep in mind that icons and localized strings are available only if the `Assets`
 
 ## Roadmap
 
-- Add support of NFC
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
 

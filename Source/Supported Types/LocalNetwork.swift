@@ -5,7 +5,7 @@
 //  Created by Sergey Moskvin on 31.10.2020.
 //
 
-#if LOCAL_NETWORK || !CUSTOM_SETTINGS
+#if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
 import Network
 

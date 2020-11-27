@@ -25,7 +25,7 @@ final class ListViewController: UIViewController {
         let header = PWHeader()
         header.title = Permission.getPrivacyLocalizedTitle()
         
-        if let screen = UIApplication.shared.keyWindow?.screen {
+        if let screen = UIApplication.shared.windows.last?.screen {
             header.icon = Permission.getPrivacyIcon(for: screen)
         }
         
@@ -39,11 +39,11 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.camera.self)
         addButton(for: Permission.contacts.self)
         
+#if !targetEnvironment(macCatalyst)
         if #available(iOS 11, *) {
             addButton(for: Permission.faceID.self)
         }
         
-#if !targetEnvironment(macCatalyst)
         addButton(for: Permission.health.self)
 #endif
         
@@ -51,28 +51,37 @@ final class ListViewController: UIViewController {
             addButton(for: Permission.home.self)
         }
         
+#if !targetEnvironment(macCatalyst)
         if #available(iOS 14, *) {
             addButton(for: Permission.localNetwork.self)
         }
+#endif
         
         addButton(for: Permission.location.self)
         addButton(for: Permission.microphone.self)
         
+#if !targetEnvironment(macCatalyst)
         if #available(iOS 11, *) {
             addButton(for: Permission.motion.self)
         }
+#endif
         
         addButton(for: Permission.music.self)
         addButton(for: Permission.notifications.self)
         addButton(for: Permission.photos.self)
         addButton(for: Permission.reminders.self)
+        
+#if !targetEnvironment(macCatalyst)
+        addButton(for: Permission.siri.self)
+#endif
+        
         addButton(for: Permission.speechRecognition.self)
     }
     
     private func addButton(for permission: Permission.SupportedType.Type) {
         let header = PWHeader()
         
-        if let screen = UIApplication.shared.keyWindow?.screen {
+        if let screen = UIApplication.shared.windows.last?.screen {
             header.icon = permission.getIcon(for: screen)
         }
         

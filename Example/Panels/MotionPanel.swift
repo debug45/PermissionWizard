@@ -5,6 +5,8 @@
 //  Created by Sergey Moskvin on 09.11.2020.
 //
 
+#if !targetEnvironment(macCatalyst)
+
 import PermissionWizard
 
 @available(iOS 11, *)
@@ -22,3 +24,5 @@ final class MotionPanel: Panel<Permission.motion> {
     }
     
 }
+
+#endif

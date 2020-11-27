@@ -5,7 +5,7 @@
 //  Created by Sergey Moskvin on 31.10.2020.
 //
 
-#if FACE_ID || !CUSTOM_SETTINGS
+#if (FACE_ID || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
 import LocalAuthentication
 

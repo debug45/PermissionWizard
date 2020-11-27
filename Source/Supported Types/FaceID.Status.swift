@@ -5,7 +5,7 @@
 //  Created by Sergey Moskvin on 24.11.2020.
 //
 
-#if FACE_ID || !CUSTOM_SETTINGS
+#if (FACE_ID || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
 @available(iOS 11, *)
 extension Permission.Status {

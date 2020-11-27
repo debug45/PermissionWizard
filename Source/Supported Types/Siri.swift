@@ -1,31 +1,32 @@
 //
-//  Motion.swift
+//  Siri.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 17.10.2020.
+//  Created by Sergey Moskvin on 26.11.2020.
 //
 
-#if (MOTION || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
+#if (SIRI || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
-import CoreMotion
+import Intents
 
-@available(iOS 11, *)
 public extension Permission {
     
-    final class motion: SupportedType, Checkable {
+    final class siri: SupportedType, Checkable, Requestable {
         
         public typealias Status = Permission.Status.Common
         
         // MARK: - Overriding Properties
         
-        public override class var usageDescriptionPlistKey: String { "NSMotionUsageDescription" }
+        public override class var usageDescriptionPlistKey: String { "NSSiriUsageDescription" }
+        
+        override class var contextName: String { "Siri" }
         
         // MARK: - Public Functions
         
         public class func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
             
-            switch CMSensorRecorder.authorizationStatus() {
+            switch INPreferences.siriAuthorizationStatus() {
                 case .authorized:
                     completion(.granted)
                 case .denied:
@@ -40,13 +41,16 @@ public extension Permission {
             }
         }
         
-        public class func requestAccess() throws {
-            try Utils.checkIsAppConfigured(for: motion.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
+        public class func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+            try Utils.checkIsAppConfigured(for: siri.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
-            let manager = CMMotionActivityManager()
-            
-            manager.startActivityUpdates(to: OperationQueue.main) { _ in }
-            manager.stopActivityUpdates()
+            INPreferences.requestSiriAuthorization { _ in
+                guard let completion = completion else {
+                    return
+                }
+                
+                self.checkStatus { completion($0) }
+            }
         }
         
     }
