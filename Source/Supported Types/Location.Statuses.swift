@@ -13,14 +13,20 @@ public extension Permission.Status {
         
         public enum Narrow: String {
             
+            /// A user grants access that can be used even when an app is not being used right now
             case granted
+            /// A user denies access
             case denied
             
+            /// A user grants access that can be used when an app is being used right now only
             case whenInUseOnly
             
+            /// A user has not been asked about access yet
             case notDetermined
+            /// Access is restricted by the system. For example, due to parental control configuration.
             case restrictedBySystem
             
+            /// Unsupported by PermissionWizard, please report it
             case unknown
             
         }

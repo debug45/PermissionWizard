@@ -11,10 +11,14 @@ public extension Permission.Status {
     
     enum Microphone: String {
         
+        /// A user grants access
         case granted
+        /// A user denies access
         case denied
         
+        /// A user has not been asked about access yet
         case notDetermined
+        /// Unsupported by PermissionWizard, please report it
         case unknown
         
     }

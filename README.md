@@ -51,7 +51,7 @@ pod 'PermissionWizard'
 
 By default, the library will be installed fully.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to only install components that you need. In this case you will not have any troubles. ⚠️
 
 ```ruby
 pod 'PermissionWizard/Assets' # Icons and localized strings
@@ -86,9 +86,9 @@ github "debug45/PermissionWizard"
 
 By default, the library is compiled fully when you build the project.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to enable only components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to only enable components that you need. In this case you will not have any troubles. ⚠️
 
-To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
+To only enable components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
 ```
 ENABLED_FEATURES = ASSETS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SIRI SPEECH_RECOGNITION
@@ -171,7 +171,7 @@ imageView.image = permission.getIcon(squircle: true)
 label.text = permission.getLocalizedName() // Speech Recognition
 ```
 
-Keep in mind that icons and localized strings are available only if the `Assets` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
+Keep in mind that icons and localized strings are only available if the `Assets` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
 
 ## Known Issues
 

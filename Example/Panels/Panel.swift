@@ -83,7 +83,7 @@ class Panel<T: Permission.SupportedType>: UIStackView {
         var message = "⚠️ The ”requestAccess“ does not support returning of a result"
         
         if tellAnotherWay {
-            message += ", use the ”checkStatus“ if necessary"
+            message += ", use the status check method if necessary"
         }
         
         notify(message)

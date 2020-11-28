@@ -22,6 +22,14 @@ public extension Permission {
         
         // MARK: - Public Functions
         
+        /**
+         Asks a user for access the permission type
+
+         Due to limitations of default system API, you can not find out a user‘s decision
+
+         - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app‘s plist file, to a nested array with the key ”NSBonjourServices“.
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
         public static func requestAccess(servicePlistKey: String) throws {
             try Utils.checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: usageDescriptionPlistKey, servicePlistKey: servicePlistKey)
             

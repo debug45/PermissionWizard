@@ -16,7 +16,7 @@ public extension Permission.Status {
         
         /// A user has not been asked about access yet
         case notDetermined
-        /// Access is restricted by the system. For example, due to Screen Time preferences.
+        /// Access is restricted by the system. For example, due to parental control configuration.
         case restrictedBySystem
         
         /// Unsupported by PermissionWizard, please report it

@@ -44,6 +44,13 @@ public extension Permission {
             }
         }
         
+        /**
+         Asks a user for access the permission type
+
+         - Parameter options: Notification features, access to which you want to request
+         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Throws: `Permission.Error`, if something went wrong
+        */
         public static func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: notifications.self)
             

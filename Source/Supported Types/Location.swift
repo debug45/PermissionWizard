@@ -15,11 +15,21 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Location.Combined
         
+        /**
+         Keys that must be added to your ”Info.plist“ to work with the permission type. These keys are used if you want to use location even when an app is not being used right now.
+
+         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+        */
         public static let alwaysUsageDescriptionPlistKeys = [
             "NSLocationAlwaysAndWhenInUseUsageDescription", // Required for iOS 11 and newer
             "NSLocationAlwaysUsageDescription" // Only for iOS 10
         ]
         
+        /**
+         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to use location when an app is being used right now only.
+
+         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+        */
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
         private static var existingAgent: Agent?
@@ -62,6 +72,13 @@ public extension Permission {
             completion(combined)
         }
         
+        /**
+         Asks a user for access the permission type
+
+         - Parameter whenInUseOnly: A flag indicating whether you want to use location when an app is being used right now only
+         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
         public static func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
             let plistKeys = whenInUseOnly ? [whenInUseOnlyUsageDescriptionPlistKey] : alwaysUsageDescriptionPlistKeys
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys)
@@ -84,6 +101,15 @@ public extension Permission {
             }
         }
         
+        /**
+         Asks a user for access temporary precise location data
+
+         It may be useful if a user grants access to location data with reduced accuracy only
+
+         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key ”NSLocationTemporaryUsageDescriptionDictionary“.
+         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
         @available(iOS 14, *)
         public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
             try Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey)

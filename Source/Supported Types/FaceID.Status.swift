@@ -12,12 +12,17 @@ public extension Permission.Status {
     
     enum FaceID: String {
         
+        /// A user grants access or has not been asked about it yet
         case grantedOrNotDetermined
+        /// A user denies access
         case denied
         
+        /// A device does not support Face ID
         case notSupportedByDevice
+        /// Face ID is not configured by a user
         case notEnrolled
         
+        /// Unsupported by PermissionWizard, please report it
         case unknown
         
     }

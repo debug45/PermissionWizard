@@ -11,14 +11,20 @@ public extension Permission.Status {
     
     enum Notifications: String {
         
+        /// A user grants full access
         case granted
+        /// A user denies access
         case denied
         
+        /// A user has not been asked about access yet
         case notDetermined
         
+        /// A user grants provisional access. Notifications are coming without sound, badge, etc.
         case provisionalOnly
+        /// A user grants full access for a limited amount of time. It is used for App Clips.
         case ephemeralOnly
         
+        /// Unsupported by PermissionWizard, please report it
         case unknown
         
     }

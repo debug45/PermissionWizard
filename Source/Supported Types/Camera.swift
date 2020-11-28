@@ -30,6 +30,12 @@ public extension Permission {
         // MARK: - Public Functions
         
 #if MICROPHONE || !CUSTOM_SETTINGS
+        /**
+         Asks the system for the current status of the permission type
+
+         - Parameter withMicrophone: A flag indicating whether the microphone permission status should also be checked
+         - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+        */
         public static func checkStatus(withMicrophone: Bool, completion: @escaping (Status) -> Void) {
             checkNarrowStatus { narrow in
                 var combined = Status(camera: narrow, microphone: nil)
@@ -45,6 +51,13 @@ public extension Permission {
             }
         }
         
+        /**
+         Asks a user for access the permission type
+
+         - Parameter withMicrophone: A flag indicating whether to also request access for a microphone
+         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
         public static func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             

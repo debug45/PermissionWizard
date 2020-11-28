@@ -76,7 +76,7 @@ struct Utils {
         }
         
         let keyParent = (type: "array", ownKey: arrayKey)
-        throw createInvalidAppConfigurationError(permissionName: permission.contextName, missingPlistKey: servicePlistKey, keyParent: keyParent)
+        throw createInvalidAppConfigurationError(permissionName: permission.contextName, missingPlistKey: servicePlistKey, keyParent: keyParent, isTechnicalKey: true)
     }
 #endif
     
@@ -165,16 +165,17 @@ struct Utils {
     
     // MARK: - Private Functions
     
-    private static func createInvalidAppConfigurationError(permissionName: String, missingPlistKey: String, keyParent: (type: String, ownKey: String)? = nil) -> Permission.Error {
+    private static func createInvalidAppConfigurationError(permissionName: String, missingPlistKey: String, keyParent: (type: String, ownKey: String)? = nil, isTechnicalKey: Bool = false) -> Permission.Error {
         var clarification = ""
         
         if let keyParent = keyParent {
             clarification = " (to a nested \(keyParent.type) with the key ”\(keyParent.ownKey)“)"
         }
         
-        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification) and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user."
-        let type = Permission.Error.SupportedType.missingPlistKey(details: message)
+        let additionalInfo = !isTechnicalKey ? " and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user" : ""
+        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification)\(additionalInfo)."
         
+        let type = Permission.Error.SupportedType.missingPlistKey(details: message)
         return Permission.Error(type, message: message)
     }
     
