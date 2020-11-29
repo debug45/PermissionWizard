@@ -112,7 +112,14 @@ public extension Permission {
         */
         @available(iOS 14, *)
         public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
-            try Utils.checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: purposePlistKey)
+            try Utils.checkIsAppConfigured(for: location.self, usageDescriptionPlistKey: nil)
+            
+            let purposeDictionaryPlistKey = "NSLocationTemporaryUsageDescriptionDictionary"
+            
+            if let dictionary = Bundle.main.object(forInfoDictionaryKey: purposeDictionaryPlistKey) as? [String: String], dictionary[purposePlistKey]?.isEmpty == false { } else {
+                let keyParent = (type: "dictionary", ownKey: purposeDictionaryPlistKey)
+                throw Utils.createInvalidAppConfigurationError(permissionName: "temporary precise location", missingPlistKey: purposePlistKey, keyParent: keyParent)
+            }
             
             let manager = CLLocationManager()
             

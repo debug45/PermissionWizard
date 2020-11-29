@@ -63,36 +63,19 @@ struct Utils {
         try checkIsAppConfigured(for: permission, usageDescriptionsPlistKeys: [plistKey])
     }
     
-#if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
-    @available(iOS 14, *)
-    static func checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: String, servicePlistKey: String) throws {
-        let permission = Permission.localNetwork.self
-        try checkIsAppConfigured(for: permission, usageDescriptionPlistKey: usageDescriptionPlistKey)
+    static func createInvalidAppConfigurationError(permissionName: String, missingPlistKey: String, keyParent: (type: String, ownKey: String)? = nil, isTechnicalKey: Bool = false) -> Permission.Error {
+        var clarification = ""
         
-        let arrayKey = "NSBonjourServices"
-        
-        if let array = Bundle.main.object(forInfoDictionaryKey: arrayKey) as? [String], array.contains(servicePlistKey) {
-            return
+        if let keyParent = keyParent {
+            clarification = " (to a nested \(keyParent.type) with the key ”\(keyParent.ownKey)“)"
         }
         
-        let keyParent = (type: "array", ownKey: arrayKey)
-        throw createInvalidAppConfigurationError(permissionName: permission.contextName, missingPlistKey: servicePlistKey, keyParent: keyParent, isTechnicalKey: true)
-    }
-#endif
-    
-#if LOCATION || !CUSTOM_SETTINGS
-    @available(iOS 14, *)
-    static func checkIsAppConfiguredForTemporaryPreciseLocationAccess(purposePlistKey: String) throws {
-        let dictionaryKey = "NSLocationTemporaryUsageDescriptionDictionary"
+        let additionalInfo = !isTechnicalKey ? " and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user" : ""
+        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification)\(additionalInfo)."
         
-        if let dictionary = Bundle.main.object(forInfoDictionaryKey: dictionaryKey) as? [String: String], dictionary[purposePlistKey]?.isEmpty == false {
-            return
-        }
-        
-        let keyParent = (type: "dictionary", ownKey: dictionaryKey)
-        throw createInvalidAppConfigurationError(permissionName: "temporary precise location", missingPlistKey: purposePlistKey, keyParent: keyParent)
+        let type = Permission.Error.SupportedType.missingPlistKey(details: message)
+        return Permission.Error(type, message: message)
     }
-#endif
     
 #if ASSETS || !CUSTOM_SETTINGS
     static func getEmbeddedIcon(name: String, makeSquircle: Bool, shouldBorder: Bool, for screen: UIScreen) -> UIImage? {
@@ -164,20 +147,6 @@ struct Utils {
 #endif
     
     // MARK: - Private Functions
-    
-    private static func createInvalidAppConfigurationError(permissionName: String, missingPlistKey: String, keyParent: (type: String, ownKey: String)? = nil, isTechnicalKey: Bool = false) -> Permission.Error {
-        var clarification = ""
-        
-        if let keyParent = keyParent {
-            clarification = " (to a nested \(keyParent.type) with the key ”\(keyParent.ownKey)“)"
-        }
-        
-        let additionalInfo = !isTechnicalKey ? " and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user" : ""
-        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification)\(additionalInfo)."
-        
-        let type = Permission.Error.SupportedType.missingPlistKey(details: message)
-        return Permission.Error(type, message: message)
-    }
     
 #if ASSETS || !CUSTOM_SETTINGS
     private static func uppercaseFirstLetter(_ value: String) -> String {

@@ -31,7 +31,14 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         public static func requestAccess(servicePlistKey: String) throws {
-            try Utils.checkIsAppConfiguredForLocalNetworkAccess(usageDescriptionPlistKey: usageDescriptionPlistKey, servicePlistKey: servicePlistKey)
+            try Utils.checkIsAppConfigured(for: localNetwork.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
+            
+            let serviceArrayPlistKey = "NSBonjourServices"
+            
+            if let array = Bundle.main.object(forInfoDictionaryKey: serviceArrayPlistKey) as? [String], array.contains(servicePlistKey) { } else {
+                let keyParent = (type: "array", ownKey: serviceArrayPlistKey)
+                throw Utils.createInvalidAppConfigurationError(permissionName: contextName, missingPlistKey: servicePlistKey, keyParent: keyParent, isTechnicalKey: true)
+            }
             
             let serviceDescriptor = NWBrowser.Descriptor.bonjour(type: servicePlistKey, domain: nil)
             let parameters = NWParameters()
