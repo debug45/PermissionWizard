@@ -16,7 +16,7 @@ public extension Permission.Status {
         /// A user denies access
         case denied
         
-        /// A user has not been asked about access yet
+        /// A user has not been asked for access yet
         case notDetermined
         /// Unsupported by PermissionWizard, please report it
         case unknown

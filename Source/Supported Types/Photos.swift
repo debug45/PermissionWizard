@@ -22,7 +22,7 @@ public extension Permission {
         */
         public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you only want to add new photos and videos to a user‘s library.
+         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want only to add new photos and videos to a user‘s library.
 
          For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
         */
@@ -42,7 +42,7 @@ public extension Permission {
         /**
          Asks the system for the current status of the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you only want to check the ability to add new photos and videos to a user‘s library
+         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new photos and videos to a user‘s library
          - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
         */     
         @available(iOS 14, *)
@@ -58,7 +58,7 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you only want to add new photos and videos to a user‘s library
+         - Parameter forAddingOnly: A flag indicating whether you want only to add new photos and videos to a user‘s library
          - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */

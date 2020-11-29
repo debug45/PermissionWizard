@@ -42,7 +42,7 @@ public extension Permission {
         /**
          Asks the system for the current status of the permission type
 
-         Due to limitations of default system API, you can check write access only
+         Due to limitations of default system API, you can check only write access
 
          - Parameter dataType: A type of health data, access to which you want to check
          - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.

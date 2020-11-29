@@ -33,7 +33,7 @@ public extension Permission {
          The icon is native, the same as displayed in the system preferences
 
          - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
-         - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
+         - Parameter screen: A screen where the image will be displayed, it is used to ensure proper scaling
         */
         public static func getIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
             let name = String(describing: self)

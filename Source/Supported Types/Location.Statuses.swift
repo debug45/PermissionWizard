@@ -18,10 +18,10 @@ public extension Permission.Status {
             /// A user denies access
             case denied
             
-            /// A user grants access that can be used when an app is being used right now only
+            /// A user grants access that can be used only when an app is being used right now
             case whenInUseOnly
             
-            /// A user has not been asked about access yet
+            /// A user has not been asked for access yet
             case notDetermined
             /// Access is restricted by the system. For example, due to parental control configuration.
             case restrictedBySystem

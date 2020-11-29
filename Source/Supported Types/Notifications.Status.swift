@@ -16,10 +16,10 @@ public extension Permission.Status {
         /// A user denies access
         case denied
         
-        /// A user has not been asked about access yet
+        /// A user has not been asked for access yet
         case notDetermined
         
-        /// A user grants provisional access. Notifications are coming without sound, badge, etc.
+        /// A user grants provisional access. Notifications are received without sound, badge, etc.
         case provisionalOnly
         /// A user grants full access for a limited amount of time. It is used for App Clips.
         case ephemeralOnly

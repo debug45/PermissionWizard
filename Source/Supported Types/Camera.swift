@@ -54,7 +54,7 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         - Parameter withMicrophone: A flag indicating whether to also request access for a microphone
+         - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
          - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */

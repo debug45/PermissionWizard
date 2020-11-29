@@ -50,7 +50,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
             let selector = #selector(provisionallySwitchDidChange)
             provisionallySwitch?.addTarget(self, action: selector, for: .valueChanged)
             
-            providingInAppSettingsSwitch = addSwitch(title: "Providing in-app settings")
+            providingInAppSettingsSwitch = addSwitch(title: "Providing In-App Settings")
         }
         
         dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }

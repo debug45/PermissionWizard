@@ -16,9 +16,9 @@ public struct Permission {
     // MARK: - Global Settings
     
     /**
-     The dispatch queue used to invoke all completion blocks
+     A dispatch queue used to invoke all completion blocks
 
-     In some cases default system API may return a result in a different dispatch queue. Instead of risking a crash and manual queue management, you can ask to always invoke completion blocks in a preferred queue.
+     In some cases default system API may return a result in a different dispatch queue. To avoid a crash and instead of manual queue management, you can ask always to invoke completion blocks in a preferred queue.
 
      # By Default
      `DispatchQueue.main`
@@ -34,7 +34,7 @@ public struct Permission {
      The icon is native, the same as displayed in the system preferences
 
      - Parameter squircle: A flag indicating whether the image must be styled like in the system preferences
-     - Parameter screen: A screen where the image will be displayed, it used to ensure proper scaling
+     - Parameter screen: A screen where the image will be displayed, it is used to ensure proper scaling
     */
     public static func getPrivacyIcon(squircle: Bool = true, for screen: UIScreen = .main) -> UIImage? {
         return Utils.getEmbeddedIcon(name: privacyAssetKey, makeSquircle: squircle, shouldBorder: false, for: screen)

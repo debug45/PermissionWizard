@@ -25,7 +25,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 <br/>
 🖼 Includes **native icons** and **localized strings** for your UI (optional)
 <br/>
-🍕 Modular, add to your project **what you need only**
+🍕 Modular, add to your project **only what you need**
 <br/>
 🪁 Does not contain anything redundant
 
@@ -51,7 +51,7 @@ pod 'PermissionWizard'
 
 By default, the library will be installed fully.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to only install components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
 
 ```ruby
 pod 'PermissionWizard/Assets' # Icons and localized strings
@@ -86,9 +86,9 @@ github "debug45/PermissionWizard"
 
 By default, the library is compiled fully when you build the project.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to only enable components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to enable only components that you need. In this case you will not have any troubles. ⚠️
 
-To only enable components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
+To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
 ```
 ENABLED_FEATURES = ASSETS BLUETOOTH CALENDARS CAMERA CONTACTS FACE_ID HEALTH HOME LOCAL_NETWORK LOCATION MICROPHONE MOTION MUSIC NOTIFICATIONS PHOTOS REMINDERS SIRI SPEECH_RECOGNITION
@@ -129,7 +129,7 @@ do {
 }
 ```
 
-Some permission types support additional features. For example, if an iOS 14 user allows access to his location with reduced accuracy only, you can request temporary access to full accuracy:
+Some permission types support additional features. For example, if an iOS 14 user allows access to his location only with reduced accuracy, you can request temporary access to full accuracy:
 
 ```swift
 try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
@@ -137,7 +137,7 @@ try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default
 }
 ```
 
-Unfortunately, the ability to work with certain permission types is limited by default system API. For example, you can check the current status of a local network permission by requesting it only.
+Unfortunately, the ability to work with certain permission types is limited by default system API. For example, you can check the current status of a local network permission only by requesting it.
 
 ### Info.plist
 
@@ -150,11 +150,11 @@ Permission.health.readingUsageDescriptionPlistKey // NSHealthUpdateUsageDescript
 Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescription
 ```
 
-If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — you just use `try?`.
+If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — `try?` is just used.
 
 ### Thread Management
 
-In some cases default system API may return a result in a different dispatch queue. Instead of risking a crash and using `DispatchQueue.main.async`, you can ask **PermissionWizard** to always invoke completion blocks in a preferred queue:
+In some cases default system API may return a result in a different dispatch queue. To avoid a crash and instead of using `DispatchQueue.main.async`, you can ask **PermissionWizard** always to invoke completion blocks in a preferred queue:
 
 ```swift
 Permission.preferredQueue = .main // Default setting
@@ -171,7 +171,7 @@ imageView.image = permission.getIcon(squircle: true)
 label.text = permission.getLocalizedName() // Speech Recognition
 ```
 
-Keep in mind that icons and localized strings are only available if the `Assets` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system localizations are supported.
+Keep in mind that icons and localized strings are only available if the `Assets` component of **PermissionWizard** is installed (CocoaPods) or enabled (Carthage). All system languages are supported.
 
 ## Known Issues
 
@@ -189,6 +189,6 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 You can contact me on [Telegram](https://t.me/debug45) and [LinkedIn](https://linkedin.com/in/debug45). If you find an issue, please [tell](https://github.com/debug45/PermissionWizard/issues/new) about it.
 
-Library is released under the MIT license. The permission type icons and localized names belong to Apple, their use is regulated by the company rules.
+Library is released under the MIT license. The permission type icons and localized strings belong to Apple, their use is regulated by the company rules.
 
 If **PermissionWizard** is useful for you please star this repository. Thank you! 👍

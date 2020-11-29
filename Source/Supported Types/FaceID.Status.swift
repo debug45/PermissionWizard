@@ -12,7 +12,7 @@ public extension Permission.Status {
     
     enum FaceID: String {
         
-        /// A user grants access or has not been asked about it yet
+        /// A user grants access or has not been asked for it yet
         case grantedOrNotDetermined
         /// A user denies access
         case denied
