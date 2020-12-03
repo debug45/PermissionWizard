@@ -76,6 +76,12 @@ final class ListViewController: UIViewController {
 #endif
         
         addButton(for: Permission.speechRecognition.self)
+        
+#if !targetEnvironment(macCatalyst)
+        if #available(iOS 14, *) {
+            addButton(for: Permission.tracking.self)
+        }
+#endif
     }
     
     private func addButton(for permission: Permission.SupportedType.Type) {

@@ -130,6 +130,12 @@ Pod::Spec.new do |spec|
     speech_recognition.source_files = 'Source/Supported Types/SpeechRecognition*.swift'
   end
   
-  spec.default_subspec = 'Assets', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'Siri', 'SpeechRecognition'
+  spec.subspec 'Tracking' do |tracking|
+    tracking.dependency 'PermissionWizard/Core'
+    tracking.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'TRACKING CUSTOM_SETTINGS' }
+    tracking.source_files = 'Source/Supported Types/Tracking*.swift'
+  end
+  
+  spec.default_subspec = 'Assets', 'Bluetooth', 'Calendars', 'Camera', 'Contacts', 'FaceID', 'Health', 'Home', 'LocalNetwork', 'Location', 'Microphone', 'Motion', 'Music', 'Notifications', 'Photos', 'Reminders', 'Siri', 'SpeechRecognition', 'Tracking'
   
 end

@@ -83,20 +83,28 @@ final class DetailViewController: UIViewController {
 #endif
                     
                     default:
-                        if #available(iOS 13.1, *) {
-                            if permission is Permission.bluetooth.Type {
-                                panel = BluetoothPanel()
-                            } else {
-#if !targetEnvironment(macCatalyst)
-                                if #available(iOS 14, *), permission is Permission.localNetwork.Type {
-                                    panel = LocalNetworkPanel()
-                                }
-#endif
-                            }
-                        }
-                        
                         if #available(iOS 13, macCatalyst 14, *), permission is Permission.home.Type {
                             panel = HomePanel()
+                        } else {
+                            if #available(iOS 13.1, *), permission is Permission.bluetooth.Type {
+                                panel = BluetoothPanel()
+                            } else {
+                                guard #available(iOS 14, *) else {
+                                    break
+                                }
+                                
+                                switch permission {
+#if !targetEnvironment(macCatalyst)
+                                    case is Permission.localNetwork.Type:
+                                        panel = LocalNetworkPanel()
+                                    case is Permission.tracking.Type:
+                                        panel = TrackingPanel()
+#endif
+                                    
+                                    default:
+                                        break
+                                }
+                            }
                         }
                 }
         }

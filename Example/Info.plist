@@ -71,6 +71,8 @@
 	<string>Please allow access to your Siri</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Please allow access to your speech recognition</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Please allow access to your tracking</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
