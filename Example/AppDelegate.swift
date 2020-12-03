@@ -15,6 +15,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Life Cycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        DispatchQueue.main.async {
+            guard let url = URL(string: "https://apple.com") else {
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: url) { _, _, _ in }
+            task.resume()
+        }
+        
         return true
     }
     
