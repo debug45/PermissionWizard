@@ -138,7 +138,7 @@ try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default
 }
 ```
 
-Unfortunately, the ability to work with certain permission types is limited by default system API. For example, you can check the current status of a local network permission only by requesting it.
+Unfortunately, the ability to work with certain permission types is limited by default system API. For example, you can check the current status of a home permission only by requesting it.
 
 ### Info.plist
 

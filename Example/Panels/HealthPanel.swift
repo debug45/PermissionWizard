@@ -25,7 +25,7 @@ final class HealthPanel: Panel<Permission.health> {
         
         addButton(title: "Request Access") {
             try! self.permission.requestAccess(forReading: [self.dataType], writing: [self.dataType]) {
-                self.notifyAboutRequestInferiority(tellAnotherWay: true)
+                self.notifyAboutRequestInferiority()
             }
         }
     }

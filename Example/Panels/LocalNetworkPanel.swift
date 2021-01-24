@@ -16,8 +16,10 @@ final class LocalNetworkPanel: Panel<Permission.localNetwork> {
         super.configure()
         
         addButton(title: "Request Access") {
-            try! self.permission.requestAccess(servicePlistKey: "_example._tcp")
-            self.notifyAboutRequestInferiority(tellAnotherWay: false)
+            try! self.permission.requestAccess(servicePlistKey: "_example._tcp") { status in
+                let message = "[atTimeOfRequest: \(status.rawValue)]"
+                self.notify(message)
+            }
         }
     }
     

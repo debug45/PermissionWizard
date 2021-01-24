@@ -19,7 +19,7 @@ final class MotionPanel: Panel<Permission.motion> {
             self.permission.checkStatus { self.notify($0.rawValue) }
         }, requestAccessAction: {
             try! self.permission.requestAccess()
-            self.notifyAboutRequestInferiority(tellAnotherWay: true)
+            self.notifyAboutRequestInferiority()
         })
     }
     

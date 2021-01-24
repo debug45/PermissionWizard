@@ -83,8 +83,10 @@ public extension Permission {
             let plistKeys = whenInUseOnly ? [whenInUseOnlyUsageDescriptionPlistKey] : alwaysUsageDescriptionPlistKeys
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionsPlistKeys: plistKeys)
             
-            if let existingAgent = existingAgent, let completion = completion {
-                existingAgent.addCallback(completion)
+            if let existingAgent = existingAgent {
+                if let completion = completion {
+                    existingAgent.addCallback(completion)
+                }
             } else {
                 let manager = CLLocationManager()
                 

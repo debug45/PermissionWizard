@@ -31,8 +31,10 @@ public extension Permission {
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: home.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
-            if let existingAgent = existingAgent, let completion = completion {
-                existingAgent.addCallback(completion)
+            if let existingAgent = existingAgent {
+                if let completion = completion {
+                    existingAgent.addCallback(completion)
+                }
             } else {
                 let manager = HMHomeManager()
                 

@@ -22,6 +22,8 @@
 		A553E455254464B700589764 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E454254464B700589764 /* Location.swift */; };
 		A553E45925446B1000589764 /* Location.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E45825446B1000589764 /* Location.Agent.swift */; };
 		A568C5002545574F00A8B7E3 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */; };
+		A57755D725BD81D5009C7271 /* LocalNetwork.Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57755D625BD81D5009C7271 /* LocalNetwork.Agent.swift */; };
+		A57755DB25BD822C009C7271 /* LocalNetwork.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57755DA25BD822C009C7271 /* LocalNetwork.Status.swift */; };
 		A57B592E256AB7A90019D5B4 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B592D256AB7A90019D5B4 /* Status.swift */; };
 		A5A7828D256D756B0036D303 /* Camera.Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7828C256D756B0036D303 /* Camera.Statuses.swift */; };
 		A5A78291256D75CA0036D303 /* FaceID.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78290256D75CA0036D303 /* FaceID.Status.swift */; };
@@ -105,6 +107,8 @@
 		A553E454254464B700589764 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A553E45825446B1000589764 /* Location.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.Agent.swift; sourceTree = "<group>"; };
 		A568C4FF2545574F00A8B7E3 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		A57755D625BD81D5009C7271 /* LocalNetwork.Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.Agent.swift; sourceTree = "<group>"; };
+		A57755DA25BD822C009C7271 /* LocalNetwork.Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.Status.swift; sourceTree = "<group>"; };
 		A57B592D256AB7A90019D5B4 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A5A7828C256D756B0036D303 /* Camera.Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.Statuses.swift; sourceTree = "<group>"; };
 		A5A78290256D75CA0036D303 /* FaceID.Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.Status.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				A5B519D4253AD284006870FA /* Home.Agent.swift */,
 				A5A78298256D764C0036D303 /* Home.Status.swift */,
 				A53C04C0254D5C35007F1438 /* LocalNetwork.swift */,
+				A57755D625BD81D5009C7271 /* LocalNetwork.Agent.swift */,
+				A57755DA25BD822C009C7271 /* LocalNetwork.Status.swift */,
 				A553E454254464B700589764 /* Location.swift */,
 				A553E45825446B1000589764 /* Location.Agent.swift */,
 				A5A7829C256D767B0036D303 /* Location.Statuses.swift */,
@@ -258,7 +264,7 @@
 		A5DAF0312528D770002483A6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					A5DAF0392528D771002483A6 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -359,6 +365,7 @@
 				A553E45925446B1000589764 /* Location.Agent.swift in Sources */,
 				A5018627253CCE4B00D9DC77 /* Health.swift in Sources */,
 				A5A782EE25701CAD0036D303 /* Siri.swift in Sources */,
+				A57755DB25BD822C009C7271 /* LocalNetwork.Status.swift in Sources */,
 				A5A7828D256D756B0036D303 /* Camera.Statuses.swift in Sources */,
 				A5A78291256D75CA0036D303 /* FaceID.Status.swift in Sources */,
 				A57B592E256AB7A90019D5B4 /* Status.swift in Sources */,
@@ -373,6 +380,7 @@
 				A511BAAC256947B400DF1657 /* SupportedType.swift in Sources */,
 				A5EDD6EF2528E220001F44C9 /* Permission.swift in Sources */,
 				A5B519C02538D5E7006870FA /* Microphone.swift in Sources */,
+				A57755D725BD81D5009C7271 /* LocalNetwork.Agent.swift in Sources */,
 				A5518744253779CA001A8208 /* Calendars.swift in Sources */,
 				A5A7829D256D767B0036D303 /* Location.Statuses.swift in Sources */,
 				A5A782E3256FC6350036D303 /* Status.Common.swift in Sources */,
@@ -575,7 +583,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionWizard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -604,7 +612,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = debug45.PermissionWizard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
