@@ -3,6 +3,8 @@
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-supported-success)](https://cocoapods.org/pods/PermissionWizard)
 ![Carthage](https://img.shields.io/badge/Carthage-supported-success)
 
+[Читать на русском](https://github.com/debug45/PermissionWizard/blob/master/README.ru.md)
+
 It is an ultimate tool for system permissions management. No longer you have to understand system API of each new permission type or search it on the Stack Overflow. 😄
 
 ## Advantages
@@ -51,7 +53,7 @@ pod 'PermissionWizard'
 
 By default, the library will be installed fully.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to install only components that you need. In this case **you will not have any troubles**. ⚠️
 
 ```ruby
 pod 'PermissionWizard/Assets' # Icons and localized strings
@@ -87,7 +89,7 @@ github "debug45/PermissionWizard"
 
 By default, the library is compiled fully when you build the project.
 
-Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to enable only components that you need. In this case you will not have any troubles. ⚠️
+Due to Apple’s policy regarding system permissions, your app may be rejected due to mention of API that is not actually used. It is recommended to enable only components that you need. In this case **you will not have any troubles**. ⚠️
 
 To enable only components that you need, create the `PermissionWizard.xcconfig` file in the root directory of your project. Put appropriate settings into the file according to the following template:
 
@@ -185,6 +187,7 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
+- Support usage in SwiftUI code
 
 ## Conclusion
 
