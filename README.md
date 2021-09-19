@@ -9,7 +9,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Advantages
 
-📱 Supports the newest features of **iOS 14** and **macOS 11 Big Sur**
+📱 Supports the newest features of **iOS 15** and **macOS 12 Monterey**
 <br/>
 🖥 Works great with **Mac Catalyst**
 
