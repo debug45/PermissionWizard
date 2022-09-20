@@ -13,18 +13,6 @@ public struct Permission {
     private static let privacyAssetKey = "Privacy"
 #endif
     
-    // MARK: Global Settings
-    
-    /**
-     A dispatch queue used to invoke all completion blocks
-
-     In some cases default system API may return a result in a different dispatch queue. To avoid a crash and instead of manual queue management, you can ask always to invoke completion blocks in a preferred queue.
-
-     # By Default
-     `DispatchQueue.main`
-    */
-    public static var preferredQueue: DispatchQueue? = .main
-    
     // MARK: Public Functions
     
 #if ASSETS || !CUSTOM_SETTINGS

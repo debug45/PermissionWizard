@@ -28,8 +28,14 @@ public extension Permission {
         
         // MARK: Public Functions
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: home.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
+            
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue, let closure = completion {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: closure)
+            }
             
             if let existingAgent = existingAgent {
                 if let completion = completion {
@@ -45,7 +51,7 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess() async throws -> Status {
+        @discardableResult public static func requestAccess() async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestAccess { status in

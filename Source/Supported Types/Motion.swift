@@ -21,8 +21,12 @@ public extension Permission {
         
         // MARK: Public Functions
         
-        public static func checkStatus(completion: @escaping (Status) -> Void) {
-            let completion = Utils.linkToPreferredQueue(completion)
+        public static func checkStatus(completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+            }
             
             switch CMSensorRecorder.authorizationStatus() {
                 case .authorized:

@@ -14,7 +14,7 @@ public extension Permission.Error {
         /// Your ”Info.plist“ is configured incorrectly
         case missingPlistKey(details: String)
         
-        // MARK: Properties
+        // MARK: Public Properties
         
         /// A value that represents PermissionWizard internal code of the error
         public var code: Int {

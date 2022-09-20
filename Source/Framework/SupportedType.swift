@@ -11,7 +11,7 @@ public extension Permission {
     
     class SupportedType {
         
-        // MARK: Properties
+        // MARK: Public Properties
         
         /**
          A key that must be added to your ”Info.plist“ to work with the permission type
@@ -19,6 +19,8 @@ public extension Permission {
          For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
         */
         public class var usageDescriptionPlistKey: String { .init() }
+        
+        // MARK: Internal Properties
         
         class var contextName: String { .init(describing: self) }
         

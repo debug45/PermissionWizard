@@ -15,6 +15,17 @@ public extension Permission {
         
         public typealias Status = Permission.Status.HealthWriting
         
+        // MARK: Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
+        
+#if ASSETS || !CUSTOM_SETTINGS
+        override class var shouldBorderIcon: Bool { true }
+#endif
+        
+        // MARK: Public Properties
+        
         /**
          A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to read health data.
 
@@ -28,15 +39,6 @@ public extension Permission {
         */
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
         
-        // MARK: Overriding Properties
-        
-        @available(*, unavailable)
-        public override class var usageDescriptionPlistKey: String { .init() }
-        
-#if ASSETS || !CUSTOM_SETTINGS
-        override class var shouldBorderIcon: Bool { true }
-#endif
-        
         // MARK: Public Functions
         
         /**
@@ -45,10 +47,15 @@ public extension Permission {
          Due to limitations of default system API, you can check only write access
 
          - Parameter dataType: A type of health data, access to which you want to check
-         - Parameter completion: A block that will be invoked to return the check result
+         - Parameter completion: A closure that will be invoked to return the check result
+         - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
         */
-        public static func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void) {
-            let completion = Utils.linkToPreferredQueue(completion)
+        public static func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+            }
             
             switch HKHealthStore().authorizationStatus(for: dataType) {
                 case .sharingAuthorized:
@@ -86,10 +93,11 @@ public extension Permission {
 
          - Parameter readingTypes: Types of health data, access to which reading you want to request
          - Parameter writingTypes: Types of health data, access to which writing you want to request
-         - Parameter completion: A block that will be invoked after a user makes a decision
+         - Parameter completion: A closure that will be invoked after a user makes a decision
+         - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
-        public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) throws {
+        public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             var plistKeys = !readingTypes.isEmpty ? [readingUsageDescriptionPlistKey] : []
             
             if !writingTypes.isEmpty {
@@ -99,11 +107,14 @@ public extension Permission {
             try Utils.checkIsAppConfigured(for: health.self, usageDescriptionsPlistKeys: plistKeys)
             
             HKHealthStore().requestAuthorization(toShare: writingTypes, read: readingTypes) { _, _ in
-                guard let unwrapped = completion else {
+                guard var completion = completion else {
                     return
                 }
                 
-                let completion = Utils.linkToPreferredQueue(unwrapped)
+                if let forcedInvokationQueue = forcedInvokationQueue {
+                    completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+                }
+                
                 completion()
             }
         }

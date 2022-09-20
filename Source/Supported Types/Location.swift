@@ -15,6 +15,15 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Location.Combined
         
+        private static var existingAgent: Agent?
+        
+        // MARK: Overriding Properties
+        
+        @available(*, unavailable)
+        public override class var usageDescriptionPlistKey: String { .init() }
+        
+        // MARK: Public Properties
+        
         /**
          A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to access location even when an app is not being used right now.
 
@@ -29,16 +38,9 @@ public extension Permission {
         */
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
-        private static var existingAgent: Agent?
-        
-        // MARK: Overriding Properties
-        
-        @available(*, unavailable)
-        public override class var usageDescriptionPlistKey: String { .init() }
-        
         // MARK: Public Functions
         
-        public static func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
             let manager = CLLocationManager()
             
             let narrow: Permission.Status.Location.Narrow
@@ -65,7 +67,12 @@ public extension Permission {
                 combined.isAccuracyReducing = manager.accuracyAuthorization != .fullAccuracy
             }
             
-            let completion = Utils.linkToPreferredQueue(completion)
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+            }
+            
             completion(combined)
         }
         
@@ -82,12 +89,19 @@ public extension Permission {
          Asks a user for access the permission type
 
          - Parameter whenInUseOnly: A flag indicating whether you want to access location only when an app is being used right now
-         - Parameter completion: A block that will be invoked to return the request result
+         - Parameter completion: A closure that will be invoked to return the request result
+         - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
-        public static func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             let plistKey = whenInUseOnly ? whenInUseOnlyUsageDescriptionPlistKey : alwaysUsageDescriptionPlistKey
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionPlistKey: plistKey)
+            
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue, let closure = completion {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: closure)
+            }
             
             if let existingAgent = existingAgent {
                 if let completion = completion {
@@ -116,7 +130,7 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         @available(iOS 13, *)
-        public static func requestAccess(whenInUseOnly: Bool) async throws -> Status {
+        @discardableResult public static func requestAccess(whenInUseOnly: Bool) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestAccess(whenInUseOnly: whenInUseOnly) { status in
@@ -134,11 +148,12 @@ public extension Permission {
          It may be useful if a user grants access to location data only with reduced accuracy
 
          - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key ”NSLocationTemporaryUsageDescriptionDictionary“.
-         - Parameter completion: A block that will be invoked to return the request result
+         - Parameter completion: A closure that will be invoked to return the request result
+         - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         @available(iOS 14, *)
-        public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil) throws {
+        public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionPlistKey: nil)
             
             let purposeDictionaryPlistKey = "NSLocationTemporaryUsageDescriptionDictionary"
@@ -151,11 +166,14 @@ public extension Permission {
             let manager = CLLocationManager()
             
             manager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: purposePlistKey) { _ in
-                guard let unwrapped = completion else {
+                guard var completion = completion else {
                     return
                 }
                 
-                let completion = Utils.linkToPreferredQueue(unwrapped)
+                if let forcedInvokationQueue = forcedInvokationQueue {
+                    completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+                }
+                
                 completion(manager.accuracyAuthorization == .fullAccuracy)
             }
         }
@@ -169,7 +187,7 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         @available(iOS 14, *)
-        public static func requestTemporaryPreciseAccess(purposePlistKey: String) async throws -> Bool {
+        @discardableResult public static func requestTemporaryPreciseAccess(purposePlistKey: String) async throws -> Bool {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestTemporaryPreciseAccess(purposePlistKey: purposePlistKey) { status in

@@ -23,13 +23,17 @@ public extension Permission {
         
         // MARK: Public Functions
         
-        public static func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
             let context = LAContext()
             
             var error: NSError?
             let isReady = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
             
-            let completion = Utils.linkToPreferredQueue(completion)
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+            }
             
             guard context.biometryType == .faceID else {
                 completion(.notSupportedByDevice)
@@ -58,7 +62,7 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: faceID.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { _, _ in
@@ -66,12 +70,14 @@ public extension Permission {
                     return
                 }
                 
-                self.checkStatus { completion($0) }
+                self.checkStatus(completion: {
+                    completion($0)
+                }, forcedInvokationQueue: forcedInvokationQueue)
             }
         }
         
         @available(iOS 13, *)
-        public static func requestAccess() async throws -> Status {
+        @discardableResult public static func requestAccess() async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestAccess { status in

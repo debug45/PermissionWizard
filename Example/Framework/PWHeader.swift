@@ -25,7 +25,7 @@ final class PWHeader: UIView {
         configure()
     }
     
-    // MARK: Properties
+    // MARK: Internal Properties
     
     var icon: UIImage? {
         get {

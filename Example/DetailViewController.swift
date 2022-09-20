@@ -12,14 +12,16 @@ final class DetailViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    var permission: Permission.SupportedType.Type?
-    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+    
+    // MARK: Internal Properties
+    
+    var permission: Permission.SupportedType.Type?
     
     // MARK: Private Functions
     

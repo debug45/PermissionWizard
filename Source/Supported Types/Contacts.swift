@@ -21,8 +21,12 @@ public extension Permission {
         
         // MARK: Public Functions
         
-        public static func checkStatus(completion: @escaping (Status) -> Void) {
-            let completion = Utils.linkToPreferredQueue(completion)
+        public static func checkStatus(completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
+            var completion = completion
+            
+            if let forcedInvokationQueue = forcedInvokationQueue {
+                completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+            }
             
             switch CNContactStore.authorizationStatus(for: .contacts) {
                 case .authorized:
@@ -48,7 +52,7 @@ public extension Permission {
             }
         }
         
-        public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: contacts.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
             CNContactStore().requestAccess(for: .contacts) { _, _ in
@@ -56,12 +60,14 @@ public extension Permission {
                     return
                 }
                 
-                self.checkStatus { completion($0) }
+                self.checkStatus(completion: {
+                    completion($0)
+                }, forcedInvokationQueue: forcedInvokationQueue)
             }
         }
         
         @available(iOS 13, *)
-        public static func requestAccess() async throws -> Status {
+        @discardableResult public static func requestAccess() async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestAccess { status in

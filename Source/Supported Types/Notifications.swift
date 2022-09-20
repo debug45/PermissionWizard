@@ -22,9 +22,13 @@ public extension Permission {
         
         // MARK: Public Functions
         
-        public static func checkStatus(completion: @escaping (Status) -> Void) {
+        public static func checkStatus(completion: @escaping (Status) -> Void, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
-                let completion = Utils.linkToPreferredQueue(completion)
+                var completion = completion
+                
+                if let forcedInvokationQueue = forcedInvokationQueue {
+                    completion = Utils.linkToQueue(forcedInvokationQueue, closure: completion)
+                }
                 
                 switch settings.authorizationStatus {
                     case .authorized:
@@ -57,10 +61,11 @@ public extension Permission {
          Asks a user for access the permission type
 
          - Parameter options: Notification features, access to which you want to request
-         - Parameter completion: A block that will be invoked to return the request result
+         - Parameter completion: A closure that will be invoked to return the request result
+         - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong
         */
-        public static func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
+        public static func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: notifications.self)
             
             UNUserNotificationCenter.current().requestAuthorization(options: options) { _, _ in
@@ -68,7 +73,9 @@ public extension Permission {
                     return
                 }
                 
-                self.checkStatus { completion($0) }
+                self.checkStatus(completion: {
+                    completion($0)
+                }, forcedInvokationQueue: forcedInvokationQueue)
             }
         }
         
@@ -79,7 +86,7 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong
         */
         @available(iOS 13, *)
-        public static func requestAccess(options: UNAuthorizationOptions) async throws -> Status {
+        @discardableResult public static func requestAccess(options: UNAuthorizationOptions) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
                     try requestAccess(options: options) { status in

@@ -23,7 +23,20 @@ final class PWButton: UIControl {
         configure()
     }
     
-    // MARK: Properties
+    // MARK: Overriding Properties
+    
+    override var isHighlighted: Bool {
+        didSet {
+            let duration: TimeInterval = isHighlighted ? 0 : 0.25
+            
+            UIView.animate(withDuration: duration, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
+                self.titleLabel.alpha = self.isHighlighted ? 0.5 : 1
+                self.contentView?.alpha = self.titleLabel.alpha
+            }, completion: nil)
+        }
+    }
+    
+    // MARK: Internal Properties
     
     var title: String? {
         didSet {
@@ -53,19 +66,6 @@ final class PWButton: UIControl {
     }
     
     var action: () -> Void = { }
-    
-    // MARK: Overriding
-    
-    override var isHighlighted: Bool {
-        didSet {
-            let duration: TimeInterval = isHighlighted ? 0 : 0.25
-            
-            UIView.animate(withDuration: duration, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
-                self.titleLabel.alpha = self.isHighlighted ? 0.5 : 1
-                self.contentView?.alpha = self.titleLabel.alpha
-            }, completion: nil)
-        }
-    }
     
     // MARK: Private Functions
     

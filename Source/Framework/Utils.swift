@@ -21,26 +21,18 @@ struct Utils {
     
     // MARK: Internal Functions
     
-    static func linkToPreferredQueue<T>(_ block: @escaping (T) -> Void) -> (T) -> Void {
-        guard let preferredQueue = Permission.preferredQueue else {
-            return block
-        }
-        
+    static func linkToQueue<T>(_ queue: DispatchQueue, closure: @escaping (T) -> Void) -> (T) -> Void {
         return { parameter in
-            preferredQueue.async {
-                block(parameter)
+            queue.async {
+                closure(parameter)
             }
         }
     }
     
-    static func linkToPreferredQueue(_ block: @escaping () -> Void) -> () -> Void {
-        guard let preferredQueue = Permission.preferredQueue else {
-            return block
-        }
-        
+    static func linkToQueue(_ queue: DispatchQueue, closure: @escaping () -> Void) -> () -> Void {
         return {
-            preferredQueue.async {
-                block()
+            queue.async {
+                closure()
             }
         }
     }

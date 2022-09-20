@@ -9,9 +9,6 @@ public extension Permission {
     
     class Error: NSError {
         
-        /// A flag that represents a reason of the occured error
-        public let type: SupportedType
-        
         private let userInfoMessageKey = "message"
         
         // MARK: Life Cycle
@@ -32,6 +29,11 @@ public extension Permission {
         required init?(coder: NSCoder) {
             return nil
         }
+        
+        // MARK: Public Properties
+        
+        /// A flag that represents a reason of the occured error
+        public let type: SupportedType
         
     }
     

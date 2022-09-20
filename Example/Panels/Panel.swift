@@ -10,8 +10,6 @@ import UIKit
 
 class Panel<T: Permission.SupportedType>: UIStackView {
     
-    let permission = T.self
-    
     // MARK: Life Cycle
     
     override init(frame: CGRect) {
@@ -23,6 +21,10 @@ class Panel<T: Permission.SupportedType>: UIStackView {
         super.init(coder: coder)
         configure()
     }
+    
+    // MARK: Internal Properties
+    
+    let permission = T.self
     
     // MARK: Internal Functions
     

@@ -9,8 +9,6 @@ extension Permission.SupportedType {
     
     class Agent<Manager, Status>: NSObject {
         
-        let manager: Manager
-        
         private var callbacks: [(Status) -> Void] = []
         
         // MARK: Life Cycle
@@ -22,7 +20,9 @@ extension Permission.SupportedType {
             addCallback(callback)
         }
         
-        // MARK: Properties
+        // MARK: Internal Properties
+        
+        let manager: Manager
         
         var hasDeterminedStatus: Bool {
             return false
@@ -31,7 +31,6 @@ extension Permission.SupportedType {
         // MARK: Internal Functions
         
         func addCallback(_ callback: @escaping (Status) -> Void) {
-            let callback = Utils.linkToPreferredQueue(callback)
             callbacks.append(callback)
             
             if hasDeterminedStatus {
