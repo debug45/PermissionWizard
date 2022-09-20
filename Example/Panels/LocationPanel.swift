@@ -9,7 +9,7 @@ import PermissionWizard
 
 final class LocationPanel: Panel<Permission.location> {
     
-    // MARK: - Overriding Functions
+    // MARK: Overriding Functions
     
     override func configure() {
         super.configure()
@@ -18,13 +18,11 @@ final class LocationPanel: Panel<Permission.location> {
             self.permission.checkStatus { self.notify(about: $0) }
         }
         
-        if #available(iOS 11, *) {
-            addSeparatingOffset()
-        }
+        addSeparatingOffset()
         
         let whenInUseOnlySwitch = addSwitch(title: "When in Use Only", withIncreasedOffset: false)
         
-        if #available(iOS 11, *), let lastView = arrangedSubviews.last {
+        if let lastView = arrangedSubviews.last {
             setCustomSpacing(16, after: lastView)
         }
         
@@ -41,7 +39,7 @@ final class LocationPanel: Panel<Permission.location> {
         }
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func notify(about status: Permission.location.Status) {
         let message = "[status: \(status.value.rawValue), isAccuracyReducing: \(status.isAccuracyReducing)]"

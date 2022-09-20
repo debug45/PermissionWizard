@@ -13,7 +13,7 @@ public struct Permission {
     private static let privacyAssetKey = "Privacy"
 #endif
     
-    // MARK: - Global Settings
+    // MARK: Global Settings
     
     /**
      A dispatch queue used to invoke all completion blocks
@@ -25,7 +25,7 @@ public struct Permission {
     */
     public static var preferredQueue: DispatchQueue? = .main
     
-    // MARK: - Public Functions
+    // MARK: Public Functions
     
 #if ASSETS || !CUSTOM_SETTINGS
     /**

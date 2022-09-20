@@ -15,12 +15,12 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Notifications
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         @available(*, unavailable)
         public override class var usageDescriptionPlistKey: String { .init() }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
@@ -44,11 +44,20 @@ public extension Permission {
             }
         }
         
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         /**
          Asks a user for access the permission type
 
          - Parameter options: Notification features, access to which you want to request
-         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the request result
          - Throws: `Permission.Error`, if something went wrong
         */
         public static func requestAccess(options: UNAuthorizationOptions, completion: ((Status) -> Void)? = nil) throws {
@@ -60,6 +69,25 @@ public extension Permission {
                 }
                 
                 self.checkStatus { completion($0) }
+            }
+        }
+        
+        /**
+         Asks a user for access the permission type
+
+         - Parameter options: Notification features, access to which you want to request
+         - Throws: `Permission.Error`, if something went wrong
+        */
+        @available(iOS 13, *)
+        public static func requestAccess(options: UNAuthorizationOptions) async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess(options: options) { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
             }
         }
         

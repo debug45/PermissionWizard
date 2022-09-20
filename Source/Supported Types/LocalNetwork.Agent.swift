@@ -14,20 +14,20 @@ extension Permission.localNetwork {
         
         private var response: Status?
         
-        // MARK: - Life Cycle
+        // MARK: Life Cycle
         
         override init(_ manager: NetService, callback: @escaping (Status) -> Void) {
             super.init(manager, callback: callback)
             manager.delegate = self
         }
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         override var hasDeterminedStatus: Bool {
             return response != nil
         }
         
-        // MARK: - Overriding Functions
+        // MARK: Overriding Functions
         
         override func handleDeterminedStatus() {
             super.handleDeterminedStatus()
@@ -37,7 +37,7 @@ extension Permission.localNetwork {
             }
         }
         
-        // MARK: - Net Service Delegate
+        // MARK: Net Service Delegate
         
         func netServiceDidPublish(_ sender: NetService) {
             response = .granted

@@ -23,18 +23,18 @@ public extension Permission {
         public typealias Status = Permission.Status.Camera
 #endif
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSCameraUsageDescription" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
 #if MICROPHONE || !CUSTOM_SETTINGS
         /**
          Asks the system for the current status of the permission type
 
          - Parameter withMicrophone: A flag indicating whether the microphone permission status should also be checked
-         - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the check result
         */
         public static func checkStatus(withMicrophone: Bool, completion: @escaping (Status) -> Void) {
             checkNarrowStatus { narrow in
@@ -52,10 +52,24 @@ public extension Permission {
         }
         
         /**
+         Asks the system for the current status of the permission type
+
+         - Parameter withMicrophone: A flag indicating whether the microphone permission status should also be checked
+        */
+        @available(iOS 13, *)
+        public static func checkStatus(withMicrophone: Bool) async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus(withMicrophone: withMicrophone) { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
+        /**
          Asks a user for access the permission type
 
          - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
-         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the request result
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         public static func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil) throws {
@@ -82,18 +96,59 @@ public extension Permission {
                 }
             }
         }
+        
+        /**
+         Asks a user for access the permission type
+
+         - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
+        @available(iOS 13, *)
+        public static func requestAccess(withMicrophone: Bool) async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess(withMicrophone: withMicrophone) { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
+            }
+        }
 #else
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             checkNarrowStatus(completion: completion)
+        }
+        
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
         }
         
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestNarrowAccess(completion: completion)
         }
+        
+        @available(iOS 13, *)
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
+            }
+        }
 #endif
         
-        // MARK: - Private Functions
+        // MARK: Private Functions
         
         private static func checkNarrowStatus(completion: @escaping (Permission.Status.Common) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)

@@ -14,14 +14,14 @@ final class DetailViewController: UIViewController {
     
     var permission: Permission.SupportedType.Type?
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func configure() {
         let header = PWHeader()
@@ -70,10 +70,6 @@ final class DetailViewController: UIViewController {
                 panel = SpeechRecognitionPanel()
             
             default:
-                guard #available(iOS 11, *) else {
-                    break
-                }
-                
                 switch permission {
 #if !targetEnvironment(macCatalyst)
                     case is Permission.faceID.Type:

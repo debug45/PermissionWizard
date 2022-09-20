@@ -9,7 +9,7 @@ import PermissionWizard
 
 final class CameraPanel: Panel<Permission.camera> {
     
-    // MARK: - Overriding Functions
+    // MARK: Overriding Functions
     
     override func configure() {
         super.configure()
@@ -23,7 +23,7 @@ final class CameraPanel: Panel<Permission.camera> {
         })
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func notify(about status: Permission.camera.Status) {
         var message = status.camera.rawValue

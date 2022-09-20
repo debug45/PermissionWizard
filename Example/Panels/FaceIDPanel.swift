@@ -9,7 +9,6 @@
 
 import PermissionWizard
 
-@available(iOS 11, *)
 final class FaceIDPanel: Panel<Permission.faceID> {
     
     override func configure() {

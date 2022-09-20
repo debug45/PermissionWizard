@@ -9,20 +9,19 @@
 
 import LocalAuthentication
 
-@available(iOS 11, *)
 public extension Permission {
     
     final class faceID: SupportedType, Checkable, Requestable {
         
         public typealias Status = Permission.Status.FaceID
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSFaceIDUsageDescription" }
         
         override class var contextName: String { "Face ID" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let context = LAContext()
@@ -50,6 +49,15 @@ public extension Permission {
             }
         }
         
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: faceID.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
@@ -59,6 +67,19 @@ public extension Permission {
                 }
                 
                 self.checkStatus { completion($0) }
+            }
+        }
+        
+        @available(iOS 13, *)
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
             }
         }
         

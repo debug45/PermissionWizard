@@ -13,27 +13,27 @@ extension Permission.location {
     
     final class Agent: Permission.SupportedType.Agent<CLLocationManager, Status>, CLLocationManagerDelegate {
         
-        // MARK: - Life Cycle
+        // MARK: Life Cycle
         
         override init(_ manager: CLLocationManager, callback: @escaping (Status) -> Void) {
             super.init(manager, callback: callback)
             manager.delegate = self
         }
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         override var hasDeterminedStatus: Bool {
             return CLLocationManager.authorizationStatus() != .notDetermined
         }
         
-        // MARK: - Overriding Functions
+        // MARK: Overriding Functions
         
         override func handleDeterminedStatus() {
             super.handleDeterminedStatus()
             checkStatus { self.invokeCallbacks(with: $0) }
         }
         
-        // MARK: - Location Manager Delegate
+        // MARK: Location Manager Delegate
         
         func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
             guard hasDeterminedStatus else {

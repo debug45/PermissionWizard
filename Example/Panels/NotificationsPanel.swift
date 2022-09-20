@@ -13,7 +13,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
     
     private var dependentSwitches: [UISwitch] = []
     
-    // MARK: - Overriding Functions
+    // MARK: Overriding Functions
     
     override func configure() {
         super.configure()
@@ -29,13 +29,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         if #available(iOS 13, *) {
             siriAnnouncementsSwitch = addSwitch(title: "Siri Announcements")
         } else {
-#if !targetEnvironment(macCatalyst)
-            if #available(iOS 11, *) {
-                addSeparatingOffset()
-            }
-#else
             addSeparatingOffset()
-#endif
         }
         
         var criticalAlertsSwitch: UISwitch?
@@ -98,7 +92,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         })
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     @objc private func provisionallySwitchDidChange(_ switchView: UISwitch) {
         dependentSwitches.forEach { $0.isEnabled = !switchView.isOn }

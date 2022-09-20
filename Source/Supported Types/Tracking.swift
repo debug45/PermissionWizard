@@ -16,11 +16,11 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Common
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSUserTrackingUsageDescription" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -40,6 +40,14 @@ public extension Permission {
             }
         }
         
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: tracking.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
@@ -49,6 +57,18 @@ public extension Permission {
                 }
                 
                 self.checkStatus { completion($0) }
+            }
+        }
+        
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
             }
         }
         

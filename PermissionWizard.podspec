@@ -1,18 +1,18 @@
 Pod::Spec.new do |spec|
   
   spec.name = 'PermissionWizard'
-  spec.version = '1.2.1'
+  spec.version = '1.3.0'
   
   spec.summary = '🔮 An ultimate tool for system permissions management'
   
-  spec.author = { 'Sergey Moskvin' => 'debug45@mail.ru' }
+  spec.author = { 'Sergey Moskvin' => 's@mosk.vin' }
   spec.license = { :type => 'MIT', :file => 'LICENSE.md' }
   
   spec.homepage = 'https://github.com/debug45/PermissionWizard'
   spec.source = { :git => 'https://github.com/debug45/PermissionWizard.git', :tag => spec.version.to_s }
   
-  spec.ios.deployment_target = '10.0'
-  spec.swift_version = '5.0'
+  spec.ios.deployment_target = '11.0'
+  spec.swift_version = '5.5'
   
   spec.subspec 'Core' do |core|
     core.source_files = 'Source/Permission.swift', 'Source/Framework'

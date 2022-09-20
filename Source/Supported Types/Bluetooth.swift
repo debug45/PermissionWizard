@@ -18,13 +18,13 @@ public extension Permission {
         
         private static var existingAgent: Agent?
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSBluetoothAlwaysUsageDescription" }
         
         override class var contextName: String { "Bluetooth" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -44,6 +44,14 @@ public extension Permission {
             }
         }
         
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: bluetooth.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
@@ -57,6 +65,18 @@ public extension Permission {
                 existingAgent = Agent(manager) { status in
                     completion?(status)
                     self.existingAgent = nil
+                }
+            }
+        }
+        
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
                 }
             }
         }

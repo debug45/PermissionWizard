@@ -12,7 +12,7 @@ class Panel<T: Permission.SupportedType>: UIStackView {
     
     let permission = T.self
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +24,7 @@ class Panel<T: Permission.SupportedType>: UIStackView {
         configure()
     }
     
-    // MARK: - Internal Functions
+    // MARK: Internal Functions
     
     func configure() {
         axis = .vertical
@@ -52,10 +52,7 @@ class Panel<T: Permission.SupportedType>: UIStackView {
         switchView.isOn = isOn
         
         addArrangedSubview(switchView)
-        
-        if #available(iOS 11, *) {
-            setCustomSpacing(8, after: switchView)
-        }
+        setCustomSpacing(8, after: switchView)
         
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)
@@ -63,14 +60,13 @@ class Panel<T: Permission.SupportedType>: UIStackView {
         
         addArrangedSubview(titleLabel)
         
-        if #available(iOS 11, *), withIncreasedOffset {
+        if withIncreasedOffset {
             addSeparatingOffset()
         }
         
         return switchView
     }
     
-    @available(iOS 11, *)
     func addSeparatingOffset() {
         guard let lastView = arrangedSubviews.last else {
             return

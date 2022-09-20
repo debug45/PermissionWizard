@@ -7,7 +7,6 @@
 
 #if (FACE_ID || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
-@available(iOS 11, *)
 public extension Permission.Status {
     
     enum FaceID: String {

@@ -12,14 +12,14 @@ final class ListViewController: UIViewController {
     
     @IBOutlet private weak var buttonsContainer: UIStackView!
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func configure() {
         let header = PWHeader()
@@ -40,10 +40,7 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.contacts.self)
         
 #if !targetEnvironment(macCatalyst)
-        if #available(iOS 11, *) {
-            addButton(for: Permission.faceID.self)
-        }
-        
+        addButton(for: Permission.faceID.self)
         addButton(for: Permission.health.self)
 #endif
         
@@ -61,9 +58,7 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.microphone.self)
         
 #if !targetEnvironment(macCatalyst)
-        if #available(iOS 11, *) {
-            addButton(for: Permission.motion.self)
-        }
+        addButton(for: Permission.motion.self)
 #endif
         
         addButton(for: Permission.music.self)

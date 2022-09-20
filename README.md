@@ -9,7 +9,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Advantages
 
-📱 Supports the newest features of **iOS 15** and **macOS 12 Monterey**
+📱 Supports the newest features of **iOS 16** and **macOS 13 Ventura**
 <br/>
 🖥 Works great with **Mac Catalyst**
 
@@ -17,7 +17,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 <br/>
 🛡 Provides crash free by **validating your plist** keys
 <br/>
-📬 Use **completion blocks** even where it is not provided by default system API
+📬 Use **async/await** and **completion blocks** even where it is not provided by default system API
 <br/>
 🛣 Forget about **thread management** by using any preferred dispatch queue only (optional)
 
@@ -37,9 +37,9 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Requirements
 
-- iOS 10 / macOS 10.15 Catalina
-- Xcode 12.2
-- Swift 5
+- iOS 11 / macOS 10.15 Catalina
+- Xcode 13
+- Swift 5.5
 
 ## Installation
 
@@ -153,7 +153,7 @@ Permission.health.readingUsageDescriptionPlistKey // NSHealthUpdateUsageDescript
 Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescription
 ```
 
-If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — `try?` is just used.
+If you request access to some permission using default system API but forget to edit your `Info.plist`, the app will crash. However with **PermissionWizard** the crash will not occur — `try` is just used.
 
 ### Thread Management
 
@@ -161,6 +161,7 @@ In some cases default system API may return a result in a different dispatch que
 
 ```swift
 Permission.preferredQueue = .main // Default setting
+Permission.preferredQueue = nil // Thread management is disabled
 ```
 
 ### UI Assets
@@ -180,14 +181,13 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 - Bluetooth permission always returns `.granted` on simulators
 - Local Network permission does not work on simulators
-- Microphone permission always returns `.granted` on simulators with iOS 10 or 11
+- Microphone permission always returns `.granted` on simulators with iOS 11
 - Music permission does not work on simulators with iOS 12
 
 ## Roadmap
 
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
-- Support usage in SwiftUI code
 
 ## Conclusion
 

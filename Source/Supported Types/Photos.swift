@@ -28,7 +28,7 @@ public extension Permission {
         */
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         @available(*, unavailable)
         public override class var usageDescriptionPlistKey: String { .init() }
@@ -37,17 +37,31 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         /**
          Asks the system for the current status of the permission type
 
          - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new photos and videos to a user‘s library
-         - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the check result
         */     
         @available(iOS 14, *)
         public static func checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             _checkStatus(forAddingOnly: forAddingOnly, completion: completion)
+        }
+        
+        /**
+         Asks the system for the current status of the permission type
+
+         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new photos and videos to a user‘s library
+        */
+        @available(iOS 14, *)
+        public static func checkStatus(forAddingOnly: Bool) async throws -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus(forAddingOnly: forAddingOnly) { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
         }
         
         @available(iOS, deprecated: 14)
@@ -55,11 +69,20 @@ public extension Permission {
             _checkStatus(forAddingOnly: false, completion: completion)
         }
         
+        @available(iOS, introduced: 13, deprecated: 14)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         /**
          Asks a user for access the permission type
 
          - Parameter forAddingOnly: A flag indicating whether you want only to add new photos and videos to a user‘s library
-         - Parameter completion: A block that will be invoked to return the request result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the request result
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         @available(iOS 14, *)
@@ -67,12 +90,44 @@ public extension Permission {
             try _requestAccess(forAddingOnly: forAddingOnly, completion: completion)
         }
         
+        /**
+         Asks a user for access the permission type
+
+         - Parameter forAddingOnly: A flag indicating whether you want only to add new photos and videos to a user‘s library
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
+        @available(iOS 14, *)
+        public static func requestAccess(forAddingOnly: Bool) async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess(forAddingOnly: forAddingOnly) { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
+            }
+        }
+        
         @available(iOS, deprecated: 14)
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try _requestAccess(forAddingOnly: false, completion: completion)
         }
         
-        // MARK: - Private Functions
+        @available(iOS, introduced: 13, deprecated: 14)
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess() { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
+            }
+        }
+        
+        // MARK: Private Functions
         
         private static func _checkStatus(forAddingOnly: Bool, completion: @escaping (Status) -> Void) {
             let value: PHAuthorizationStatus

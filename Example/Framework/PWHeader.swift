@@ -13,7 +13,7 @@ final class PWHeader: UIView {
     private let iconView = UIImageView()
     private let titleLabel = UILabel()
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +25,7 @@ final class PWHeader: UIView {
         configure()
     }
     
-    // MARK: - Properties
+    // MARK: Properties
     
     var icon: UIImage? {
         get {
@@ -51,7 +51,7 @@ final class PWHeader: UIView {
         }
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func configure() {
         iconView.translatesAutoresizingMaskIntoConstraints = false

@@ -18,7 +18,7 @@ public extension Permission {
         
         private static var existingAgent: Agent?
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSHomeKitUsageDescription" }
         
@@ -26,7 +26,7 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: home.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
@@ -41,6 +41,18 @@ public extension Permission {
                 existingAgent = Agent(manager) { status in
                     completion?(status)
                     self.existingAgent = nil
+                }
+            }
+        }
+        
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
                 }
             }
         }

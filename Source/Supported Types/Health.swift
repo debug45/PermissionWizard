@@ -28,7 +28,7 @@ public extension Permission {
         */
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         @available(*, unavailable)
         public override class var usageDescriptionPlistKey: String { .init() }
@@ -37,7 +37,7 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         /**
          Asks the system for the current status of the permission type
@@ -45,7 +45,7 @@ public extension Permission {
          Due to limitations of default system API, you can check only write access
 
          - Parameter dataType: A type of health data, access to which you want to check
-         - Parameter completion: A block that will be invoked to return the check result. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked to return the check result
         */
         public static func checkStatusForWriting(of dataType: HKObjectType, completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -64,13 +64,29 @@ public extension Permission {
         }
         
         /**
+         Asks the system for the current status of the permission type
+
+         Due to limitations of default system API, you can check only write access
+
+         - Parameter dataType: A type of health data, access to which you want to check
+        */
+        @available(iOS 13, *)
+        public static func checkStatusForWriting(of dataType: HKObjectType) async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatusForWriting(of: dataType) { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
+        /**
          Asks a user for access the permission type
 
          To find out a user‘s decision, use the status check method
 
          - Parameter readingTypes: Types of health data, access to which reading you want to request
          - Parameter writingTypes: Types of health data, access to which writing you want to request
-         - Parameter completion: A block that will be invoked after a user makes a decision. The invoke will occur in a dispatch queue that is set by ”Permission.preferredQueue“.
+         - Parameter completion: A block that will be invoked after a user makes a decision
          - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
         */
         public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil) throws {
@@ -89,6 +105,28 @@ public extension Permission {
                 
                 let completion = Utils.linkToPreferredQueue(unwrapped)
                 completion()
+            }
+        }
+        
+        /**
+         Asks a user for access the permission type
+
+         The method will return after a user makes a decision. To find out the decision, use the status check method.
+
+         - Parameter readingTypes: Types of health data, access to which reading you want to request
+         - Parameter writingTypes: Types of health data, access to which writing you want to request
+         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+        */
+        @available(iOS 13, *)
+        public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>) async throws {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess(forReading: readingTypes, writing: writingTypes) {
+                        checkedContinuation.resume()
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
             }
         }
         

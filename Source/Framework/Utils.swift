@@ -19,7 +19,7 @@ struct Utils {
     private static let iconBorderColor = UIColor.black.withAlphaComponent(0.1)
 #endif
     
-    // MARK: - Internal Functions
+    // MARK: Internal Functions
     
     static func linkToPreferredQueue<T>(_ block: @escaping (T) -> Void) -> (T) -> Void {
         guard let preferredQueue = Permission.preferredQueue else {
@@ -105,7 +105,7 @@ struct Utils {
         
         icon.draw(in: frame)
         
-        if #available(iOS 11, *), shouldBorder {
+        if shouldBorder {
             let borderWidth = iconBorderWidth / screen.scale
             let frame = frame.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
             
@@ -146,7 +146,7 @@ struct Utils {
     }
 #endif
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
 #if ASSETS || !CUSTOM_SETTINGS
     private static func uppercaseFirstLetter(_ value: String) -> String {

@@ -13,7 +13,7 @@ extension Permission.SupportedType {
         
         private var callbacks: [(Status) -> Void] = []
         
-        // MARK: - Life Cycle
+        // MARK: Life Cycle
         
         init(_ manager: Manager, callback: @escaping (Status) -> Void) {
             self.manager = manager
@@ -22,13 +22,13 @@ extension Permission.SupportedType {
             addCallback(callback)
         }
         
-        // MARK: - Properties
+        // MARK: Properties
         
         var hasDeterminedStatus: Bool {
             return false
         }
         
-        // MARK: - Internal Functions
+        // MARK: Internal Functions
         
         func addCallback(_ callback: @escaping (Status) -> Void) {
             let callback = Utils.linkToPreferredQueue(callback)

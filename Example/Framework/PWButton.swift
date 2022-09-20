@@ -11,7 +11,7 @@ final class PWButton: UIControl {
     
     private let titleLabel = UILabel()
     
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +23,7 @@ final class PWButton: UIControl {
         configure()
     }
     
-    // MARK: - Properties
+    // MARK: Properties
     
     var title: String? {
         didSet {
@@ -54,7 +54,7 @@ final class PWButton: UIControl {
     
     var action: () -> Void = { }
     
-    // MARK: - Overriding
+    // MARK: Overriding
     
     override var isHighlighted: Bool {
         didSet {
@@ -67,7 +67,7 @@ final class PWButton: UIControl {
         }
     }
     
-    // MARK: - Private Functions
+    // MARK: Private Functions
     
     private func configure() {
         titleLabel.textColor = tintColor

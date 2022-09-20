@@ -14,7 +14,7 @@ public extension Permission {
         
         private let userInfoMessageKey = "message"
         
-        // MARK: - Life Cycle
+        // MARK: Life Cycle
         
         init(_ type: SupportedType, message: String? = nil) {
             self.type = type

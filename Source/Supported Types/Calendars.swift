@@ -15,7 +15,7 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Common
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSCalendarsUsageDescription" }
         
@@ -23,7 +23,7 @@ public extension Permission {
         override class var shouldBorderIcon: Bool { true }
 #endif
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -43,6 +43,15 @@ public extension Permission {
             }
         }
         
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: calendars.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
@@ -52,6 +61,19 @@ public extension Permission {
                 }
                 
                 self.checkStatus { completion($0) }
+            }
+        }
+        
+        @available(iOS 13, *)
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
             }
         }
         

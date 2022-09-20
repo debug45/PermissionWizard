@@ -9,7 +9,6 @@
 
 import PermissionWizard
 
-@available(iOS 11, *)
 final class MotionPanel: Panel<Permission.motion> {
     
     override func configure() {

@@ -15,11 +15,11 @@ public extension Permission {
         
         public typealias Status = Permission.Status.Microphone
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSMicrophoneUsageDescription" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -37,12 +37,34 @@ public extension Permission {
             }
         }
         
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
+            }
+        }
+        
         public static func requestAccess(completion: ((Status) -> Void)? = nil) throws {
             try Utils.checkIsAppConfigured(for: microphone.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             requestAccessForced(completion: completion)
         }
         
-        // MARK: - Internal Functions
+        @available(iOS 13, *)
+        public static func requestAccess() async throws -> Status {
+            try await withCheckedThrowingContinuation { checkedContinuation in
+                do {
+                    try requestAccess { status in
+                        checkedContinuation.resume(returning: status)
+                    }
+                } catch {
+                    checkedContinuation.resume(throwing: error)
+                }
+            }
+        }
+        
+        // MARK: Internal Functions
         
         static func requestAccessForced(completion: ((Status) -> Void)? = nil) {
             AVAudioSession.sharedInstance().requestRecordPermission { _ in

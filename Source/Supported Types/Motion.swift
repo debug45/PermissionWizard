@@ -9,18 +9,17 @@
 
 import CoreMotion
 
-@available(iOS 11, *)
 public extension Permission {
     
     final class motion: SupportedType, Checkable {
         
         public typealias Status = Permission.Status.Common
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         public override class var usageDescriptionPlistKey: String { "NSMotionUsageDescription" }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
         public static func checkStatus(completion: @escaping (Status) -> Void) {
             let completion = Utils.linkToPreferredQueue(completion)
@@ -37,6 +36,15 @@ public extension Permission {
                 
                 @unknown default:
                     completion(.unknown)
+            }
+        }
+        
+        @available(iOS 13, *)
+        public static func checkStatus() async -> Status {
+            await withCheckedContinuation { checkedContinuation in
+                checkStatus { status in
+                    checkedContinuation.resume(returning: status)
+                }
             }
         }
         

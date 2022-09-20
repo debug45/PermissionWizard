@@ -14,7 +14,7 @@ final class HealthPanel: Panel<Permission.health> {
     
     private let dataType = HKObjectType.workoutType()
     
-    // MARK: - Overriding Functions
+    // MARK: Overriding Functions
     
     override func configure() {
         super.configure()

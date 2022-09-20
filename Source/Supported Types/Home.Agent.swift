@@ -14,20 +14,20 @@ extension Permission.home {
     
     final class Agent: Permission.SupportedType.Agent<HMHomeManager, Status>, HMHomeManagerDelegate {
         
-        // MARK: - Life Cycle
+        // MARK: Life Cycle
         
         override init(_ manager: HMHomeManager, callback: @escaping (Status) -> Void) {
             super.init(manager, callback: callback)
             manager.delegate = self
         }
         
-        // MARK: - Overriding Properties
+        // MARK: Overriding Properties
         
         override var hasDeterminedStatus: Bool {
             return manager.authorizationStatus.contains(.determined)
         }
         
-        // MARK: - Overriding Functions
+        // MARK: Overriding Functions
         
         override func handleDeterminedStatus() {
             super.handleDeterminedStatus()
@@ -48,7 +48,7 @@ extension Permission.home {
             invokeCallbacks(with: converted)
         }
         
-        // MARK: - Home Manager Delegate
+        // MARK: Home Manager Delegate
         
         func homeManager(_ manager: HMHomeManager, didUpdate status: HMHomeManagerAuthorizationStatus) {
             guard hasDeterminedStatus else {

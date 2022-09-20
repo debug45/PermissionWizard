@@ -11,7 +11,7 @@ public extension Permission {
     
     class SupportedType {
         
-        // MARK: - Properties
+        // MARK: Properties
         
         /**
          A key that must be added to your ”Info.plist“ to work with the permission type
@@ -24,7 +24,7 @@ public extension Permission {
         
         class var shouldBorderIcon: Bool { false }
         
-        // MARK: - Public Functions
+        // MARK: Public Functions
         
 #if ASSETS || !CUSTOM_SETTINGS
         /**
