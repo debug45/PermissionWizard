@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.homepage = 'https://github.com/debug45/PermissionWizard'
   spec.source = { :git => 'https://github.com/debug45/PermissionWizard.git', :tag => spec.version.to_s }
   
-  spec.ios.deployment_target = '11.0'
+  spec.ios.deployment_target = '12.0'
   spec.swift_version = '5.5'
   
   spec.subspec 'Core' do |core|

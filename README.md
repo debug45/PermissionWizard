@@ -37,7 +37,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Requirements
 
-- iOS 11 / macOS 10.15 Catalina
+- iOS 12 / macOS 10.15 Catalina
 - Xcode 14
 - Swift 5.5
 
@@ -181,7 +181,6 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 - Bluetooth permission always returns `.granted` on simulators
 - Local Network permission does not work on simulators
-- Microphone permission always returns `.granted` on simulators with iOS 11
 - Music permission does not work on simulators with iOS 12
 
 ## Roadmap

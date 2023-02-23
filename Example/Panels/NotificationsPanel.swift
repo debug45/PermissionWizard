@@ -32,20 +32,13 @@ final class NotificationsPanel: Panel<Permission.notifications> {
             addSeparatingOffset()
         }
         
-        var criticalAlertsSwitch: UISwitch?
-        var provisionallySwitch: UISwitch?
+        let criticalAlertsSwitch = addSwitch(title: "Critical Alerts", withIncreasedOffset: false)
+        let provisionallySwitch = addSwitch(title: "Provisionally")
         
-        var providingInAppSettingsSwitch: UISwitch?
+        let selector = #selector(provisionallySwitchDidChange)
+        provisionallySwitch.addTarget(self, action: selector, for: .valueChanged)
         
-        if #available(iOS 12, *) {
-            criticalAlertsSwitch = addSwitch(title: "Critical Alerts", withIncreasedOffset: false)
-            provisionallySwitch = addSwitch(title: "Provisionally")
-            
-            let selector = #selector(provisionallySwitchDidChange)
-            provisionallySwitch?.addTarget(self, action: selector, for: .valueChanged)
-            
-            providingInAppSettingsSwitch = addSwitch(title: "Providing In-App Settings")
-        }
+        let providingInAppSettingsSwitch = addSwitch(title: "Providing In-App Settings")
         
         dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }
         
@@ -81,18 +74,16 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 options.insert(.announcement)
             }
             
-            if #available(iOS 12, *) {
-                if criticalAlertsSwitch?.isOn == true && criticalAlertsSwitch?.isEnabled == true {
-                    options.insert(.criticalAlert)
-                }
-                
-                if provisionallySwitch?.isOn == true {
-                    options.insert(.provisional)
-                }
-                
-                if providingInAppSettingsSwitch?.isOn == true {
-                    options.insert(.providesAppNotificationSettings)
-                }
+            if criticalAlertsSwitch.isOn && criticalAlertsSwitch.isEnabled {
+                options.insert(.criticalAlert)
+            }
+            
+            if provisionallySwitch.isOn {
+                options.insert(.provisional)
+            }
+            
+            if providingInAppSettingsSwitch.isOn {
+                options.insert(.providesAppNotificationSettings)
             }
             
             if #available(iOS 13, *) {
