@@ -2,7 +2,7 @@
 //  Location.Agent.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 24.10.2020.
+//  Created by Sergei Moskvin on 24.10.2020.
 //
 
 #if LOCATION || !CUSTOM_SETTINGS

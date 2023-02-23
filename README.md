@@ -38,7 +38,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 ## Requirements
 
 - iOS 11 / macOS 10.15 Catalina
-- Xcode 13
+- Xcode 14
 - Swift 5.5
 
 ## Installation
@@ -188,6 +188,7 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
+- Support usage in SwiftUI code
 
 ## Conclusion
 

@@ -2,7 +2,7 @@
 //  PWHeader.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 11.11.2020.
+//  Created by Sergei Moskvin on 11.11.2020.
 //
 
 import PermissionWizard

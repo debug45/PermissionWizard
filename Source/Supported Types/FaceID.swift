@@ -2,7 +2,7 @@
 //  FaceID.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 31.10.2020.
+//  Created by Sergei Moskvin on 31.10.2020.
 //
 
 #if (FACE_ID || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)

@@ -2,7 +2,7 @@
 //  LocalNetwork.Status.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 24.01.2021.
+//  Created by Sergei Moskvin on 24.01.2021.
 //
 
 #if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)

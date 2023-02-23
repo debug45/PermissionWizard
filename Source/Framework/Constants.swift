@@ -2,7 +2,7 @@
 //  Constants.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 18.09.2022.
+//  Created by Sergei Moskvin on 18.09.2022.
 //
 
 public struct Constants {

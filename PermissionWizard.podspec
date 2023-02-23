@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   
   spec.summary = '🔮 An ultimate tool for system permissions management'
   
-  spec.author = { 'Sergey Moskvin' => 's@mosk.vin' }
+  spec.author = { 'Sergei Moskvin' => 's@mosk.vin' }
   spec.license = { :type => 'MIT', :file => 'LICENSE.md' }
   
   spec.homepage = 'https://github.com/debug45/PermissionWizard'

@@ -2,7 +2,7 @@
 //  Photos.Status.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 24.11.2020.
+//  Created by Sergei Moskvin on 24.11.2020.
 //
 
 #if PHOTOS || !CUSTOM_SETTINGS

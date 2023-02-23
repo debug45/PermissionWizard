@@ -2,7 +2,7 @@
 //  SpeechRecognition.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 15.10.2020.
+//  Created by Sergei Moskvin on 15.10.2020.
 //
 
 #if SPEECH_RECOGNITION || !CUSTOM_SETTINGS

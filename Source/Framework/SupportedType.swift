@@ -2,7 +2,7 @@
 //  SupportedType.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 21.11.2020.
+//  Created by Sergei Moskvin on 21.11.2020.
 //
 
 import UIKit

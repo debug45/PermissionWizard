@@ -2,7 +2,7 @@
 //  Utils.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 14.10.2020.
+//  Created by Sergei Moskvin on 14.10.2020.
 //
 
 import UIKit

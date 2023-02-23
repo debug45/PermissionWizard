@@ -2,7 +2,7 @@
 //  Reminders.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 06.10.2020.
+//  Created by Sergei Moskvin on 06.10.2020.
 //
 
 #if REMINDERS || !CUSTOM_SETTINGS

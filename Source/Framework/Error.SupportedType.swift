@@ -2,7 +2,7 @@
 //  Error.SupportedType.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 20.11.2020.
+//  Created by Sergei Moskvin on 20.11.2020.
 //
 
 public extension Permission.Error {

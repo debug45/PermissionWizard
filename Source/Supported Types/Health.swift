@@ -2,7 +2,7 @@
 //  Health.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 18.10.2020.
+//  Created by Sergei Moskvin on 18.10.2020.
 //
 
 #if (HEALTH || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)

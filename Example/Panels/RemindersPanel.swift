@@ -2,7 +2,7 @@
 //  RemindersPanel.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 09.11.2020.
+//  Created by Sergei Moskvin on 09.11.2020.
 //
 
 import PermissionWizard

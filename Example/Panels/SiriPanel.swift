@@ -2,7 +2,7 @@
 //  SiriPanel.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 27.11.2020.
+//  Created by Sergei Moskvin on 27.11.2020.
 //
 
 #if !targetEnvironment(macCatalyst)

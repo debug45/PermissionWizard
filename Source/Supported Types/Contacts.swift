@@ -2,7 +2,7 @@
 //  Contacts.swift
 //  PermissionWizard
 //
-//  Created by Sergey Moskvin on 03.10.2020.
+//  Created by Sergei Moskvin on 03.10.2020.
 //
 
 #if CONTACTS || !CUSTOM_SETTINGS
