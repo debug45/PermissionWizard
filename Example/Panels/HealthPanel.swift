@@ -20,12 +20,26 @@ final class HealthPanel: Panel<Permission.health> {
         super.configure()
         
         addButton(title: "Check Status (Writing Only)") {
-            self.permission.checkStatusForWriting(of: self.dataType) { self.notify($0.rawValue) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = await self.permission.checkStatusForWriting(of: self.dataType)
+                    self.notify(status.rawValue)
+                }
+            } else {
+                self.permission.checkStatusForWriting(of: self.dataType) { self.notify($0.rawValue) }
+            }
         }
         
         addButton(title: "Request Access") {
-            try! self.permission.requestAccess(forReading: [self.dataType], writing: [self.dataType]) {
-                self.notifyAboutRequestInferiority()
+            if #available(iOS 13, *) {
+                Task {
+                    try! await self.permission.requestAccess(forReading: [self.dataType], writing: [self.dataType])
+                    self.notifyAboutRequestInferiority()
+                }
+            } else {
+                try! self.permission.requestAccess(forReading: [self.dataType], writing: [self.dataType]) {
+                    self.notifyAboutRequestInferiority()
+                }
             }
         }
     }

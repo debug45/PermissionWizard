@@ -50,7 +50,14 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }
         
         addDefaultButtons(checkStatusAction: {
-            self.permission.checkStatus { self.notify($0.rawValue) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = await self.permission.checkStatus()
+                    self.notify(status.rawValue)
+                }
+            } else {
+                self.permission.checkStatus { self.notify($0.rawValue) }
+            }
         }, requestAccessAction: {
             var options: UNAuthorizationOptions = []
             
@@ -88,7 +95,14 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 }
             }
             
-            try! self.permission.requestAccess(options: options) { self.notify($0.rawValue) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess(options: options)
+                    self.notify(status.rawValue)
+                }
+            } else {
+                try! self.permission.requestAccess(options: options) { self.notify($0.rawValue) }
+            }
         })
     }
     

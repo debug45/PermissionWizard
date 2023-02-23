@@ -17,9 +17,23 @@ final class CameraPanel: Panel<Permission.camera> {
         let withMicrophoneSwitch = addSwitch(title: "With Microphone")
         
         addDefaultButtons(checkStatusAction: {
-            self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = await self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn)
+                    self.notify(about: status)
+                }
+            } else {
+                self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            }
         }, requestAccessAction: {
-            try! self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn)
+                    self.notify(about: status)
+                }
+            } else {
+                try! self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            }
         })
     }
     

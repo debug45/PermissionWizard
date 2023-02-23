@@ -13,9 +13,23 @@ final class ContactsPanel: Panel<Permission.contacts> {
         super.configure()
         
         addDefaultButtons(checkStatusAction: {
-            self.permission.checkStatus { self.notify($0.rawValue) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = await self.permission.checkStatus()
+                    self.notify(status.rawValue)
+                }
+            } else {
+                self.permission.checkStatus { self.notify($0.rawValue) }
+            }
         }, requestAccessAction: {
-            try! self.permission.requestAccess { self.notify($0.rawValue) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess()
+                    self.notify(status.rawValue)
+                }
+            } else {
+                try! self.permission.requestAccess { self.notify($0.rawValue) }
+            }
         })
     }
     

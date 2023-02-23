@@ -9,13 +9,22 @@ import PermissionWizard
 
 final class LocationPanel: Panel<Permission.location> {
     
+    private let temporaryPreciseAccessPurposePlistKey = "Default"
+    
     // MARK: Overriding Functions
     
     override func configure() {
         super.configure()
         
         addButton(title: "Check Status") {
-            self.permission.checkStatus { self.notify(about: $0) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = await self.permission.checkStatus()
+                    self.notify(about: status)
+                }
+            } else {
+                self.permission.checkStatus { self.notify(about: $0) }
+            }
         }
         
         addSeparatingOffset()
@@ -27,14 +36,30 @@ final class LocationPanel: Panel<Permission.location> {
         }
         
         addButton(title: "Request Access") {
-            try! self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
+            if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn)
+                    self.notify(about: status)
+                }
+            } else {
+                try! self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
+            }
         }
         
         if #available(iOS 14, *) {
             addSeparatingOffset()
             
             addButton(title: "Request Temporary Precise Access") {
-                try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: "Default") { self.notify("[temporaryPrecise: \($0)]") }
+                // if #available(iOS 13, *) {
+                    Task {
+                        let status = try! await self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey)
+                        self.notify(aboutTemporaryPreciseAccessStatus: status)
+                    }
+                /* } else {
+                    try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey) {
+                        self.notify(aboutTemporaryPreciseAccessStatus: $0)
+                    }
+                } */
             }
         }
     }
@@ -43,6 +68,11 @@ final class LocationPanel: Panel<Permission.location> {
     
     private func notify(about status: Permission.location.Status) {
         let message = "[status: \(status.value.rawValue), isAccuracyReducing: \(status.isAccuracyReducing)]"
+        notify(message)
+    }
+    
+    private func notify(aboutTemporaryPreciseAccessStatus status: Bool) {
+        let message = "[temporaryPrecise: \(status)]"
         notify(message)
     }
     

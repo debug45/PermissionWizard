@@ -21,18 +21,52 @@ final class PhotosPanel: Panel<Permission.photos> {
         
         addDefaultButtons(checkStatusAction: {
             guard #available(iOS 14, *) else {
-                self.permission.checkStatus { self.notify($0.rawValue) }
+                if #available(iOS 13, *) {
+                    Task {
+                        let status = await self.permission.checkStatus()
+                        self.notify(status.rawValue)
+                    }
+                } else {
+                    self.permission.checkStatus { self.notify($0.rawValue) }
+                }
+                
                 return
             }
             
-            self.permission.checkStatus(forAddingOnly: forAddingOnlySwitch?.isOn == true) { self.notify($0.rawValue) }
+            let forAddingOnly = forAddingOnlySwitch?.isOn == true
+            
+            // if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.checkStatus(forAddingOnly: forAddingOnly)
+                    self.notify(status.rawValue)
+                }
+            /* } else {
+                self.permission.checkStatus(forAddingOnly: forAddingOnly) { self.notify($0.rawValue) }
+            } */
         }, requestAccessAction: {
             guard #available(iOS 14, *) else {
-                try! self.permission.requestAccess { self.notify($0.rawValue) }
+                if #available(iOS 13, *) {
+                    Task {
+                        let status = try! await self.permission.requestAccess()
+                        self.notify(status.rawValue)
+                    }
+                } else {
+                    try! self.permission.requestAccess { self.notify($0.rawValue) }
+                }
+                
                 return
             }
             
-            try! self.permission.requestAccess(forAddingOnly: forAddingOnlySwitch?.isOn == true) { self.notify($0.rawValue) }
+            let forAddingOnly = forAddingOnlySwitch?.isOn == true
+            
+            // if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess(forAddingOnly: forAddingOnly)
+                    self.notify(status.rawValue)
+                }
+            /* } else {
+                try! self.permission.requestAccess(forAddingOnly: forAddingOnly) { self.notify($0.rawValue) }
+            } */
         })
     }
     

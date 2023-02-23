@@ -14,7 +14,14 @@ final class HomePanel: Panel<Permission.home> {
         super.configure()
         
         addButton(title: "Request Access") {
-            try! self.permission.requestAccess { self.notify($0.rawValue) }
+            // if #available(iOS 13, *) {
+                Task {
+                    let status = try! await self.permission.requestAccess()
+                    self.notify(status.rawValue)
+                }
+            /* } else {
+                try! self.permission.requestAccess { self.notify($0.rawValue) }
+            } */
         }
     }
     
