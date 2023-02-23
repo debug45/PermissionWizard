@@ -7,6 +7,7 @@
 
 import PermissionWizard
 
+@available(macCatalyst 14, *)
 final class CameraPanel: Panel<Permission.camera> {
     
     // MARK: Overriding Functions

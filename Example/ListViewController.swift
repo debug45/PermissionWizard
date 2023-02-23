@@ -36,7 +36,11 @@ final class ListViewController: UIViewController {
         }
         
         addButton(for: Permission.calendars.self)
-        addButton(for: Permission.camera.self)
+        
+        if #available(macCatalyst 14, *) {
+            addButton(for: Permission.camera.self)
+        }
+        
         addButton(for: Permission.contacts.self)
         
 #if !targetEnvironment(macCatalyst)

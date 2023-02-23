@@ -40,16 +40,8 @@ final class DetailViewController: UIViewController {
         switch permission {
             case is Permission.calendars.Type:
                 panel = CalendarsPanel()
-            case is Permission.camera.Type:
-                panel = CameraPanel()
             case is Permission.contacts.Type:
                 panel = ContactsPanel()
-            
-#if !targetEnvironment(macCatalyst)
-            case is Permission.health.Type:
-                panel = HealthPanel()
-#endif
-            
             case is Permission.location.Type:
                 panel = LocationPanel()
             case is Permission.microphone.Type:
@@ -62,49 +54,42 @@ final class DetailViewController: UIViewController {
                 panel = PhotosPanel()
             case is Permission.reminders.Type:
                 panel = RemindersPanel()
+            case is Permission.speechRecognition.Type:
+                panel = SpeechRecognitionPanel()
             
 #if !targetEnvironment(macCatalyst)
+            case is Permission.faceID.Type:
+                panel = FaceIDPanel()
+            case is Permission.health.Type:
+                panel = HealthPanel()
+            case is Permission.motion.Type:
+                panel = MotionPanel()
             case is Permission.siri.Type:
                 panel = SiriPanel()
 #endif
             
-            case is Permission.speechRecognition.Type:
-                panel = SpeechRecognitionPanel()
-            
             default:
-                switch permission {
-#if !targetEnvironment(macCatalyst)
-                    case is Permission.faceID.Type:
-                        panel = FaceIDPanel()
-                    case is Permission.motion.Type:
-                        panel = MotionPanel()
-#endif
-                    
-                    default:
-                        if #available(iOS 13, macCatalyst 14, *), permission is Permission.home.Type {
-                            panel = HomePanel()
-                        } else {
-                            if #available(iOS 13.1, *), permission is Permission.bluetooth.Type {
-                                panel = BluetoothPanel()
-                            } else {
-                                guard #available(iOS 14, *) else {
-                                    break
-                                }
-                                
-                                switch permission {
-#if !targetEnvironment(macCatalyst)
-                                    case is Permission.localNetwork.Type:
-                                        panel = LocalNetworkPanel()
-                                    case is Permission.tracking.Type:
-                                        panel = TrackingPanel()
-#endif
-                                    
-                                    default:
-                                        break
-                                }
-                            }
-                        }
+                if #available(iOS 13.1, *), permission is Permission.bluetooth.Type {
+                    panel = BluetoothPanel()
                 }
+                
+                if #available(macCatalyst 14, *), permission is Permission.camera.Type {
+                    panel = CameraPanel()
+                }
+                
+                if #available(iOS 13, macCatalyst 14, *), permission is Permission.home.Type {
+                    panel = HomePanel()
+                }
+                
+#if !targetEnvironment(macCatalyst)
+                if #available(iOS 14, *), permission is Permission.localNetwork.Type {
+                    panel = LocalNetworkPanel()
+                }
+                
+                if #available(iOS 14, *), permission is Permission.tracking.Type {
+                    panel = TrackingPanel()
+                }
+#endif
         }
         
         if let panel = panel {
