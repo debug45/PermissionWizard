@@ -73,7 +73,7 @@ public extension Permission {
          - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.         
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         public static func requestAccess(withMicrophone: Bool, completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: camera.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
@@ -104,7 +104,7 @@ public extension Permission {
          Asks a user for access the permission type
 
          - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 13, macCatalyst 14, *)
         @discardableResult public static func requestAccess(withMicrophone: Bool) async throws -> Status {

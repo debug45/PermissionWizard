@@ -14,9 +14,9 @@ public extension Permission {
         // MARK: Public Properties
         
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type
+         A key that must be added to your “Info.plist” to work with the permission type
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public class var usageDescriptionPlistKey: String { .init() }
         
@@ -47,7 +47,7 @@ public extension Permission {
 
          The string is native, the same as displayed in the system preferences
 
-         - Parameter specificLocalization: A code of the desired localization according to ISO 639. For example, ”ru“ or ”pt-BR“. By default, the current system localization.
+         - Parameter specificLocalization: A code of the desired localization according to ISO 639. For example, “ru” or “pt-BR”. By default, the current system localization.
         */
         public static func getLocalizedName(specificLocalization: String? = nil) -> String? {
             let key = String(describing: self)

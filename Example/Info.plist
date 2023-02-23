@@ -69,6 +69,13 @@
 	<string>Please allow access to your speech recognition</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Please allow access to your tracking</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

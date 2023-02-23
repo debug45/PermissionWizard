@@ -27,15 +27,15 @@ public extension Permission {
         // MARK: Public Properties
         
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to read health data.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want to read health data.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let readingUsageDescriptionPlistKey = "NSHealthUpdateUsageDescription"
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to write health data.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want to write health data.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let writingUsageDescriptionPlistKey = "NSHealthShareUsageDescription"
         
@@ -95,7 +95,7 @@ public extension Permission {
          - Parameter writingTypes: Types of health data, access to which writing you want to request
          - Parameter completion: A closure that will be invoked after a user makes a decision
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>, completion: (() -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             var plistKeys = !readingTypes.isEmpty ? [readingUsageDescriptionPlistKey] : []
@@ -126,7 +126,7 @@ public extension Permission {
 
          - Parameter readingTypes: Types of health data, access to which reading you want to request
          - Parameter writingTypes: Types of health data, access to which writing you want to request
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 13, *)
         public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>) async throws {

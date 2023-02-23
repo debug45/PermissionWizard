@@ -59,11 +59,11 @@ struct Utils {
         var clarification = ""
         
         if let keyParent = keyParent {
-            clarification = " (to a nested \(keyParent.type) with the key ”\(keyParent.ownKey)“)"
+            clarification = " (to a nested \(keyParent.type) with the key “\(keyParent.ownKey)”)"
         }
         
         let additionalInfo = !isTechnicalKey ? " and specify the reason why you are requesting access to \(permissionName). This information will be displayed to a user" : ""
-        let message = "❌ You must add a row with the ”\(missingPlistKey)“ key to your app‘s plist file\(clarification)\(additionalInfo)."
+        let message = "❌ You must add a row with the “\(missingPlistKey)” key to your app‘s plist file\(clarification)\(additionalInfo)."
         
         let type = Permission.Error.SupportedType.missingPlistKey(details: message)
         return Permission.Error(type, message: message)

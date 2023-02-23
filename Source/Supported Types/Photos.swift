@@ -27,15 +27,15 @@ public extension Permission {
         // MARK: Public Properties
         
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to have full access to a user‘s photos and videos.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want to have full access to a user‘s photos and videos.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let fullAccessUsageDescriptionPlistKey = "NSPhotoLibraryUsageDescription"
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want only to add new photos and videos to a user‘s library.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want only to add new photos and videos to a user‘s library.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let addingOnlyUsageDescriptionPlistKey = "NSPhotoLibraryAddUsageDescription"
         
@@ -87,7 +87,7 @@ public extension Permission {
          - Parameter forAddingOnly: A flag indicating whether you want only to add new photos and videos to a user‘s library
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
         public static func requestAccess(forAddingOnly: Bool, completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
@@ -98,7 +98,7 @@ public extension Permission {
          Asks a user for access the permission type
 
          - Parameter forAddingOnly: A flag indicating whether you want only to add new photos and videos to a user‘s library
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
         @discardableResult public static func requestAccess(forAddingOnly: Bool) async throws -> Status {

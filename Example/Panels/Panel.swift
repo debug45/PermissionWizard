@@ -78,7 +78,7 @@ class Panel<T: Permission.SupportedType>: UIStackView {
     }
     
     func notifyAboutRequestInferiority() {
-        notify("⚠️ The ”requestAccess“ does not support returning of a result, use the status check method if necessary")
+        notify("⚠️ The “requestAccess” does not support returning of a result, use the status check method if necessary")
     }
     
     func notify(_ message: String) {

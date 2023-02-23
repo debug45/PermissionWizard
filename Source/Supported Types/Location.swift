@@ -25,16 +25,16 @@ public extension Permission {
         // MARK: Public Properties
         
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to access location even when an app is not being used right now.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want to access location even when an app is not being used right now.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let alwaysUsageDescriptionPlistKey = "NSLocationAlwaysAndWhenInUseUsageDescription"
         
         /**
-         A key that must be added to your ”Info.plist“ to work with the permission type. This key is used if you want to access location only when an app is being used right now.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want to access location only when an app is being used right now.
 
-         For each permission type you are using, Apple requires to add the corresponding string to your ”Info.plist“ that describes a purpose of your access requests
+         For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
         public static let whenInUseOnlyUsageDescriptionPlistKey = "NSLocationWhenInUseUsageDescription"
         
@@ -91,7 +91,7 @@ public extension Permission {
          - Parameter whenInUseOnly: A flag indicating whether you want to access location only when an app is being used right now
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         public static func requestAccess(whenInUseOnly: Bool, completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             let plistKey = whenInUseOnly ? whenInUseOnlyUsageDescriptionPlistKey : alwaysUsageDescriptionPlistKey
@@ -127,7 +127,7 @@ public extension Permission {
          Asks a user for access the permission type
 
          - Parameter whenInUseOnly: A flag indicating whether you want to access location only when an app is being used right now
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 13, *)
         @discardableResult public static func requestAccess(whenInUseOnly: Bool) async throws -> Status {
@@ -147,10 +147,10 @@ public extension Permission {
 
          It may be useful if a user grants access to location data only with reduced accuracy
 
-         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key ”NSLocationTemporaryUsageDescriptionDictionary“.
+         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
         public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
@@ -183,8 +183,8 @@ public extension Permission {
 
          It may be useful if a user grants access to location data only with reduced accuracy
 
-         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key ”NSLocationTemporaryUsageDescriptionDictionary“.
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
         @discardableResult public static func requestTemporaryPreciseAccess(purposePlistKey: String) async throws -> Bool {

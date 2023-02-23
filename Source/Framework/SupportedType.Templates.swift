@@ -38,14 +38,14 @@ protocol Requestable: Permission.SupportedType {
 
      - Parameter completion: A closure that will be invoked to return the request result
      - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
-     - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+     - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
     */
     static func requestAccess(completion: ((Status) -> Void)?, forcedInvokationQueue: DispatchQueue?) throws
     
     /**
      Asks a user for access the permission type
 
-     - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+     - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
     */
     @available(iOS 13, *)
     @discardableResult static func requestAccess() async throws -> Status

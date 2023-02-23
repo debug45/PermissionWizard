@@ -57,7 +57,7 @@ public extension Permission {
 
          To find out a user‘s decision, use the status check method
 
-         - Throws: `Permission.Error`, if something went wrong. For example, your ”Info.plist“ is configured incorrectly.
+         - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         public static func requestAccess() throws {
             try Utils.checkIsAppConfigured(for: motion.self, usageDescriptionPlistKey: usageDescriptionPlistKey)

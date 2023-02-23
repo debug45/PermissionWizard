@@ -11,7 +11,7 @@ public extension Permission.Error {
         
         /// Unknown error inside PermissionWizard, please report it
         case libraryFailure
-        /// Your ”Info.plist“ is configured incorrectly
+        /// Your “Info.plist” is configured incorrectly
         case missingPlistKey(details: String)
         
         // MARK: Public Properties
