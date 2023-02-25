@@ -18,22 +18,46 @@ final class CameraPanel: Panel<Permission.camera> {
         let withMicrophoneSwitch = addSwitch(title: "With Microphone")
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *) {
-                Task {
-                    let status = await self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn)
-                    self.notify(about: status)
-                }
-            } else {
+            let performWithCompletion = {
                 self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
             }
+            
+#if !targetEnvironment(macCatalyst)
+            guard #available(iOS 13, *), Constants.useSwiftConcurrency else {
+                performWithCompletion()
+                return
+            }
+#else
+            guard Constants.useSwiftConcurrency else {
+                performWithCompletion()
+                return
+            }
+#endif
+            
+            Task {
+                let status = await self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn)
+                self.notify(about: status)
+            }
         }, requestAccessAction: {
-            if #available(iOS 13, *) {
-                Task {
-                    let status = try! await self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn)
-                    self.notify(about: status)
-                }
-            } else {
+            let performWithCompletion = {
                 try! self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
+            }
+            
+#if !targetEnvironment(macCatalyst)
+            guard #available(iOS 13, *), Constants.useSwiftConcurrency else {
+                performWithCompletion()
+                return
+            }
+#else
+            guard Constants.useSwiftConcurrency else {
+                performWithCompletion()
+                return
+            }
+#endif
+            
+            Task {
+                let status = try! await self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn)
+                self.notify(about: status)
             }
         })
     }

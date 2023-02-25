@@ -14,14 +14,14 @@ final class HomePanel: Panel<Permission.home> {
         super.configure()
         
         addButton(title: "Request Access") {
-            // if #available(iOS 13, *) {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess()
                     self.notify(status.rawValue)
                 }
-            /* } else {
+            } else {
                 try! self.permission.requestAccess { self.notify($0.rawValue) }
-            } */
+            }
         }
     }
     

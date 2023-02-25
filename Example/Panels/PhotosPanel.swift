@@ -21,7 +21,7 @@ final class PhotosPanel: Panel<Permission.photos> {
         
         addDefaultButtons(checkStatusAction: {
             guard #available(iOS 14, *) else {
-                if #available(iOS 13, *) {
+                if #available(iOS 13, *), Constants.useSwiftConcurrency {
                     Task {
                         let status = await self.permission.checkStatus()
                         self.notify(status.rawValue)
@@ -35,17 +35,17 @@ final class PhotosPanel: Panel<Permission.photos> {
             
             let forAddingOnly = forAddingOnlySwitch?.isOn == true
             
-            // if #available(iOS 13, *) {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.checkStatus(forAddingOnly: forAddingOnly)
                     self.notify(status.rawValue)
                 }
-            /* } else {
+            } else {
                 self.permission.checkStatus(forAddingOnly: forAddingOnly) { self.notify($0.rawValue) }
-            } */
+            }
         }, requestAccessAction: {
             guard #available(iOS 14, *) else {
-                if #available(iOS 13, *) {
+                if #available(iOS 13, *), Constants.useSwiftConcurrency {
                     Task {
                         let status = try! await self.permission.requestAccess()
                         self.notify(status.rawValue)
@@ -59,14 +59,14 @@ final class PhotosPanel: Panel<Permission.photos> {
             
             let forAddingOnly = forAddingOnlySwitch?.isOn == true
             
-            // if #available(iOS 13, *) {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess(forAddingOnly: forAddingOnly)
                     self.notify(status.rawValue)
                 }
-            /* } else {
+            } else {
                 try! self.permission.requestAccess(forAddingOnly: forAddingOnly) { self.notify($0.rawValue) }
-            } */
+            }
         })
     }
     

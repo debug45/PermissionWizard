@@ -15,7 +15,7 @@ final class FaceIDPanel: Panel<Permission.faceID> {
         super.configure()
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(status.rawValue)
@@ -24,7 +24,7 @@ final class FaceIDPanel: Panel<Permission.faceID> {
                 self.permission.checkStatus { self.notify($0.rawValue) }
             }
         }, requestAccessAction: {
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess()
                     self.notify(status.rawValue)

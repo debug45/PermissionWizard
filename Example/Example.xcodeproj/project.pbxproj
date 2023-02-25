@@ -31,6 +31,7 @@
 		A59228CA2559581100DA9780 /* PWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59228C92559581100DA9780 /* PWButton.swift */; };
 		A5A9E6D4257950AF00C2BD68 /* TrackingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9E6D3257950AF00C2BD68 /* TrackingPanel.swift */; };
 		A5CB5854255C5FEC00B2AC1A /* PWHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */; };
+		A5D3F87429AA119B0029B5E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3F87329AA119B0029B5E9 /* Constants.swift */; };
 		A5DAF0532528D7ED002483A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0522528D7ED002483A6 /* AppDelegate.swift */; };
 		A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAF0562528D7ED002483A6 /* ListViewController.swift */; };
 		A5DAF05C2528D7EE002483A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DAF05B2528D7EE002483A6 /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		A59228C92559581100DA9780 /* PWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWButton.swift; sourceTree = "<group>"; };
 		A5A9E6D3257950AF00C2BD68 /* TrackingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingPanel.swift; sourceTree = "<group>"; };
 		A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWHeader.swift; sourceTree = "<group>"; };
+		A5D3F87329AA119B0029B5E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A5DAF04F2528D7ED002483A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DAF0522528D7ED002483A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5DAF0562528D7ED002483A6 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -128,10 +130,19 @@
 		A59228C8255957FF00DA9780 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				A5D3F87529AA11A40029B5E9 /* Views */,
+				A5D3F87329AA119B0029B5E9 /* Constants.swift */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		A5D3F87529AA11A40029B5E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				A5CB5853255C5FEC00B2AC1A /* PWHeader.swift */,
 				A59228C92559581100DA9780 /* PWButton.swift */,
 			);
-			path = Framework;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A5DAF0462528D7ED002483A6 = {
@@ -209,6 +220,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				Base,
 				en,
 			);
 			mainGroup = A5DAF0462528D7ED002483A6;
@@ -239,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D3F87429AA119B0029B5E9 /* Constants.swift in Sources */,
 				A5DAF0572528D7ED002483A6 /* ListViewController.swift in Sources */,
 				A59228B42559444000DA9780 /* HomePanel.swift in Sources */,
 				A59228BA2559445200DA9780 /* MicrophonePanel.swift in Sources */,

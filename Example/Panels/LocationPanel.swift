@@ -17,7 +17,7 @@ final class LocationPanel: Panel<Permission.location> {
         super.configure()
         
         addButton(title: "Check Status") {
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(about: status)
@@ -36,7 +36,7 @@ final class LocationPanel: Panel<Permission.location> {
         }
         
         addButton(title: "Request Access") {
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn)
                     self.notify(about: status)
@@ -50,16 +50,16 @@ final class LocationPanel: Panel<Permission.location> {
             addSeparatingOffset()
             
             addButton(title: "Request Temporary Precise Access") {
-                // if #available(iOS 13, *) {
+                if Constants.useSwiftConcurrency {
                     Task {
                         let status = try! await self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey)
                         self.notify(aboutTemporaryPreciseAccessStatus: status)
                     }
-                /* } else {
+                } else {
                     try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey) {
                         self.notify(aboutTemporaryPreciseAccessStatus: $0)
                     }
-                } */
+                }
             }
         }
     }

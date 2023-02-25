@@ -43,7 +43,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(status.rawValue)
@@ -86,7 +86,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 options.insert(.providesAppNotificationSettings)
             }
             
-            if #available(iOS 13, *) {
+            if #available(iOS 13, *), Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess(options: options)
                     self.notify(status.rawValue)

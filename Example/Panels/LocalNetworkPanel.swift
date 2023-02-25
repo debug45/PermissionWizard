@@ -20,14 +20,14 @@ final class LocalNetworkPanel: Panel<Permission.localNetwork> {
         super.configure()
         
         addButton(title: "Request Access") {
-            // if #available(iOS 13, *) {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess(servicePlistKey: self.servicePlistKey)
                     self.notify(about: status)
                 }
-            /* } else {
+            } else {
                 try! self.permission.requestAccess(servicePlistKey: self.servicePlistKey) { self.notify(about: $0) }
-            } */
+            }
         }
     }
     
