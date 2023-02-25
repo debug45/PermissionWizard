@@ -5,7 +5,7 @@
   Created by Sergei Moskvin on 21.11.2020.
 */
 
-"Privacy" = "Privacy";
+"Privacy" = "Privacy e sicurezza";
 
 "Bluetooth" = "Bluetooth";
 "Calendars" = "Calendari";
@@ -15,7 +15,7 @@
 "Health" = "Salute";
 "Home" = "HomeKit";
 "LocalNetwork" = "Rete locale";
-"Location" = "Servizi di localizzazione";
+"Location" = "Localizzazione";
 "Microphone" = "Microfono";
 "Motion" = "Movimento e fitness";
 "Music" = "Libreria e Apple Music";

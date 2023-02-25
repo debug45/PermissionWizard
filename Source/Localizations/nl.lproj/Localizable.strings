@@ -5,7 +5,7 @@
   Created by Sergei Moskvin on 21.11.2020.
 */
 
-"Privacy" = "Privacy";
+"Privacy" = "Privacy en beveiliging";
 
 "Bluetooth" = "Bluetooth";
 "Calendars" = "Agenda's";
@@ -19,7 +19,7 @@
 "Microphone" = "Microfoon";
 "Motion" = "Beweging en conditie";
 "Music" = "Media en Apple Music";
-"Notifications" = "Berichtgeving";
+"Notifications" = "Meldingen";
 "Photos" = "Foto's";
 "Reminders" = "Herinneringen";
 "Siri" = "Siri en zoeken";

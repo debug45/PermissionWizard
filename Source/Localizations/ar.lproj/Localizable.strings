@@ -5,13 +5,13 @@
   Created by Sergei Moskvin on 21.11.2020.
 */
 
-"Privacy" = "الخصوصية";
+"Privacy" = "الخصوصية والأمن";
 
 "Bluetooth" = "Bluetooth";
 "Calendars" = "التقويمات";
 "Camera" = "الكاميرا";
 "Contacts" = "جهات الاتصال";
-"FaceID" = "Face ID‏";
+"FaceID" = "بصمة الوجه";
 "Health" = "صحتي";
 "Home" = "HomeKit";
 "LocalNetwork" = "الشبكة المحلية";

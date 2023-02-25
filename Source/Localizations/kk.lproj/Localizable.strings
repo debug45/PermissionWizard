@@ -1,0 +1,27 @@
+/*
+  Localizable.strings
+  PermissionWizard
+  
+  Created by Sergei Moskvin on 25.02.2023.
+*/
+
+"Privacy" = "Құпиялылық және қауіпсіздік";
+
+"Bluetooth" = "Bluetooth";
+"Calendars" = "Күнтізбелер";
+"Camera" = "Камера";
+"Contacts" = "Контактілер";
+"FaceID" = "Face ID";
+"Health" = "Денсаулық";
+"Home" = "HomeKit";
+"LocalNetwork" = "Жергілікті желі";
+"Location" = "Геолокация сервистері";
+"Microphone" = "Микрофон";
+"Motion" = "Қозғалыс және фитнес";
+"Music" = "Медиа және Apple Music";
+"Notifications" = "Хабарландырулар";
+"Photos" = "Фотолар";
+"Reminders" = "Еске салғыш";
+"Siri" = "Siri және іздеу";
+"SpeechRecognition" = "Сөйлеуді анықтау";
+"Tracking" = "Қадағалау";

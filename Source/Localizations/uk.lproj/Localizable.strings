@@ -5,7 +5,7 @@
   Created by Sergei Moskvin on 21.11.2020.
 */
 
-"Privacy" = "Приватність";
+"Privacy" = "Приватність і безпека";
 
 "Bluetooth" = "Bluetooth";
 "Calendars" = "Календарі";
@@ -18,7 +18,7 @@
 "Location" = "Служби локації";
 "Microphone" = "Мікрофон";
 "Motion" = "Рух і фітнес";
-"Music" = "Медіа і Apple Music";
+"Music" = "Медіавміст і Apple Music";
 "Notifications" = "Сповіщення";
 "Photos" = "Фотографії";
 "Reminders" = "Нагадування";

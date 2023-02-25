@@ -5,7 +5,7 @@
   Created by Sergei Moskvin on 21.11.2020.
 */
 
-"Privacy" = "Privasi";
+"Privacy" = "Privasi & Keselamatan";
 
 "Bluetooth" = "Bluetooth";
 "Calendars" = "Kalendar";
@@ -17,7 +17,7 @@
 "LocalNetwork" = "Rangkaian Setempat";
 "Location" = "Perkhidmatan Lokasi";
 "Microphone" = "Mikrofon";
-"Motion" = "Pergerakan & Kecergasan";
+"Motion" = "Pergerakan/Kecergasan";
 "Music" = "Media & Apple Music";
 "Notifications" = "Pemberitahuan";
 "Photos" = "Foto";
