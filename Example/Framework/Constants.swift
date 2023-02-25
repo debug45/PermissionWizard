@@ -14,6 +14,6 @@ public struct Constants {
     // MARK: Internal Properties
     
     @available(iOS 13, *)
-    static let useSwiftConcurrency = true
+    static let useSwiftConcurrency = false
     
 }

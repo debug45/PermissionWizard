@@ -21,10 +21,7 @@ final class LocalNetworkPanel: Panel<Permission.localNetwork> {
         
         addButton(title: "Request Access") {
             if Constants.useSwiftConcurrency {
-                Task {
-                    let status = try! await self.permission.requestAccess(servicePlistKey: self.servicePlistKey)
-                    self.notify(about: status)
-                }
+                self.notify("The async version of the method is unavailable due to an unknown system bug that breaks it. Use a completion block instead.")
             } else {
                 try! self.permission.requestAccess(servicePlistKey: self.servicePlistKey) { self.notify(about: $0) }
             }

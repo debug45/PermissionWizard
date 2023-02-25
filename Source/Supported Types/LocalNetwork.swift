@@ -79,6 +79,7 @@ public extension Permission {
          - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app‘s plist file, to a nested array with the key “NSBonjourServices”.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
+        @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")
         @discardableResult public static func requestAccess(servicePlistKey: String) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {

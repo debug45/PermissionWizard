@@ -37,10 +37,7 @@ final class LocationPanel: Panel<Permission.location> {
         
         addButton(title: "Request Access") {
             if #available(iOS 13, *), Constants.useSwiftConcurrency {
-                Task {
-                    let status = try! await self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn)
-                    self.notify(about: status)
-                }
+                self.notify("Async versions of the request methods are unavailable due to an unknown system bug that breaks it. Use completion blocks instead.")
             } else {
                 try! self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
             }
@@ -51,10 +48,7 @@ final class LocationPanel: Panel<Permission.location> {
             
             addButton(title: "Request Temporary Precise Access") {
                 if Constants.useSwiftConcurrency {
-                    Task {
-                        let status = try! await self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey)
-                        self.notify(aboutTemporaryPreciseAccessStatus: status)
-                    }
+                    self.notify("Async versions of the request methods are unavailable due to an unknown system bug that breaks it. Use completion blocks instead.")
                 } else {
                     try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey) {
                         self.notify(aboutTemporaryPreciseAccessStatus: $0)

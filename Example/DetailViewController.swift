@@ -26,6 +26,7 @@ final class DetailViewController: UIViewController {
     // MARK: Private Functions
     
     private func configure() {
+#if !targetEnvironment(macCatalyst)
         let header = PWHeader()
         header.title = permission?.getLocalizedName()
         
@@ -34,6 +35,9 @@ final class DetailViewController: UIViewController {
         }
         
         navigationItem.titleView = header
+#else
+        navigationItem.title = permission?.getLocalizedName()
+#endif
         
         var panel: UIStackView?
         

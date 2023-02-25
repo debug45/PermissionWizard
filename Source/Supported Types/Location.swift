@@ -130,6 +130,7 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 13, *)
+        @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")
         @discardableResult public static func requestAccess(whenInUseOnly: Bool) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
@@ -187,6 +188,7 @@ public extension Permission {
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
+        @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")
         @discardableResult public static func requestTemporaryPreciseAccess(purposePlistKey: String) async throws -> Bool {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
