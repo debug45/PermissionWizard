@@ -19,7 +19,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 <br/>
 📬 Use **async/await** and **completion blocks** even where it is not provided by default system API
 <br/>
-🛣 Forget about **thread management** by using any preferred dispatch queue only (optional)
+🛣 Forget about **thread management** by specifying desired dispatch queues to invoke completion blocks (optional)
 
 🚀 Completely written in **Swift**
 <br/>
@@ -107,19 +107,31 @@ Using of **PermissionWizard** is incredibly easy!
 ```swift
 import PermissionWizard
 
-Permission.contacts.checkStatus { status in
-    status // .notDetermined
+if useSwiftConcurrency {
+    await Permission.contacts.checkStatus() // .notDetermined
+} else {
+    Permission.contacts.checkStatus { status in
+        status // .notDetermined
+    }
 }
 
 do {
-    try Permission.location.requestAccess(whenInUseOnly: true) { status in
-        status.value // .whenInUseOnly
-        status.isAccuracyReducing // false
+    if useSwiftConcurrency {
+        try await Permission.location.requestAccess(whenInUseOnly: true) // (value: .whenInUseOnly, isAccuracyReducing: false)
+    } else {
+        try Permission.location.requestAccess(whenInUseOnly: true) { status in
+            status.value // .whenInUseOnly
+            status.isAccuracyReducing // false
+        }
     }
     
-    Permission.camera.checkStatus(withMicrophone: true) { status in
-        status.camera // .granted
-        status.microphone // .denied
+    if useSwiftConcurrency {
+        await Permission.camera.checkStatus(withMicrophone: true) // (camera: .granted, microphone: .denied)
+    } else {
+        Permission.camera.checkStatus(withMicrophone: true) { status in
+            status.camera // .granted
+            status.microphone // .denied
+        }
     }
 } catch let error {
     error.userInfo["message"] // You must add a row with the “NSLocationWhenInUseUsageDescription” key to your app‘s plist file and specify the reason why you are requesting access to location. This information will be displayed to a user.
@@ -135,8 +147,12 @@ do {
 Some permission types support additional features. For example, if an iOS 14 user allows access to his location only with reduced accuracy, you can request temporary access to full accuracy:
 
 ```swift
-try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
-    result // true
+if useSwiftConcurrency {
+    try? await Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") // true
+} else {
+    try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
+        result // true
+    }
 }
 ```
 
@@ -157,11 +173,16 @@ If you request access to some permission using default system API but forget to 
 
 ### Thread Management
 
-In some cases default system API may return a result in a different dispatch queue. To avoid a crash and instead of using `DispatchQueue.main.async`, you can ask **PermissionWizard** always to invoke completion blocks in a preferred queue:
+In some cases default system API may return a result in a different dispatch queue. To avoid a crash and instead of using `DispatchQueue.main.async`, you can ask **PermissionWizard** to invoke a completion block already in a preferred queue:
 
 ```swift
-Permission.preferredQueue = .main // Default setting
-Permission.preferredQueue = nil // Thread management is disabled
+Permission.tracking.checkStatus { _ in
+    // Default queue
+}
+
+Permission.tracking.checkStatus(completion: { _ in
+    // DispatchQueue.main
+}, forcedInvokationQueue: .main)
 ```
 
 ### UI Assets
@@ -179,6 +200,7 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 ## Known Issues
 
+- Local Network and Location permissions cannot be requested using async/await
 - Bluetooth permission always returns `.granted` on simulators
 - Local Network permission does not work on simulators
 - Music permission does not work on simulators with iOS 12
@@ -187,7 +209,7 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 
 - Extend support of macOS (specific permission types, native icons)
 - Make the library compatible with Swift Package Manager
-- Support usage in SwiftUI code
+- Support more convenient usage in SwiftUI code
 
 ## Conclusion
 

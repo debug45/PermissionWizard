@@ -19,7 +19,7 @@
 <br/>
 📬 Используйте **async/await** и **completion-блоки** даже там, где это не предусмотрено дефолтным системным API
 <br/>
-🛣 Забудьте об **управлении потоками**, всегда используя одну любую dispatch-очередь (опционально)
+🛣 Забудьте об **управлении потоками**, указывая желаемые dispatch-очереди для вызова completion-блоков (опционально)
 
 🚀 Библиотека написана на чистом **Swift**
 <br/>
@@ -107,19 +107,31 @@ SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(ENABLED_FEATURES) CUSTOM_SE
 ```swift
 import PermissionWizard
 
-Permission.contacts.checkStatus { status in
-    status // .notDetermined
+if useSwiftConcurrency {
+    await Permission.contacts.checkStatus() // .notDetermined
+} else {
+    Permission.contacts.checkStatus { status in
+        status // .notDetermined
+    }
 }
 
 do {
-    try Permission.location.requestAccess(whenInUseOnly: true) { status in
-        status.value // .whenInUseOnly
-        status.isAccuracyReducing // false
+    if useSwiftConcurrency {
+        try await Permission.location.requestAccess(whenInUseOnly: true) // (value: .whenInUseOnly, isAccuracyReducing: false)
+    } else {
+        try Permission.location.requestAccess(whenInUseOnly: true) { status in
+            status.value // .whenInUseOnly
+            status.isAccuracyReducing // false
+        }
     }
     
-    Permission.camera.checkStatus(withMicrophone: true) { status in
-        status.camera // .granted
-        status.microphone // .denied
+    if useSwiftConcurrency {
+        await Permission.camera.checkStatus(withMicrophone: true) // (camera: .granted, microphone: .denied)
+    } else {
+        Permission.camera.checkStatus(withMicrophone: true) { status in
+            status.camera // .granted
+            status.microphone // .denied
+        }
     }
 } catch let error {
     error.userInfo["message"] // You must add a row with the “NSLocationWhenInUseUsageDescription” key to your app‘s plist file and specify the reason why you are requesting access to location. This information will be displayed to a user.
@@ -135,8 +147,12 @@ do {
 Для некоторых типов пермишенов реализованы дополнительные фичи. Например, если на iOS 14 пользователь разрешил доступ ко своей геолокации только со сниженной точностью, вы можете запросить временный доступ без ограничений:
 
 ```swift
-try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
-    result // true
+if useSwiftConcurrency {
+    try? await Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") // true
+} else {
+    try? Permission.location.requestTemporaryPreciseAccess(purposePlistKey: "Default") { result in
+        result // true
+    }
 }
 ```
 
@@ -157,11 +173,16 @@ Permission.health.writingUsageDescriptionPlistKey // NSHealthShareUsageDescripti
 
 ### Управление потоками
 
-В некоторых случаях дефолтное системное API может ответить на запрос не в той dispatch-очереди, из которой вы к нему обратились. Чтобы защититься от потенциальных падений и не писать всюду `DispatchQueue.main.async`, вы можете попросить **PermissionWizard** всегда вызывать completion-блоки в удобной вам очереди:
+В некоторых случаях дефолтное системное API может ответить на запрос не в той dispatch-очереди, из которой вы к нему обратились. Чтобы защититься от потенциальных падений и не писать `DispatchQueue.main.async`, вы можете попросить **PermissionWizard** вызвать completion-блок сразу именно в удобной вам очереди:
 
 ```swift
-Permission.preferredQueue = .main // Настройка по умолчанию
-Permission.preferredQueue = nil // Управление потоками отключено
+Permission.tracking.checkStatus { _ in
+    // Очередь по умолчанию
+}
+
+Permission.tracking.checkStatus(completion: { _ in
+    // DispatchQueue.main
+}, forcedInvokationQueue: .main)
 ```
 
 ### UI-ресурсы
@@ -179,6 +200,7 @@ label.text = permission.getLocalizedName() // Распознавание реч�
 
 ## Известные проблемы
 
+- Доступ к локальной сети и геолокации невозможно запросить с использованием async/await
 - Bluetooth-пермишен всегда возвращает `.granted` на симуляторах
 - На симуляторах не функционирует работа с доступом к локальной сети
 - Пермишен музыки не работает на симуляторах с iOS 12
@@ -187,7 +209,7 @@ label.text = permission.getLocalizedName() // Распознавание реч�
 
 - Расширить поддержку macOS (специфичные типы пермишенов, нативные иконки)
 - Сделать библиотеку доступной к установке через Swift Package Manager
-- Поддержать использование в SwiftUI-коде
+- Поддержать более удобное использование в SwiftUI-коде
 
 ## Заключение
 
