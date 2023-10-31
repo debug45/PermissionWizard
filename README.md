@@ -9,7 +9,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Advantages
 
-📱 Supports the newest features of **iOS 16** and **macOS 13 Ventura**
+📱 Supports the newest features of **iOS 17** and **macOS 14 Sonoma**
 <br/>
 🖥 Works great with **Mac Catalyst**
 
@@ -38,7 +38,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 ## Requirements
 
 - iOS 12 / macOS 10.15 Catalina
-- Xcode 14
+- Xcode 15
 - Swift 5.5
 
 ## Installation

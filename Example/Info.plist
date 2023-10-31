@@ -28,8 +28,12 @@
 	<array>
 		<string>_example._tcp</string>
 	</array>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Please allow access to your calendars (full access, for iOS 17 and newer)</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Please allow access to your calendars</string>
+	<string>Please allow access to your calendars (full access, for iOS 16 and older)</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>Please allow access to your calendars (adding only)</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow access to your camera</string>
 	<key>NSContactsUsageDescription</key>

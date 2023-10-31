@@ -33,7 +33,7 @@ public extension Permission {
             }
             
             switch EKEventStore.authorizationStatus(for: .reminder) {
-                case .authorized:
+                case .authorized, .fullAccess:
                     completion(.granted)
                 case .denied:
                     completion(.denied)
@@ -41,6 +41,9 @@ public extension Permission {
                     completion(.notDetermined)
                 case .restricted:
                     completion(.restrictedBySystem)
+                
+                case .writeOnly:
+                    fallthrough
                 
                 @unknown default:
                     completion(.unknown)
@@ -59,7 +62,7 @@ public extension Permission {
         public static func requestAccess(completion: ((Status) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: reminders.self, usageDescriptionPlistKey: usageDescriptionPlistKey)
             
-            EKEventStore().requestAccess(to: .reminder) { _, _ in
+            let completion: EKEventStoreRequestAccessCompletionHandler = { _, _ in
                 guard let completion = completion else {
                     return
                 }
@@ -67,6 +70,14 @@ public extension Permission {
                 self.checkStatus(completion: {
                     completion($0)
                 }, forcedInvokationQueue: forcedInvokationQueue)
+            }
+            
+            let eventStore = EKEventStore()
+            
+            if #available(iOS 17, *) {
+                eventStore.requestFullAccessToReminders(completion: completion)
+            } else {
+                eventStore.requestAccess(to: .reminder, completion: completion)
             }
         }
         
