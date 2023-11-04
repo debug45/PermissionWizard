@@ -134,7 +134,7 @@ do {
         }
     }
 } catch let error {
-    error.userInfo["message"] // You must add a row with the “NSLocationWhenInUseUsageDescription” key to your app‘s plist file and specify the reason why you are requesting access to location. This information will be displayed to a user.
+    error.userInfo["message"] // You must add a row with the “NSLocationWhenInUseUsageDescription” key to your app’s plist file and specify the reason why you are requesting access to location. This information will be displayed to a user.
     
     guard let error = error as? Permission.Error else {
         return

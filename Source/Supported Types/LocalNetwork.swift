@@ -29,9 +29,9 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         Due to limitations of default system API, you cannot wait for a user‘s decision, but you can get the current status of the permission at the time of the access request
+         Due to limitations of default system API, you cannot wait for a user’s decision, but you can get the current status of the permission at the time of the access request
 
-         - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app‘s plist file, to a nested array with the key “NSBonjourServices”.
+         - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app’s plist file, to a nested array with the key “NSBonjourServices”.
          - Parameter completion: A closure that will be invoked immidiately to return the current status of the permission
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
@@ -74,9 +74,9 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         Due to limitations of default system API, you cannot wait for a user‘s decision, but you can get the current status of the permission at the time of the access request
+         Due to limitations of default system API, you cannot wait for a user’s decision, but you can get the current status of the permission at the time of the access request
 
-         - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app‘s plist file, to a nested array with the key “NSBonjourServices”.
+         - Parameter servicePlistKey: A key of the Bonjour service, access to which you want to request. You must add a row with this key to your app’s plist file, to a nested array with the key “NSBonjourServices”.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")

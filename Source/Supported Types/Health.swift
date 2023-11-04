@@ -89,7 +89,7 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         To find out a user‘s decision, use the status check method
+         To find out a user’s decision, use the status check method
 
          - Parameter readingTypes: Types of health data, access to which reading you want to request
          - Parameter writingTypes: Types of health data, access to which writing you want to request

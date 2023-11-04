@@ -27,7 +27,7 @@ public extension Permission {
         // MARK: Public Properties
         
         /**
-         Keys that must be added to your “Info.plist” to work with the permission type. These keys are used if you want to have full access to a user‘s calendars.
+         Keys that must be added to your “Info.plist” to work with the permission type. These keys are used if you want to have full access to a user’s calendars.
 
          For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
@@ -36,7 +36,7 @@ public extension Permission {
             "NSCalendarsUsageDescription" // Only for iOS 16 and older
         ]
         /**
-         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want only to add new events to a user‘s calendars.
+         A key that must be added to your “Info.plist” to work with the permission type. This key is used if you want only to add new events to a user’s calendars.
 
          For each permission type you are using, Apple requires to add the corresponding string to your “Info.plist” that describes a purpose of your access requests
         */
@@ -47,7 +47,7 @@ public extension Permission {
         /**
          Asks the system for the current status of the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new events to a user‘s calendars
+         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new events to a user’s calendars
          - Parameter completion: A closure that will be invoked to return the check result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
         */
@@ -59,7 +59,7 @@ public extension Permission {
         /**
          Asks the system for the current status of the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new events to a user‘s calendars
+         - Parameter forAddingOnly: A flag indicating whether you want to check the ability only to add new events to a user’s calendars
         */
         @available(iOS 17, *)
         public static func checkStatus(forAddingOnly: Bool) async -> Status {
@@ -87,7 +87,7 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you want only to add new events to a user‘s calendars
+         - Parameter forAddingOnly: A flag indicating whether you want only to add new events to a user’s calendars
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
@@ -100,7 +100,7 @@ public extension Permission {
         /**
          Asks a user for access the permission type
 
-         - Parameter forAddingOnly: A flag indicating whether you want only to add new events to a user‘s calendars
+         - Parameter forAddingOnly: A flag indicating whether you want only to add new events to a user’s calendars
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 17, *)

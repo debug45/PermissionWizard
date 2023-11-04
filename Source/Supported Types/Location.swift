@@ -148,7 +148,7 @@ public extension Permission {
 
          It may be useful if a user grants access to location data only with reduced accuracy
 
-         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
+         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app’s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
          - Parameter completion: A closure that will be invoked to return the request result
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
@@ -184,7 +184,7 @@ public extension Permission {
 
          It may be useful if a user grants access to location data only with reduced accuracy
 
-         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app‘s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
+         - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app’s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
         @available(iOS 14, *)
