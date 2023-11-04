@@ -21,17 +21,10 @@ final class CameraPanel: Panel<Permission.camera> {
                 self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
             }
             
-#if !targetEnvironment(macCatalyst)
             guard Constants.useSwiftConcurrency else {
                 performWithCompletion()
                 return
             }
-#else
-            guard Constants.useSwiftConcurrency else {
-                performWithCompletion()
-                return
-            }
-#endif
             
             Task {
                 let status = await self.permission.checkStatus(withMicrophone: withMicrophoneSwitch.isOn)
@@ -42,17 +35,10 @@ final class CameraPanel: Panel<Permission.camera> {
                 try! self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn) { self.notify(about: $0) }
             }
             
-#if !targetEnvironment(macCatalyst)
             guard Constants.useSwiftConcurrency else {
                 performWithCompletion()
                 return
             }
-#else
-            guard Constants.useSwiftConcurrency else {
-                performWithCompletion()
-                return
-            }
-#endif
             
             Task {
                 let status = try! await self.permission.requestAccess(withMicrophone: withMicrophoneSwitch.isOn)

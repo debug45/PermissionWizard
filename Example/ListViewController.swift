@@ -31,27 +31,35 @@ final class ListViewController: UIViewController {
         
         navigationItem.titleView = header
         
+        let isMacCatalystApp = ProcessInfo.processInfo.isMacCatalystApp
+        
         addButton(for: Permission.bluetooth.self)
         addButton(for: Permission.calendars.self)
         addButton(for: Permission.camera.self)
         addButton(for: Permission.contacts.self)
         
 #if !targetEnvironment(macCatalyst)
-        addButton(for: Permission.faceID.self)
-        addButton(for: Permission.health.self)
+        if !isMacCatalystApp {
+            addButton(for: Permission.faceID.self)
+            addButton(for: Permission.health.self)
+        }
 #endif
         
         addButton(for: Permission.home.self)
         
 #if !targetEnvironment(macCatalyst)
-        addButton(for: Permission.localNetwork.self)
+        if !isMacCatalystApp {
+            addButton(for: Permission.localNetwork.self)
+        }
 #endif
         
         addButton(for: Permission.location.self)
         addButton(for: Permission.microphone.self)
         
 #if !targetEnvironment(macCatalyst)
-        addButton(for: Permission.motion.self)
+        if !isMacCatalystApp {
+            addButton(for: Permission.motion.self)
+        }
 #endif
         
         addButton(for: Permission.music.self)
@@ -60,14 +68,16 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.reminders.self)
         
 #if !targetEnvironment(macCatalyst)
-        addButton(for: Permission.siri.self)
+        if !isMacCatalystApp {
+            addButton(for: Permission.siri.self)
+        }
 #endif
         
         addButton(for: Permission.speechRecognition.self)
         
-#if !targetEnvironment(macCatalyst)
-        addButton(for: Permission.tracking.self)
-#endif
+        if !isMacCatalystApp {
+            addButton(for: Permission.tracking.self)
+        }
     }
     
     private func addButton(for permission: Permission.SupportedType.Type) {

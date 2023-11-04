@@ -26,18 +26,20 @@ final class DetailViewController: UIViewController {
     // MARK: Private Functions
     
     private func configure() {
-#if !targetEnvironment(macCatalyst)
-        let header = PWHeader()
-        header.title = permission?.getLocalizedName()
+        let isMacCatalystApp = ProcessInfo.processInfo.isMacCatalystApp
         
-        if let screen = UIApplication.shared.windows.last?.screen {
-            header.icon = permission?.getIcon(for: screen)
+        if !isMacCatalystApp {
+            let header = PWHeader()
+            header.title = permission?.getLocalizedName()
+            
+            if let screen = UIApplication.shared.windows.last?.screen {
+                header.icon = permission?.getIcon(for: screen)
+            }
+            
+            navigationItem.titleView = header
+        } else {
+            navigationItem.title = permission?.getLocalizedName()
         }
-        
-        navigationItem.titleView = header
-#else
-        navigationItem.title = permission?.getLocalizedName()
-#endif
         
         var panel: UIStackView?
         
@@ -62,13 +64,13 @@ final class DetailViewController: UIViewController {
                 panel = SpeechRecognitionPanel()
             
 #if !targetEnvironment(macCatalyst)
-            case is Permission.faceID.Type:
+            case is Permission.faceID.Type where !isMacCatalystApp:
                 panel = FaceIDPanel()
-            case is Permission.health.Type:
+            case is Permission.health.Type where !isMacCatalystApp:
                 panel = HealthPanel()
-            case is Permission.motion.Type:
+            case is Permission.motion.Type where !isMacCatalystApp:
                 panel = MotionPanel()
-            case is Permission.siri.Type:
+            case is Permission.siri.Type where !isMacCatalystApp:
                 panel = SiriPanel()
 #endif
             
@@ -86,12 +88,14 @@ final class DetailViewController: UIViewController {
                 }
                 
 #if !targetEnvironment(macCatalyst)
-                if permission is Permission.localNetwork.Type {
-                    panel = LocalNetworkPanel()
-                }
-                
-                if permission is Permission.tracking.Type {
-                    panel = TrackingPanel()
+                if !isMacCatalystApp {
+                    if permission is Permission.localNetwork.Type {
+                        panel = LocalNetworkPanel()
+                    }
+                    
+                    if permission is Permission.tracking.Type {
+                        panel = TrackingPanel()
+                    }
                 }
 #endif
         }
