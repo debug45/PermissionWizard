@@ -9,7 +9,6 @@
 
 import HomeKit
 
-@available(iOS 13, macCatalyst 14, *)
 public extension Permission {
     
     final class home: SupportedType, Requestable {

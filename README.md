@@ -37,7 +37,7 @@ It is an ultimate tool for system permissions management. No longer you have to 
 
 ## Requirements
 
-- iOS 12 / macOS 10.15 Catalina
+- iOS 14 / macOS 11 Big Sur
 - Xcode 15
 - Swift 5.5
 
@@ -144,7 +144,7 @@ do {
 }
 ```
 
-Some permission types support additional features. For example, if an iOS 14 user allows access to his location only with reduced accuracy, you can request temporary access to full accuracy:
+Some permission types support additional features. For example, if a user allows access to his location only with reduced accuracy, you can request temporary access to full accuracy:
 
 ```swift
 if useSwiftConcurrency {
@@ -203,7 +203,6 @@ Keep in mind that icons and localized strings are only available if the `Assets`
 - Local Network and Location permissions cannot be requested using async/await
 - Bluetooth permission always returns `.granted` on simulators
 - Local Network permission does not work on simulators
-- Music permission does not work on simulators with iOS 12
 
 ## Roadmap
 

@@ -77,7 +77,6 @@ public extension Permission {
 
          - Parameter dataType: A type of health data, access to which you want to check
         */
-        @available(iOS 13, *)
         public static func checkStatusForWriting(of dataType: HKObjectType) async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatusForWriting(of: dataType) { status in
@@ -128,7 +127,6 @@ public extension Permission {
          - Parameter writingTypes: Types of health data, access to which writing you want to request
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
-        @available(iOS 13, *)
         public static func requestAccess(forReading readingTypes: Set<HKObjectType>, writing writingTypes: Set<HKSampleType>) async throws {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {

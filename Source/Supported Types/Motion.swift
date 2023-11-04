@@ -43,7 +43,6 @@ public extension Permission {
             }
         }
         
-        @available(iOS 13, *)
         public static func checkStatus() async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus { status in

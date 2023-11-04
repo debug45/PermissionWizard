@@ -9,7 +9,6 @@
 
 import CoreBluetooth
 
-@available(iOS 13.1, *)
 public extension Permission {
     
     final class bluetooth: SupportedType, Checkable, Requestable {

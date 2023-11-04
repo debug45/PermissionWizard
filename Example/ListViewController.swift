@@ -31,16 +31,9 @@ final class ListViewController: UIViewController {
         
         navigationItem.titleView = header
         
-        if #available(iOS 13.1, *) {
-            addButton(for: Permission.bluetooth.self)
-        }
-        
+        addButton(for: Permission.bluetooth.self)
         addButton(for: Permission.calendars.self)
-        
-        if #available(macCatalyst 14, *) {
-            addButton(for: Permission.camera.self)
-        }
-        
+        addButton(for: Permission.camera.self)
         addButton(for: Permission.contacts.self)
         
 #if !targetEnvironment(macCatalyst)
@@ -48,14 +41,10 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.health.self)
 #endif
         
-        if #available(iOS 13, macCatalyst 14, *) {
-            addButton(for: Permission.home.self)
-        }
+        addButton(for: Permission.home.self)
         
 #if !targetEnvironment(macCatalyst)
-        if #available(iOS 14, *) {
-            addButton(for: Permission.localNetwork.self)
-        }
+        addButton(for: Permission.localNetwork.self)
 #endif
         
         addButton(for: Permission.location.self)
@@ -77,9 +66,7 @@ final class ListViewController: UIViewController {
         addButton(for: Permission.speechRecognition.self)
         
 #if !targetEnvironment(macCatalyst)
-        if #available(iOS 14, *) {
-            addButton(for: Permission.tracking.self)
-        }
+        addButton(for: Permission.tracking.self)
 #endif
     }
     

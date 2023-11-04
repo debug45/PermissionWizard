@@ -9,7 +9,6 @@
 
 import PermissionWizard
 
-@available(iOS 14, *)
 final class TrackingPanel: Panel<Permission.tracking> {
     
     override func configure() {

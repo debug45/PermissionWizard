@@ -7,7 +7,6 @@
 
 import PermissionWizard
 
-@available(iOS 13.1, *)
 final class BluetoothPanel: Panel<Permission.bluetooth> {
     
     override func configure() {

@@ -9,7 +9,6 @@
 
 import Network
 
-@available(iOS 14, *)
 public extension Permission {
     
     final class localNetwork: SupportedType {

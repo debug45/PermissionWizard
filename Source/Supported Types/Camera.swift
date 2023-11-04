@@ -13,7 +13,6 @@ import AVKit
     extension Permission.camera: Checkable, Requestable { }
 #endif
 
-@available(macCatalyst 14, *)
 public extension Permission {
     
     final class camera: SupportedType {
@@ -58,7 +57,6 @@ public extension Permission {
 
          - Parameter withMicrophone: A flag indicating whether the microphone permission status should also be checked
         */
-        @available(iOS 13, macCatalyst 14, *)
         public static func checkStatus(withMicrophone: Bool) async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus(withMicrophone: withMicrophone) { status in
@@ -106,7 +104,6 @@ public extension Permission {
          - Parameter withMicrophone: A flag indicating whether also to request access for a microphone
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
-        @available(iOS 13, macCatalyst 14, *)
         @discardableResult public static func requestAccess(withMicrophone: Bool) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
@@ -123,7 +120,6 @@ public extension Permission {
             checkNarrowStatus(completion: completion, forcedInvokationQueue: forcedInvokationQueue)
         }
         
-        @available(iOS 13, *)
         public static func checkStatus() async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus { status in
@@ -137,7 +133,6 @@ public extension Permission {
             requestNarrowAccess(completion: completion, forcedInvokationQueue: forcedInvokationQueue)
         }
         
-        @available(iOS 13, *)
         @discardableResult public static func requestAccess() async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {

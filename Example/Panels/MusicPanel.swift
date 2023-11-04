@@ -13,7 +13,7 @@ final class MusicPanel: Panel<Permission.music> {
         super.configure()
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(status.rawValue)
@@ -22,7 +22,7 @@ final class MusicPanel: Panel<Permission.music> {
                 self.permission.checkStatus { self.notify($0.rawValue) }
             }
         }, requestAccessAction: {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess()
                     self.notify(status.rawValue)

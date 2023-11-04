@@ -23,14 +23,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         let soundSwitch = addSwitch(title: "Sound", isOn: true)
         
         let carPlaySwitch = addSwitch(title: "CarPlay", withIncreasedOffset: false)
-        
-        var siriAnnouncementsSwitch: UISwitch?
-        
-        if #available(iOS 13, *) {
-            siriAnnouncementsSwitch = addSwitch(title: "Siri Announcements")
-        } else {
-            addSeparatingOffset()
-        }
+        let siriAnnouncementsSwitch = addSwitch(title: "Siri Announcements")
         
         let criticalAlertsSwitch = addSwitch(title: "Critical Alerts", withIncreasedOffset: false)
         let provisionallySwitch = addSwitch(title: "Provisionally")
@@ -43,7 +36,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
         dependentSwitches = [alertsSwitch, badgeSwitch, soundSwitch, carPlaySwitch, siriAnnouncementsSwitch, criticalAlertsSwitch].compactMap { $0 }
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(status.rawValue)
@@ -70,7 +63,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 options.insert(.carPlay)
             }
             
-            if #available(iOS 13, *), siriAnnouncementsSwitch?.isOn == true && siriAnnouncementsSwitch?.isEnabled == true {
+            if siriAnnouncementsSwitch.isOn && siriAnnouncementsSwitch.isEnabled {
                 options.insert(.announcement)
             }
             
@@ -86,7 +79,7 @@ final class NotificationsPanel: Panel<Permission.notifications> {
                 options.insert(.providesAppNotificationSettings)
             }
             
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = try! await self.permission.requestAccess(options: options)
                     self.notify(status.rawValue)

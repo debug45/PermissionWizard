@@ -45,7 +45,7 @@ public extension Permission {
             
             let narrow: Permission.Status.Location.Narrow
             
-            switch CLLocationManager.authorizationStatus() {
+            switch manager.authorizationStatus {
                 case .authorizedAlways:
                     narrow = .granted
                 case .denied:
@@ -63,7 +63,7 @@ public extension Permission {
             
             var combined = Status(value: narrow, isAccuracyReducing: false)
             
-            if #available(iOS 14, *), narrow != .notDetermined {
+            if narrow != .notDetermined {
                 combined.isAccuracyReducing = manager.accuracyAuthorization != .fullAccuracy
             }
             
@@ -76,7 +76,6 @@ public extension Permission {
             completion(combined)
         }
         
-        @available(iOS 13, *)
         public static func checkStatus() async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus { status in
@@ -129,7 +128,6 @@ public extension Permission {
          - Parameter whenInUseOnly: A flag indicating whether you want to access location only when an app is being used right now
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
-        @available(iOS 13, *)
         @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")
         @discardableResult public static func requestAccess(whenInUseOnly: Bool) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
@@ -153,7 +151,6 @@ public extension Permission {
          - Parameter forcedInvokationQueue: A forced dispatch queue to invoke the completion closure. The default value is `DispatchQueue.main`.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
-        @available(iOS 14, *)
         public static func requestTemporaryPreciseAccess(purposePlistKey: String, completion: ((Bool) -> Void)? = nil, forcedInvokationQueue: DispatchQueue? = Constants.defaultCompletionInvokationQueue) throws {
             try Utils.checkIsAppConfigured(for: location.self, usageDescriptionPlistKey: nil)
             
@@ -187,7 +184,6 @@ public extension Permission {
          - Parameter purposePlistKey: A key that describes the purpose of your request. You must add a row with this key to your app’s plist file, to a nested dictionary with the key “NSLocationTemporaryUsageDescriptionDictionary”.
          - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
         */
-        @available(iOS 14, *)
         @available(*, unavailable, message: "There is an unknown system bug that breaks the async version of the method")
         @discardableResult public static func requestTemporaryPreciseAccess(purposePlistKey: String) async throws -> Bool {
             try await withCheckedThrowingContinuation { checkedContinuation in

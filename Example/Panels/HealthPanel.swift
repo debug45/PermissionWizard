@@ -20,7 +20,7 @@ final class HealthPanel: Panel<Permission.health> {
         super.configure()
         
         addButton(title: "Check Status (Writing Only)") {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatusForWriting(of: self.dataType)
                     self.notify(status.rawValue)
@@ -31,7 +31,7 @@ final class HealthPanel: Panel<Permission.health> {
         }
         
         addButton(title: "Request Access") {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     try! await self.permission.requestAccess(forReading: [self.dataType], writing: [self.dataType])
                     self.notifyAboutRequestInferiority()

@@ -7,7 +7,6 @@
 
 import PermissionWizard
 
-@available(macCatalyst 14, *)
 final class CameraPanel: Panel<Permission.camera> {
     
     // MARK: Overriding Functions
@@ -23,7 +22,7 @@ final class CameraPanel: Panel<Permission.camera> {
             }
             
 #if !targetEnvironment(macCatalyst)
-            guard #available(iOS 13, *), Constants.useSwiftConcurrency else {
+            guard Constants.useSwiftConcurrency else {
                 performWithCompletion()
                 return
             }
@@ -44,7 +43,7 @@ final class CameraPanel: Panel<Permission.camera> {
             }
             
 #if !targetEnvironment(macCatalyst)
-            guard #available(iOS 13, *), Constants.useSwiftConcurrency else {
+            guard Constants.useSwiftConcurrency else {
                 performWithCompletion()
                 return
             }

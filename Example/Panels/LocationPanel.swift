@@ -17,7 +17,7 @@ final class LocationPanel: Panel<Permission.location> {
         super.configure()
         
         addButton(title: "Check Status") {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(about: status)
@@ -36,23 +36,21 @@ final class LocationPanel: Panel<Permission.location> {
         }
         
         addButton(title: "Request Access") {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 self.notify("Async versions of the request methods are unavailable due to an unknown system bug that breaks it. Use completion blocks instead.")
             } else {
                 try! self.permission.requestAccess(whenInUseOnly: whenInUseOnlySwitch.isOn) { self.notify(about: $0) }
             }
         }
         
-        if #available(iOS 14, *) {
-            addSeparatingOffset()
-            
-            addButton(title: "Request Temporary Precise Access") {
-                if Constants.useSwiftConcurrency {
-                    self.notify("Async versions of the request methods are unavailable due to an unknown system bug that breaks it. Use completion blocks instead.")
-                } else {
-                    try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey) {
-                        self.notify(aboutTemporaryPreciseAccessStatus: $0)
-                    }
+        addSeparatingOffset()
+        
+        addButton(title: "Request Temporary Precise Access") {
+            if Constants.useSwiftConcurrency {
+                self.notify("Async versions of the request methods are unavailable due to an unknown system bug that breaks it. Use completion blocks instead.")
+            } else {
+                try! self.permission.requestTemporaryPreciseAccess(purposePlistKey: self.temporaryPreciseAccessPurposePlistKey) {
+                    self.notify(aboutTemporaryPreciseAccessStatus: $0)
                 }
             }
         }

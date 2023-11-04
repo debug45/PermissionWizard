@@ -13,27 +13,10 @@ final class PhotosPanel: Panel<Permission.photos> {
     override func configure() {
         super.configure()
         
-        var forAddingOnlySwitch: UISwitch?
-        
-        if #available(iOS 14, *) {
-            forAddingOnlySwitch = addSwitch(title: "For Adding Only")
-        }
+        let forAddingOnlySwitch = addSwitch(title: "For Adding Only")
         
         addDefaultButtons(checkStatusAction: {
-            guard #available(iOS 14, *) else {
-                if #available(iOS 13, *), Constants.useSwiftConcurrency {
-                    Task {
-                        let status = await self.permission.checkStatus()
-                        self.notify(status.rawValue)
-                    }
-                } else {
-                    self.permission.checkStatus { self.notify($0.rawValue) }
-                }
-                
-                return
-            }
-            
-            let forAddingOnly = forAddingOnlySwitch?.isOn == true
+            let forAddingOnly = forAddingOnlySwitch.isOn
             
             if Constants.useSwiftConcurrency {
                 Task {
@@ -44,20 +27,7 @@ final class PhotosPanel: Panel<Permission.photos> {
                 self.permission.checkStatus(forAddingOnly: forAddingOnly) { self.notify($0.rawValue) }
             }
         }, requestAccessAction: {
-            guard #available(iOS 14, *) else {
-                if #available(iOS 13, *), Constants.useSwiftConcurrency {
-                    Task {
-                        let status = try! await self.permission.requestAccess()
-                        self.notify(status.rawValue)
-                    }
-                } else {
-                    try! self.permission.requestAccess { self.notify($0.rawValue) }
-                }
-                
-                return
-            }
-            
-            let forAddingOnly = forAddingOnlySwitch?.isOn == true
+            let forAddingOnly = forAddingOnlySwitch.isOn
             
             if Constants.useSwiftConcurrency {
                 Task {

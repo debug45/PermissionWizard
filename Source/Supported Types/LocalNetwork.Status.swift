@@ -7,7 +7,6 @@
 
 #if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
-@available(iOS 14, *)
 public extension Permission.Status {
     
     enum LocalNetwork: String {

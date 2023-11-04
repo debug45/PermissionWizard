@@ -7,7 +7,6 @@
 
 #if (LOCAL_NETWORK || !CUSTOM_SETTINGS) && !targetEnvironment(macCatalyst)
 
-@available(iOS 14, *)
 extension Permission.localNetwork {
     
     final class Agent: Permission.SupportedType.Agent<NetService, Status>, NetServiceDelegate {

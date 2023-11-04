@@ -22,7 +22,6 @@ protocol Checkable: Permission.SupportedType {
     /**
      Asks the system for the current status of the permission type
     */
-    @available(iOS 13, *)
     static func checkStatus() async -> Status
     
 }
@@ -47,7 +46,6 @@ protocol Requestable: Permission.SupportedType {
 
      - Throws: `Permission.Error`, if something went wrong. For example, your “Info.plist” is configured incorrectly.
     */
-    @available(iOS 13, *)
     @discardableResult static func requestAccess() async throws -> Status
     
 }

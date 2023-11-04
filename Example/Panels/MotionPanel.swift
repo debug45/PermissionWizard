@@ -15,7 +15,7 @@ final class MotionPanel: Panel<Permission.motion> {
         super.configure()
         
         addDefaultButtons(checkStatusAction: {
-            if #available(iOS 13, *), Constants.useSwiftConcurrency {
+            if Constants.useSwiftConcurrency {
                 Task {
                     let status = await self.permission.checkStatus()
                     self.notify(status.rawValue)

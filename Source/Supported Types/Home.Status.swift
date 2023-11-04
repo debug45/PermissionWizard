@@ -7,7 +7,6 @@
 
 #if HOME || !CUSTOM_SETTINGS
 
-@available(iOS 13, macCatalyst 14, *)
 public extension Permission.Status {
     
     enum Home: String {

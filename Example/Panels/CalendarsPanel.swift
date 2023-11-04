@@ -21,7 +21,7 @@ final class CalendarsPanel: Panel<Permission.calendars> {
         
         addDefaultButtons(checkStatusAction: {
             guard #available(iOS 17, *) else {
-                if #available(iOS 13, *), Constants.useSwiftConcurrency {
+                if Constants.useSwiftConcurrency {
                     Task {
                         let status = await self.permission.checkStatus()
                         self.notify(status.rawValue)
@@ -37,7 +37,7 @@ final class CalendarsPanel: Panel<Permission.calendars> {
             
             if Constants.useSwiftConcurrency {
                 Task {
-                    let status = try! await self.permission.checkStatus(forAddingOnly: forAddingOnly)
+                    let status = await self.permission.checkStatus(forAddingOnly: forAddingOnly)
                     self.notify(status.rawValue)
                 }
             } else {
@@ -45,7 +45,7 @@ final class CalendarsPanel: Panel<Permission.calendars> {
             }
         }, requestAccessAction: {
             guard #available(iOS 17, *) else {
-                if #available(iOS 13, *), Constants.useSwiftConcurrency {
+                if Constants.useSwiftConcurrency {
                     Task {
                         let status = try! await self.permission.requestAccess()
                         self.notify(status.rawValue)

@@ -9,7 +9,6 @@
 
 import AppTrackingTransparency
 
-@available(iOS 14, *)
 public extension Permission {
     
     final class tracking: SupportedType, Checkable, Requestable {

@@ -48,7 +48,6 @@ public extension Permission {
             }
         }
         
-        @available(iOS 13, *)
         public static func checkStatus() async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus { status in
@@ -85,7 +84,6 @@ public extension Permission {
          - Parameter options: Notification features, access to which you want to request
          - Throws: `Permission.Error`, if something went wrong
         */
-        @available(iOS 13, *)
         @discardableResult public static func requestAccess(options: UNAuthorizationOptions) async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {

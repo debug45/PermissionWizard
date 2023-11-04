@@ -9,7 +9,6 @@
 
 import PermissionWizard
 
-@available(iOS 14, *)
 final class LocalNetworkPanel: Panel<Permission.localNetwork> {
     
     private let servicePlistKey = "_example._tcp"

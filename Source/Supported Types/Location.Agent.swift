@@ -23,7 +23,7 @@ extension Permission.location {
         // MARK: Overriding Properties
         
         override var hasDeterminedStatus: Bool {
-            return CLLocationManager.authorizationStatus() != .notDetermined
+            return manager.authorizationStatus != .notDetermined
         }
         
         // MARK: Overriding Functions
@@ -44,7 +44,7 @@ extension Permission.location {
         }
         
         func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            // Redirection for iOS 13 and older
+            // Redirection for iOS 13
             locationManagerDidChangeAuthorization(manager)
         }
         

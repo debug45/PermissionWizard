@@ -7,7 +7,6 @@
 
 import PermissionWizard
 
-@available(iOS 13, macCatalyst 14, *)
 final class HomePanel: Panel<Permission.home> {
     
     override func configure() {

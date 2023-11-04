@@ -41,7 +41,6 @@ public extension Permission {
             }
         }
         
-        @available(iOS 13, *)
         public static func checkStatus() async -> Status {
             await withCheckedContinuation { checkedContinuation in
                 checkStatus { status in
@@ -55,7 +54,6 @@ public extension Permission {
             requestAccessForced(completion: completion, forcedInvokationQueue: forcedInvokationQueue)
         }
         
-        @available(iOS 13, *)
         @discardableResult public static func requestAccess() async throws -> Status {
             try await withCheckedThrowingContinuation { checkedContinuation in
                 do {
